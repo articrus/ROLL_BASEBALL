@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://bpnosv5irtluk"]
+
+[ext_resource type="Script" uid="uid://btojsarxj0si" path="res://scripts/roll_box.gd" id="1_auu82"]
+[ext_resource type="Texture2D" uid="uid://dt1yg03gwi4ts" path="res://ui/dice_textures/d6/d6_6.tres" id="1_wyr4b"]
+[ext_resource type="Texture2D" uid="uid://bltjgndjnf6o2" path="res://ui/dice_textures/d4/d4_4.tres" id="2_vbxjb"]
+[ext_resource type="Texture2D" uid="uid://cu6p2kqwgc31e" path="res://ui/dice_textures/d8/d8_8.tres" id="4_gg1wy"]
+
+[node name="RollBox" type="VBoxContainer" unique_id=1859534604]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 4
+alignment = 1
+script = ExtResource("1_auu82")
+die_textures = Array[AtlasTexture]([ExtResource("2_vbxjb"), ExtResource("1_wyr4b"), ExtResource("4_gg1wy")])
+
+[node name="DiceContainer" type="HBoxContainer" parent="." unique_id=1312314460]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="LeftDie" type="TextureRect" parent="DiceContainer" unique_id=1569182503]
+layout_mode = 2
+texture = ExtResource("1_wyr4b")
+expand_mode = 2
+
+[node name="RightDie" type="TextureRect" parent="DiceContainer" unique_id=1968844986]
+layout_mode = 2
+texture = ExtResource("1_wyr4b")
+expand_mode = 2
+
+[node name="RollingButtons" type="HBoxContainer" parent="." unique_id=119382626]
+layout_mode = 2
+alignment = 1
+
+[node name="BattingButton" type="Button" parent="RollingButtons" unique_id=725347007]
+layout_mode = 2
+text = "BAT"
+icon_alignment = 1
+
+[node name="PitchingButton" type="Button" parent="RollingButtons" unique_id=1473457770]
+visible = false
+layout_mode = 2
+text = "PITCH"
+icon_alignment = 1
+
+[connection signal="pressed" from="RollingButtons/BattingButton" to="." method="_bat_button"]
+[connection signal="pressed" from="RollingButtons/PitchingButton" to="." method="_pitch_button"]

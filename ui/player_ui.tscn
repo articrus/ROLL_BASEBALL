@@ -1,0 +1,93 @@
+[gd_scene format=3 uid="uid://b4ljywddrkucl"]
+
+[ext_resource type="Texture2D" uid="uid://chemvppnh314e" path="res://art/temp_ui.png" id="1_cfom6"]
+[ext_resource type="Script" uid="uid://ep2xuiuc4xw0" path="res://scripts/player_ui.gd" id="1_ehg4m"]
+[ext_resource type="PackedScene" uid="uid://vapum38moy5f" path="res://ui/hud_components/die_strategy.tscn" id="2_vq5xy"]
+[ext_resource type="PackedScene" uid="uid://bpnosv5irtluk" path="res://ui/roll_box.tscn" id="4_iwa1g"]
+
+[node name="PlayerUI" type="Control" unique_id=258670629]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ehg4m")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1060066690]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.8
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("1_cfom6")
+expand_mode = 1
+
+[node name="LeftStrategy" parent="TextureRect" unique_id=1539795031 instance=ExtResource("2_vq5xy")]
+layout_mode = 1
+offset_left = -142.0
+offset_top = -44.200012
+offset_right = 92.0
+offset_bottom = -4.200012
+
+[node name="RightStrategy" parent="TextureRect" unique_id=1842811276 instance=ExtResource("2_vq5xy")]
+layout_mode = 1
+offset_left = -142.0
+offset_top = 9.599976
+offset_right = 92.0
+offset_bottom = 49.599976
+
+[node name="RollBox" parent="." unique_id=2025816388 instance=ExtResource("4_iwa1g")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 445.0
+offset_top = 356.0
+offset_right = 649.0
+offset_bottom = 491.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="DebugDisplay" type="VBoxContainer" parent="." unique_id=450735839]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="BattingResult" type="Label" parent="DebugDisplay" unique_id=142261875]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "RESULT: NAN"
+
+[node name="Inning" type="Label" parent="DebugDisplay" unique_id=1711875604]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "INNING: 1"
+
+[node name="PlayerPoints" type="Label" parent="DebugDisplay" unique_id=184725152]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "PLAYER: 0"
+
+[node name="VisitorPoints" type="Label" parent="DebugDisplay" unique_id=488171268]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "COM: 0"
+
+[node name="DieTableButon" type="Button" parent="." unique_id=1862182513]
+layout_mode = 0
+offset_left = 319.0
+offset_top = 501.0
+offset_right = 405.0
+offset_bottom = 532.0
+text = "DIE TABLE"
+
+[node name="StealTagButton" type="Button" parent="." unique_id=1706445997]
+layout_mode = 0
+offset_left = 697.0
+offset_top = 501.0
+offset_right = 783.0
+offset_bottom = 532.0
+text = "STEAL"

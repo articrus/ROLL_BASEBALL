@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://5k2r0oqju1j5"]
+
+[ext_resource type="Script" uid="uid://ccd1cpjlehr48" path="res://scripts/game_manager.gd" id="1_w5aja"]
+[ext_resource type="PackedScene" uid="uid://b4ljywddrkucl" path="res://ui/player_ui.tscn" id="2_onqr8"]
+[ext_resource type="PackedScene" uid="uid://cgwf112eud4gw" path="res://ui/user_login.tscn" id="3_ycayy"]
+
+[node name="GameScene" type="Node2D" unique_id=1578163720]
+
+[node name="GameManager" type="Node" parent="." unique_id=1789962954]
+script = ExtResource("1_w5aja")
+metadata/_custom_type_script = "uid://ccd1cpjlehr48"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1012019546]
+
+[node name="PlayerUI" parent="CanvasLayer" unique_id=258670629 instance=ExtResource("2_onqr8")]
+
+[node name="Login" parent="CanvasLayer" unique_id=1740025211 instance=ExtResource("3_ycayy")]

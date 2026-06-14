@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://btxim5i06julr"]
+
+[ext_resource type="Script" uid="uid://b4pqicxa6lql0" path="res://scripts/scoreboard.gd" id="1_qjve3"]
+
+[node name="Scoreboard" type="Control" unique_id=1823282740]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qjve3")
+
+[node name="Panel" type="Panel" parent="." unique_id=2120686340]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1832211032]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -491.0
+offset_top = -175.0
+offset_right = 493.0
+offset_bottom = 176.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ParkLabel" type="Label" parent="VBoxContainer" unique_id=406180343]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "RED GAMMA PARK"
+horizontal_alignment = 1
+
+[node name="InningCount" type="Label" parent="VBoxContainer" unique_id=947343481]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "[1] [2] [3] [4] [5] [6] [7] [8] [9]"
+horizontal_alignment = 1
+
+[node name="HomeScore" type="Label" parent="VBoxContainer" unique_id=719292334]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "HOME [  ]  [  ]  [  ]  [  ]  [  ]  [  ]  [  ]  [  ] [  ] | [  ]"
+horizontal_alignment = 1
+
+[node name="VisitorScore" type="Label" parent="VBoxContainer" unique_id=1401923984]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "VISITOR [  ]  [  ]  [  ]  [  ]  [  ]  [  ]  [  ]  [  ] [  ] | [  ]"
+horizontal_alignment = 1
+
+[node name="Info" type="Label" parent="VBoxContainer" unique_id=845235018]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Strike DC [7] Out [  ] [  ] [  ]"
+horizontal_alignment = 1
