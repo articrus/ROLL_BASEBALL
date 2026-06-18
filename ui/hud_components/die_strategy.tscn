@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://vapum38moy5f"]
 
-[ext_resource type="Script" uid="uid://dti6qgg2idsdc" path="res://scripts/die_strategy.gd" id="1_706v5"]
+[ext_resource type="Script" uid="uid://dti6qgg2idsdc" path="res://scripts/ui/die_strategy.gd" id="1_706v5"]
 
 [node name="LeftDie" type="HBoxContainer" unique_id=1539795031]
 anchors_preset = 8

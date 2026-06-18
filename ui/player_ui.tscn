@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b4ljywddrkucl"]
 
-[ext_resource type="Texture2D" uid="uid://chemvppnh314e" path="res://art/temp_ui.png" id="1_cfom6"]
-[ext_resource type="Script" uid="uid://ep2xuiuc4xw0" path="res://scripts/player_ui.gd" id="1_ehg4m"]
+[ext_resource type="Texture2D" uid="uid://chemvppnh314e" path="res://art/ui/temp_ui.png" id="1_cfom6"]
+[ext_resource type="Script" uid="uid://ep2xuiuc4xw0" path="res://scripts/ui/player_ui.gd" id="1_ehg4m"]
 [ext_resource type="PackedScene" uid="uid://vapum38moy5f" path="res://ui/hud_components/die_strategy.tscn" id="2_vq5xy"]
 [ext_resource type="PackedScene" uid="uid://bpnosv5irtluk" path="res://ui/roll_box.tscn" id="4_iwa1g"]
 

@@ -11,11 +11,13 @@ class_name GameManager
 @export var current_inning: int = 1
 # DC Variables
 const strikeDC: Array[int] = [0, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7]
+# Signals
+signal advance_bases(amount: int)
+signal strikeout
 
 # Connect any necessary signals
 func _ready() -> void:
-	Signalbus.roll_to_bat.connect(_process_batting)
-	Signalbus.roll_to_pitch.connect(_process_pitching)
+	_connect_signals()
 
 # Process the result of batting
 func _process_batting(left_die: Enums.DIE_TYPES, right_die: Enums.DIE_TYPES) -> void:
@@ -24,18 +26,23 @@ func _process_batting(left_die: Enums.DIE_TYPES, right_die: Enums.DIE_TYPES) -> 
 		Enums.BATTING_RESULT.HOMERUN:
 			Signalbus.display_batting_result.emit("HOME RUN!")
 			home_points += _advance_base(4)
+			advance_bases.emit(4)
 		Enums.BATTING_RESULT.TRIPLE:
 			Signalbus.display_batting_result.emit("TRIPLE!")
 			home_points += _advance_base(3)
+			advance_bases.emit(3)
 		Enums.BATTING_RESULT.DOUBLE:
 			Signalbus.display_batting_result.emit("DOUBLE!")
 			home_points += _advance_base(2)
+			advance_bases.emit(2)
 		Enums.BATTING_RESULT.SINGLE:
 			Signalbus.display_batting_result.emit("SINGLE!")
 			home_points += _advance_base(1)
+			advance_bases.emit(1)
 		Enums.BATTING_RESULT.STRIKEOUT:
 			Signalbus.display_batting_result.emit("STRIKEOUT!")
 			strikeouts += 1
+			strikeout.emit()
 	Signalbus.display_points.emit(home_points, visitor_points)
 	_check_strikes()
 
@@ -46,18 +53,23 @@ func _process_pitching(left_die: Enums.DIE_TYPES, right_die: Enums.DIE_TYPES) ->
 		Enums.BATTING_RESULT.HOMERUN:
 			Signalbus.display_batting_result.emit("HOME RUN!")
 			visitor_points += _advance_base(4)
+			advance_bases.emit(4)
 		Enums.BATTING_RESULT.TRIPLE:
 			Signalbus.display_batting_result.emit("TRIPLE!")
 			visitor_points += _advance_base(3)
+			advance_bases.emit(3)
 		Enums.BATTING_RESULT.DOUBLE:
 			Signalbus.display_batting_result.emit("DOUBLE!")
 			visitor_points += _advance_base(2)
+			advance_bases.emit(2)
 		Enums.BATTING_RESULT.SINGLE:
 			Signalbus.display_batting_result.emit("SINGLE!")
 			visitor_points += _advance_base(1)
+			advance_bases.emit(1)
 		Enums.BATTING_RESULT.STRIKEOUT:
 			Signalbus.display_batting_result.emit("STRIKEOUT!")
 			strikeouts += 1
+			strikeout.emit()
 	Signalbus.display_points.emit(home_points, visitor_points)
 	_check_strikes()
 
@@ -144,3 +156,7 @@ func _next_inning() -> void:
 
 func _game_over() -> void:
 	Signalbus.display_batting_result.emit("GAME OVER!")
+
+func _connect_signals() -> void:
+	Signalbus.roll_to_bat.connect(_process_batting)
+	Signalbus.roll_to_pitch.connect(_process_pitching)

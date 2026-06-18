@@ -13,8 +13,10 @@ func _login_user(email: String, password: String) -> void:
 	var result = await AuthenticationManager._sign_in(email, password)
 	if result.ok:
 		var profile = await AuthenticationManager._load_profile()
-		print("Welcome back! Wins: ",  profile.get("games_won", 0))
 		testLabel.text = "GAMES WON: " + str(profile.get("games_won", 0))
+		Signalbus.user_login.emit()
+	else:
+		print("NOT OK")
 
 # Attempts to register the user to a new account
 func _sign_up_user(email: String, password: String) -> void:
@@ -24,9 +26,9 @@ func _sign_up_user(email: String, password: String) -> void:
 	var result = await AuthenticationManager._sign_up(email, password)
 	if result.ok:
 		print("Account created successfully!")
+		Signalbus.user_login.emit()
 	else:
 		print("NOT OK")
-	pass
 
 # Verifies if the email is in the correct format
 func _verfiy_email(email: String) -> bool:

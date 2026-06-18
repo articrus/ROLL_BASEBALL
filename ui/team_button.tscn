@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://dx1ic4fwo8od7"]
+
+[ext_resource type="Script" uid="uid://dvyojcwmdfdco" path="res://scripts/ui/team_button.gd" id="1_kblu6"]
+
+[node name="TeamButton" type="Button" unique_id=1161289066]
+text = "Montreal"
+script = ExtResource("1_kblu6")
+
+[connection signal="focus_entered" from="." to="." method="_on_focus_entered"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

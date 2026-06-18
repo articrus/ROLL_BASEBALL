@@ -35,11 +35,8 @@ texture = ExtResource("3_kk2rg")
 [node name="Pitch" type="Sprite2D" parent="Bases" unique_id=1453338358]
 texture = ExtResource("3_kk2rg")
 
-[node name="Out" type="Marker2D" parent="Bases" unique_id=220167196]
+[node name="Out" type="Sprite2D" parent="Bases" unique_id=217972461]
 position = Vector2(-400, 100)
-
-[node name="Spawn" type="Marker2D" parent="Bases" unique_id=1093195683]
-position = Vector2(0, 180)
 
 [node name="Players" type="Node2D" parent="." unique_id=1756745962]
 script = ExtResource("2_y3j0m")
