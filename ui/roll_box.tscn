@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dt1yg03gwi4ts" path="res://ui/dice_textures/d6/d6_6.tres" id="1_wyr4b"]
 [ext_resource type="Texture2D" uid="uid://bltjgndjnf6o2" path="res://ui/dice_textures/d4/d4_4.tres" id="2_vbxjb"]
 [ext_resource type="Texture2D" uid="uid://cu6p2kqwgc31e" path="res://ui/dice_textures/d8/d8_8.tres" id="4_gg1wy"]
+[ext_resource type="Theme" uid="uid://cjwjb6wa1fg38" path="res://ui/themes/baseball_text.tres" id="5_we2qg"]
 
 [node name="RollBox" type="VBoxContainer" unique_id=1859534604]
 anchors_preset = 15
@@ -38,12 +39,14 @@ alignment = 1
 
 [node name="BattingButton" type="Button" parent="RollingButtons" unique_id=725347007]
 layout_mode = 2
+theme = ExtResource("5_we2qg")
 text = "BAT"
 icon_alignment = 1
 
 [node name="PitchingButton" type="Button" parent="RollingButtons" unique_id=1473457770]
 visible = false
 layout_mode = 2
+theme = ExtResource("5_we2qg")
 text = "PITCH"
 icon_alignment = 1
 

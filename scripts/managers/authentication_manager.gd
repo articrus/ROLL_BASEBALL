@@ -49,6 +49,9 @@ func _save_stats(stats: Dictionary) -> bool:
 	http.queue_free()
 	return response[1] == 204
 
+func _reset_stats() -> void:
+	_save_stats({"games_won": 0, "points_scored": 0, "average_points_per": 0})
+
 func _load_profile() -> Dictionary:
 	if current_user_id == "":
 		return {}

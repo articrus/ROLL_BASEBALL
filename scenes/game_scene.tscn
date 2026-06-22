@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://b4ljywddrkucl" path="res://ui/player_ui.tscn" id="2_onqr8"]
 [ext_resource type="Script" uid="uid://b0nauup61hnbc" path="res://scripts/managers/players_manager.gd" id="2_y3j0m"]
 [ext_resource type="Texture2D" uid="uid://bpmuw1506raew" path="res://art/baseball_field/temp_diamond.png" id="3_kk2rg"]
-[ext_resource type="PackedScene" uid="uid://dnfd08q1sg4vo" path="res://scenes/team_select.tscn" id="3_ycayy"]
+[ext_resource type="PackedScene" uid="uid://dnfd08q1sg4vo" path="res://scenes/ui_scenes/team_select.tscn" id="3_ycayy"]
 
 [node name="GameScene" type="Node2D" unique_id=1578163720]
 script = ExtResource("1_rurhu")

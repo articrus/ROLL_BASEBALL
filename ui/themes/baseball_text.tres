@@ -1,0 +1,7 @@
+[gd_resource type="Theme" format=3 uid="uid://cjwjb6wa1fg38"]
+
+[ext_resource type="FontFile" uid="uid://d0i251vrssbkh" path="res://ui/themes/m6x11plus.ttf" id="1_wytuf"]
+
+[resource]
+default_font = ExtResource("1_wytuf")
+default_font_size = 24

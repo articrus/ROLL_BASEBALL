@@ -41,5 +41,6 @@ func _set_teams(team: Enums.CITY) -> void:
 func _connect_signals() -> void:
 	gameManager.advance_bases.connect(playerManager._advance_bases)
 	gameManager.strikeout.connect(playerManager._strikeout)
+	gameManager.toggle_special.connect(gameUI._disable_special)
 	Signalbus.update_inning.connect(_start_inning)
 	Signalbus.team_selected.connect(_set_teams)

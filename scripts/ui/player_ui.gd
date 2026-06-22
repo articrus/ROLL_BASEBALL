@@ -2,6 +2,7 @@ extends Control
 @onready var left_box = $TextureRect/LeftStrategy
 @onready var right_box = $TextureRect/RightStrategy
 @onready var roll_box = $RollBox
+@onready var specialButton = $StealTagButton
 # Temporary Nodes
 @onready var result = $DebugDisplay/BattingResult
 @onready var inning = $DebugDisplay/Inning
@@ -20,6 +21,7 @@ func _ready() -> void:
 	Signalbus.display_batting_result.connect(_show_result)
 	Signalbus.display_points.connect(_update_points)
 	Signalbus.update_inning.connect(_update_inning)
+	_disable_special(true)
 
 # Rolls the dice to bat
 func _roll_to_bat() -> void:
@@ -62,5 +64,21 @@ func _update_inning(newInning: int) -> void:
 	inning.text = "INNING: " + str(newInning)
 	if newInning % 2 == 0:
 		_change_sides(false, true)
+		_special_button(false)
+		_disable_special(true)
 	else:
 		_change_sides(true, false)
+		_special_button(true)
+		_disable_special(true)
+
+func _special_button(isBatting: bool) -> void:
+	if isBatting:
+		specialButton.text = "STEAL"
+	else:
+		specialButton.text = "TAG OUT"
+
+func _disable_special(toggle: bool) -> void:
+	specialButton.disabled = toggle
+
+func _on_steal_tag_button_pressed() -> void:
+	Signalbus.special_pressed.emit()

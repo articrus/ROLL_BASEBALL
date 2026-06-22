@@ -11,9 +11,11 @@ class_name GameManager
 @export var current_inning: int = 1
 # DC Variables
 const strikeDC: Array[int] = [0, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7]
+const specialDC: Array[int] = [0, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7]
 # Signals
 signal advance_bases(amount: int)
 signal strikeout
+signal toggle_special(toggle: bool)
 
 # Connect any necessary signals
 func _ready() -> void:
@@ -44,6 +46,7 @@ func _process_batting(left_die: Enums.DIE_TYPES, right_die: Enums.DIE_TYPES) -> 
 			strikeouts += 1
 			strikeout.emit()
 	Signalbus.display_points.emit(home_points, visitor_points)
+	_toggle_special_buttons()
 	_check_strikes()
 
 # Process the result of pitching
@@ -71,6 +74,7 @@ func _process_pitching(left_die: Enums.DIE_TYPES, right_die: Enums.DIE_TYPES) ->
 			strikeouts += 1
 			strikeout.emit()
 	Signalbus.display_points.emit(home_points, visitor_points)
+	_toggle_special_buttons()
 	_check_strikes()
 
 # Advances the player(s) on the bases by the given amount
@@ -96,19 +100,26 @@ func _advance_base(amount: int) -> int:
 
 # Attempt to steal the furthest base (returns points)
 func _steal_base() -> int:
-	# Third steals home and scores
-	if bases[2]:
-		bases[2] = false
-		return 1
-	# Second steals third
-	elif bases[1]:
-		bases[1] = false
-		bases[2] = true
-		return 0
-	# First steals second
+	var result = Dice._roll_die(6) + Dice._roll_die(6)
+	if result >= specialDC[current_inning]:
+		# In each one call a special advance bases
+		# Third steals home and scores
+		if bases[2]:
+			bases[2] = false
+			return 1
+		# Second steals third
+		elif bases[1]:
+			bases[1] = false
+			bases[2] = true
+			return 0
+		# First steals second
+		else:
+			bases[1] = true
+			bases[0] = false
+			return 0
 	else:
-		bases[1] = true
-		bases[0] = false
+		strikeouts += 1
+		_check_strikes()
 		return 0
 
 # Attempt to tag out the furthest player (returns strikeouts)
@@ -123,6 +134,15 @@ func _tag_out() -> int:
 	else:
 		bases[0] = false
 	return 1
+
+func _special_pressed() -> void:
+	if current_inning % 2 == 0:
+		visitor_points +=  _tag_out()
+	else:
+		home_points += _steal_base()
+
+func _toggle_special_buttons() -> void:
+	toggle_special.emit(!(bases[2] == true || bases[1] == true || bases[0] == true))
 
 # Check strikeouts check 
 func _check_strikes() -> void:
@@ -160,3 +180,4 @@ func _game_over() -> void:
 func _connect_signals() -> void:
 	Signalbus.roll_to_bat.connect(_process_batting)
 	Signalbus.roll_to_pitch.connect(_process_pitching)
+	Signalbus.special_pressed.connect(_special_pressed)

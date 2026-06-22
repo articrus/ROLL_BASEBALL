@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dnfd08q1sg4vo"]
 
 [ext_resource type="Script" uid="uid://cxfbdbwh28mjh" path="res://scripts/ui/team_select.gd" id="1_cf774"]
+[ext_resource type="Theme" uid="uid://cjwjb6wa1fg38" path="res://ui/themes/baseball_text.tres" id="2_icgwg"]
 [ext_resource type="PackedScene" uid="uid://dx1ic4fwo8od7" path="res://ui/team_button.tscn" id="2_oqbh2"]
 
 [node name="TeamSelect" type="Control" unique_id=162450544]
@@ -30,7 +31,8 @@ offset_top = 66.0
 offset_right = 67.0
 offset_bottom = 89.0
 grow_horizontal = 2
-theme_override_font_sizes/font_size = 36
+theme = ExtResource("2_icgwg")
+theme_override_font_sizes/font_size = 48
 text = "Select Your Team"
 
 [node name="TeamsBoxes" type="HBoxContainer" parent="." unique_id=2060183560]
@@ -124,8 +126,10 @@ offset_bottom = 324.0
 
 [node name="TeamName" type="Label" parent="TeamInfo" unique_id=1123221155]
 layout_mode = 2
+theme = ExtResource("2_icgwg")
 text = "TEAM NAME"
 
 [node name="City" type="Label" parent="TeamInfo" unique_id=1189157773]
 layout_mode = 2
+theme = ExtResource("2_icgwg")
 text = "TEAM TOWN"

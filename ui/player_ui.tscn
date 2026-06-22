@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://ep2xuiuc4xw0" path="res://scripts/ui/player_ui.gd" id="1_ehg4m"]
 [ext_resource type="PackedScene" uid="uid://vapum38moy5f" path="res://ui/hud_components/die_strategy.tscn" id="2_vq5xy"]
 [ext_resource type="PackedScene" uid="uid://bpnosv5irtluk" path="res://ui/roll_box.tscn" id="4_iwa1g"]
+[ext_resource type="Theme" uid="uid://cjwjb6wa1fg38" path="res://ui/themes/baseball_text.tres" id="5_lp0io"]
 
 [node name="PlayerUI" type="Control" unique_id=258670629]
 layout_mode = 3
@@ -58,21 +59,25 @@ offset_bottom = 40.0
 
 [node name="BattingResult" type="Label" parent="DebugDisplay" unique_id=142261875]
 layout_mode = 2
+theme = ExtResource("5_lp0io")
 theme_override_font_sizes/font_size = 32
 text = "RESULT: NAN"
 
 [node name="Inning" type="Label" parent="DebugDisplay" unique_id=1711875604]
 layout_mode = 2
+theme = ExtResource("5_lp0io")
 theme_override_font_sizes/font_size = 32
 text = "INNING: 1"
 
 [node name="PlayerPoints" type="Label" parent="DebugDisplay" unique_id=184725152]
 layout_mode = 2
+theme = ExtResource("5_lp0io")
 theme_override_font_sizes/font_size = 32
 text = "PLAYER: 0"
 
 [node name="VisitorPoints" type="Label" parent="DebugDisplay" unique_id=488171268]
 layout_mode = 2
+theme = ExtResource("5_lp0io")
 theme_override_font_sizes/font_size = 32
 text = "COM: 0"
 
@@ -82,6 +87,7 @@ offset_left = 319.0
 offset_top = 501.0
 offset_right = 405.0
 offset_bottom = 532.0
+theme = ExtResource("5_lp0io")
 text = "DIE TABLE"
 
 [node name="StealTagButton" type="Button" parent="." unique_id=1706445997]
@@ -90,4 +96,7 @@ offset_left = 697.0
 offset_top = 501.0
 offset_right = 783.0
 offset_bottom = 532.0
+theme = ExtResource("5_lp0io")
 text = "STEAL"
+
+[connection signal="pressed" from="StealTagButton" to="." method="_on_steal_tag_button_pressed"]

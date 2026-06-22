@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cgwf112eud4gw"]
 
 [ext_resource type="Script" uid="uid://bc1351t2bd2rc" path="res://scripts/ui/user_login.gd" id="1_i0tjq"]
+[ext_resource type="Theme" uid="uid://cjwjb6wa1fg38" path="res://ui/themes/baseball_text.tres" id="2_o15tw"]
 
 [node name="Login" type="Control" unique_id=1740025211]
 layout_mode = 3
@@ -43,53 +44,82 @@ alignment = 1
 
 [node name="Email" type="Label" parent="Panel/HBoxContainer/SignIn" unique_id=719775033]
 layout_mode = 2
+theme = ExtResource("2_o15tw")
 text = "Email: "
 
 [node name="EmailText" type="LineEdit" parent="Panel/HBoxContainer/SignIn" unique_id=978329949]
 layout_mode = 2
+theme = ExtResource("2_o15tw")
 placeholder_text = "someone@gmail.com"
 
 [node name="Password" type="Label" parent="Panel/HBoxContainer/SignIn" unique_id=213397202]
 layout_mode = 2
+theme = ExtResource("2_o15tw")
 text = "Password:"
 
 [node name="PasswordText" type="LineEdit" parent="Panel/HBoxContainer/SignIn" unique_id=703128660]
 layout_mode = 2
+theme = ExtResource("2_o15tw")
 placeholder_text = "***"
 
 [node name="Button" type="Button" parent="Panel/HBoxContainer/SignIn" unique_id=1069464903]
 layout_mode = 2
+theme = ExtResource("2_o15tw")
 text = "Login"
 
 [node name="SignUp" type="VBoxContainer" parent="Panel/HBoxContainer" unique_id=1273937913]
 custom_minimum_size = Vector2(200, 100)
 layout_mode = 2
+theme = ExtResource("2_o15tw")
 alignment = 1
 
 [node name="Email" type="Label" parent="Panel/HBoxContainer/SignUp" unique_id=606960263]
 layout_mode = 2
+theme = ExtResource("2_o15tw")
 text = "Email: "
 
 [node name="EmailText" type="LineEdit" parent="Panel/HBoxContainer/SignUp" unique_id=1163932980]
 layout_mode = 2
+theme = ExtResource("2_o15tw")
 placeholder_text = "someone@gmail.com"
 
 [node name="Password" type="Label" parent="Panel/HBoxContainer/SignUp" unique_id=1903917616]
 layout_mode = 2
+theme = ExtResource("2_o15tw")
 text = "Password:"
 
 [node name="PasswordText" type="LineEdit" parent="Panel/HBoxContainer/SignUp" unique_id=1426453890]
 layout_mode = 2
+theme = ExtResource("2_o15tw")
 placeholder_text = "***"
 
 [node name="Button" type="Button" parent="Panel/HBoxContainer/SignUp" unique_id=1189281526]
 layout_mode = 2
+theme = ExtResource("2_o15tw")
 text = "Sign Up"
 
 [node name="Label" type="Label" parent="Panel" unique_id=977624442]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
+theme = ExtResource("2_o15tw")
+
+[node name="Close" type="Button" parent="Panel" unique_id=1908915771]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -24.0
+offset_top = -90.400024
+offset_right = 25.0
+offset_bottom = -58.400024
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("2_o15tw")
+text = "Close"
 
 [connection signal="pressed" from="Panel/HBoxContainer/SignIn/Button" to="." method="_on_login_pressed"]
 [connection signal="pressed" from="Panel/HBoxContainer/SignUp/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Panel/Close" to="." method="_on_close_pressed"]

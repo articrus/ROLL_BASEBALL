@@ -40,3 +40,6 @@ func _on_button_pressed() -> void:
 
 func _on_login_pressed() -> void:
 	_login_user(loginEmail.text, loginPass.text)
+
+func _on_close_pressed() -> void:
+	self.visible = false

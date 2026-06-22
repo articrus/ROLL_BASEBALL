@@ -6,6 +6,7 @@ signal bat_pressed
 signal pitch_pressed
 signal roll_to_bat(left: Enums.DIE_TYPES, right: Enums.DIE_TYPES)
 signal roll_to_pitch(left: Enums.DIE_TYPES, right: Enums.DIE_TYPES)
+signal special_pressed
 
 # Logging In
 signal user_login

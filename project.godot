@@ -24,6 +24,10 @@ AuthenticationManager="*uid://bmi7fxrkpos2h"
 
 project/assembly_name="Roll_Baseball"
 
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
+
 [physics]
 
 3d/physics_engine="Jolt Physics"
