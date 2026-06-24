@@ -21,81 +21,47 @@ signal toggle_special(toggle: bool)
 func _ready() -> void:
 	_connect_signals()
 
-# Process the result of batting
-func _process_batting(left_die: Enums.DIE_TYPES, right_die: Enums.DIE_TYPES) -> void:
+# Process the roll and update the gamestate
+func _process_rolling(left_die: Enums.DIE_TYPES, right_die: Enums.DIE_TYPES) -> void:
+	# Fix the result grabber
 	var result = Dice._process_batting(left_die, right_die, strikeDC[current_inning])
-	match(result[1]):
+	var runs = 0
+	match result[1]:
 		Enums.BATTING_RESULT.HOMERUN:
 			Signalbus.display_batting_result.emit("HOME RUN!")
-			home_points += _advance_base(4)
+			runs += _advance_base(4)
 			advance_bases.emit(4)
 		Enums.BATTING_RESULT.TRIPLE:
 			Signalbus.display_batting_result.emit("TRIPLE!")
-			home_points += _advance_base(3)
+			runs += _advance_base(3)
 			advance_bases.emit(3)
 		Enums.BATTING_RESULT.DOUBLE:
 			Signalbus.display_batting_result.emit("DOUBLE!")
-			home_points += _advance_base(2)
+			runs += _advance_base(2)
 			advance_bases.emit(2)
 		Enums.BATTING_RESULT.SINGLE:
 			Signalbus.display_batting_result.emit("SINGLE!")
-			home_points += _advance_base(1)
+			runs += _advance_base(1)
 			advance_bases.emit(1)
 		Enums.BATTING_RESULT.STRIKEOUT:
 			Signalbus.display_batting_result.emit("STRIKEOUT!")
 			strikeouts += 1
 			strikeout.emit()
+	# Add the points
+	if current_inning % 2 == 0: visitor_points += runs
+	else: home_points += runs
 	Signalbus.display_points.emit(home_points, visitor_points)
 	_toggle_special_buttons()
 	_check_strikes()
 
-# Process the result of pitching
-func _process_pitching(left_die: Enums.DIE_TYPES, right_die: Enums.DIE_TYPES) -> void:
-	var result = Dice._process_pitching(left_die, right_die, strikeDC[current_inning])
-	match(result[1]):
-		Enums.BATTING_RESULT.HOMERUN:
-			Signalbus.display_batting_result.emit("HOME RUN!")
-			visitor_points += _advance_base(4)
-			advance_bases.emit(4)
-		Enums.BATTING_RESULT.TRIPLE:
-			Signalbus.display_batting_result.emit("TRIPLE!")
-			visitor_points += _advance_base(3)
-			advance_bases.emit(3)
-		Enums.BATTING_RESULT.DOUBLE:
-			Signalbus.display_batting_result.emit("DOUBLE!")
-			visitor_points += _advance_base(2)
-			advance_bases.emit(2)
-		Enums.BATTING_RESULT.SINGLE:
-			Signalbus.display_batting_result.emit("SINGLE!")
-			visitor_points += _advance_base(1)
-			advance_bases.emit(1)
-		Enums.BATTING_RESULT.STRIKEOUT:
-			Signalbus.display_batting_result.emit("STRIKEOUT!")
-			strikeouts += 1
-			strikeout.emit()
-	Signalbus.display_points.emit(home_points, visitor_points)
-	_toggle_special_buttons()
-	_check_strikes()
-
-# Advances the player(s) on the bases by the given amount
+# Advances any players on bases by the given amount
 func _advance_base(amount: int) -> int:
 	var points = 0
 	for i in amount:
-		# Third base, score 1 point
-		if bases[2] == true:
-			bases[2] = false
-			points += 1
-		# Second base, advance to third
-		if bases[1]:
-			bases[2] = true
-			bases[1] = false
-		# First base, advance to second
-		if bases[0]:
-			bases[1] = true
-			bases[0] = false
-		# (First iteration only), batter advances to first
-		if i == 0:
-			bases[0] = true
+		if bases[2]: points += 1
+		bases[2] = bases[1]
+		bases[1] = bases[0]
+		bases[0] = (i == 0) # The batter leaving the home plate in the first loop
 	return points
 
 # Attempt to steal the furthest base (returns points)
@@ -123,7 +89,7 @@ func _steal_base() -> int:
 		return 0
 
 # Attempt to tag out the furthest player (returns strikeouts)
-func _tag_out() -> int:
+func _tag_out() -> void:
 	# Tag out third base
 	if bases[2]:
 		bases[2] = false
@@ -133,13 +99,15 @@ func _tag_out() -> int:
 	# Tag out first base
 	else:
 		bases[0] = false
-	return 1
+	strikeouts += 1
 
 func _special_pressed() -> void:
 	if current_inning % 2 == 0:
-		visitor_points +=  _tag_out()
+		_tag_out()
+		_check_strikes()
 	else:
 		home_points += _steal_base()
+	
 
 func _toggle_special_buttons() -> void:
 	toggle_special.emit(!(bases[2] == true || bases[1] == true || bases[0] == true))
@@ -149,14 +117,15 @@ func _check_strikes() -> void:
 	if strikeouts >= 3:
 		if current_inning >= 9:
 			_game_over()
+			# Call gameover splash screen
 		else:
 			Signalbus.display_batting_result.emit("CHANGE SIDES!")
 			_next_inning()
 
 # Reset all the bases
 func _reset_bases() -> void:
-	for base in bases:
-		base = false
+	for i in bases.size():
+		bases[i] = false
 
 # (For testing) Set the players on specific bases
 func _custom_bases(first: bool, second: bool, third: bool) -> void:
@@ -178,6 +147,5 @@ func _game_over() -> void:
 	Signalbus.display_batting_result.emit("GAME OVER!")
 
 func _connect_signals() -> void:
-	Signalbus.roll_to_bat.connect(_process_batting)
-	Signalbus.roll_to_pitch.connect(_process_pitching)
+	Signalbus.process_roll.connect(_process_rolling)
 	Signalbus.special_pressed.connect(_special_pressed)

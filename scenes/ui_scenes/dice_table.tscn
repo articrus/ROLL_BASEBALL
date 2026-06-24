@@ -1,0 +1,90 @@
+[gd_scene format=3 uid="uid://ce5ug38xtyrlh"]
+
+[ext_resource type="Script" uid="uid://dshb4sshjtafl" path="res://scripts/ui/dice_table.gd" id="1_dg4h0"]
+[ext_resource type="Theme" uid="uid://cjwjb6wa1fg38" path="res://ui/themes/baseball_text.tres" id="2_54ch6"]
+
+[node name="DiceTable" type="Control" unique_id=1740025211]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dg4h0")
+
+[node name="Panel" type="Panel" parent="." unique_id=1250451664]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2
+anchor_top = 0.2
+anchor_right = 0.8
+anchor_bottom = 0.8
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="VBoxContainer" parent="Panel" unique_id=2001006064]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -202.0
+offset_top = -77.5
+offset_right = 201.99997
+offset_bottom = 77.500015
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 11
+alignment = 1
+
+[node name="ExplanationA" type="Label" parent="Panel/HBoxContainer" unique_id=1894949148]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+theme = ExtResource("2_54ch6")
+text = "Each dice number is tied to a tier, rolling two numbers with a matching tier can result in a home run, triple, or double"
+autowrap_mode = 2
+
+[node name="ExplanationB" type="Label" parent="Panel/HBoxContainer" unique_id=701074068]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+theme = ExtResource("2_54ch6")
+text = "A regular roll's total must pass the strikeout DC in order to become a single. Otherwise it will result in a strikeout"
+autowrap_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="Panel/HBoxContainer" unique_id=951558138]
+layout_mode = 2
+
+[node name="Tier" type="Label" parent="Panel/HBoxContainer/GridContainer" unique_id=1583218696]
+layout_mode = 2
+text = "Tier | D4 | D6 |   D8   |"
+
+[node name="HR" type="Label" parent="Panel/HBoxContainer/GridContainer" unique_id=396729554]
+layout_mode = 2
+text = "HR   |  4  |   6   |    8    | Home Run"
+
+[node name="TP" type="Label" parent="Panel/HBoxContainer/GridContainer" unique_id=831207099]
+layout_mode = 2
+text = "TP    |  3  |   5   | 7, 6   | Triple"
+
+[node name="DB" type="Label" parent="Panel/HBoxContainer/GridContainer" unique_id=73997583]
+layout_mode = 2
+text = "DB   |  2  | 4, 3 | 5, 4   | Double"
+
+[node name="UT" type="Label" parent="Panel/HBoxContainer/GridContainer" unique_id=1584361248]
+layout_mode = 2
+text = "UT   |  1  | 1, 2 |3, 2, 1| Untiered/ None"
+
+[node name="ExplanationC" type="Label" parent="Panel/HBoxContainer" unique_id=1715960414]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+theme = ExtResource("2_54ch6")
+text = "Steals and Tag Outs are rolled with 2d6, and must pass the Special DC"
+autowrap_mode = 2
+
+[node name="Close" type="Button" parent="Panel/HBoxContainer" unique_id=1746657956]
+layout_mode = 2
+theme = ExtResource("2_54ch6")
+text = "Close"
+
+[connection signal="pressed" from="Panel/HBoxContainer/Close" to="." method="_on_close_pressed"]

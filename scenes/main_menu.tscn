@@ -4,6 +4,7 @@
 [ext_resource type="Theme" uid="uid://cjwjb6wa1fg38" path="res://ui/themes/baseball_text.tres" id="2_bqqt6"]
 [ext_resource type="PackedScene" uid="uid://cgwf112eud4gw" path="res://scenes/ui_scenes/user_login.tscn" id="2_ekxnf"]
 [ext_resource type="PackedScene" uid="uid://crfhpru8fiebr" path="res://scenes/ui_scenes/player_info.tscn" id="4_wu84c"]
+[ext_resource type="PackedScene" uid="uid://ce5ug38xtyrlh" path="res://scenes/ui_scenes/dice_table.tscn" id="5_8ln24"]
 
 [node name="MainMenu" type="Control" unique_id=477749278]
 layout_mode = 3
@@ -50,6 +51,11 @@ layout_mode = 2
 theme = ExtResource("2_bqqt6")
 text = "PLAYER INFO"
 
+[node name="Rules" type="Button" parent="VBoxContainer" unique_id=416507870]
+layout_mode = 2
+theme = ExtResource("2_bqqt6")
+text = "RULES"
+
 [node name="Login" parent="." unique_id=1740025211 instance=ExtResource("2_ekxnf")]
 visible = false
 layout_mode = 1
@@ -58,6 +64,11 @@ layout_mode = 1
 visible = false
 layout_mode = 1
 
+[node name="DiceTable" parent="." unique_id=696012126 instance=ExtResource("5_8ln24")]
+visible = false
+layout_mode = 1
+
 [connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="VBoxContainer/Login" to="." method="_on_login_pressed"]
 [connection signal="pressed" from="VBoxContainer/Info" to="." method="_on_info_pressed"]
+[connection signal="pressed" from="VBoxContainer/Rules" to="." method="_on_rules_pressed"]

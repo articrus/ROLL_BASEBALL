@@ -37,18 +37,10 @@ expand_mode = 2
 layout_mode = 2
 alignment = 1
 
-[node name="BattingButton" type="Button" parent="RollingButtons" unique_id=725347007]
+[node name="RollButton" type="Button" parent="RollingButtons" unique_id=725347007]
 layout_mode = 2
 theme = ExtResource("5_we2qg")
 text = "BAT"
 icon_alignment = 1
 
-[node name="PitchingButton" type="Button" parent="RollingButtons" unique_id=1473457770]
-visible = false
-layout_mode = 2
-theme = ExtResource("5_we2qg")
-text = "PITCH"
-icon_alignment = 1
-
-[connection signal="pressed" from="RollingButtons/BattingButton" to="." method="_bat_button"]
-[connection signal="pressed" from="RollingButtons/PitchingButton" to="." method="_pitch_button"]
+[connection signal="pressed" from="RollingButtons/RollButton" to="." method="_roll_dice"]

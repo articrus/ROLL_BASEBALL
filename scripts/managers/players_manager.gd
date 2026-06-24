@@ -11,22 +11,24 @@ var batTeam: Enums.CITY
 
 func _advance_bases(amount: int) -> void:
 	for i in amount:
+		var tweens: Array = []
 		if players[2] != null: # Third advances to Home
-			players[2]._set_player_position(bases._get_base_position(3))
+			tweens.append(players[2]._set_player_position(bases._get_base_position(3)))
 			players[2] = null
 		if players[1] != null: # Second advances to Third
-			players[1]._set_player_position(bases._get_base_position(2))
+			tweens.append(players[1]._set_player_position(bases._get_base_position(2)))
 			players[2] = players[1]
 			players[1] = null
 		if players[0] != null: # First advances to Second
-			players[0]._set_player_position(bases._get_base_position(1))
+			tweens.append(players[0]._set_player_position(bases._get_base_position(1)))
 			players[1] = players[0]
 			players[0] = null
 		if players[3] != null: # Batter advances to First
-			players[3]._set_player_position(bases._get_base_position(0))
+			tweens.append(players[3]._set_player_position(bases._get_base_position(0)))
 			players[0] = players[3]
 			players[3] = null
-		await get_tree().process_frame
+		for tween in tweens:
+			await tween.finished
 	_add_player_to_bat(batTeam)
 
 func _strikeout() -> void:

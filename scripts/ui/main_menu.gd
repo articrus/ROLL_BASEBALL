@@ -2,10 +2,12 @@ extends Control
 @onready var loginMenu = $Login
 @onready var playerInfo = $PlayerInfo
 @onready var infoMenu = $VBoxContainer/Info
+@onready var diceTable = $DiceTable
 @onready var menuButtons = {
 	"Play": $VBoxContainer/Play,
 	"Login": $VBoxContainer/Login,
-	"Info": $VBoxContainer/Info
+	"Info": $VBoxContainer/Info,
+	"Rules": $VBoxContainer/Rules
 }
 
 func _ready() -> void:
@@ -33,3 +35,6 @@ func _on_info_pressed() -> void:
 
 func _start_game() -> void:
 	get_tree().change_scene_to_file("res://scenes/game_scene.tscn")
+
+func _on_rules_pressed() -> void:
+	diceTable.visible = true

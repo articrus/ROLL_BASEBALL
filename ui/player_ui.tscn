@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://vapum38moy5f" path="res://ui/hud_components/die_strategy.tscn" id="2_vq5xy"]
 [ext_resource type="PackedScene" uid="uid://bpnosv5irtluk" path="res://ui/roll_box.tscn" id="4_iwa1g"]
 [ext_resource type="Theme" uid="uid://cjwjb6wa1fg38" path="res://ui/themes/baseball_text.tres" id="5_lp0io"]
+[ext_resource type="PackedScene" uid="uid://ce5ug38xtyrlh" path="res://scenes/ui_scenes/dice_table.tscn" id="6_ykvpg"]
 
 [node name="PlayerUI" type="Control" unique_id=258670629]
 layout_mode = 3
@@ -99,4 +100,9 @@ offset_bottom = 532.0
 theme = ExtResource("5_lp0io")
 text = "STEAL"
 
+[node name="DiceTable" parent="." unique_id=1740025211 instance=ExtResource("6_ykvpg")]
+visible = false
+layout_mode = 1
+
+[connection signal="pressed" from="DieTableButon" to="." method="_on_die_table_buton_pressed"]
 [connection signal="pressed" from="StealTagButton" to="." method="_on_steal_tag_button_pressed"]
