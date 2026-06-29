@@ -8,8 +8,6 @@ extends Control
 # Temporary Nodes
 @onready var result = $DebugDisplay/BattingResult
 @onready var inning = $DebugDisplay/Inning
-@onready var player_points = $DebugDisplay/PlayerPoints
-@onready var com_points = $DebugDisplay/VisitorPoints
 # Export vars
 @export var left_die_type: Enums.DIE_TYPES = Enums.DIE_TYPES.NORMAL
 @export var right_die_type: Enums.DIE_TYPES = Enums.DIE_TYPES.NORMAL
@@ -47,10 +45,6 @@ func _bind_die_tabs() -> void:
 func _show_result(toPrint: String) -> void:
 	result.text = "RESULT: " + toPrint
 
-func _update_points(player: int, com: int) -> void:
-	player_points.text = "PLAYER: " + str(player)
-	com_points.text = "COM: " + str(com)
-
 func _update_inning(newInning: int) -> void:
 	inning.text = "INNING: " + str(newInning)
 	if newInning % 2 == 0:
@@ -86,7 +80,6 @@ func _connect_signals() -> void:
 	Signalbus.game_over.connect(_game_over)
 	# Temporary display results
 	Signalbus.display_batting_result.connect(_show_result)
-	Signalbus.display_points.connect(_update_points)
 	Signalbus.update_inning.connect(_update_inning)
 
 func _on_die_table_buton_pressed() -> void:

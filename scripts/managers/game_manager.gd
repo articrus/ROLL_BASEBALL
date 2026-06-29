@@ -3,8 +3,8 @@ class_name GameManager
 # 0: First, 1: Second, 2: Third, if occupied: true, else false
 @export var bases: Array[bool] = [false, false, false]
 # Points variables
-@export var home_points: int = 0
-@export var visitor_points: int = 0
+@export var homePointsArray: Array[int] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+@export var visitPointsArray: Array[int] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 @export var strikeouts: int = 0
 # Inning Variables
 @export var current_inning: int = 1
@@ -52,9 +52,11 @@ func _process_rolling(left_die: Enums.DIE_TYPES, right_die: Enums.DIE_TYPES) -> 
 			strikeouts += 1
 			strikeout.emit()
 	# Add the points
-	if current_inning % 2 == 0: visitor_points += runs
-	else: home_points += runs
-	Signalbus.display_points.emit(home_points, visitor_points)
+	if current_inning % 2 == 0: 
+		visitPointsArray[current_inning] += runs
+	else: 
+		homePointsArray[current_inning] += runs
+	Signalbus.update_points.emit(homePointsArray, visitPointsArray)
 	_toggle_special_buttons()
 	_check_strikes()
 
@@ -110,8 +112,8 @@ func _special_pressed() -> void:
 		_tag_out()
 		_check_strikes()
 	else:
-		home_points += _steal_base()
-	
+		homePointsArray[current_inning] += _steal_base()
+	Signalbus.update_points.emit(homePointsArray, visitPointsArray)
 
 func _toggle_special_buttons() -> void:
 	toggle_special.emit(!(bases[2] == true || bases[1] == true || bases[0] == true))
@@ -132,12 +134,6 @@ func _reset_bases() -> void:
 	for i in bases.size():
 		bases[i] = false
 
-# (For testing) Set the players on specific bases
-func _custom_bases(first: bool, second: bool, third: bool) -> void:
-	bases[0] = first
-	bases[1] = second
-	bases[2] = third
-
 # Advance to the next inning
 func _next_inning() -> void:
 	_reset_bases()
@@ -150,15 +146,28 @@ func _next_inning() -> void:
 	Signalbus.update_inning_info.emit(strikeDC[current_inning], specialDC[current_inning])
 
 func _game_over() -> void:
-	var average = home_points / 5.0 # Average points scored by player per inning
+	var homePoints = 0
+	var visitPoints = 0
+	for i in range(1, 9):
+		homePoints += homePointsArray[i]
+		visitPoints += visitPointsArray[i]
+	var average = homePoints / 5.0 # Average points scored by player per inning
 	# Save the stats
 	var profile = await AuthenticationManager._load_profile()
 	var newWins = profile.get("games_won", 0) + 1
-	var newTotal = profile.get("points_scored", 0) + home_points
+	var newTotal = profile.get("points_scored", 0) + homePoints
 	AuthenticationManager._save_stats({"games_won": newWins, "points_scored": newTotal, "average_points_per": average})
-	Signalbus.game_over.emit(home_points, visitor_points, average, home_points > visitor_points)
+	Signalbus.game_over.emit(homePoints, visitPoints, average, homePoints > visitPoints)
 	Signalbus.display_batting_result.emit("GAME OVER!")
 
+func _game_start() -> void:
+	_reset_bases()
+	strikeouts = 0
+	current_inning = 1
+	Signalbus.update_points.emit(homePointsArray, visitPointsArray)
+	Signalbus.update_inning_info.emit(strikeDC[current_inning], specialDC[current_inning])
+
 func _connect_signals() -> void:
+	Signalbus.start_game.connect(_game_start)
 	Signalbus.process_roll.connect(_process_rolling)
 	Signalbus.special_pressed.connect(_special_pressed)

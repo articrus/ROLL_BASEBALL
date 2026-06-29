@@ -16,7 +16,6 @@ extends Control
 @onready var teamNameTag = $TeamInfo/TeamName
 @onready var teamCityTag = $TeamInfo/City
 
-
 func _ready() -> void:
 	_bind_buttons()
 	Signalbus.team_highlight.connect(_display_team_text)
@@ -37,6 +36,7 @@ func _bind_buttons() -> void:
 
 func _on_team_pressed(city: Enums.CITY) -> void:
 	Signalbus.team_selected.emit(city)
+	Signalbus.start_game.emit()
 	_close_team_select()
 
 func _display_team_text(city: Enums.CITY) -> void:

@@ -89,18 +89,6 @@ theme = ExtResource("5_lp0io")
 theme_override_font_sizes/font_size = 32
 text = "INNING: 1"
 
-[node name="PlayerPoints" type="Label" parent="DebugDisplay" unique_id=184725152]
-layout_mode = 2
-theme = ExtResource("5_lp0io")
-theme_override_font_sizes/font_size = 32
-text = "PLAYER: 0"
-
-[node name="VisitorPoints" type="Label" parent="DebugDisplay" unique_id=488171268]
-layout_mode = 2
-theme = ExtResource("5_lp0io")
-theme_override_font_sizes/font_size = 32
-text = "COM: 0"
-
 [node name="ScoreContainer" type="Control" parent="." unique_id=764551278]
 layout_mode = 1
 anchors_preset = 15

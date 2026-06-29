@@ -13,11 +13,20 @@ func _ready() -> void:
 	_connect_signals()
 
 # Updates the score label
-func _update_score(inning: int, score: int) -> void:
-	if inning % 2 == 0:
-		print("ENEMY SCORE: ", str(score))
-	else:
-		print("HOME SCORE:", str(score))
+func _update_score(home: Array[int], visit: Array[int]) -> void:
+	var homeText = ""
+	var visitText = ""
+	var homePT = 0
+	var visitPT = 0
+	for i in range(1, 9):
+		homePT += home[i]
+		visitPT += visit[i]
+		homeText += "[" + str(home[i]) + "] "
+		visitText += "[" + str(visit[i]) + "] "
+	homePoints.text = homeText
+	visitorPoints.text = visitText
+	homeTotal.text = "[" + str(homePT) + "]"
+	visitorTotal.text = "[" + str(visitPT) + "]"
 
 # Update info label
 func _update_info(strikeDC: int, specialDC: int) -> void:
@@ -41,3 +50,4 @@ func _update_strikeouts(strikes: int) -> void:
 func _connect_signals() -> void:
 	Signalbus.update_strikes.connect(_update_strikeouts)
 	Signalbus.update_inning_info.connect(_update_info)
+	Signalbus.update_points.connect(_update_score)
