@@ -4,6 +4,9 @@
 [ext_resource type="Theme" uid="uid://cjwjb6wa1fg38" path="res://ui/themes/baseball_text.tres" id="2_icgwg"]
 [ext_resource type="PackedScene" uid="uid://dx1ic4fwo8od7" path="res://ui/team_button.tscn" id="2_oqbh2"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ngd3c"]
+bg_color = Color(0, 0, 0, 0.78431374)
+
 [node name="TeamSelect" type="Control" unique_id=162450544]
 layout_mode = 3
 anchors_preset = 15
@@ -20,6 +23,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ngd3c")
 
 [node name="TeamSelect" type="Label" parent="." unique_id=1057718066]
 layout_mode = 1

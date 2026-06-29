@@ -1,14 +1,25 @@
 [gd_scene format=3 uid="uid://btxim5i06julr"]
 
 [ext_resource type="Script" uid="uid://b4pqicxa6lql0" path="res://scripts/ui/scoreboard.gd" id="1_qjve3"]
+[ext_resource type="Theme" uid="uid://cjwjb6wa1fg38" path="res://ui/themes/baseball_text.tres" id="2_d7rl5"]
+
+[sub_resource type="Theme" id="Theme_1enrn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_17cat"]
+bg_color = Color(0, 0.38431373, 0.21568628, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
 
 [node name="Scoreboard" type="Control" unique_id=1823282740]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_left = 0.05
+anchor_right = 0.95
+anchor_bottom = 0.65
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(576, 234)
 script = ExtResource("1_qjve3")
 
 [node name="Panel" type="Panel" parent="." unique_id=2120686340]
@@ -16,53 +27,174 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 1.0
-offset_top = 1.0
-offset_right = 1.0
-offset_bottom = 1.0
+offset_bottom = -20.99997
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_1enrn")
+theme_override_styles/panel = SubResource("StyleBoxFlat_17cat")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1832211032]
+[node name="InnerPanel" type="Panel" parent="Panel" unique_id=1703597659]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -491.0
-offset_top = -175.0
-offset_right = 493.0
-offset_bottom = 176.0
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.175
+anchor_right = 0.95000005
+anchor_bottom = 0.83100003
+offset_bottom = 22.598999
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_1enrn")
+theme_override_styles/panel = SubResource("StyleBoxFlat_17cat")
 
-[node name="ParkLabel" type="Label" parent="VBoxContainer" unique_id=406180343]
+[node name="InfoContainer" type="HBoxContainer" parent="Panel/InnerPanel" unique_id=2066084739]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.15
+anchor_top = 0.75
+anchor_right = 0.85
+anchor_bottom = 0.95
+offset_left = 86.879974
+offset_top = -4.3204956
+offset_right = -49.880066
+offset_bottom = -1.8120728
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 64
+alignment = 1
+
+[node name="DCInfo" type="Label" parent="Panel/InnerPanel/InfoContainer" unique_id=845235018]
 layout_mode = 2
-theme_override_font_sizes/font_size = 48
-text = "RED GAMMA PARK"
+theme = ExtResource("2_d7rl5")
+theme_override_font_sizes/font_size = 54
+text = "Strike DC [0]"
 horizontal_alignment = 1
 
-[node name="InningCount" type="Label" parent="VBoxContainer" unique_id=947343481]
+[node name="Special" type="Label" parent="Panel/InnerPanel/InfoContainer" unique_id=1621615973]
 layout_mode = 2
-theme_override_font_sizes/font_size = 48
+theme = ExtResource("2_d7rl5")
+theme_override_font_sizes/font_size = 54
+text = "Special DC [0]"
+horizontal_alignment = 1
+
+[node name="Strikes" type="Label" parent="Panel/InnerPanel/InfoContainer" unique_id=1726317109]
+layout_mode = 2
+theme = ExtResource("2_d7rl5")
+theme_override_font_sizes/font_size = 54
+text = "Out [  ] [  ] [  ]"
+horizontal_alignment = 1
+
+[node name="Team Score" type="GridContainer" parent="Panel/InnerPanel" unique_id=353284021]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.015000001
+anchor_top = 0.047000002
+anchor_right = 0.98700005
+anchor_bottom = 0.597
+offset_left = -0.1520071
+offset_top = 0.05309868
+offset_right = 0.078308105
+offset_bottom = 0.053131104
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 16
+columns = 3
+
+[node name="EmptyA" type="Label" parent="Panel/InnerPanel/Team Score" unique_id=795837024]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme = ExtResource("2_d7rl5")
+theme_override_colors/font_color = Color(1, 1, 1, 0)
+theme_override_font_sizes/font_size = 50
+text = "HOME"
+horizontal_alignment = 1
+
+[node name="InningCount" type="Label" parent="Panel/InnerPanel/Team Score" unique_id=947343481]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme = ExtResource("2_d7rl5")
+theme_override_font_sizes/font_size = 50
 text = "[1] [2] [3] [4] [5] [6] [7] [8] [9]"
 horizontal_alignment = 1
 
-[node name="HomeScore" type="Label" parent="VBoxContainer" unique_id=719292334]
+[node name="EmptyB" type="Label" parent="Panel/InnerPanel/Team Score" unique_id=787186165]
 layout_mode = 2
-theme_override_font_sizes/font_size = 48
-text = "HOME [  ]  [  ]  [  ]  [  ]  [  ]  [  ]  [  ]  [  ] [  ] | [  ]"
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme = ExtResource("2_d7rl5")
+theme_override_font_sizes/font_size = 50
+
+[node name="HomeTeam" type="Label" parent="Panel/InnerPanel/Team Score" unique_id=719292334]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme = ExtResource("2_d7rl5")
+theme_override_font_sizes/font_size = 50
+text = "HOME"
 horizontal_alignment = 1
 
-[node name="VisitorScore" type="Label" parent="VBoxContainer" unique_id=1401923984]
+[node name="HomeScore" type="Label" parent="Panel/InnerPanel/Team Score" unique_id=738568395]
 layout_mode = 2
-theme_override_font_sizes/font_size = 48
-text = "VISITOR [  ]  [  ]  [  ]  [  ]  [  ]  [  ]  [  ]  [  ] [  ] | [  ]"
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme = ExtResource("2_d7rl5")
+theme_override_font_sizes/font_size = 50
+text = "[1] [2] [3] [4] [5] [6] [7] [8] [9]"
 horizontal_alignment = 1
 
-[node name="Info" type="Label" parent="VBoxContainer" unique_id=845235018]
+[node name="HomeTotal" type="Label" parent="Panel/InnerPanel/Team Score" unique_id=1567727400]
 layout_mode = 2
-theme_override_font_sizes/font_size = 48
-text = "Strike DC [7] Out [  ] [  ] [  ]"
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme = ExtResource("2_d7rl5")
+theme_override_font_sizes/font_size = 50
+text = "[T]"
+horizontal_alignment = 1
+
+[node name="VisitorTeam" type="Label" parent="Panel/InnerPanel/Team Score" unique_id=1401923984]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme = ExtResource("2_d7rl5")
+theme_override_font_sizes/font_size = 50
+text = "VISITOR"
+horizontal_alignment = 1
+
+[node name="VisitorScore" type="Label" parent="Panel/InnerPanel/Team Score" unique_id=742477465]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme = ExtResource("2_d7rl5")
+theme_override_font_sizes/font_size = 50
+text = "[1] [2] [3] [4] [5] [6] [7] [8] [9]"
+horizontal_alignment = 1
+
+[node name="VisitorTotal" type="Label" parent="Panel/InnerPanel/Team Score" unique_id=2133004088]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme = ExtResource("2_d7rl5")
+theme_override_font_sizes/font_size = 50
+text = "[T]"
+horizontal_alignment = 1
+
+[node name="ParkLabel" type="Label" parent="Panel" unique_id=406180343]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.056
+anchor_top = 0.007
+anchor_right = 0.95000005
+anchor_bottom = 0.163
+offset_left = 0.33918762
+offset_top = -0.138206
+offset_right = 0.5119629
+offset_bottom = 0.15459442
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_d7rl5")
+theme_override_font_sizes/font_size = 66
+text = "RED GAMMA PARK"
 horizontal_alignment = 1

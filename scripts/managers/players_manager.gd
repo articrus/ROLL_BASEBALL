@@ -32,7 +32,7 @@ func _advance_bases(amount: int) -> void:
 	_add_player_to_bat(batTeam)
 
 func _strikeout() -> void:
-	players[3]._set_player_position(bases._get_out_position())
+	players[3]._strikeout(bases._get_out_position())
 	players[3] = null
 	_add_player_to_bat(batTeam)
 
@@ -51,9 +51,8 @@ func _add_player_to_pitch(team: Enums.CITY) -> void:
 	newPlayer.global_position = bases._get_pitch_position()
 
 func _clear_the_field() -> void:
-	# Have them lerp to out, but for now, just queue free
 	for actor in self.get_children():
-		actor._set_player_position(bases._get_out_position())
+		actor._strikeout(bases._get_out_position())
 	_clear_players_dictionary()
 
 func _clear_players_dictionary() -> void:

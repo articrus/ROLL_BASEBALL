@@ -2,9 +2,24 @@
 
 [ext_resource type="Script" uid="uid://boodqb78ren6p" path="res://scripts/actors/player_controller.gd" id="1_mvpqy"]
 [ext_resource type="Texture2D" uid="uid://clnic4lhnmclh" path="res://art/actors/TEMP_player.png" id="2_1yqc4"]
+[ext_resource type="Texture2D" uid="uid://bgdhww8njxgwm" path="res://art/actors/cap.png" id="3_1yqc4"]
+[ext_resource type="Texture2D" uid="uid://b2njmnbaetmbs" path="res://art/actors/helmet.png" id="3_esgq3"]
 
 [node name="Player" type="Node2D" unique_id=671285342]
 script = ExtResource("1_mvpqy")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=710526179]
+[node name="Body" type="Sprite2D" parent="." unique_id=710526179]
 texture = ExtResource("2_1yqc4")
+
+[node name="Hats" type="Node2D" parent="." unique_id=584514962]
+
+[node name="Hat" type="Sprite2D" parent="Hats" unique_id=903034592]
+position = Vector2(5.9999995, -28)
+scale = Vector2(0.145, 0.145)
+texture = ExtResource("3_1yqc4")
+
+[node name="Helmet" type="Sprite2D" parent="Hats" unique_id=1942562074]
+visible = false
+position = Vector2(1, -11)
+scale = Vector2(0.09, 0.09)
+texture = ExtResource("3_esgq3")

@@ -5,13 +5,12 @@ class_name GameManager
 # Points variables
 @export var home_points: int = 0
 @export var visitor_points: int = 0
-@export var points_scored_this_inning: int = 0
 @export var strikeouts: int = 0
 # Inning Variables
 @export var current_inning: int = 1
 # DC Variables
-const strikeDC: Array[int] = [0, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7]
-const specialDC: Array[int] = [0, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7]
+const strikeDC: Array[int] = [0, 6, 6, 6, 7, 7, 7, 7, 7, 7, 7]
+const specialDC: Array[int] = [0, 6, 6, 6, 7, 7, 7, 7, 7, 7, 7]
 # Signals
 signal advance_bases(amount: int)
 signal strikeout
@@ -20,11 +19,16 @@ signal toggle_special(toggle: bool)
 # Connect any necessary signals
 func _ready() -> void:
 	_connect_signals()
+	Signalbus.update_inning_info.emit(strikeDC[current_inning], specialDC[current_inning])
 
 # Process the roll and update the gamestate
 func _process_rolling(left_die: Enums.DIE_TYPES, right_die: Enums.DIE_TYPES) -> void:
 	# Fix the result grabber
-	var result = Dice._process_batting(left_die, right_die, strikeDC[current_inning])
+	var result
+	if current_inning % 2 == 0:
+		result = Dice._process_pitching(left_die, right_die, strikeDC[current_inning])
+	else:
+		result = Dice._process_batting(left_die, right_die, strikeDC[current_inning])
 	var runs = 0
 	match result[1]:
 		Enums.BATTING_RESULT.HOMERUN:
@@ -114,6 +118,7 @@ func _toggle_special_buttons() -> void:
 
 # Check strikeouts check 
 func _check_strikes() -> void:
+	Signalbus.update_strikes.emit(strikeouts)
 	if strikeouts >= 3:
 		if current_inning >= 9:
 			_game_over()
@@ -137,13 +142,21 @@ func _custom_bases(first: bool, second: bool, third: bool) -> void:
 func _next_inning() -> void:
 	_reset_bases()
 	strikeouts = 0
+	Signalbus.update_strikes.emit(strikeouts)
 	current_inning += 1
 	if current_inning > 9:
 		current_inning = 1
-	points_scored_this_inning = 0
 	Signalbus.update_inning.emit(current_inning)
+	Signalbus.update_inning_info.emit(strikeDC[current_inning], specialDC[current_inning])
 
 func _game_over() -> void:
+	var average = home_points / 5.0 # Average points scored by player per inning
+	# Save the stats
+	var profile = await AuthenticationManager._load_profile()
+	var newWins = profile.get("games_won", 0) + 1
+	var newTotal = profile.get("points_scored", 0) + home_points
+	AuthenticationManager._save_stats({"games_won": newWins, "points_scored": newTotal, "average_points_per": average})
+	Signalbus.game_over.emit(home_points, visitor_points, average, home_points > visitor_points)
 	Signalbus.display_batting_result.emit("GAME OVER!")
 
 func _connect_signals() -> void:

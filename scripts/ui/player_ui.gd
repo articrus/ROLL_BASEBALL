@@ -1,9 +1,10 @@
 extends Control
-@onready var left_box = $TextureRect/LeftStrategy
-@onready var right_box = $TextureRect/RightStrategy
-@onready var roll_box = $RollBox
-@onready var specialButton = $StealTagButton
+@onready var left_box = $Bottom/LeftStrategy
+@onready var right_box = $Bottom/RightStrategy
+@onready var roll_box = $Bottom/RollBox
+@onready var specialButton = $Bottom/HBoxContainer/StealTagButton
 @onready var die_table = $DiceTable
+@onready var gameOver = $GameOver
 # Temporary Nodes
 @onready var result = $DebugDisplay/BattingResult
 @onready var inning = $DebugDisplay/Inning
@@ -61,6 +62,13 @@ func _update_inning(newInning: int) -> void:
 		_special_button(true)
 		_disable_special(true)
 
+# Enables the game over scene
+func _game_over(homePoints: int, visitPoints: int, average: float, victory: bool) -> void:
+	gameOver.visible = true
+	gameOver._display_info(homePoints, visitPoints, average, victory)
+	_disable_special(true)
+	# Disable roll too
+
 func _special_button(isBatting: bool) -> void:
 	if isBatting:
 		specialButton.text = "STEAL"
@@ -75,6 +83,7 @@ func _on_steal_tag_button_pressed() -> void:
 
 func _connect_signals() -> void:
 	Signalbus.roll_button_pressed.connect(_roll_dice)
+	Signalbus.game_over.connect(_game_over)
 	# Temporary display results
 	Signalbus.display_batting_result.connect(_show_result)
 	Signalbus.display_points.connect(_update_points)

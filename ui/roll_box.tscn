@@ -6,41 +6,47 @@
 [ext_resource type="Texture2D" uid="uid://cu6p2kqwgc31e" path="res://ui/dice_textures/d8/d8_8.tres" id="4_gg1wy"]
 [ext_resource type="Theme" uid="uid://cjwjb6wa1fg38" path="res://ui/themes/baseball_text.tres" id="5_we2qg"]
 
-[node name="RollBox" type="VBoxContainer" unique_id=1859534604]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+[node name="RollBox" type="VBoxContainer" unique_id=927553995]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -77.0
+offset_top = -55.5
+offset_right = 77.0
+offset_bottom = 55.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 4
+pivot_offset = Vector2(77, 55.5)
+mouse_filter = 0
 alignment = 1
 script = ExtResource("1_auu82")
 die_textures = Array[AtlasTexture]([ExtResource("2_vbxjb"), ExtResource("1_wyr4b"), ExtResource("4_gg1wy")])
 
 [node name="DiceContainer" type="HBoxContainer" parent="." unique_id=1312314460]
-custom_minimum_size = Vector2(100, 100)
+custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+mouse_filter = 2
 
 [node name="LeftDie" type="TextureRect" parent="DiceContainer" unique_id=1569182503]
 layout_mode = 2
+mouse_filter = 2
 texture = ExtResource("1_wyr4b")
 expand_mode = 2
 
 [node name="RightDie" type="TextureRect" parent="DiceContainer" unique_id=1968844986]
 layout_mode = 2
+mouse_filter = 2
 texture = ExtResource("1_wyr4b")
 expand_mode = 2
 
-[node name="RollingButtons" type="HBoxContainer" parent="." unique_id=119382626]
-layout_mode = 2
-alignment = 1
-
-[node name="RollButton" type="Button" parent="RollingButtons" unique_id=725347007]
+[node name="RollButton" type="Button" parent="." unique_id=725347007]
 layout_mode = 2
 theme = ExtResource("5_we2qg")
 text = "BAT"
 icon_alignment = 1
 
-[connection signal="pressed" from="RollingButtons/RollButton" to="." method="_roll_dice"]
+[connection signal="pressed" from="RollButton" to="." method="_roll_dice"]

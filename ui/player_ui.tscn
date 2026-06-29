@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://bpnosv5irtluk" path="res://ui/roll_box.tscn" id="4_iwa1g"]
 [ext_resource type="Theme" uid="uid://cjwjb6wa1fg38" path="res://ui/themes/baseball_text.tres" id="5_lp0io"]
 [ext_resource type="PackedScene" uid="uid://ce5ug38xtyrlh" path="res://scenes/ui_scenes/dice_table.tscn" id="6_ykvpg"]
+[ext_resource type="PackedScene" uid="uid://47ioydhmhpft" path="res://scenes/ui_scenes/game_over.tscn" id="7_hff70"]
+[ext_resource type="PackedScene" uid="uid://btxim5i06julr" path="res://ui/scoreboard.tscn" id="8_f7sc3"]
 
 [node name="PlayerUI" type="Control" unique_id=258670629]
 layout_mode = 3
@@ -16,7 +18,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ehg4m")
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=1060066690]
+[node name="Bottom" type="TextureRect" parent="." unique_id=1060066690]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.8
@@ -24,34 +26,51 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
+mouse_filter = 2
 texture = ExtResource("1_cfom6")
 expand_mode = 1
 
-[node name="LeftStrategy" parent="TextureRect" unique_id=1539795031 instance=ExtResource("2_vq5xy")]
+[node name="HBoxContainer" type="HBoxContainer" parent="Bottom" unique_id=241574588]
+custom_minimum_size = Vector2(50, 50)
 layout_mode = 1
-offset_left = -142.0
-offset_top = -44.200012
-offset_right = 92.0
-offset_bottom = -4.200012
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -222.0
+offset_top = -26.0
+offset_right = 222.0
+offset_bottom = 24.0
+grow_horizontal = 2
+theme_override_constants/separation = 300
 
-[node name="RightStrategy" parent="TextureRect" unique_id=1842811276 instance=ExtResource("2_vq5xy")]
+[node name="DieTableButon" type="Button" parent="Bottom/HBoxContainer" unique_id=1862182513]
+layout_mode = 2
+theme = ExtResource("5_lp0io")
+text = "DIE TABLE"
+
+[node name="StealTagButton" type="Button" parent="Bottom/HBoxContainer" unique_id=1706445997]
+layout_mode = 2
+theme = ExtResource("5_lp0io")
+text = "STEAL"
+
+[node name="LeftStrategy" parent="Bottom" unique_id=1539795031 instance=ExtResource("2_vq5xy")]
 layout_mode = 1
-offset_left = -142.0
-offset_top = 9.599976
-offset_right = 92.0
-offset_bottom = 49.599976
+offset_left = -117.0
+offset_top = -35.0
+offset_right = 117.0
+offset_bottom = 5.0
 
-[node name="RollBox" parent="." unique_id=2025816388 instance=ExtResource("4_iwa1g")]
-layout_mode = 0
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 445.0
-offset_top = 356.0
-offset_right = 649.0
-offset_bottom = 491.0
-grow_horizontal = 1
-grow_vertical = 1
+[node name="RightStrategy" parent="Bottom" unique_id=1842811276 instance=ExtResource("2_vq5xy")]
+layout_mode = 1
+offset_left = -117.0
+offset_top = 12.0
+offset_right = 117.0
+offset_bottom = 52.0
+
+[node name="RollBox" parent="Bottom" unique_id=2025816388 instance=ExtResource("4_iwa1g")]
+layout_mode = 1
+offset_top = -160.0
+offset_bottom = -49.0
 
 [node name="DebugDisplay" type="VBoxContainer" parent="." unique_id=450735839]
 layout_mode = 0
@@ -82,27 +101,28 @@ theme = ExtResource("5_lp0io")
 theme_override_font_sizes/font_size = 32
 text = "COM: 0"
 
-[node name="DieTableButon" type="Button" parent="." unique_id=1862182513]
-layout_mode = 0
-offset_left = 319.0
-offset_top = 501.0
-offset_right = 405.0
-offset_bottom = 532.0
-theme = ExtResource("5_lp0io")
-text = "DIE TABLE"
+[node name="ScoreContainer" type="Control" parent="." unique_id=764551278]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
-[node name="StealTagButton" type="Button" parent="." unique_id=1706445997]
-layout_mode = 0
-offset_left = 697.0
-offset_top = 501.0
-offset_right = 783.0
-offset_bottom = 532.0
-theme = ExtResource("5_lp0io")
-text = "STEAL"
+[node name="Scoreboard" parent="ScoreContainer" unique_id=1823282740 instance=ExtResource("8_f7sc3")]
+layout_mode = 1
+offset_top = -128.0
+offset_bottom = -128.0
+scale = Vector2(0.45, 0.45)
 
 [node name="DiceTable" parent="." unique_id=1740025211 instance=ExtResource("6_ykvpg")]
 visible = false
 layout_mode = 1
 
-[connection signal="pressed" from="DieTableButon" to="." method="_on_die_table_buton_pressed"]
-[connection signal="pressed" from="StealTagButton" to="." method="_on_steal_tag_button_pressed"]
+[node name="GameOver" parent="." unique_id=2139839966 instance=ExtResource("7_hff70")]
+visible = false
+layout_mode = 1
+
+[connection signal="pressed" from="Bottom/HBoxContainer/DieTableButon" to="." method="_on_die_table_buton_pressed"]
+[connection signal="pressed" from="Bottom/HBoxContainer/StealTagButton" to="." method="_on_steal_tag_button_pressed"]

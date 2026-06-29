@@ -15,6 +15,7 @@ offset_right = 176.0
 offset_bottom = -147.0
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(117, 20)
 theme = ExtResource("1_cypsq")
 script = ExtResource("1_706v5")
 

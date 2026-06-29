@@ -1,0 +1,71 @@
+[gd_scene format=3 uid="uid://47ioydhmhpft"]
+
+[ext_resource type="Script" uid="uid://igfjpn5huibj" path="res://scripts/ui/game_over.gd" id="1_cinye"]
+[ext_resource type="Theme" uid="uid://cjwjb6wa1fg38" path="res://ui/themes/baseball_text.tres" id="2_8d24m"]
+
+[node name="GameOver" type="Control" unique_id=1740025211]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cinye")
+
+[node name="Panel" type="Panel" parent="." unique_id=1250451664]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2
+anchor_top = 0.2
+anchor_right = 0.8
+anchor_bottom = 0.8
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="VBoxContainer" parent="Panel" unique_id=2001006064]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -202.0
+offset_top = -77.5
+offset_right = 201.99997
+offset_bottom = 77.500015
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 24
+
+[node name="GameOver" type="Label" parent="Panel/HBoxContainer" unique_id=1894949148]
+layout_mode = 2
+theme = ExtResource("2_8d24m")
+text = "GAME OVER"
+
+[node name="HomePoints" type="Label" parent="Panel/HBoxContainer" unique_id=1456317010]
+layout_mode = 2
+theme = ExtResource("2_8d24m")
+text = "Home Points: 0"
+
+[node name="VisitorPoints" type="Label" parent="Panel/HBoxContainer" unique_id=240845473]
+layout_mode = 2
+theme = ExtResource("2_8d24m")
+text = "Visitor Points: 0"
+
+[node name="AveragePoints" type="Label" parent="Panel/HBoxContainer" unique_id=455677487]
+layout_mode = 2
+theme = ExtResource("2_8d24m")
+text = "Average Points per Inning: 0"
+
+[node name="PlayAgain" type="Button" parent="Panel/HBoxContainer" unique_id=2042290972]
+layout_mode = 2
+theme = ExtResource("2_8d24m")
+text = "Play Again"
+
+[node name="Quit" type="Button" parent="Panel/HBoxContainer" unique_id=1746657956]
+layout_mode = 2
+theme = ExtResource("2_8d24m")
+text = "Main Menu"
+
+[connection signal="pressed" from="Panel/HBoxContainer/PlayAgain" to="." method="_on_play_again"]
+[connection signal="pressed" from="Panel/HBoxContainer/Quit" to="." method="_on_quit"]

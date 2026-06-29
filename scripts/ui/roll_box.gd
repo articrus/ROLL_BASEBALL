@@ -1,5 +1,5 @@
 extends VBoxContainer
-@onready var rollButton = $RollingButtons/RollButton
+@onready var rollButton = $RollButton
 # Die
 @onready var left_die = $DiceContainer/LeftDie
 @onready var right_die = $DiceContainer/RightDie
