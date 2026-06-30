@@ -32,6 +32,12 @@ func _strikeout(newPos: Vector2) -> void:
 	await tween.finished
 	self.queue_free()
 
+# For when crossing the home plate
+func _return_home(newPos: Vector2) -> Tween:
+	var tween = create_tween()
+	tween.tween_property(self, "global_position", newPos, tween_time)
+	return tween
+
 # Flips the x scale
 func _flip_chara(flip: bool) -> void:
 	if flip:

@@ -42,5 +42,7 @@ func _connect_signals() -> void:
 	gameManager.advance_bases.connect(playerManager._advance_bases)
 	gameManager.strikeout.connect(playerManager._strikeout)
 	gameManager.toggle_special.connect(gameUI._disable_special)
+	gameManager.advance_one_base.connect(playerManager._advance_one_player)
+	gameManager.strike_one_base.connect(playerManager._out_one_player)
 	Signalbus.update_inning.connect(_start_inning)
 	Signalbus.team_selected.connect(_set_teams)

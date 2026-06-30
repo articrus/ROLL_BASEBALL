@@ -13,7 +13,7 @@ func _advance_bases(amount: int) -> void:
 	for i in amount:
 		var tweens: Array = []
 		if players[2] != null: # Third advances to Home
-			tweens.append(players[2]._set_player_position(bases._get_base_position(3)))
+			tweens.append(players[2]._return_home(bases._get_score_position()))
 			players[2] = null
 		if players[1] != null: # Second advances to Third
 			tweens.append(players[1]._set_player_position(bases._get_base_position(2)))
@@ -30,6 +30,25 @@ func _advance_bases(amount: int) -> void:
 		for tween in tweens:
 			await tween.finished
 	_add_player_to_bat(batTeam)
+
+# Advance one player one base, used in steal and tag out
+func _advance_one_player(baseNumber: int) -> void:
+	if baseNumber > 3 || baseNumber < 0: return
+	if players[baseNumber] != null:
+		if baseNumber < 2:
+			players[baseNumber]._set_player_position(bases._get_base_position(baseNumber + 1))
+			players[baseNumber + 1] = players[baseNumber]
+			players[baseNumber] = null
+		else:
+			players[baseNumber]._return_home(bases._get_score_position())
+			players[baseNumber] = null
+
+# Tags out/removes one player
+func _out_one_player(baseNumber: int) -> void:
+	if baseNumber > 3 || baseNumber < 0: return
+	if players[baseNumber] != null:
+		players[baseNumber]._strikeout(bases._get_out_position())
+		players[baseNumber] = null
 
 func _strikeout() -> void:
 	players[3]._strikeout(bases._get_out_position())

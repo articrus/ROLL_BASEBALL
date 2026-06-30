@@ -11,7 +11,6 @@ func _ready() -> void:
 
 # Prevents the spamming of the roll button
 func _disable_roll_button(toggle: bool) -> void:
-	print("CALLED")
 	rollButton.disabled = toggle
 
 # Updates the button text after each inning

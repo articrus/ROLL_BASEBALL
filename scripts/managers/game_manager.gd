@@ -10,11 +10,14 @@ class_name GameManager
 @export var current_inning: int = 1
 # DC Variables
 const strikeDC: Array[int] = [0, 6, 6, 6, 7, 7, 7, 7, 7, 7, 7]
-const specialDC: Array[int] = [0, 6, 6, 6, 7, 7, 7, 7, 7, 7, 7]
+const specialDC: Array[int] = [0, 0, 0, 10, 10, 10, 10, 10, 10, 10, 10]
 # Signals
 signal advance_bases(amount: int)
 signal strikeout
 signal toggle_special(toggle: bool)
+# Special
+signal advance_one_base(baseNumber: int)
+signal strike_one_base(baseNumber: int)
 
 # Connect any necessary signals
 func _ready() -> void:
@@ -71,53 +74,64 @@ func _advance_base(amount: int) -> int:
 		bases[0] = (i == 0) # The batter leaving the home plate in the first loop
 	return points
 
+# Gets the furthest occupied base
+func _furthest_occupied_base() -> int:
+	if bases[2]: return 2
+	if bases[1]: return 1
+	if bases[0]: return 0
+	return -1
+
 # Attempt to steal the furthest base (returns points)
 func _steal_base() -> int:
-	var result = Dice._roll_die(6) + Dice._roll_die(6)
-	if result >= specialDC[current_inning]:
-		# In each one call a special advance bases
-		# Third steals home and scores
-		if bases[2]:
-			bases[2] = false
-			return 1
-		# Second steals third
-		elif bases[1]:
-			bases[1] = false
-			bases[2] = true
+	var base = _furthest_occupied_base()
+	if base == -1: return 0 # Prevent stealing with no players on bases
+	bases[base] = false
+	if Dice._roll_die(6) + Dice._roll_die(6) >= specialDC[current_inning]:
+		print("STEAL SUCCESS")
+		advance_one_base.emit(base)
+		if base < 2:
+			bases[base + 1] = true # Advance to next base
 			return 0
-		# First steals second
 		else:
-			bases[1] = true
-			bases[0] = false
-			return 0
+			return 1 # Stole home base, stole a point
 	else:
+		print("STEAL FAILURE")
+		strike_one_base.emit(base)
 		strikeouts += 1
-		_check_strikes()
 		return 0
 
 # Attempt to tag out the furthest player (returns strikeouts)
-func _tag_out() -> void:
-	# Tag out third base
-	if bases[2]:
-		bases[2] = false
-	# Tag out second base
-	elif bases[1]:
-		bases[1] = false
-	# Tag out first base
+func _tag_out() -> int:
+	var base = _furthest_occupied_base()
+	if base == -1: return 0 # Prevent tagging out with no players on bases
+	bases[base] = false
+	if Dice._roll_die(6) + Dice._roll_die(6) >= specialDC[current_inning]:
+		print("TAG OUT SUCESS")
+		strike_one_base.emit(base)
+		strikeouts += 1
+		return 0
 	else:
-		bases[0] = false
-	strikeouts += 1
+		print("TAG OUT FAILURE")
+		if base < 2:
+			bases[base + 1] = true
+			advance_one_base.emit(base)
+			return 0
+		else:
+			advance_one_base.emit(base)
+			return 1
 
 func _special_pressed() -> void:
 	if current_inning % 2 == 0:
-		_tag_out()
+		visitPointsArray[current_inning] += _tag_out()
 		_check_strikes()
 	else:
 		homePointsArray[current_inning] += _steal_base()
+		_check_strikes()
+	_toggle_special_buttons()
 	Signalbus.update_points.emit(homePointsArray, visitPointsArray)
 
 func _toggle_special_buttons() -> void:
-	toggle_special.emit(!(bases[2] == true || bases[1] == true || bases[0] == true))
+	toggle_special.emit(_furthest_occupied_base() == -1)
 
 # Check strikeouts check 
 func _check_strikes() -> void:
