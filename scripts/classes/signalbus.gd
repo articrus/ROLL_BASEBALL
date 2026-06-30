@@ -7,6 +7,7 @@ signal roll_button_pressed
 signal process_roll(left: Enums.DIE_TYPES, right: Enums.DIE_TYPES)
 signal special_pressed
 signal game_over(home: int, visit: int, average: float, victory: bool)
+signal disable_roll(toggle: bool)
 
 # Logging In
 signal user_login

@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cxfbdbwh28mjh" path="res://scripts/ui/team_select.gd" id="1_cf774"]
 [ext_resource type="Theme" uid="uid://cjwjb6wa1fg38" path="res://ui/themes/baseball_text.tres" id="2_icgwg"]
 [ext_resource type="PackedScene" uid="uid://dx1ic4fwo8od7" path="res://ui/team_button.tscn" id="2_oqbh2"]
+[ext_resource type="Texture2D" uid="uid://clnic4lhnmclh" path="res://art/actors/TEMP_player.png" id="4_85u45"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ngd3c"]
 bg_color = Color(0, 0, 0, 0.78431374)
@@ -121,19 +122,36 @@ layout_mode = 2
 text = "New York"
 city = 11
 
-[node name="TeamInfo" type="VBoxContainer" parent="." unique_id=769238852]
-layout_mode = 0
-offset_left = 218.0
-offset_top = 274.0
-offset_right = 412.0
-offset_bottom = 324.0
+[node name="TeamDisplay" type="Control" parent="." unique_id=346563133]
+anchors_preset = 0
+offset_left = 162.0
+offset_top = 240.0
+offset_right = 162.0
+offset_bottom = 452.0
 
-[node name="TeamName" type="Label" parent="TeamInfo" unique_id=1123221155]
+[node name="TeamLogo" type="TextureRect" parent="TeamDisplay" unique_id=1225458643]
+visible = false
+layout_mode = 0
+offset_left = -14.0
+offset_top = -23.0
+offset_right = 50.0
+offset_bottom = 41.0
+scale = Vector2(4, 4)
+texture = ExtResource("4_85u45")
+
+[node name="TeamInfo" type="VBoxContainer" parent="TeamDisplay" unique_id=769238852]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 231.0
+offset_right = 202.0
+offset_bottom = 283.0
+
+[node name="TeamName" type="Label" parent="TeamDisplay/TeamInfo" unique_id=1123221155]
 layout_mode = 2
 theme = ExtResource("2_icgwg")
 text = "TEAM NAME"
 
-[node name="City" type="Label" parent="TeamInfo" unique_id=1189157773]
+[node name="City" type="Label" parent="TeamDisplay/TeamInfo" unique_id=1189157773]
 layout_mode = 2
 theme = ExtResource("2_icgwg")
 text = "TEAM TOWN"

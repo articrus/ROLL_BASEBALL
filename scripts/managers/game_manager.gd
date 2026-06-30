@@ -23,6 +23,7 @@ func _ready() -> void:
 
 # Process the roll and update the gamestate
 func _process_rolling(left_die: Enums.DIE_TYPES, right_die: Enums.DIE_TYPES) -> void:
+	Signalbus.disable_roll.emit(true)
 	# Fix the result grabber
 	var result
 	if current_inning % 2 == 0:
@@ -128,6 +129,8 @@ func _check_strikes() -> void:
 		else:
 			Signalbus.display_batting_result.emit("CHANGE SIDES!")
 			_next_inning()
+	else:
+		Signalbus.disable_roll.emit(false)
 
 # Reset all the bases
 func _reset_bases() -> void:
@@ -144,8 +147,10 @@ func _next_inning() -> void:
 		current_inning = 1
 	Signalbus.update_inning.emit(current_inning)
 	Signalbus.update_inning_info.emit(strikeDC[current_inning], specialDC[current_inning])
+	Signalbus.disable_roll.emit(false)
 
 func _game_over() -> void:
+	Signalbus.disable_roll.emit(true)
 	var homePoints = 0
 	var visitPoints = 0
 	for i in range(1, 9):

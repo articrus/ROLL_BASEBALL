@@ -3,6 +3,9 @@
 [ext_resource type="Script" uid="uid://dshb4sshjtafl" path="res://scripts/ui/dice_table.gd" id="1_dg4h0"]
 [ext_resource type="Theme" uid="uid://cjwjb6wa1fg38" path="res://ui/themes/baseball_text.tres" id="2_54ch6"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dg4h0"]
+bg_color = Color(0, 0, 0, 0.9019608)
+
 [node name="DiceTable" type="Control" unique_id=1740025211]
 layout_mode = 3
 anchors_preset = 15
@@ -21,6 +24,7 @@ anchor_right = 0.8
 anchor_bottom = 0.8
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_dg4h0")
 
 [node name="HBoxContainer" type="VBoxContainer" parent="Panel" unique_id=2001006064]
 layout_mode = 1
@@ -57,23 +61,28 @@ layout_mode = 2
 
 [node name="Tier" type="Label" parent="Panel/HBoxContainer/GridContainer" unique_id=1583218696]
 layout_mode = 2
-text = "Tier | D4 | D6 |   D8   |"
+theme = ExtResource("2_54ch6")
+text = "Tier | D4  |  D6  |    D8   |"
 
 [node name="HR" type="Label" parent="Panel/HBoxContainer/GridContainer" unique_id=396729554]
 layout_mode = 2
+theme = ExtResource("2_54ch6")
 text = "HR   |  4  |   6   |    8    | Home Run"
 
 [node name="TP" type="Label" parent="Panel/HBoxContainer/GridContainer" unique_id=831207099]
 layout_mode = 2
-text = "TP    |  3  |   5   | 7, 6   | Triple"
+theme = ExtResource("2_54ch6")
+text = "TP   |  3  |   5   |  7, 6   | Triple"
 
 [node name="DB" type="Label" parent="Panel/HBoxContainer/GridContainer" unique_id=73997583]
 layout_mode = 2
-text = "DB   |  2  | 4, 3 | 5, 4   | Double"
+theme = ExtResource("2_54ch6")
+text = "DB   |  2  | 4, 3  |  5, 4   | Double"
 
 [node name="UT" type="Label" parent="Panel/HBoxContainer/GridContainer" unique_id=1584361248]
 layout_mode = 2
-text = "UT   |  1  | 1, 2 |3, 2, 1| Untiered/ None"
+theme = ExtResource("2_54ch6")
+text = "UT   |  1  | 1, 2  | 3, 2, 1 | Untiered/ None"
 
 [node name="ExplanationC" type="Label" parent="Panel/HBoxContainer" unique_id=1715960414]
 custom_minimum_size = Vector2(500, 0)

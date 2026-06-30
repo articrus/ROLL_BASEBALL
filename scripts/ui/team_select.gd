@@ -13,8 +13,13 @@ extends Control
 	Enums.CITY.DEN: $TeamsBoxes/TeamsA/DEN,
 	Enums.CITY.NY: $TeamsBoxes/TeamsB/NY
 }
-@onready var teamNameTag = $TeamInfo/TeamName
-@onready var teamCityTag = $TeamInfo/City
+@onready var teamLogo = $TeamDisplay/TeamLogo
+@onready var teamNameTag = $TeamDisplay/TeamInfo/TeamName
+@onready var teamCityTag = $TeamDisplay/TeamInfo/City
+# Team Logos
+@onready var teamLogos = {
+	Enums.CITY.MTL: "PATH STRING"
+}
 
 func _ready() -> void:
 	_bind_buttons()
@@ -40,10 +45,14 @@ func _on_team_pressed(city: Enums.CITY) -> void:
 	_close_team_select()
 
 func _display_team_text(city: Enums.CITY) -> void:
+	teamLogo.visible = true
+	teamLogo.modulate = Enums.CITY_COLORS[city]
+	#teamLogo.texture = teamLogos[city]
 	match city:
 		Enums.CITY.MTL:
 			teamNameTag.text = "Mile-End Baristas"
 			teamCityTag.text = "Montreal"
+			teamLogo.modulate = Enums.CITY_COLORS[city]
 		Enums.CITY.TOR:
 			teamNameTag.text = "Christie Pits Runners"
 			teamCityTag.text = "Toronto"

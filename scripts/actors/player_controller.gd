@@ -21,6 +21,7 @@ func _set_team_position(batting: bool) -> void:
 # Move batter to next position
 func _set_player_position(newPos: Vector2) -> Tween:
 	var tween = create_tween()
+	_flip_chara(newPos.x < global_position.x)
 	tween.tween_property(self, "global_position", newPos, tween_time)
 	return tween
 
@@ -30,3 +31,10 @@ func _strikeout(newPos: Vector2) -> void:
 	tween.tween_property(self, "global_position", newPos, tween_time)
 	await tween.finished
 	self.queue_free()
+
+# Flips the x scale
+func _flip_chara(flip: bool) -> void:
+	if flip:
+		self.scale = Vector2(-1, 1)
+	else:
+		self.scale = Vector2.ONE
