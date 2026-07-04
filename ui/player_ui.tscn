@@ -1,13 +1,13 @@
 [gd_scene format=3 uid="uid://b4ljywddrkucl"]
 
-[ext_resource type="Texture2D" uid="uid://chemvppnh314e" path="res://art/ui/temp_ui.png" id="1_cfom6"]
 [ext_resource type="Script" uid="uid://ep2xuiuc4xw0" path="res://scripts/ui/player_ui.gd" id="1_ehg4m"]
+[ext_resource type="Texture2D" uid="uid://cu5u7yydxyji3" path="res://art/ui/test_black.png" id="2_f7sc3"]
 [ext_resource type="PackedScene" uid="uid://vapum38moy5f" path="res://ui/hud_components/die_strategy.tscn" id="2_vq5xy"]
-[ext_resource type="PackedScene" uid="uid://bpnosv5irtluk" path="res://ui/roll_box.tscn" id="4_iwa1g"]
+[ext_resource type="PackedScene" uid="uid://bpnosv5irtluk" path="res://ui/hud_components/roll_box.tscn" id="4_iwa1g"]
 [ext_resource type="Theme" uid="uid://cjwjb6wa1fg38" path="res://ui/themes/baseball_text.tres" id="5_lp0io"]
 [ext_resource type="PackedScene" uid="uid://ce5ug38xtyrlh" path="res://scenes/ui_scenes/dice_table.tscn" id="6_ykvpg"]
 [ext_resource type="PackedScene" uid="uid://47ioydhmhpft" path="res://scenes/ui_scenes/game_over.tscn" id="7_hff70"]
-[ext_resource type="PackedScene" uid="uid://btxim5i06julr" path="res://ui/scoreboard.tscn" id="8_f7sc3"]
+[ext_resource type="PackedScene" uid="uid://btxim5i06julr" path="res://ui/hud_components/scoreboard.tscn" id="8_f7sc3"]
 
 [node name="PlayerUI" type="Control" unique_id=258670629]
 layout_mode = 3
@@ -27,7 +27,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
 mouse_filter = 2
-texture = ExtResource("1_cfom6")
+texture = ExtResource("2_f7sc3")
 expand_mode = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Bottom" unique_id=241574588]
@@ -100,9 +100,11 @@ mouse_filter = 2
 
 [node name="Scoreboard" parent="ScoreContainer" unique_id=1823282740 instance=ExtResource("8_f7sc3")]
 layout_mode = 1
-offset_top = -128.0
-offset_bottom = -128.0
-scale = Vector2(0.45, 0.45)
+anchors_preset = 5
+anchor_top = 0.0
+anchor_bottom = 0.0
+grow_vertical = 1
+pivot_offset = Vector2(250, 0)
 
 [node name="DiceTable" parent="." unique_id=1740025211 instance=ExtResource("6_ykvpg")]
 visible = false

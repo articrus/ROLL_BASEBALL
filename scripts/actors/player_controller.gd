@@ -1,22 +1,33 @@
 extends Node2D
 class_name PlayerController
 @onready var bodySprite = $Body
-@onready var hatSprite = $Hats/Hat
+@onready var capSprite = $Hats/Cap
+# Cap Segments
+@onready var capBot = $Hats/Cap/CapBottom
+@onready var capTop = $Hats/Cap/CapTop
+# Helmet
 @onready var helmetSprite = $Hats/Helmet
 # Movement Vars
 @export var tween_time: float = 0.3
+
+func _setup_player(team: Enums.CITY, isBatting: bool) -> void:
+	_set_team_color(team)
+	_set_team_position(isBatting, team)
 
 func _set_team_color(team: Enums.CITY) -> void:
 	bodySprite.modulate = Enums.CITY_COLORS[team]
 
 # Changes the hats
-func _set_team_position(batting: bool) -> void:
+func _set_team_position(batting: bool, team: Enums.CITY) -> void:
 	if batting:
 		helmetSprite.visible = true
-		hatSprite.visible = false
+		helmetSprite.modulate = Enums.CITY_SECOND_COLORS[team]
+		capSprite.visible = false
 	else:
 		helmetSprite.visible = false
-		hatSprite.visible = true
+		capSprite.visible = true
+		capTop.modulate = Enums.CITY_COLORS[team]
+		capBot.modulate = Enums.CITY_SECOND_COLORS[team]
 
 # Move batter to next position
 func _set_player_position(newPos: Vector2) -> Tween:
@@ -41,6 +52,6 @@ func _return_home(newPos: Vector2) -> Tween:
 # Flips the x scale
 func _flip_chara(flip: bool) -> void:
 	if flip:
-		self.scale = Vector2(-1, 1)
+		self.scale.x *= -1
 	else:
-		self.scale = Vector2.ONE
+		self.scale.x = (abs(self.scale.x))

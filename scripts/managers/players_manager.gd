@@ -58,16 +58,18 @@ func _strikeout() -> void:
 func _add_player_to_bat(team: Enums.CITY) -> void:
 	var newPlayer = player.instantiate()
 	add_child(newPlayer)
-	newPlayer._set_team_color(team)
+	newPlayer._setup_player(team, true)
 	newPlayer.global_position = bases._get_spawn_position()  # Set to home plate
 	players[3] = newPlayer
-	newPlayer._set_player_position(bases._get_base_position(3))
+	await newPlayer._set_player_position(bases._get_base_position(3))
+	Signalbus.disable_roll.emit(false)
 
 func _add_player_to_pitch(team: Enums.CITY) -> void:
 	var newPlayer = player.instantiate()
 	add_child(newPlayer)
-	newPlayer._set_team_color(team)
+	newPlayer._setup_player(team, false)
 	newPlayer.global_position = bases._get_pitch_position()
+	newPlayer.z_index = 5 # Ensure pitchers are in front
 
 func _clear_the_field() -> void:
 	for actor in self.get_children():

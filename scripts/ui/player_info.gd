@@ -1,10 +1,10 @@
 extends Control
 @onready var infoText = {
-	"Wins": $Panel/HBoxContainer/WinsText,
-	"Total": $Panel/HBoxContainer/ToalPoints,
-	"Average": $Panel/HBoxContainer/AveragePoints
+	"Wins": $HBoxContainer/WinsText,
+	"Total": $HBoxContainer/ToalPoints,
+	"Average": $HBoxContainer/AveragePoints
 }
-@onready var confirmBox = $Panel/Confirm
+@onready var confirmBox = $Confirm
 
 func _ready() -> void:
 	_display_info()

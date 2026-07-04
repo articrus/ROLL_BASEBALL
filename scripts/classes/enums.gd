@@ -52,3 +52,18 @@ const CITY_COLORS = {
 	CITY.DEN: Color(0.0, 0.3, 0.162, 1.0),
 	CITY.NY: Color(0.106, 0.0, 0.604, 1.0),
 }
+
+const CITY_SECOND_COLORS = {
+	CITY.MTL: Color(0.671, 0.0, 0.071, 1.0),
+	CITY.TOR: Color(1.0, 1.0, 1.0, 1.0),
+	CITY.MIA: Color(0.106, 0.506, 0.816, 1.0),
+	CITY.SAJOS: Color(0.196, 0.196, 0.196, 1.0),
+	CITY.LA: Color(0.106, 0.0, 0.604, 1.0),
+	CITY.CHI: Color(0.357, 0.0, 0.0, 1.0),
+	CITY.BOS: Color(0.631, 0.161, 0.733, 1.0),
+	CITY.SAFRA: Color(0.0, 0.3, 0.162, 1.0),
+	CITY.SADIE: Color(1.0, 1.0, 0.0, 1.0),
+	CITY.KH: Color(0.0, 0.694, 0.365, 1.0),
+	CITY.DEN: Color(1.0, 0.624, 0.267, 1.0),
+	CITY.NY: Color(0.831, 0.263, 0.0, 1.0),
+}

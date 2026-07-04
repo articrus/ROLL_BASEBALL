@@ -3,7 +3,9 @@
 [ext_resource type="Script" uid="uid://d0dwukl0w1nyx" path="res://scripts/game_scene/bases.gd" id="1_bw6k5"]
 [ext_resource type="Script" uid="uid://dlmug3nax52mr" path="res://scripts/game_scene/game_scene.gd" id="1_rurhu"]
 [ext_resource type="Script" uid="uid://ccd1cpjlehr48" path="res://scripts/managers/game_manager.gd" id="1_w5aja"]
+[ext_resource type="Texture2D" uid="uid://dg7i8866pqbln" path="res://art/baseball_field/stands.png" id="2_b5spy"]
 [ext_resource type="PackedScene" uid="uid://b4ljywddrkucl" path="res://ui/player_ui.tscn" id="2_onqr8"]
+[ext_resource type="Texture2D" uid="uid://cidvptu3gbprq" path="res://art/baseball_field/field.png" id="2_utbpp"]
 [ext_resource type="Script" uid="uid://b0nauup61hnbc" path="res://scripts/managers/players_manager.gd" id="2_y3j0m"]
 [ext_resource type="Texture2D" uid="uid://bpmuw1506raew" path="res://art/baseball_field/temp_diamond.png" id="3_kk2rg"]
 [ext_resource type="PackedScene" uid="uid://dnfd08q1sg4vo" path="res://scenes/ui_scenes/team_select.tscn" id="3_ycayy"]
@@ -12,35 +14,43 @@
 script = ExtResource("1_rurhu")
 
 [node name="Field" type="Sprite2D" parent="." unique_id=1837956821]
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_utbpp")
+
+[node name="Spectators" type="Sprite2D" parent="." unique_id=1096673680]
+position = Vector2(0, -23)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_b5spy")
 
 [node name="Bases" type="Node2D" parent="." unique_id=547608302]
 position = Vector2(0, -10)
 script = ExtResource("1_bw6k5")
 
 [node name="Home" type="Sprite2D" parent="Bases" unique_id=1691883253]
-position = Vector2(0, 100)
+position = Vector2(0, 124)
 texture = ExtResource("3_kk2rg")
 
 [node name="First" type="Sprite2D" parent="Bases" unique_id=296011157]
-position = Vector2(250, 0)
+position = Vector2(196, 20)
 texture = ExtResource("3_kk2rg")
 
 [node name="Second" type="Sprite2D" parent="Bases" unique_id=296594325]
-position = Vector2(0, -100)
+position = Vector2(0, -46)
 texture = ExtResource("3_kk2rg")
 
 [node name="Third" type="Sprite2D" parent="Bases" unique_id=623747385]
-position = Vector2(-250, 0)
+position = Vector2(-202, 24)
 texture = ExtResource("3_kk2rg")
 
 [node name="Pitch" type="Sprite2D" parent="Bases" unique_id=1453338358]
+position = Vector2(0, 16)
 texture = ExtResource("3_kk2rg")
 
 [node name="Out" type="Marker2D" parent="Bases" unique_id=220167196]
 position = Vector2(-400, 100)
 
 [node name="Score" type="Marker2D" parent="Bases" unique_id=1436831474]
-position = Vector2(100, 180)
+position = Vector2(155, 200)
 
 [node name="Spawn" type="Marker2D" parent="Bases" unique_id=1093195683]
 position = Vector2(0, 180)

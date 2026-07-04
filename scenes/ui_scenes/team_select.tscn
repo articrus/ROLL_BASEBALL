@@ -2,14 +2,10 @@
 
 [ext_resource type="Script" uid="uid://cxfbdbwh28mjh" path="res://scripts/ui/team_select.gd" id="1_cf774"]
 [ext_resource type="Theme" uid="uid://cjwjb6wa1fg38" path="res://ui/themes/baseball_text.tres" id="2_icgwg"]
-[ext_resource type="PackedScene" uid="uid://dx1ic4fwo8od7" path="res://ui/team_button.tscn" id="2_oqbh2"]
+[ext_resource type="PackedScene" uid="uid://dx1ic4fwo8od7" path="res://ui/hud_components/team_button.tscn" id="2_oqbh2"]
 [ext_resource type="Texture2D" uid="uid://clnic4lhnmclh" path="res://art/actors/TEMP_player.png" id="4_85u45"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ngd3c"]
-bg_color = Color(0, 0, 0, 0.78431374)
-
-[node name="TeamSelect" type="Control" unique_id=162450544]
-layout_mode = 3
+[node name="TeamSelect" type="Panel" unique_id=296525844]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -17,141 +13,109 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_cf774")
 
-[node name="Panel" type="Panel" parent="." unique_id=1957708868]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_ngd3c")
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1595854966]
+layout_mode = 0
+offset_right = 504.0
+offset_bottom = 558.0
+theme_override_constants/separation = 24
 
-[node name="TeamSelect" type="Label" parent="." unique_id=1057718066]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -67.0
-offset_top = 66.0
-offset_right = 67.0
-offset_bottom = 89.0
-grow_horizontal = 2
+[node name="TeamSelect" type="Label" parent="VBoxContainer" unique_id=1057718066]
+layout_mode = 2
 theme = ExtResource("2_icgwg")
 theme_override_font_sizes/font_size = 48
 text = "Select Your Team"
+horizontal_alignment = 1
 
-[node name="TeamsBoxes" type="HBoxContainer" parent="." unique_id=2060183560]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -83.0
-offset_top = -20.0
-offset_right = 83.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="TeamLogo" type="TextureRect" parent="VBoxContainer" unique_id=1225458643]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("4_85u45")
+expand_mode = 2
+
+[node name="TeamInfo" type="VBoxContainer" parent="VBoxContainer" unique_id=769238852]
+layout_mode = 2
+
+[node name="TeamName" type="Label" parent="VBoxContainer/TeamInfo" unique_id=1123221155]
+layout_mode = 2
+theme = ExtResource("2_icgwg")
+text = "TEAM NAME"
+horizontal_alignment = 1
+
+[node name="City" type="Label" parent="VBoxContainer/TeamInfo" unique_id=1189157773]
+layout_mode = 2
+theme = ExtResource("2_icgwg")
+text = "TEAM TOWN"
+horizontal_alignment = 1
+
+[node name="TeamsBoxes" type="HBoxContainer" parent="VBoxContainer" unique_id=2060183560]
+layout_mode = 2
 theme_override_constants/separation = 20
 alignment = 1
 
-[node name="TeamsA" type="VBoxContainer" parent="TeamsBoxes" unique_id=1745660597]
+[node name="TeamsA" type="VBoxContainer" parent="VBoxContainer/TeamsBoxes" unique_id=1745660597]
 layout_mode = 2
 alignment = 1
 
-[node name="MTL" parent="TeamsBoxes/TeamsA" unique_id=1161289066 instance=ExtResource("2_oqbh2")]
+[node name="MTL" parent="VBoxContainer/TeamsBoxes/TeamsA" unique_id=1161289066 instance=ExtResource("2_oqbh2")]
 layout_mode = 2
 
-[node name="MIA" parent="TeamsBoxes/TeamsA" unique_id=994705236 instance=ExtResource("2_oqbh2")]
+[node name="MIA" parent="VBoxContainer/TeamsBoxes/TeamsA" unique_id=994705236 instance=ExtResource("2_oqbh2")]
 layout_mode = 2
 text = "Miami"
 city = 2
 
-[node name="LA" parent="TeamsBoxes/TeamsA" unique_id=1814186811 instance=ExtResource("2_oqbh2")]
+[node name="LA" parent="VBoxContainer/TeamsBoxes/TeamsA" unique_id=1814186811 instance=ExtResource("2_oqbh2")]
 layout_mode = 2
 text = "Los Angeles"
 city = 4
 
-[node name="BOS" parent="TeamsBoxes/TeamsA" unique_id=1761261018 instance=ExtResource("2_oqbh2")]
+[node name="BOS" parent="VBoxContainer/TeamsBoxes/TeamsA" unique_id=1761261018 instance=ExtResource("2_oqbh2")]
 layout_mode = 2
 text = "Boston"
 city = 6
 
-[node name="SADI" parent="TeamsBoxes/TeamsA" unique_id=726597835 instance=ExtResource("2_oqbh2")]
+[node name="SADI" parent="VBoxContainer/TeamsBoxes/TeamsA" unique_id=726597835 instance=ExtResource("2_oqbh2")]
 layout_mode = 2
 text = "San Diego"
 city = 8
 
-[node name="DEN" parent="TeamsBoxes/TeamsA" unique_id=1189437808 instance=ExtResource("2_oqbh2")]
+[node name="DEN" parent="VBoxContainer/TeamsBoxes/TeamsA" unique_id=1189437808 instance=ExtResource("2_oqbh2")]
 layout_mode = 2
 text = "Denver"
 city = 10
 
-[node name="TeamsB" type="VBoxContainer" parent="TeamsBoxes" unique_id=1118795425]
+[node name="TeamsB" type="VBoxContainer" parent="VBoxContainer/TeamsBoxes" unique_id=1118795425]
 layout_mode = 2
 alignment = 1
 
-[node name="TOR" parent="TeamsBoxes/TeamsB" unique_id=1928302664 instance=ExtResource("2_oqbh2")]
+[node name="TOR" parent="VBoxContainer/TeamsBoxes/TeamsB" unique_id=1928302664 instance=ExtResource("2_oqbh2")]
 layout_mode = 2
 text = "Toronto"
 city = 1
 
-[node name="SAJO" parent="TeamsBoxes/TeamsB" unique_id=1377486228 instance=ExtResource("2_oqbh2")]
+[node name="SAJO" parent="VBoxContainer/TeamsBoxes/TeamsB" unique_id=1377486228 instance=ExtResource("2_oqbh2")]
 layout_mode = 2
 text = "San Jose"
 city = 3
 
-[node name="CHI" parent="TeamsBoxes/TeamsB" unique_id=1060418761 instance=ExtResource("2_oqbh2")]
+[node name="CHI" parent="VBoxContainer/TeamsBoxes/TeamsB" unique_id=1060418761 instance=ExtResource("2_oqbh2")]
 layout_mode = 2
 text = "Chicago"
 city = 5
 
-[node name="SAFR" parent="TeamsBoxes/TeamsB" unique_id=596711152 instance=ExtResource("2_oqbh2")]
+[node name="SAFR" parent="VBoxContainer/TeamsBoxes/TeamsB" unique_id=596711152 instance=ExtResource("2_oqbh2")]
 layout_mode = 2
 text = "San Francisco"
 city = 7
 
-[node name="KH" parent="TeamsBoxes/TeamsB" unique_id=290797786 instance=ExtResource("2_oqbh2")]
+[node name="KH" parent="VBoxContainer/TeamsBoxes/TeamsB" unique_id=290797786 instance=ExtResource("2_oqbh2")]
 layout_mode = 2
 text = "Kitty Hawk"
 city = 9
 
-[node name="NY" parent="TeamsBoxes/TeamsB" unique_id=1625872767 instance=ExtResource("2_oqbh2")]
+[node name="NY" parent="VBoxContainer/TeamsBoxes/TeamsB" unique_id=1625872767 instance=ExtResource("2_oqbh2")]
 layout_mode = 2
 text = "New York"
 city = 11
-
-[node name="TeamDisplay" type="Control" parent="." unique_id=346563133]
-anchors_preset = 0
-offset_left = 162.0
-offset_top = 240.0
-offset_right = 162.0
-offset_bottom = 452.0
-
-[node name="TeamLogo" type="TextureRect" parent="TeamDisplay" unique_id=1225458643]
-visible = false
-layout_mode = 0
-offset_left = -14.0
-offset_top = -23.0
-offset_right = 50.0
-offset_bottom = 41.0
-scale = Vector2(4, 4)
-texture = ExtResource("4_85u45")
-
-[node name="TeamInfo" type="VBoxContainer" parent="TeamDisplay" unique_id=769238852]
-layout_mode = 0
-offset_left = 8.0
-offset_top = 231.0
-offset_right = 202.0
-offset_bottom = 283.0
-
-[node name="TeamName" type="Label" parent="TeamDisplay/TeamInfo" unique_id=1123221155]
-layout_mode = 2
-theme = ExtResource("2_icgwg")
-text = "TEAM NAME"
-
-[node name="City" type="Label" parent="TeamDisplay/TeamInfo" unique_id=1189157773]
-layout_mode = 2
-theme = ExtResource("2_icgwg")
-text = "TEAM TOWN"

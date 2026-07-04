@@ -87,7 +87,6 @@ func _steal_base() -> int:
 	if base == -1: return 0 # Prevent stealing with no players on bases
 	bases[base] = false
 	if Dice._roll_die(6) + Dice._roll_die(6) >= specialDC[current_inning]:
-		print("STEAL SUCCESS")
 		advance_one_base.emit(base)
 		if base < 2:
 			bases[base + 1] = true # Advance to next base
@@ -95,7 +94,6 @@ func _steal_base() -> int:
 		else:
 			return 1 # Stole home base, stole a point
 	else:
-		print("STEAL FAILURE")
 		strike_one_base.emit(base)
 		strikeouts += 1
 		return 0
@@ -106,12 +104,10 @@ func _tag_out() -> int:
 	if base == -1: return 0 # Prevent tagging out with no players on bases
 	bases[base] = false
 	if Dice._roll_die(6) + Dice._roll_die(6) >= specialDC[current_inning]:
-		print("TAG OUT SUCESS")
 		strike_one_base.emit(base)
 		strikeouts += 1
 		return 0
 	else:
-		print("TAG OUT FAILURE")
 		if base < 2:
 			bases[base + 1] = true
 			advance_one_base.emit(base)
@@ -143,8 +139,6 @@ func _check_strikes() -> void:
 		else:
 			Signalbus.display_batting_result.emit("CHANGE SIDES!")
 			_next_inning()
-	else:
-		Signalbus.disable_roll.emit(false)
 
 # Reset all the bases
 func _reset_bases() -> void:

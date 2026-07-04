@@ -1,21 +1,21 @@
 extends Control
 @onready var teamButtons = {
-	Enums.CITY.MTL: $TeamsBoxes/TeamsA/MTL,
-	Enums.CITY.TOR: $TeamsBoxes/TeamsB/TOR,
-	Enums.CITY.MIA: $TeamsBoxes/TeamsA/MIA,
-	Enums.CITY.SAJOS: $TeamsBoxes/TeamsB/SAJO,
-	Enums.CITY.LA: $TeamsBoxes/TeamsA/LA,
-	Enums.CITY.CHI: $TeamsBoxes/TeamsB/CHI,
-	Enums.CITY.BOS: $TeamsBoxes/TeamsA/BOS,
-	Enums.CITY.SAFRA: $TeamsBoxes/TeamsB/SAFR,
-	Enums.CITY.SADIE: $TeamsBoxes/TeamsA/SADI,
-	Enums.CITY.KH: $TeamsBoxes/TeamsB/KH,
-	Enums.CITY.DEN: $TeamsBoxes/TeamsA/DEN,
-	Enums.CITY.NY: $TeamsBoxes/TeamsB/NY
+	Enums.CITY.MTL: $VBoxContainer/TeamsBoxes/TeamsA/MTL,
+	Enums.CITY.TOR: $VBoxContainer/TeamsBoxes/TeamsB/TOR,
+	Enums.CITY.MIA: $VBoxContainer/TeamsBoxes/TeamsA/MIA,
+	Enums.CITY.SAJOS: $VBoxContainer/TeamsBoxes/TeamsB/SAJO,
+	Enums.CITY.LA: $VBoxContainer/TeamsBoxes/TeamsA/LA,
+	Enums.CITY.CHI: $VBoxContainer/TeamsBoxes/TeamsB/CHI,
+	Enums.CITY.BOS: $VBoxContainer/TeamsBoxes/TeamsA/BOS,
+	Enums.CITY.SAFRA: $VBoxContainer/TeamsBoxes/TeamsB/SAFR,
+	Enums.CITY.SADIE: $VBoxContainer/TeamsBoxes/TeamsA/SADI,
+	Enums.CITY.KH: $VBoxContainer/TeamsBoxes/TeamsB/KH,
+	Enums.CITY.DEN: $VBoxContainer/TeamsBoxes/TeamsA/DEN,
+	Enums.CITY.NY: $VBoxContainer/TeamsBoxes/TeamsB/NY
 }
-@onready var teamLogo = $TeamDisplay/TeamLogo
-@onready var teamNameTag = $TeamDisplay/TeamInfo/TeamName
-@onready var teamCityTag = $TeamDisplay/TeamInfo/City
+@onready var teamLogo = $VBoxContainer/TeamLogo
+@onready var teamNameTag = $VBoxContainer/TeamInfo/TeamName
+@onready var teamCityTag = $VBoxContainer/TeamInfo/City
 # Team Logos
 @onready var teamLogos = {
 	Enums.CITY.MTL: "PATH STRING"
@@ -26,18 +26,20 @@ func _ready() -> void:
 	Signalbus.team_highlight.connect(_display_team_text)
 
 func _bind_buttons() -> void:
-	teamButtons[Enums.CITY.MTL].pressed.connect(_on_team_pressed.bind(Enums.CITY.MTL))
-	teamButtons[Enums.CITY.TOR].pressed.connect(_on_team_pressed.bind(Enums.CITY.TOR))
-	teamButtons[Enums.CITY.MIA].pressed.connect(_on_team_pressed.bind(Enums.CITY.MIA))
-	teamButtons[Enums.CITY.SAJOS].pressed.connect(_on_team_pressed.bind(Enums.CITY.SAJOS))
-	teamButtons[Enums.CITY.LA].pressed.connect(_on_team_pressed.bind(Enums.CITY.LA))
-	teamButtons[Enums.CITY.CHI].pressed.connect(_on_team_pressed.bind(Enums.CITY.CHI))
-	teamButtons[Enums.CITY.BOS].pressed.connect(_on_team_pressed.bind(Enums.CITY.BOS))
-	teamButtons[Enums.CITY.SAFRA].pressed.connect(_on_team_pressed.bind(Enums.CITY.SAFRA))
-	teamButtons[Enums.CITY.SADIE].pressed.connect(_on_team_pressed.bind(Enums.CITY.SADIE))
-	teamButtons[Enums.CITY.KH].pressed.connect(_on_team_pressed.bind(Enums.CITY.KH))
-	teamButtons[Enums.CITY.DEN].pressed.connect(_on_team_pressed.bind(Enums.CITY.DEN))
-	teamButtons[Enums.CITY.NY].pressed.connect(_on_team_pressed.bind(Enums.CITY.NY))
+	for city in teamButtons:
+		teamButtons[city].pressed.connect(_on_team_pressed.bind(city))
+	#teamButtons[Enums.CITY.MTL].pressed.connect(_on_team_pressed.bind(Enums.CITY.MTL))
+	#teamButtons[Enums.CITY.TOR].pressed.connect(_on_team_pressed.bind(Enums.CITY.TOR))
+	#teamButtons[Enums.CITY.MIA].pressed.connect(_on_team_pressed.bind(Enums.CITY.MIA))
+	#teamButtons[Enums.CITY.SAJOS].pressed.connect(_on_team_pressed.bind(Enums.CITY.SAJOS))
+	#teamButtons[Enums.CITY.LA].pressed.connect(_on_team_pressed.bind(Enums.CITY.LA))
+	#teamButtons[Enums.CITY.CHI].pressed.connect(_on_team_pressed.bind(Enums.CITY.CHI))
+	#teamButtons[Enums.CITY.BOS].pressed.connect(_on_team_pressed.bind(Enums.CITY.BOS))
+	#teamButtons[Enums.CITY.SAFRA].pressed.connect(_on_team_pressed.bind(Enums.CITY.SAFRA))
+	#teamButtons[Enums.CITY.SADIE].pressed.connect(_on_team_pressed.bind(Enums.CITY.SADIE))
+	#teamButtons[Enums.CITY.KH].pressed.connect(_on_team_pressed.bind(Enums.CITY.KH))
+	#teamButtons[Enums.CITY.DEN].pressed.connect(_on_team_pressed.bind(Enums.CITY.DEN))
+	#teamButtons[Enums.CITY.NY].pressed.connect(_on_team_pressed.bind(Enums.CITY.NY))
 
 func _on_team_pressed(city: Enums.CITY) -> void:
 	Signalbus.team_selected.emit(city)

@@ -15,111 +15,117 @@ script = ExtResource("1_i0tjq")
 [node name="Panel" type="Panel" parent="." unique_id=1250451664]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.2
-anchor_top = 0.2
-anchor_right = 0.8
-anchor_bottom = 0.8
+anchor_left = 0.05
+anchor_top = 0.15
+anchor_right = 0.95
+anchor_bottom = 0.9
 grow_horizontal = 2
-grow_vertical = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Panel" unique_id=1856694646]
+[node name="BoxContainer" type="VBoxContainer" parent="Panel" unique_id=1952746480]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
+anchors_preset = -1
+anchor_left = 0.05
 anchor_top = 0.5
-anchor_right = 0.5
+anchor_right = 0.95
 anchor_bottom = 0.5
-offset_left = -202.0
-offset_top = -77.5
-offset_right = 202.0
-offset_bottom = 77.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 36
+theme_override_constants/separation = 20
 
-[node name="SignIn" type="VBoxContainer" parent="Panel/HBoxContainer" unique_id=1634537017]
+[node name="LoginLabel" type="Label" parent="Panel/BoxContainer" unique_id=369779847]
+layout_mode = 2
+theme = ExtResource("2_o15tw")
+theme_override_font_sizes/font_size = 34
+text = "LOGIN"
+horizontal_alignment = 1
+
+[node name="SignIn" type="VBoxContainer" parent="Panel/BoxContainer" unique_id=1634537017]
 custom_minimum_size = Vector2(200, 100)
 layout_mode = 2
 alignment = 1
 
-[node name="Email" type="Label" parent="Panel/HBoxContainer/SignIn" unique_id=719775033]
+[node name="Email" type="Label" parent="Panel/BoxContainer/SignIn" unique_id=719775033]
 layout_mode = 2
 theme = ExtResource("2_o15tw")
 text = "Email: "
 
-[node name="EmailText" type="LineEdit" parent="Panel/HBoxContainer/SignIn" unique_id=978329949]
+[node name="EmailText" type="LineEdit" parent="Panel/BoxContainer/SignIn" unique_id=978329949]
 layout_mode = 2
 theme = ExtResource("2_o15tw")
 placeholder_text = "someone@gmail.com"
 
-[node name="Password" type="Label" parent="Panel/HBoxContainer/SignIn" unique_id=213397202]
+[node name="Password" type="Label" parent="Panel/BoxContainer/SignIn" unique_id=213397202]
 layout_mode = 2
 theme = ExtResource("2_o15tw")
 text = "Password:"
 
-[node name="PasswordText" type="LineEdit" parent="Panel/HBoxContainer/SignIn" unique_id=703128660]
+[node name="PasswordText" type="LineEdit" parent="Panel/BoxContainer/SignIn" unique_id=703128660]
 layout_mode = 2
 theme = ExtResource("2_o15tw")
 placeholder_text = "***"
 
-[node name="Button" type="Button" parent="Panel/HBoxContainer/SignIn" unique_id=1069464903]
+[node name="LoginButton" type="Button" parent="Panel/BoxContainer/SignIn" unique_id=1069464903]
 layout_mode = 2
 theme = ExtResource("2_o15tw")
 text = "Login"
 
-[node name="SignUp" type="VBoxContainer" parent="Panel/HBoxContainer" unique_id=1273937913]
+[node name="LoginWarning" type="Label" parent="Panel/BoxContainer" unique_id=1643509879]
+layout_mode = 2
+theme = ExtResource("2_o15tw")
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+horizontal_alignment = 1
+
+[node name="SignInLabel" type="Label" parent="Panel/BoxContainer" unique_id=1934375571]
+layout_mode = 2
+theme = ExtResource("2_o15tw")
+theme_override_font_sizes/font_size = 34
+text = "SIGN IN"
+horizontal_alignment = 1
+
+[node name="SignUp" type="VBoxContainer" parent="Panel/BoxContainer" unique_id=1273937913]
 custom_minimum_size = Vector2(200, 100)
 layout_mode = 2
 theme = ExtResource("2_o15tw")
 alignment = 1
 
-[node name="Email" type="Label" parent="Panel/HBoxContainer/SignUp" unique_id=606960263]
+[node name="Email" type="Label" parent="Panel/BoxContainer/SignUp" unique_id=606960263]
 layout_mode = 2
 theme = ExtResource("2_o15tw")
 text = "Email: "
 
-[node name="EmailText" type="LineEdit" parent="Panel/HBoxContainer/SignUp" unique_id=1163932980]
+[node name="EmailText" type="LineEdit" parent="Panel/BoxContainer/SignUp" unique_id=1163932980]
 layout_mode = 2
 theme = ExtResource("2_o15tw")
 placeholder_text = "someone@gmail.com"
 
-[node name="Password" type="Label" parent="Panel/HBoxContainer/SignUp" unique_id=1903917616]
+[node name="Password" type="Label" parent="Panel/BoxContainer/SignUp" unique_id=1903917616]
 layout_mode = 2
 theme = ExtResource("2_o15tw")
 text = "Password:"
 
-[node name="PasswordText" type="LineEdit" parent="Panel/HBoxContainer/SignUp" unique_id=1426453890]
+[node name="PasswordText" type="LineEdit" parent="Panel/BoxContainer/SignUp" unique_id=1426453890]
 layout_mode = 2
 theme = ExtResource("2_o15tw")
 placeholder_text = "***"
 
-[node name="Button" type="Button" parent="Panel/HBoxContainer/SignUp" unique_id=1189281526]
+[node name="SignUpButton" type="Button" parent="Panel/BoxContainer/SignUp" unique_id=1189281526]
 layout_mode = 2
 theme = ExtResource("2_o15tw")
 text = "Sign Up"
 
-[node name="Label" type="Label" parent="Panel" unique_id=977624442]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+[node name="SignUpWarning" type="Label" parent="Panel/BoxContainer" unique_id=975232513]
+layout_mode = 2
 theme = ExtResource("2_o15tw")
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+horizontal_alignment = 1
 
-[node name="Close" type="Button" parent="Panel" unique_id=1908915771]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -24.0
-offset_top = -90.400024
-offset_right = 25.0
-offset_bottom = -58.400024
-grow_horizontal = 2
-grow_vertical = 0
+[node name="Close" type="Button" parent="Panel/BoxContainer" unique_id=1908915771]
+layout_mode = 2
 theme = ExtResource("2_o15tw")
 text = "Close"
 
-[connection signal="pressed" from="Panel/HBoxContainer/SignIn/Button" to="." method="_on_login_pressed"]
-[connection signal="pressed" from="Panel/HBoxContainer/SignUp/Button" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="Panel/Close" to="." method="_on_close_pressed"]
+[connection signal="pressed" from="Panel/BoxContainer/SignIn/LoginButton" to="." method="_on_login_pressed"]
+[connection signal="pressed" from="Panel/BoxContainer/SignUp/SignUpButton" to="." method="_on_signup_pressed"]
+[connection signal="pressed" from="Panel/BoxContainer/Close" to="." method="_on_close_pressed"]

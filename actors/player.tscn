@@ -4,8 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://clnic4lhnmclh" path="res://art/actors/TEMP_player.png" id="2_1yqc4"]
 [ext_resource type="Texture2D" uid="uid://bgdhww8njxgwm" path="res://art/actors/cap.png" id="3_1yqc4"]
 [ext_resource type="Texture2D" uid="uid://b2njmnbaetmbs" path="res://art/actors/helmet.png" id="3_esgq3"]
+[ext_resource type="Texture2D" uid="uid://dfpajmr5ljh5l" path="res://art/actors/cap_head.png" id="4_kjkj0"]
 
 [node name="Player" type="Node2D" unique_id=671285342]
+scale = Vector2(0.85, 0.85)
 script = ExtResource("1_mvpqy")
 
 [node name="Body" type="Sprite2D" parent="." unique_id=710526179]
@@ -13,10 +15,17 @@ texture = ExtResource("2_1yqc4")
 
 [node name="Hats" type="Node2D" parent="." unique_id=584514962]
 
-[node name="Hat" type="Sprite2D" parent="Hats" unique_id=903034592]
+[node name="Cap" type="Node2D" parent="Hats" unique_id=1807677677]
+
+[node name="CapBottom" type="Sprite2D" parent="Hats/Cap" unique_id=903034592]
 position = Vector2(5.9999995, -28)
 scale = Vector2(0.145, 0.145)
 texture = ExtResource("3_1yqc4")
+
+[node name="CapTop" type="Sprite2D" parent="Hats/Cap" unique_id=899113958]
+position = Vector2(5.9999995, -28)
+scale = Vector2(0.145, 0.145)
+texture = ExtResource("4_kjkj0")
 
 [node name="Helmet" type="Sprite2D" parent="Hats" unique_id=1942562074]
 visible = false

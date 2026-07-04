@@ -3,8 +3,7 @@
 [ext_resource type="Script" uid="uid://cypu3aigakkab" path="res://scripts/ui/player_info.gd" id="1_tbu2c"]
 [ext_resource type="Theme" uid="uid://cjwjb6wa1fg38" path="res://ui/themes/baseball_text.tres" id="2_mi3ka"]
 
-[node name="PlayerInfo" type="Control" unique_id=1740025211]
-layout_mode = 3
+[node name="PlayerInfo" type="Panel" unique_id=19411068]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -12,71 +11,61 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_tbu2c")
 
-[node name="Panel" type="Panel" parent="." unique_id=1250451664]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.2
-anchor_top = 0.2
-anchor_right = 0.8
-anchor_bottom = 0.8
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="HBoxContainer" type="VBoxContainer" parent="Panel" unique_id=2001006064]
+[node name="HBoxContainer" type="VBoxContainer" parent="." unique_id=2001006064]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -202.0
-offset_top = -77.5
-offset_right = 201.99997
-offset_bottom = 77.500015
+offset_left = -201.99998
+offset_top = -116.0
+offset_right = 202.0
+offset_bottom = 116.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 24
 
-[node name="WinsText" type="Label" parent="Panel/HBoxContainer" unique_id=1894949148]
+[node name="WinsText" type="Label" parent="HBoxContainer" unique_id=1894949148]
 layout_mode = 2
 theme = ExtResource("2_mi3ka")
 text = "Games Won: "
 
-[node name="ToalPoints" type="Label" parent="Panel/HBoxContainer" unique_id=240845473]
+[node name="ToalPoints" type="Label" parent="HBoxContainer" unique_id=240845473]
 layout_mode = 2
 theme = ExtResource("2_mi3ka")
 text = "Total Points:"
 
-[node name="AveragePoints" type="Label" parent="Panel/HBoxContainer" unique_id=455677487]
+[node name="AveragePoints" type="Label" parent="HBoxContainer" unique_id=455677487]
 layout_mode = 2
 theme = ExtResource("2_mi3ka")
 text = "Average Points per Inning:"
 
-[node name="Reset" type="Button" parent="Panel/HBoxContainer" unique_id=2042290972]
+[node name="Reset" type="Button" parent="HBoxContainer" unique_id=2042290972]
 layout_mode = 2
 theme = ExtResource("2_mi3ka")
 text = "Reset Stats"
 
-[node name="Close" type="Button" parent="Panel/HBoxContainer" unique_id=1746657956]
+[node name="Close" type="Button" parent="HBoxContainer" unique_id=1746657956]
 layout_mode = 2
 theme = ExtResource("2_mi3ka")
 text = "Close"
 
-[node name="Confirm" type="Control" parent="Panel" unique_id=2086996049]
+[node name="Confirm" type="Control" parent="." unique_id=2086996049]
 visible = false
 layout_mode = 1
 anchor_left = 0.1
 anchor_top = 0.1
 anchor_right = 0.9
 anchor_bottom = 0.9
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_left = 60.640007
+offset_top = 123.35999
+offset_right = 100.640015
+offset_bottom = 163.36005
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Panel" type="Panel" parent="Panel/Confirm" unique_id=1002098530]
+[node name="Panel" type="Panel" parent="Confirm" unique_id=1002098530]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.2
@@ -86,7 +75,7 @@ anchor_bottom = 0.8
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Panel/Confirm/Panel" unique_id=1435029315]
+[node name="HBoxContainer" type="HBoxContainer" parent="Confirm/Panel" unique_id=1435029315]
 custom_minimum_size = Vector2(100, 50)
 layout_mode = 1
 anchors_preset = 8
@@ -102,19 +91,19 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="Yes" type="Button" parent="Panel/Confirm/Panel/HBoxContainer" unique_id=497910481]
+[node name="Yes" type="Button" parent="Confirm/Panel/HBoxContainer" unique_id=497910481]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 theme = ExtResource("2_mi3ka")
 text = "Yes"
 
-[node name="No" type="Button" parent="Panel/Confirm/Panel/HBoxContainer" unique_id=1523361973]
+[node name="No" type="Button" parent="Confirm/Panel/HBoxContainer" unique_id=1523361973]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 theme = ExtResource("2_mi3ka")
 text = "No"
 
-[node name="Label" type="Label" parent="Panel/Confirm/Panel" unique_id=447001578]
+[node name="Label" type="Label" parent="Confirm/Panel" unique_id=447001578]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -130,7 +119,7 @@ grow_vertical = 2
 theme = ExtResource("2_mi3ka")
 text = "Are you sure?"
 
-[connection signal="pressed" from="Panel/HBoxContainer/Reset" to="." method="_on_reset_pressed"]
-[connection signal="pressed" from="Panel/HBoxContainer/Close" to="." method="_on_close_pressed"]
-[connection signal="pressed" from="Panel/Confirm/Panel/HBoxContainer/Yes" to="." method="_on_yes_pressed"]
-[connection signal="pressed" from="Panel/Confirm/Panel/HBoxContainer/No" to="." method="_on_no_pressed"]
+[connection signal="pressed" from="HBoxContainer/Reset" to="." method="_on_reset_pressed"]
+[connection signal="pressed" from="HBoxContainer/Close" to="." method="_on_close_pressed"]
+[connection signal="pressed" from="Confirm/Panel/HBoxContainer/Yes" to="." method="_on_yes_pressed"]
+[connection signal="pressed" from="Confirm/Panel/HBoxContainer/No" to="." method="_on_no_pressed"]
