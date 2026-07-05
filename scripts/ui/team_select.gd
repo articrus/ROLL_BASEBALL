@@ -18,7 +18,18 @@ extends Control
 @onready var teamCityTag = $VBoxContainer/TeamInfo/City
 # Team Logos
 @onready var teamLogos = {
-	Enums.CITY.MTL: "PATH STRING"
+	Enums.CITY.MTL: load("res://art/logos/baristas-512x512.png"),
+	Enums.CITY.TOR: load("res://art/logos/baristas-512x512.png"),
+	Enums.CITY.MIA: load("res://art/logos/crocodiles-512x512.png"),
+	Enums.CITY.SAJOS: load("res://art/logos/baristas-512x512.png"),
+	Enums.CITY.LA: load("res://art/logos/surfers-512x512.png"),
+	Enums.CITY.CHI: load("res://art/logos/baristas-512x512.png"),
+	Enums.CITY.BOS: load("res://art/logos/baristas-512x512.png"),
+	Enums.CITY.SAFRA: load("res://art/logos/seals-512x512.png"),
+	Enums.CITY.SADIE: load("res://art/logos/baristas-512x512.png"),
+	Enums.CITY.KH: load("res://art/logos/aviators-512x512.png"),
+	Enums.CITY.DEN: load("res://art/logos/miners-512x512.png"),
+	Enums.CITY.NY: load("res://art/logos/baristas-512x512.png")
 }
 
 func _ready() -> void:
@@ -28,18 +39,6 @@ func _ready() -> void:
 func _bind_buttons() -> void:
 	for city in teamButtons:
 		teamButtons[city].pressed.connect(_on_team_pressed.bind(city))
-	#teamButtons[Enums.CITY.MTL].pressed.connect(_on_team_pressed.bind(Enums.CITY.MTL))
-	#teamButtons[Enums.CITY.TOR].pressed.connect(_on_team_pressed.bind(Enums.CITY.TOR))
-	#teamButtons[Enums.CITY.MIA].pressed.connect(_on_team_pressed.bind(Enums.CITY.MIA))
-	#teamButtons[Enums.CITY.SAJOS].pressed.connect(_on_team_pressed.bind(Enums.CITY.SAJOS))
-	#teamButtons[Enums.CITY.LA].pressed.connect(_on_team_pressed.bind(Enums.CITY.LA))
-	#teamButtons[Enums.CITY.CHI].pressed.connect(_on_team_pressed.bind(Enums.CITY.CHI))
-	#teamButtons[Enums.CITY.BOS].pressed.connect(_on_team_pressed.bind(Enums.CITY.BOS))
-	#teamButtons[Enums.CITY.SAFRA].pressed.connect(_on_team_pressed.bind(Enums.CITY.SAFRA))
-	#teamButtons[Enums.CITY.SADIE].pressed.connect(_on_team_pressed.bind(Enums.CITY.SADIE))
-	#teamButtons[Enums.CITY.KH].pressed.connect(_on_team_pressed.bind(Enums.CITY.KH))
-	#teamButtons[Enums.CITY.DEN].pressed.connect(_on_team_pressed.bind(Enums.CITY.DEN))
-	#teamButtons[Enums.CITY.NY].pressed.connect(_on_team_pressed.bind(Enums.CITY.NY))
 
 func _on_team_pressed(city: Enums.CITY) -> void:
 	Signalbus.team_selected.emit(city)
@@ -48,13 +47,11 @@ func _on_team_pressed(city: Enums.CITY) -> void:
 
 func _display_team_text(city: Enums.CITY) -> void:
 	teamLogo.visible = true
-	teamLogo.modulate = Enums.CITY_COLORS[city]
-	#teamLogo.texture = teamLogos[city]
+	teamLogo.texture = teamLogos[city]
 	match city:
 		Enums.CITY.MTL:
 			teamNameTag.text = "Mile-End Baristas"
 			teamCityTag.text = "Montreal"
-			teamLogo.modulate = Enums.CITY_COLORS[city]
 		Enums.CITY.TOR:
 			teamNameTag.text = "Christie Pits Runners"
 			teamCityTag.text = "Toronto"

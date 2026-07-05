@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bpnosv5irtluk" path="res://ui/hud_components/roll_box.tscn" id="4_iwa1g"]
 [ext_resource type="Theme" uid="uid://cjwjb6wa1fg38" path="res://ui/themes/baseball_text.tres" id="5_lp0io"]
 [ext_resource type="PackedScene" uid="uid://ce5ug38xtyrlh" path="res://scenes/ui_scenes/dice_table.tscn" id="6_ykvpg"]
+[ext_resource type="PackedScene" uid="uid://kbcnj7hk78eo" path="res://ui/hud_components/result_text.tscn" id="7_g1ro4"]
 [ext_resource type="PackedScene" uid="uid://47ioydhmhpft" path="res://scenes/ui_scenes/game_over.tscn" id="7_hff70"]
 [ext_resource type="PackedScene" uid="uid://btxim5i06julr" path="res://ui/hud_components/scoreboard.tscn" id="8_f7sc3"]
 
@@ -77,12 +78,6 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="BattingResult" type="Label" parent="DebugDisplay" unique_id=142261875]
-layout_mode = 2
-theme = ExtResource("5_lp0io")
-theme_override_font_sizes/font_size = 32
-text = "RESULT: NAN"
-
 [node name="Inning" type="Label" parent="DebugDisplay" unique_id=1711875604]
 layout_mode = 2
 theme = ExtResource("5_lp0io")
@@ -105,6 +100,14 @@ anchor_top = 0.0
 anchor_bottom = 0.0
 grow_vertical = 1
 pivot_offset = Vector2(250, 0)
+
+[node name="ResultText" parent="." unique_id=1215806943 instance=ExtResource("7_g1ro4")]
+visible = false
+layout_mode = 1
+offset_left = -147.0
+offset_top = -181.0
+offset_right = 148.0
+offset_bottom = -91.0
 
 [node name="DiceTable" parent="." unique_id=1740025211 instance=ExtResource("6_ykvpg")]
 visible = false

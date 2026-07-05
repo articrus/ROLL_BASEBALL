@@ -5,8 +5,8 @@ extends Control
 @onready var specialButton = $Bottom/HBoxContainer/StealTagButton
 @onready var die_table = $DiceTable
 @onready var gameOver = $GameOver
+@onready var resultLabel = $ResultText
 # Temporary Nodes
-@onready var result = $DebugDisplay/BattingResult
 @onready var inning = $DebugDisplay/Inning
 # Export vars
 @export var left_die_type: Enums.DIE_TYPES = Enums.DIE_TYPES.NORMAL
@@ -19,6 +19,10 @@ func _ready() -> void:
 
 func _roll_dice() -> void:
 	Signalbus.process_roll.emit(left_die_type, right_die_type)
+
+func _display_result(result: String) -> void:
+	resultLabel.visible = true
+	resultLabel._set_text(result)
 
 func _change_left_die(die: Enums.DIE_TYPES) -> void:
 	left_die_type = die
@@ -41,9 +45,6 @@ func _bind_die_tabs() -> void:
 	right_box.powerBtn.pressed.connect(_change_right_die.bind(Enums.DIE_TYPES.POWER))
 	right_box.normalBtn.pressed.connect(_change_right_die.bind(Enums.DIE_TYPES.NORMAL))
 	right_box.contactBtn.pressed.connect(_change_right_die.bind(Enums.DIE_TYPES.CONTACT))
-
-func _show_result(toPrint: String) -> void:
-	result.text = "RESULT: " + toPrint
 
 func _update_inning(newInning: int) -> void:
 	inning.text = "INNING: " + str(newInning)
@@ -78,8 +79,8 @@ func _on_steal_tag_button_pressed() -> void:
 func _connect_signals() -> void:
 	Signalbus.roll_button_pressed.connect(_roll_dice)
 	Signalbus.game_over.connect(_game_over)
+	Signalbus.display_batting_result.connect(_display_result)
 	# Temporary display results
-	Signalbus.display_batting_result.connect(_show_result)
 	Signalbus.update_inning.connect(_update_inning)
 
 func _on_die_table_buton_pressed() -> void:

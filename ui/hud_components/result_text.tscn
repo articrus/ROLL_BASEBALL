@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://kbcnj7hk78eo"]
+
+[ext_resource type="Theme" uid="uid://cjwjb6wa1fg38" path="res://ui/themes/baseball_text.tres" id="1_s61yg"]
+[ext_resource type="Script" uid="uid://c6fn0mushoum7" path="res://scripts/ui/result_text.gd" id="2_tj2n3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f7sc3"]
+bg_color = Color(0, 0, 0, 0.78431374)
+
+[node name="ResultText" type="Label" unique_id=1215806943]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -147.5
+offset_top = -45.0
+offset_right = 147.5
+offset_bottom = 45.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_s61yg")
+theme_override_font_sizes/font_size = 90
+theme_override_styles/normal = SubResource("StyleBoxFlat_f7sc3")
+text = "HOME RUN!"
+horizontal_alignment = 1
+script = ExtResource("2_tj2n3")

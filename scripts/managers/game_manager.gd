@@ -90,12 +90,15 @@ func _steal_base() -> int:
 		advance_one_base.emit(base)
 		if base < 2:
 			bases[base + 1] = true # Advance to next base
+			Signalbus.display_batting_result.emit("STEAL!")
 			return 0
 		else:
+			Signalbus.display_batting_result.emit("POINT STOLEN!")
 			return 1 # Stole home base, stole a point
 	else:
 		strike_one_base.emit(base)
 		strikeouts += 1
+		Signalbus.display_batting_result.emit("OUT!")
 		return 0
 
 # Attempt to tag out the furthest player (returns strikeouts)
@@ -105,15 +108,18 @@ func _tag_out() -> int:
 	bases[base] = false
 	if Dice._roll_die(6) + Dice._roll_die(6) >= specialDC[current_inning]:
 		strike_one_base.emit(base)
+		Signalbus.display_batting_result.emit("TAG OUT!")
 		strikeouts += 1
 		return 0
 	else:
 		if base < 2:
 			bases[base + 1] = true
 			advance_one_base.emit(base)
+			Signalbus.display_batting_result.emit("POINT STOLEN!")
 			return 0
 		else:
 			advance_one_base.emit(base)
+			Signalbus.display_batting_result.emit("STEAL!")
 			return 1
 
 func _special_pressed() -> void:

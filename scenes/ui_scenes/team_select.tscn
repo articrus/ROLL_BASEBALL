@@ -27,7 +27,7 @@ text = "Select Your Team"
 horizontal_alignment = 1
 
 [node name="TeamLogo" type="TextureRect" parent="VBoxContainer" unique_id=1225458643]
-custom_minimum_size = Vector2(150, 150)
+custom_minimum_size = Vector2(300, 300)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
