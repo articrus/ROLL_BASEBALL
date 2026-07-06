@@ -33,7 +33,41 @@ func _change_rolling_dice(left: int, right: int) -> void:
 	left_die.texture = die_textures[left]
 	right_die.texture = die_textures[right]
 
+func _animate_die(die: TextureRect, dieType: Enums.DIE_TYPES) -> Tween:
+	die.pivot_offset = die.size/2
+	var duration = 0.7
+	var tween = create_tween()
+	tween.set_parallel(true)
+	tween.tween_property(die, "rotation_degrees", 360 * 3, duration) \
+		.as_relative() \
+		.set_trans(Tween.TRANS_CUBIC) \
+		.set_ease(Tween.EASE_OUT)
+	# Flickering
+	var flicker_interval = 0.1
+	var elapsed = 0
+	while elapsed < duration:
+		tween.tween_callback(_set_random_face.bind(die, dieType)).set_delay(elapsed)
+		elapsed += flicker_interval
+	tween.chain().tween_callback(func():
+		die.rotation_degrees = 0.0)
+	return tween
+
+func _set_random_face(die: TextureRect, dieType: Enums.DIE_TYPES) -> void:
+	var roll = 0
+	match dieType:
+		Enums.DIE_TYPES.POWER:
+			roll = randi_range(1, 4)
+			die.texture = d4Textures[roll]
+		Enums.DIE_TYPES.NORMAL:
+			roll = randi_range(1, 6)
+			die.texture = d6Textures[roll]
+		Enums.DIE_TYPES.CONTACT:
+			roll = randi_range(1, 8)
+			die.texture = d8Textures[roll]
+
 func _display_die_results(leftDie: Enums.DIE_TYPES, leftResult: int, rightDie: Enums.DIE_TYPES, rightResult: int) -> void:
+	_animate_die(left_die, leftDie)
+	await _animate_die(right_die, rightDie).finished
 	match leftDie:
 		Enums.DIE_TYPES.POWER:
 			left_die.texture = d4Textures[leftResult]
@@ -48,3 +82,4 @@ func _display_die_results(leftDie: Enums.DIE_TYPES, leftResult: int, rightDie: E
 			right_die.texture = d6Textures[rightResult]
 		Enums.DIE_TYPES.CONTACT:
 			right_die.texture = d8Textures[rightResult]
+	Signalbus.resume_processing.emit()

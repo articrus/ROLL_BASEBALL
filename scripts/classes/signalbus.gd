@@ -24,6 +24,7 @@ signal display_batting_result(result: String)
 
 # Dice Rolling
 signal update_die_faces(leftType: Enums.DIE_TYPES, leftResult: int, rightType: Enums.DIE_TYPES, rightResult: int)
+signal resume_processing
 
 # Figure out with this one
 signal update_inning(inning: int)
