@@ -4,6 +4,7 @@
 [ext_resource type="Theme" uid="uid://cjwjb6wa1fg38" path="res://ui/themes/baseball_text.tres" id="1_cypsq"]
 
 [node name="LeftDie" type="HBoxContainer" unique_id=1539795031]
+custom_minimum_size = Vector2(75, 0)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -17,19 +18,23 @@ grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(117, 20)
 theme = ExtResource("1_cypsq")
+alignment = 1
 script = ExtResource("1_706v5")
 
 [node name="PowerBtn" type="Button" parent="." unique_id=1225632445]
+custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
 theme = ExtResource("1_cypsq")
 text = "POWER"
 
 [node name="NormalBtn" type="Button" parent="." unique_id=984531999]
+custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
 theme = ExtResource("1_cypsq")
 text = "NORMAL"
 
 [node name="ContactBtn" type="Button" parent="." unique_id=583509337]
+custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
 theme = ExtResource("1_cypsq")
 text = "CONTACT"

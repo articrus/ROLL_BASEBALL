@@ -125,7 +125,7 @@ size_flags_horizontal = 6
 size_flags_vertical = 6
 theme = ExtResource("2_d7rl5")
 theme_override_font_sizes/font_size = 25
-text = "[1] [2] [3] [4] [5] [6] [7] [8] [9] "
+text = "[1] [2] [3] [4] [5] [6] [7] [8] [9]"
 horizontal_alignment = 1
 
 [node name="EmptyB" type="Label" parent="Panel/InnerPanel/Team Score" unique_id=787186165]

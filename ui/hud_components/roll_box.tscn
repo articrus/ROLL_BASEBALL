@@ -4,7 +4,22 @@
 [ext_resource type="Texture2D" uid="uid://dt1yg03gwi4ts" path="res://ui/dice_textures/d6/d6_6.tres" id="1_wyr4b"]
 [ext_resource type="Texture2D" uid="uid://bltjgndjnf6o2" path="res://ui/dice_textures/d4/d4_4.tres" id="2_vbxjb"]
 [ext_resource type="Texture2D" uid="uid://cu6p2kqwgc31e" path="res://ui/dice_textures/d8/d8_8.tres" id="4_gg1wy"]
+[ext_resource type="Texture2D" uid="uid://dwst2rbm0rse" path="res://ui/dice_textures/d4/d4_1.tres" id="5_o1llc"]
 [ext_resource type="Theme" uid="uid://cjwjb6wa1fg38" path="res://ui/themes/baseball_text.tres" id="5_we2qg"]
+[ext_resource type="Texture2D" uid="uid://81k30aydi86r" path="res://ui/dice_textures/d4/d4_2.tres" id="6_podjb"]
+[ext_resource type="Texture2D" uid="uid://c7cx3k8ftkgnl" path="res://ui/dice_textures/d4/d4_3.tres" id="7_bcm0u"]
+[ext_resource type="Texture2D" uid="uid://belwwoevhr0i4" path="res://ui/dice_textures/d6/d6_1.tres" id="8_bd86i"]
+[ext_resource type="Texture2D" uid="uid://dlj1e80c06w0n" path="res://ui/dice_textures/d6/d6_2.tres" id="9_gsyv1"]
+[ext_resource type="Texture2D" uid="uid://bskt3bp7smgfq" path="res://ui/dice_textures/d6/d6_3.tres" id="10_5gr4j"]
+[ext_resource type="Texture2D" uid="uid://btrgg5uvj6ae6" path="res://ui/dice_textures/d6/d6_4.tres" id="11_3mcla"]
+[ext_resource type="Texture2D" uid="uid://c04ab4r1n6378" path="res://ui/dice_textures/d6/d6_5.tres" id="12_in5kr"]
+[ext_resource type="Texture2D" uid="uid://dqvqkqpitvhxf" path="res://ui/dice_textures/d8/d8_1.tres" id="13_nxhc4"]
+[ext_resource type="Texture2D" uid="uid://14xtvvyvrgv3" path="res://ui/dice_textures/d8/d8_2.tres" id="14_5ofe3"]
+[ext_resource type="Texture2D" uid="uid://cuk3spp0rci7a" path="res://ui/dice_textures/d8/d8_3.tres" id="15_wheec"]
+[ext_resource type="Texture2D" uid="uid://l3478x0hvbqk" path="res://ui/dice_textures/d8/d8_4.tres" id="16_ujfko"]
+[ext_resource type="Texture2D" uid="uid://bq272jw3fl8qn" path="res://ui/dice_textures/d8/d8_5.tres" id="17_5r8rb"]
+[ext_resource type="Texture2D" uid="uid://dmctjja0yk7ck" path="res://ui/dice_textures/d8/d8_6.tres" id="18_ai0e8"]
+[ext_resource type="Texture2D" uid="uid://ddgs40o4cvxp0" path="res://ui/dice_textures/d8/d8_7.tres" id="19_psak6"]
 
 [node name="RollBox" type="VBoxContainer" unique_id=927553995]
 anchors_preset = 8
@@ -23,6 +38,9 @@ mouse_filter = 0
 alignment = 1
 script = ExtResource("1_auu82")
 die_textures = Array[AtlasTexture]([ExtResource("2_vbxjb"), ExtResource("1_wyr4b"), ExtResource("4_gg1wy")])
+d4Textures = Array[AtlasTexture]([null, ExtResource("5_o1llc"), ExtResource("6_podjb"), ExtResource("7_bcm0u"), ExtResource("2_vbxjb")])
+d6Textures = Array[AtlasTexture]([null, ExtResource("8_bd86i"), ExtResource("9_gsyv1"), ExtResource("10_5gr4j"), ExtResource("11_3mcla"), ExtResource("12_in5kr"), ExtResource("1_wyr4b")])
+d8Textures = Array[AtlasTexture]([null, ExtResource("13_nxhc4"), ExtResource("14_5ofe3"), ExtResource("15_wheec"), ExtResource("16_ujfko"), ExtResource("17_5r8rb"), ExtResource("18_ai0e8"), ExtResource("19_psak6"), ExtResource("4_gg1wy")])
 
 [node name="DiceContainer" type="HBoxContainer" parent="." unique_id=1312314460]
 custom_minimum_size = Vector2(75, 75)

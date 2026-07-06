@@ -73,6 +73,7 @@ static func _process_roll(dieA: Enums.DIE_TYPES, dieB: Enums.DIE_TYPES, strikeDC
 static func _process_batting(dieA: Enums.DIE_TYPES, dieB: Enums.DIE_TYPES, strikeDC: int) -> Array:
 	var roll_A = _get_die_result(dieA)
 	var roll_B = _get_die_result(dieB)
+	Signalbus.update_die_faces.emit(dieA, roll_A[0], dieB, roll_B[0])
 	var roll_total = roll_A[0] + roll_B[0]
 	var result = [roll_total, Enums.BATTING_RESULT]
 	# If roll results have a matching tier
@@ -100,6 +101,7 @@ static func _process_batting(dieA: Enums.DIE_TYPES, dieB: Enums.DIE_TYPES, strik
 static func _process_pitching(dieA: Enums.DIE_TYPES, dieB: Enums.DIE_TYPES, strikeDC: int) -> Array:
 	var roll_A = _get_die_result(dieA)
 	var roll_B = _get_die_result(dieB)
+	Signalbus.update_die_faces.emit(dieA, roll_A[0], dieB, roll_B[0])
 	var roll_total = roll_A[0] + roll_B[0]
 	var result = [roll_total, Enums.BATTING_RESULT]
 	# If roll results have a matching tier

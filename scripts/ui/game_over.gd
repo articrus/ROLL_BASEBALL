@@ -1,9 +1,9 @@
 extends Control
 @onready var infoText = {
-	"GameOver": $Panel/HBoxContainer/GameOver,
-	"PlayerPoints": $Panel/HBoxContainer/HomePoints,
-	"ComPoints": $Panel/HBoxContainer/VisitorPoints,
-	"Average": $Panel/HBoxContainer/AveragePoints
+	"GameOver": $HBoxContainer/GameOver,
+	"PlayerPoints": $HBoxContainer/HomePoints,
+	"ComPoints": $HBoxContainer/VisitorPoints,
+	"Average": $HBoxContainer/AveragePoints
 }
 
 func _display_info(home: int, visit: int, av: float, victory: bool) -> void:

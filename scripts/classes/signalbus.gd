@@ -20,7 +20,10 @@ signal team_selected(city: Enums.CITY)
 signal update_inning_info(strikeDC: int, specialDC: int)
 signal update_strikes(strikes: int)
 signal update_points(homeArray: Array[int], visitArray: Array[int])
-
-# Temporary Signals
 signal display_batting_result(result: String)
+
+# Dice Rolling
+signal update_die_faces(leftType: Enums.DIE_TYPES, leftResult: int, rightType: Enums.DIE_TYPES, rightResult: int)
+
+# Figure out with this one
 signal update_inning(inning: int)

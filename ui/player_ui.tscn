@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://kbcnj7hk78eo" path="res://ui/hud_components/result_text.tscn" id="7_g1ro4"]
 [ext_resource type="PackedScene" uid="uid://47ioydhmhpft" path="res://scenes/ui_scenes/game_over.tscn" id="7_hff70"]
 [ext_resource type="PackedScene" uid="uid://btxim5i06julr" path="res://ui/hud_components/scoreboard.tscn" id="8_f7sc3"]
+[ext_resource type="Texture2D" uid="uid://bpmuw1506raew" path="res://art/baseball_field/temp_diamond.png" id="10_b6i2q"]
 
 [node name="PlayerUI" type="Control" unique_id=258670629]
 layout_mode = 3
@@ -116,6 +117,56 @@ layout_mode = 1
 [node name="GameOver" parent="." unique_id=2139839966 instance=ExtResource("7_hff70")]
 visible = false
 layout_mode = 1
+
+[node name="Strike" type="Control" parent="." unique_id=247973743]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="Strike" unique_id=1584328034]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 0
+offset_left = 356.0
+offset_top = 549.0
+offset_right = 431.0
+offset_bottom = 624.0
+texture = ExtResource("10_b6i2q")
+expand_mode = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Strike/TextureRect" unique_id=2097666050]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.5
+offset_top = -31.0
+offset_right = 32.5
+offset_bottom = 31.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = -6
+alignment = 1
+
+[node name="Strike" type="RichTextLabel" parent="Strike/TextureRect/VBoxContainer" unique_id=1875359273]
+layout_mode = 2
+theme = ExtResource("5_lp0io")
+bbcode_enabled = true
+text = "[color=red]STRIKE[/color]"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+
+[node name="Label2" type="RichTextLabel" parent="Strike/TextureRect/VBoxContainer" unique_id=1924156094]
+layout_mode = 2
+theme = ExtResource("5_lp0io")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "7"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
 
 [connection signal="pressed" from="Bottom/HBoxContainer/DieTableButon" to="." method="_on_die_table_buton_pressed"]
 [connection signal="pressed" from="Bottom/HBoxContainer/StealTagButton" to="." method="_on_steal_tag_button_pressed"]

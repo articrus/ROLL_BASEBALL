@@ -24,19 +24,36 @@ alignment = 1
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 theme = ExtResource("2_54ch6")
-text = "Each dice number is tied to a tier, rolling two numbers with a matching tier can result in a home run, triple, or double"
+text = "Rolling two matching colors advances the bases by the following amounts"
 horizontal_alignment = 1
 autowrap_mode = 2
 
-[node name="ExplanationB" type="Label" parent="HBoxContainer" unique_id=701074068]
+[node name="ExplanationA2" type="RichTextLabel" parent="HBoxContainer" unique_id=222552109]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 theme = ExtResource("2_54ch6")
-text = "A regular roll's total must pass the strikeout DC in order to become a single. Otherwise it will result in a strikeout"
-horizontal_alignment = 1
+bbcode_enabled = true
+text = "[color=orange]HOME RUN (4 BASES)[/color]
+[color=blue]TRIPLE (3 BASES)[/color]
+[color=green]DOUBLE (2 BASES)[/color]
+[color=black]NONE (NO BONUS)[/color]"
+fit_content = true
+scroll_active = false
 autowrap_mode = 2
+horizontal_alignment = 1
+
+[node name="ExplanationB" type="RichTextLabel" parent="HBoxContainer" unique_id=436270959]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+theme = ExtResource("2_54ch6")
+bbcode_enabled = true
+text = "Otherwise the total must be greater than or equal to [color=red]STRIKE[/color] in order to become a single. Otherwise it will result in a [color=red]strikeout[/color]"
+fit_content = true
+autowrap_mode = 2
+horizontal_alignment = 1
 
 [node name="GridContainer" type="GridContainer" parent="HBoxContainer" unique_id=951558138]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 
@@ -70,6 +87,7 @@ custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 theme = ExtResource("2_54ch6")
 text = "Steals and Tag Outs are rolled with 2d6, and must pass the Special DC"
+horizontal_alignment = 1
 autowrap_mode = 2
 
 [node name="Close" type="Button" parent="HBoxContainer" unique_id=1746657956]
