@@ -6,6 +6,7 @@ extends Control
 @onready var die_table = $DiceTable
 @onready var gameOver = $GameOver
 @onready var resultLabel = $ResultText
+@onready var totalLabel = $TotalText
 # Temporary Nodes
 @onready var inning = $DebugDisplay/Inning
 # Export vars
@@ -23,6 +24,10 @@ func _roll_dice() -> void:
 func _display_result(result: String) -> void:
 	resultLabel.visible = true
 	resultLabel._set_text(result)
+
+func _display_die_total(total: int) -> void:
+	totalLabel.visible = true
+	totalLabel.set_text(str(total))
 
 func _change_left_die(die: Enums.DIE_TYPES) -> void:
 	left_die_type = die
@@ -80,6 +85,7 @@ func _connect_signals() -> void:
 	Signalbus.roll_button_pressed.connect(_roll_dice)
 	Signalbus.game_over.connect(_game_over)
 	Signalbus.display_batting_result.connect(_display_result)
+	Signalbus.display_die_total.connect(_display_die_total)
 	# Temporary display results
 	Signalbus.update_inning.connect(_update_inning)
 

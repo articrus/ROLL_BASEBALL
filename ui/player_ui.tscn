@@ -110,13 +110,16 @@ offset_top = -181.0
 offset_right = 148.0
 offset_bottom = -91.0
 
-[node name="DiceTable" parent="." unique_id=1740025211 instance=ExtResource("6_ykvpg")]
+[node name="TotalText" parent="." unique_id=1327960552 instance=ExtResource("7_g1ro4")]
 visible = false
 layout_mode = 1
-
-[node name="GameOver" parent="." unique_id=2139839966 instance=ExtResource("7_hff70")]
-visible = false
-layout_mode = 1
+offset_left = -37.0
+offset_top = 120.0
+offset_right = 38.0
+offset_bottom = 195.0
+theme_override_font_sizes/font_size = 50
+text = "16"
+vertical_alignment = 1
 
 [node name="Strike" type="Control" parent="." unique_id=247973743]
 anchors_preset = 0
@@ -167,6 +170,14 @@ text = "7"
 fit_content = true
 scroll_active = false
 horizontal_alignment = 1
+
+[node name="DiceTable" parent="." unique_id=1740025211 instance=ExtResource("6_ykvpg")]
+visible = false
+layout_mode = 1
+
+[node name="GameOver" parent="." unique_id=2139839966 instance=ExtResource("7_hff70")]
+visible = false
+layout_mode = 1
 
 [connection signal="pressed" from="Bottom/HBoxContainer/DieTableButon" to="." method="_on_die_table_buton_pressed"]
 [connection signal="pressed" from="Bottom/HBoxContainer/StealTagButton" to="." method="_on_steal_tag_button_pressed"]

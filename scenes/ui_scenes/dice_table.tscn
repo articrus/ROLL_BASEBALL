@@ -3,12 +3,16 @@
 [ext_resource type="Script" uid="uid://dshb4sshjtafl" path="res://scripts/ui/dice_table.gd" id="1_dg4h0"]
 [ext_resource type="Theme" uid="uid://cjwjb6wa1fg38" path="res://ui/themes/baseball_text.tres" id="2_54ch6"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dg4h0"]
+bg_color = Color(0, 0, 0, 0.8627451)
+
 [node name="DiceTable" type="Panel" unique_id=408282555]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_dg4h0")
 script = ExtResource("1_dg4h0")
 
 [node name="HBoxContainer" type="VBoxContainer" parent="." unique_id=2001006064]
@@ -20,15 +24,23 @@ grow_horizontal = 2
 theme_override_constants/separation = 11
 alignment = 1
 
-[node name="ExplanationA" type="Label" parent="HBoxContainer" unique_id=1894949148]
+[node name="Batting" type="Label" parent="HBoxContainer" unique_id=1894949148]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 theme = ExtResource("2_54ch6")
-text = "Rolling two matching colors advances the bases by the following amounts"
+text = "BATTING"
 horizontal_alignment = 1
 autowrap_mode = 2
 
-[node name="ExplanationA2" type="RichTextLabel" parent="HBoxContainer" unique_id=222552109]
+[node name="BattingExplain" type="Label" parent="HBoxContainer" unique_id=1363676427]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+theme = ExtResource("2_54ch6")
+text = "Rolling two matching colors instantly advances the batter by the following amount"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="ColorBreakdownBat" type="RichTextLabel" parent="HBoxContainer" unique_id=222552109]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 theme = ExtResource("2_54ch6")
@@ -42,7 +54,7 @@ scroll_active = false
 autowrap_mode = 2
 horizontal_alignment = 1
 
-[node name="ExplanationB" type="RichTextLabel" parent="HBoxContainer" unique_id=436270959]
+[node name="Strike" type="RichTextLabel" parent="HBoxContainer" unique_id=436270959]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 theme = ExtResource("2_54ch6")
@@ -52,35 +64,39 @@ fit_content = true
 autowrap_mode = 2
 horizontal_alignment = 1
 
-[node name="GridContainer" type="GridContainer" parent="HBoxContainer" unique_id=951558138]
-visible = false
-layout_mode = 2
-size_flags_horizontal = 4
-
-[node name="Tier" type="Label" parent="HBoxContainer/GridContainer" unique_id=1583218696]
+[node name="Pitching" type="Label" parent="HBoxContainer" unique_id=443107727]
+custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 theme = ExtResource("2_54ch6")
-text = "Tier | D4  |  D6  |    D8   |"
+text = "PITCHING"
+horizontal_alignment = 1
+autowrap_mode = 2
 
-[node name="HR" type="Label" parent="HBoxContainer/GridContainer" unique_id=396729554]
+[node name="ExplanationA4" type="Label" parent="HBoxContainer" unique_id=1569515315]
+custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 theme = ExtResource("2_54ch6")
-text = "HR   |  4  |   6   |    8    | Home Run"
+text = "When pitching, the results from matching colors is different"
+horizontal_alignment = 1
+autowrap_mode = 2
 
-[node name="TP" type="Label" parent="HBoxContainer/GridContainer" unique_id=831207099]
+[node name="ExplanationA6" type="Label" parent="HBoxContainer" unique_id=1080191578]
+custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 theme = ExtResource("2_54ch6")
-text = "TP   |  3  |   5   |  7, 6   | Triple"
+text = "When pitching, matching colors instantly strikes out the batter"
+horizontal_alignment = 1
+autowrap_mode = 2
 
-[node name="DB" type="Label" parent="HBoxContainer/GridContainer" unique_id=73997583]
+[node name="Strike2" type="RichTextLabel" parent="HBoxContainer" unique_id=380210240]
+custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 theme = ExtResource("2_54ch6")
-text = "DB   |  2  | 4, 3  |  5, 4   | Double"
-
-[node name="UT" type="Label" parent="HBoxContainer/GridContainer" unique_id=1584361248]
-layout_mode = 2
-theme = ExtResource("2_54ch6")
-text = "UT   |  1  | 1, 2  | 3, 2, 1 | Untiered/ None"
+bbcode_enabled = true
+text = "Otherwise the total must be greater than or equal to [color=red]STRIKE[/color] in order to become a single. Otherwise it will result in a [color=green]double[/color]"
+fit_content = true
+autowrap_mode = 2
+horizontal_alignment = 1
 
 [node name="ExplanationC" type="Label" parent="HBoxContainer" unique_id=1715960414]
 custom_minimum_size = Vector2(500, 0)

@@ -35,6 +35,7 @@ func _process_rolling(left_die: Enums.DIE_TYPES, right_die: Enums.DIE_TYPES) -> 
 		result = Dice._process_batting(left_die, right_die, strikeDC[current_inning])
 	var runs = 0
 	await Signalbus.resume_processing
+	Signalbus.display_die_total.emit(result[0])
 	match result[1]:
 		Enums.BATTING_RESULT.HOMERUN:
 			Signalbus.display_batting_result.emit("HOME RUN!")
