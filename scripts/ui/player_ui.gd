@@ -7,8 +7,9 @@ extends Control
 @onready var gameOver = $GameOver
 @onready var resultLabel = $ResultText
 @onready var totalLabel = $TotalText
-# Temporary Nodes
-@onready var inning = $DebugDisplay/Inning
+# DC Displays
+@onready var strikeDisplay = $Strike
+@onready var specialDisplay = $Special
 # Export vars
 @export var left_die_type: Enums.DIE_TYPES = Enums.DIE_TYPES.NORMAL
 @export var right_die_type: Enums.DIE_TYPES = Enums.DIE_TYPES.NORMAL
@@ -52,7 +53,6 @@ func _bind_die_tabs() -> void:
 	right_box.contactBtn.pressed.connect(_change_right_die.bind(Enums.DIE_TYPES.CONTACT))
 
 func _update_inning(newInning: int) -> void:
-	inning.text = "INNING: " + str(newInning)
 	if newInning % 2 == 0:
 		_change_sides(false)
 		_special_button(false)
@@ -61,6 +61,12 @@ func _update_inning(newInning: int) -> void:
 		_change_sides(true)
 		_special_button(true)
 		_disable_special(true)
+
+# Updates the DC Indicators
+func _update_dc_info(strike: int, special: int, inning: int) -> void:
+	strikeDisplay._set_dc_value(strike)
+	specialDisplay._set_dc_name(inning % 2 != 0)
+	specialDisplay._set_dc_value(special)
 
 # Enables the game over scene
 func _game_over(homePoints: int, visitPoints: int, average: float, victory: bool) -> void:
@@ -86,6 +92,7 @@ func _connect_signals() -> void:
 	Signalbus.game_over.connect(_game_over)
 	Signalbus.display_batting_result.connect(_display_result)
 	Signalbus.display_die_total.connect(_display_die_total)
+	Signalbus.update_inning_info.connect(_update_dc_info)
 	# Temporary display results
 	Signalbus.update_inning.connect(_update_inning)
 

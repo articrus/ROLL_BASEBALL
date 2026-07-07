@@ -70,28 +70,14 @@ grow_vertical = 0
 theme_override_constants/separation = 20
 alignment = 1
 
-[node name="DCInfo" type="Label" parent="Panel/InnerPanel/InfoContainer" unique_id=845235018]
-layout_mode = 2
-theme = ExtResource("2_d7rl5")
-theme_override_font_sizes/font_size = 24
-text = "Strike DC [0]"
-horizontal_alignment = 1
-
-[node name="Special" type="Label" parent="Panel/InnerPanel/InfoContainer" unique_id=1621615973]
-layout_mode = 2
-theme = ExtResource("2_d7rl5")
-theme_override_font_sizes/font_size = 24
-text = "Special DC [0]"
-horizontal_alignment = 1
-
 [node name="Strikes" type="Label" parent="Panel/InnerPanel/InfoContainer" unique_id=1726317109]
 layout_mode = 2
 theme = ExtResource("2_d7rl5")
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 32
 text = "Out [  ] [  ] [  ]"
 horizontal_alignment = 1
 
-[node name="Team Score" type="GridContainer" parent="Panel/InnerPanel" unique_id=353284021]
+[node name="TeamScore" type="GridContainer" parent="Panel/InnerPanel" unique_id=353284021]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.05
@@ -109,7 +95,7 @@ theme_override_constants/h_separation = 10
 theme_override_constants/v_separation = 10
 columns = 3
 
-[node name="EmptyA" type="Label" parent="Panel/InnerPanel/Team Score" unique_id=795837024]
+[node name="EmptyA" type="Label" parent="Panel/InnerPanel/TeamScore" unique_id=795837024]
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 6
@@ -119,23 +105,26 @@ theme_override_font_sizes/font_size = 25
 text = "HOME"
 horizontal_alignment = 1
 
-[node name="InningCount" type="Label" parent="Panel/InnerPanel/Team Score" unique_id=947343481]
+[node name="InningCount" type="RichTextLabel" parent="Panel/InnerPanel/TeamScore" unique_id=453061220]
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 6
 theme = ExtResource("2_d7rl5")
-theme_override_font_sizes/font_size = 25
-text = "[1] [2] [3] [4] [5] [6] [7] [8] [9]"
+bbcode_enabled = true
+text = "[1] [2] [3] [4] [5] [6] [7] [8] [9] "
+fit_content = true
+scroll_active = false
 horizontal_alignment = 1
 
-[node name="EmptyB" type="Label" parent="Panel/InnerPanel/Team Score" unique_id=787186165]
+[node name="EmptyB" type="Label" parent="Panel/InnerPanel/TeamScore" unique_id=787186165]
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 6
 theme = ExtResource("2_d7rl5")
 theme_override_font_sizes/font_size = 25
 
-[node name="HomeTeam" type="Label" parent="Panel/InnerPanel/Team Score" unique_id=719292334]
+[node name="HomeTeam" type="Label" parent="Panel/InnerPanel/TeamScore" unique_id=719292334]
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 6
@@ -144,16 +133,19 @@ theme_override_font_sizes/font_size = 25
 text = "HOME"
 horizontal_alignment = 1
 
-[node name="HomeScore" type="Label" parent="Panel/InnerPanel/Team Score" unique_id=738568395]
+[node name="HomeScore" type="RichTextLabel" parent="Panel/InnerPanel/TeamScore" unique_id=715735968]
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 6
 theme = ExtResource("2_d7rl5")
-theme_override_font_sizes/font_size = 25
+bbcode_enabled = true
 text = "[1] [2] [3] [4] [5] [6] [7] [8] [9] "
+fit_content = true
+scroll_active = false
 horizontal_alignment = 1
 
-[node name="HomeTotal" type="Label" parent="Panel/InnerPanel/Team Score" unique_id=1567727400]
+[node name="HomeTotal" type="Label" parent="Panel/InnerPanel/TeamScore" unique_id=1567727400]
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 6
@@ -162,7 +154,7 @@ theme_override_font_sizes/font_size = 25
 text = "[T]"
 horizontal_alignment = 1
 
-[node name="VisitorTeam" type="Label" parent="Panel/InnerPanel/Team Score" unique_id=1401923984]
+[node name="VisitorTeam" type="Label" parent="Panel/InnerPanel/TeamScore" unique_id=1401923984]
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 6
@@ -171,16 +163,19 @@ theme_override_font_sizes/font_size = 25
 text = "VISITOR"
 horizontal_alignment = 1
 
-[node name="VisitorScore" type="Label" parent="Panel/InnerPanel/Team Score" unique_id=742477465]
+[node name="VisitorScore" type="RichTextLabel" parent="Panel/InnerPanel/TeamScore" unique_id=69622048]
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 6
 theme = ExtResource("2_d7rl5")
-theme_override_font_sizes/font_size = 25
+bbcode_enabled = true
 text = "[1] [2] [3] [4] [5] [6] [7] [8] [9] "
+fit_content = true
+scroll_active = false
 horizontal_alignment = 1
 
-[node name="VisitorTotal" type="Label" parent="Panel/InnerPanel/Team Score" unique_id=2133004088]
+[node name="VisitorTotal" type="Label" parent="Panel/InnerPanel/TeamScore" unique_id=2133004088]
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 6

@@ -63,14 +63,7 @@ static func _get_die_result(die: Enums.DIE_TYPES) -> Array:
 			return [0, Enums.DICE_TIERS.UT]
 
 # Process the roll
-static func _process_roll(dieA: Enums.DIE_TYPES, dieB: Enums.DIE_TYPES, strikeDC: int, isBatting: bool) -> Array:
-	if isBatting:
-		return _process_batting(dieA, dieB, strikeDC)
-	else:
-		return _process_pitching(dieA, dieB, strikeDC)
-
-# Process the player's batting result 
-static func _process_batting(dieA: Enums.DIE_TYPES, dieB: Enums.DIE_TYPES, strikeDC: int) -> Array:
+static func _process_roll(dieA: Enums.DIE_TYPES, dieB: Enums.DIE_TYPES, strike: int, isBatting: bool) -> Array:
 	var roll_A = _get_die_result(dieA)
 	var roll_B = _get_die_result(dieB)
 	Signalbus.update_die_faces.emit(dieA, roll_A[0], dieB, roll_B[0])
@@ -78,45 +71,37 @@ static func _process_batting(dieA: Enums.DIE_TYPES, dieB: Enums.DIE_TYPES, strik
 	var result = [roll_total, Enums.BATTING_RESULT]
 	# If roll results have a matching tier
 	if(roll_A[1] == roll_B[1]):
-		match(roll_A[1]):
-			Enums.DICE_TIERS.HR:
-				result[1] = Enums.BATTING_RESULT.HOMERUN
-			Enums.DICE_TIERS.TP:
-				result[1] = Enums.BATTING_RESULT.TRIPLE
-			Enums.DICE_TIERS.DB:
-				result[1] = Enums.BATTING_RESULT.DOUBLE
-			# Untiered, needs to pass StrikeDC to get a single
-			Enums.DICE_TIERS.UT:
-				if(roll_total >= strikeDC):
-					result[1] = Enums.BATTING_RESULT.SINGLE
-				else:
-					result[1] = Enums.BATTING_RESULT.STRIKEOUT
-	else:
-		if(roll_total >= strikeDC):
-			result[1] = Enums.BATTING_RESULT.SINGLE
-		else:
-			result[1] = Enums.BATTING_RESULT.STRIKEOUT
-	return result
-
-static func _process_pitching(dieA: Enums.DIE_TYPES, dieB: Enums.DIE_TYPES, strikeDC: int) -> Array:
-	var roll_A = _get_die_result(dieA)
-	var roll_B = _get_die_result(dieB)
-	Signalbus.update_die_faces.emit(dieA, roll_A[0], dieB, roll_B[0])
-	var roll_total = roll_A[0] + roll_B[0]
-	var result = [roll_total, Enums.BATTING_RESULT]
-	# If roll results have a matching tier
-	if(roll_A[1] == roll_B[1]):
-		match(roll_A[1]):
-			Enums.DICE_TIERS.HR:
+		if !isBatting: 
+			if roll_A[1] != Enums.DICE_TIERS.UT: # If pitching, any matching colors is an instant strikeout
 				result[1] = Enums.BATTING_RESULT.STRIKEOUT
-			_:
-				if(roll_total >= strikeDC):
-					result[1] = Enums.BATTING_RESULT.STRIKEOUT
+			else: # If not colored
+				if(roll_total >= strike):
+					result[1] = Enums.BATTING_RESULT.SINGLE # If > strike, single
 				else:
-					result[1] = Enums.BATTING_RESULT.SINGLE
-	else:
-		if(roll_total >= strikeDC):
-			result[1] = Enums.BATTING_RESULT.STRIKEOUT
+					result[1] = Enums.BATTING_RESULT.DOUBLE # Else, double
 		else:
-			result[1] = Enums.BATTING_RESULT.SINGLE
+			match(roll_A[1]):
+				Enums.DICE_TIERS.HR:
+					result[1] = Enums.BATTING_RESULT.HOMERUN
+				Enums.DICE_TIERS.TP:
+					result[1] = Enums.BATTING_RESULT.TRIPLE
+				Enums.DICE_TIERS.DB:
+					result[1] = Enums.BATTING_RESULT.DOUBLE
+				# Untiered, needs to pass StrikeDC to get a single
+				Enums.DICE_TIERS.UT:
+					if(roll_total >= strike):
+						result[1] = Enums.BATTING_RESULT.SINGLE
+					else:
+						result[1] = Enums.BATTING_RESULT.STRIKEOUT
+	else: # Results to not have a matching tier/color
+		if !isBatting: # If pitching, check against the strike 
+			if(roll_total >= strike):
+				result[1] = Enums.BATTING_RESULT.SINGLE # If > strike, single
+			else:
+				result[1] = Enums.BATTING_RESULT.DOUBLE # Else, double
+		else: # If batting, check against the strike 
+			if(roll_total >= strike):
+				result[1] = Enums.BATTING_RESULT.SINGLE
+			else:
+				result[1] = Enums.BATTING_RESULT.STRIKEOUT
 	return result

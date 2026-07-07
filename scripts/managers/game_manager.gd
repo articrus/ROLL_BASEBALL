@@ -9,8 +9,8 @@ class_name GameManager
 # Inning Variables
 @export var current_inning: int = 1
 # DC Variables
-const strikeDC: Array[int] = [0, 6, 6, 6, 7, 7, 7, 7, 7, 7, 7]
-const specialDC: Array[int] = [0, 0, 0, 10, 10, 10, 10, 10, 10, 10, 10]
+const strikeDC: Array[int] = [0, 6, 6, 7, 7, 7, 8, 8, 8, 8, 9]
+const specialDC: Array[int] = [0, 8, 8, 8, 9, 9, 9, 10, 10, 10, 10]
 # Signals
 signal advance_bases(amount: int)
 signal strikeout
@@ -27,12 +27,7 @@ func _ready() -> void:
 # Process the roll and update the gamestate
 func _process_rolling(left_die: Enums.DIE_TYPES, right_die: Enums.DIE_TYPES) -> void:
 	Signalbus.disable_roll.emit(true)
-	# Fix the result grabber
-	var result
-	if current_inning % 2 == 0:
-		result = Dice._process_pitching(left_die, right_die, strikeDC[current_inning])
-	else:
-		result = Dice._process_batting(left_die, right_die, strikeDC[current_inning])
+	var result = Dice._process_roll(left_die, right_die, strikeDC[current_inning], current_inning % 2 != 0)
 	var runs = 0
 	await Signalbus.resume_processing
 	Signalbus.display_die_total.emit(result[0])
@@ -162,7 +157,7 @@ func _next_inning() -> void:
 	if current_inning > 9:
 		current_inning = 1
 	Signalbus.update_inning.emit(current_inning)
-	Signalbus.update_inning_info.emit(strikeDC[current_inning], specialDC[current_inning])
+	Signalbus.update_inning_info.emit(strikeDC[current_inning], specialDC[current_inning], current_inning)
 	Signalbus.disable_roll.emit(false)
 
 func _game_over() -> void:
@@ -186,7 +181,8 @@ func _game_start() -> void:
 	strikeouts = 0
 	current_inning = 1
 	Signalbus.update_points.emit(homePointsArray, visitPointsArray)
-	Signalbus.update_inning_info.emit(strikeDC[current_inning], specialDC[current_inning])
+	Signalbus.update_inning_info.emit(strikeDC[current_inning], specialDC[current_inning], current_inning)
+	Signalbus.update_inning.emit(current_inning)
 
 func _connect_signals() -> void:
 	Signalbus.start_game.connect(_game_start)

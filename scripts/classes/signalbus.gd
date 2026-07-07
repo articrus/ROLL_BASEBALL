@@ -17,7 +17,7 @@ signal team_highlight(city: Enums.CITY)
 signal team_selected(city: Enums.CITY)
 
 # Scoreboard Signals
-signal update_inning_info(strikeDC: int, specialDC: int)
+signal update_inning_info(strikeDC: int, specialDC: int, inning: int)
 signal update_strikes(strikes: int)
 signal update_points(homeArray: Array[int], visitArray: Array[int])
 signal display_batting_result(result: String)

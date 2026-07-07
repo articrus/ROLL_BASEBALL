@@ -1,13 +1,12 @@
 extends Control
 # Info labels
-@onready var strikeDCLabel = $Panel/InnerPanel/InfoContainer/DCInfo
-@onready var specialDClabel = $Panel/InnerPanel/InfoContainer/Special
 @onready var strikesLabel = $Panel/InnerPanel/InfoContainer/Strikes
+@onready var inningCount = $Panel/InnerPanel/TeamScore/InningCount
 # Score Labels
-@onready var homePoints = $"Panel/InnerPanel/Team Score/HomeScore"
-@onready var homeTotal = $"Panel/InnerPanel/Team Score/HomeTotal"
-@onready var visitorPoints = $"Panel/InnerPanel/Team Score/VisitorScore"
-@onready var visitorTotal = $"Panel/InnerPanel/Team Score/VisitorTotal"
+@onready var homePoints = $Panel/InnerPanel/TeamScore/HomeScore
+@onready var homeTotal = $Panel/InnerPanel/TeamScore/HomeTotal
+@onready var visitorPoints = $Panel/InnerPanel/TeamScore/VisitorScore
+@onready var visitorTotal = $Panel/InnerPanel/TeamScore/VisitorTotal
 
 func _ready() -> void:
 	_connect_signals()
@@ -28,11 +27,6 @@ func _update_score(home: Array[int], visit: Array[int]) -> void:
 	homeTotal.text = "[" + str(homePT) + "]"
 	visitorTotal.text = "[" + str(visitPT) + "]"
 
-# Update info label
-func _update_info(strikeDC: int, specialDC: int) -> void:
-	strikeDCLabel.text = "Strike DC [" + str(strikeDC) + "]"
-	specialDClabel.text = "Special DC [" + str(specialDC) + "]"
-
 # Updates the strikeouts on the scoreboard
 func _update_strikeouts(strikes: int) -> void:
 	match strikes:
@@ -47,7 +41,17 @@ func _update_strikeouts(strikes: int) -> void:
 		_: # Failsafe
 			strikesLabel.text = "Out [ ] [ ] [ ]"
 
+# Highlight the current inning
+func _update_inning_display(inning: int) -> void:
+	var inningText = ""
+	for i in range(1, 9):
+		if i == inning:
+			inningText += "[color=blue][" + str(i) + "][/color] "
+		else:
+			inningText += "[" + str(i) + "] "
+	inningCount.text = inningText
+
 func _connect_signals() -> void:
 	Signalbus.update_strikes.connect(_update_strikeouts)
-	Signalbus.update_inning_info.connect(_update_info)
 	Signalbus.update_points.connect(_update_score)
+	Signalbus.update_inning.connect(_update_inning_display)
