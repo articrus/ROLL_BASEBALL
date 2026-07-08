@@ -28,11 +28,12 @@ alignment = 1
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 theme = ExtResource("2_54ch6")
+theme_override_font_sizes/font_size = 32
 text = "BATTING"
 horizontal_alignment = 1
 autowrap_mode = 2
 
-[node name="BattingExplain" type="Label" parent="HBoxContainer" unique_id=1363676427]
+[node name="BatA" type="Label" parent="HBoxContainer" unique_id=1363676427]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 theme = ExtResource("2_54ch6")
@@ -40,7 +41,7 @@ text = "Rolling two matching colors instantly advances the batter by the followi
 horizontal_alignment = 1
 autowrap_mode = 2
 
-[node name="ColorBreakdownBat" type="RichTextLabel" parent="HBoxContainer" unique_id=222552109]
+[node name="BatB" type="RichTextLabel" parent="HBoxContainer" unique_id=222552109]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 theme = ExtResource("2_54ch6")
@@ -48,18 +49,19 @@ bbcode_enabled = true
 text = "[color=orange]HOME RUN (4 BASES)[/color]
 [color=blue]TRIPLE (3 BASES)[/color]
 [color=green]DOUBLE (2 BASES)[/color]
-[color=black]NONE (NO BONUS)[/color]"
+[color=purple]NONE (NO BONUS)[/color]"
 fit_content = true
 scroll_active = false
 autowrap_mode = 2
 horizontal_alignment = 1
 
-[node name="Strike" type="RichTextLabel" parent="HBoxContainer" unique_id=436270959]
+[node name="BatC" type="RichTextLabel" parent="HBoxContainer" unique_id=436270959]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 theme = ExtResource("2_54ch6")
 bbcode_enabled = true
-text = "Otherwise the total must be greater than or equal to [color=red]STRIKE[/color] in order to become a single. Otherwise it will result in a [color=red]strikeout[/color]"
+text = "Otherwise, the roll total must be greater than or equal to [color=red]STRIKE[/color] to become a [color=purple]SINGLE[/color]. 
+Otherwise it will result in a [color=red]STRIKEOUT[/color]"
 fit_content = true
 autowrap_mode = 2
 horizontal_alignment = 1
@@ -68,43 +70,69 @@ horizontal_alignment = 1
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 theme = ExtResource("2_54ch6")
+theme_override_font_sizes/font_size = 32
 text = "PITCHING"
 horizontal_alignment = 1
 autowrap_mode = 2
 
-[node name="ExplanationA4" type="Label" parent="HBoxContainer" unique_id=1569515315]
-custom_minimum_size = Vector2(500, 0)
-layout_mode = 2
-theme = ExtResource("2_54ch6")
-text = "When pitching, the results from matching colors is different"
-horizontal_alignment = 1
-autowrap_mode = 2
-
-[node name="ExplanationA6" type="Label" parent="HBoxContainer" unique_id=1080191578]
-custom_minimum_size = Vector2(500, 0)
-layout_mode = 2
-theme = ExtResource("2_54ch6")
-text = "When pitching, matching colors instantly strikes out the batter"
-horizontal_alignment = 1
-autowrap_mode = 2
-
-[node name="Strike2" type="RichTextLabel" parent="HBoxContainer" unique_id=380210240]
+[node name="PitchA" type="RichTextLabel" parent="HBoxContainer" unique_id=1908940303]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 theme = ExtResource("2_54ch6")
 bbcode_enabled = true
-text = "Otherwise the total must be greater than or equal to [color=red]STRIKE[/color] in order to become a single. Otherwise it will result in a [color=green]double[/color]"
+text = "When pitching, any matching colors results in a [color=red]STRIKEOUT[/color]"
 fit_content = true
 autowrap_mode = 2
 horizontal_alignment = 1
 
-[node name="ExplanationC" type="Label" parent="HBoxContainer" unique_id=1715960414]
+[node name="PitchB" type="RichTextLabel" parent="HBoxContainer" unique_id=380210240]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 theme = ExtResource("2_54ch6")
-text = "Steals and Tag Outs are rolled with 2d6, and must pass the Special DC"
+bbcode_enabled = true
+text = "Otherwise the total must be greater than or equal to [color=red]STRIKE[/color] in order to become a [color=purple]SINGLE[/color]. Otherwise it will result in a [color=green]DOUBLE[/color]"
+fit_content = true
+autowrap_mode = 2
+horizontal_alignment = 1
+
+[node name="Special" type="Label" parent="HBoxContainer" unique_id=2072757668]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+theme = ExtResource("2_54ch6")
+theme_override_font_sizes/font_size = 32
+text = "SPECIAL"
 horizontal_alignment = 1
 autowrap_mode = 2
+
+[node name="SpecialA" type="RichTextLabel" parent="HBoxContainer" unique_id=792612961]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+theme = ExtResource("2_54ch6")
+bbcode_enabled = true
+text = "[color=blue]STEAL[/color] and [color=blue]TAG OUT[/color] are rolled with 2 Six Sided Die, and must be greater than or eqyal to [color=blue]SPECIAL[/color]"
+fit_content = true
+autowrap_mode = 2
+horizontal_alignment = 1
+
+[node name="SpecialB" type="RichTextLabel" parent="HBoxContainer" unique_id=1161684298]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+theme = ExtResource("2_54ch6")
+bbcode_enabled = true
+text = "A successful [color=blue]STEAL[/color] advances the batter by 1 base, otherwise they are [color=red]OUT[/color]"
+fit_content = true
+autowrap_mode = 2
+horizontal_alignment = 1
+
+[node name="SpecialC" type="RichTextLabel" parent="HBoxContainer" unique_id=1672951851]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+theme = ExtResource("2_54ch6")
+bbcode_enabled = true
+text = "A successful [color=blue]TAG OUT[/color] [color=red]OUTS[/color] the opposing player. Otherwise they advance 1 base"
+fit_content = true
+autowrap_mode = 2
+horizontal_alignment = 1
 
 [node name="Close" type="Button" parent="HBoxContainer" unique_id=1746657956]
 layout_mode = 2

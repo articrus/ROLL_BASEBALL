@@ -7,6 +7,8 @@ extends Control
 @onready var homeTotal = $Panel/InnerPanel/TeamScore/HomeTotal
 @onready var visitorPoints = $Panel/InnerPanel/TeamScore/VisitorScore
 @onready var visitorTotal = $Panel/InnerPanel/TeamScore/VisitorTotal
+# Inning reference
+var inningRef = 1
 
 func _ready() -> void:
 	_connect_signals()
@@ -20,8 +22,12 @@ func _update_score(home: Array[int], visit: Array[int]) -> void:
 	for i in range(1, 9):
 		homePT += home[i]
 		visitPT += visit[i]
-		homeText += "[" + str(home[i]) + "] "
-		visitText += "[" + str(visit[i]) + "] "
+		if i == inningRef:
+			homeText += "[color=blue][" + str(home[i]) + "][/color] "
+			visitText += "[color=blue][" + str(visit[i]) + "][/color] "
+		else:
+			homeText += "[" + str(home[i]) + "] "
+			visitText += "[" + str(visit[i]) + "] "
 	homePoints.text = homeText
 	visitorPoints.text = visitText
 	homeTotal.text = "[" + str(homePT) + "]"
@@ -44,6 +50,7 @@ func _update_strikeouts(strikes: int) -> void:
 # Highlight the current inning
 func _update_inning_display(inning: int) -> void:
 	var inningText = ""
+	inningRef = inning
 	for i in range(1, 9):
 		if i == inning:
 			inningText += "[color=blue][" + str(i) + "][/color] "
