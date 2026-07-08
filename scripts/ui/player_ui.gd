@@ -93,7 +93,6 @@ func _connect_signals() -> void:
 	Signalbus.display_batting_result.connect(_display_result)
 	Signalbus.display_die_total.connect(_display_die_total)
 	Signalbus.update_inning_info.connect(_update_dc_info)
-	# Temporary display results
 	Signalbus.update_inning.connect(_update_inning)
 
 func _on_die_table_buton_pressed() -> void:

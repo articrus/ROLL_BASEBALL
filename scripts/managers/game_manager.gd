@@ -82,8 +82,11 @@ func _furthest_occupied_base() -> int:
 func _steal_base() -> int:
 	var base = _furthest_occupied_base()
 	if base == -1: return 0 # Prevent stealing with no players on bases
+	var result = Dice._process_special()
+	await Signalbus.resume_processing
+	Signalbus.display_die_total.emit(result)
 	bases[base] = false
-	if Dice._roll_die(6) + Dice._roll_die(6) >= specialDC[current_inning]:
+	if result >= specialDC[current_inning]:
 		advance_one_base.emit(base)
 		if base < 2:
 			bases[base + 1] = true # Advance to next base
@@ -102,8 +105,10 @@ func _steal_base() -> int:
 func _tag_out() -> int:
 	var base = _furthest_occupied_base()
 	if base == -1: return 0 # Prevent tagging out with no players on bases
+	var result = Dice._process_special()
+	await Signalbus.resume_processing
 	bases[base] = false
-	if Dice._roll_die(6) + Dice._roll_die(6) >= specialDC[current_inning]:
+	if result >= specialDC[current_inning]:
 		strike_one_base.emit(base)
 		Signalbus.display_batting_result.emit("TAG OUT!")
 		strikeouts += 1
@@ -121,10 +126,10 @@ func _tag_out() -> int:
 
 func _special_pressed() -> void:
 	if current_inning % 2 == 0:
-		visitPointsArray[current_inning] += _tag_out()
+		visitPointsArray[current_inning] += await _tag_out()
 		_check_strikes()
 	else:
-		homePointsArray[current_inning] += _steal_base()
+		homePointsArray[current_inning] += await _steal_base()
 		_check_strikes()
 	_toggle_special_buttons()
 	Signalbus.update_points.emit(homePointsArray, visitPointsArray)

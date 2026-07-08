@@ -65,6 +65,7 @@ func _set_random_face(die: TextureRect, dieType: Enums.DIE_TYPES) -> void:
 			roll = randi_range(1, 8)
 			die.texture = d8Textures[roll]
 
+# Animate the dice rolling, taking the die and result to assign the apropriate face
 func _display_die_results(leftDie: Enums.DIE_TYPES, leftResult: int, rightDie: Enums.DIE_TYPES, rightResult: int) -> void:
 	_animate_die(left_die, leftDie)
 	await _animate_die(right_die, rightDie).finished

@@ -18,7 +18,7 @@ func _login_user(email: String, password: String) -> void:
 		var profile = await AuthenticationManager._load_profile()
 		Signalbus.user_login.emit()
 	else:
-		_set_warning_text("ERROR IN LOGIN", true)
+		_process_error(result, true)
 
 # Attempts to register the user to a new account
 func _sign_up_user(email: String, password: String) -> void:
@@ -26,10 +26,10 @@ func _sign_up_user(email: String, password: String) -> void:
 		return # If signup info failed don't execute next steps
 	var result = await AuthenticationManager._sign_up(email, password)
 	if result.ok:
-		print("Account created successfully!")
+		_set_warning_text("Email confirmation sent!", false)
 		Signalbus.user_login.emit()
 	else:
-		_set_warning_text("ERROR IN SIGNUP", false)
+		_process_error(result, false)
 
 # Verfifies the entered information
 func _verify_info(email: String, password: String, isLogin: bool) -> bool:
@@ -38,6 +38,18 @@ func _verify_info(email: String, password: String, isLogin: bool) -> bool:
 		_set_warning_text("Please fill out both fields", isLogin)
 		return false
 	return true
+
+# Processes the error generated from logging in
+func _process_error(result: Dictionary, isLogin: bool) -> void:
+	var rawError = result.get("error", "")
+	var toDisplay = "Something went wrong, please try again"
+	if "Invalid login credentials" in rawError:
+		toDisplay = "Incorrect email or password"
+	elif "Email not confirmed" in rawError:
+		toDisplay = "Please confirm your email"
+	elif "missing email" in rawError:
+		toDisplay = "Please enter your email"
+	_set_warning_text(toDisplay, isLogin)
 
 # Sets the warning text, for invalid login/sign up attempts
 func _set_warning_text(warning: String, isLogin: bool) -> void:

@@ -105,3 +105,10 @@ static func _process_roll(dieA: Enums.DIE_TYPES, dieB: Enums.DIE_TYPES, strike: 
 			else:
 				result[1] = Enums.BATTING_RESULT.STRIKEOUT
 	return result
+
+# Process the rolling of the special
+static func _process_special() -> int:
+	var roll_A = _roll_d6()
+	var roll_B = _roll_d6()
+	Signalbus.update_die_faces.emit(Enums.DIE_TYPES.NORMAL, roll_A[0], Enums.DIE_TYPES.NORMAL, roll_B[0])
+	return roll_A[0] + roll_B[0]
