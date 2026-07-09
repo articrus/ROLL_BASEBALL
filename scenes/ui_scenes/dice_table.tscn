@@ -21,7 +21,7 @@ anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
-theme_override_constants/separation = 11
+theme_override_constants/separation = 7
 alignment = 1
 
 [node name="Batting" type="Label" parent="HBoxContainer" unique_id=1894949148]
@@ -109,7 +109,7 @@ custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 theme = ExtResource("2_54ch6")
 bbcode_enabled = true
-text = "[color=blue]STEAL[/color] and [color=blue]TAG OUT[/color] are rolled with 2 Six Sided Die, and must be greater than or eqyal to [color=blue]SPECIAL[/color]"
+text = "[color=blue]STEAL[/color] and [color=blue]TAG OUT[/color] are rolled with 2 Normal Die, and must be greater than or eqyal to [color=blue]SPECIAL[/color]"
 fit_content = true
 autowrap_mode = 2
 horizontal_alignment = 1
@@ -130,6 +130,27 @@ layout_mode = 2
 theme = ExtResource("2_54ch6")
 bbcode_enabled = true
 text = "A successful [color=blue]TAG OUT[/color] [color=red]OUTS[/color] the opposing player. Otherwise they advance 1 base"
+fit_content = true
+autowrap_mode = 2
+horizontal_alignment = 1
+
+[node name="Dice" type="Label" parent="HBoxContainer" unique_id=1185098673]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+theme = ExtResource("2_54ch6")
+theme_override_font_sizes/font_size = 32
+text = "DIE BREAKDOWN"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Die" type="RichTextLabel" parent="HBoxContainer" unique_id=2018967272]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+theme = ExtResource("2_54ch6")
+bbcode_enabled = true
+text = "Power (Triangle): [color=purple]1[/color]-[color=green]2[/color]-[color=blue]3[/color]-[color=orange]4[/color]
+Normal (Square): [color=purple]1[/color]-[color=purple]2[/color]-[color=green]3[/color]-[color=green]4[/color]-[color=blue]5[/color]-[color=orange]6[/color]
+Contact (Diamond): [color=purple]1[/color]-[color=purple]2[/color]-[color=purple]3[/color]-[color=green]4[/color]-[color=green]5[/color]-[color=blue]6[/color]-[color=blue]7[/color]-[color=orange]8[/color]"
 fit_content = true
 autowrap_mode = 2
 horizontal_alignment = 1
