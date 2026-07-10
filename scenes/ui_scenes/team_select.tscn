@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://cxfbdbwh28mjh" path="res://scripts/ui/team_select.gd" id="1_cf774"]
 [ext_resource type="Theme" uid="uid://cjwjb6wa1fg38" path="res://ui/themes/baseball_text.tres" id="2_icgwg"]
 [ext_resource type="PackedScene" uid="uid://dx1ic4fwo8od7" path="res://ui/hud_components/team_button.tscn" id="2_oqbh2"]
-[ext_resource type="Texture2D" uid="uid://clnic4lhnmclh" path="res://art/actors/TEMP_player.png" id="4_85u45"]
 
 [node name="TeamSelect" type="Panel" unique_id=296525844]
 anchors_preset = 15
@@ -31,7 +30,6 @@ custom_minimum_size = Vector2(300, 300)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture = ExtResource("4_85u45")
 expand_mode = 2
 
 [node name="TeamInfo" type="VBoxContainer" parent="VBoxContainer" unique_id=769238852]

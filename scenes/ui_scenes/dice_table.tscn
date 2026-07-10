@@ -15,33 +15,38 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_dg4h0")
 script = ExtResource("1_dg4h0")
 
-[node name="HBoxContainer" type="VBoxContainer" parent="." unique_id=2001006064]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1851751483]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
+grow_vertical = 0
 theme_override_constants/separation = 7
 alignment = 1
 
-[node name="Batting" type="Label" parent="HBoxContainer" unique_id=1894949148]
-custom_minimum_size = Vector2(500, 0)
+[node name="Batting" type="Button" parent="VBoxContainer" unique_id=327990500]
+custom_minimum_size = Vector2(500, 50)
 layout_mode = 2
 theme = ExtResource("2_54ch6")
 theme_override_font_sizes/font_size = 32
 text = "BATTING"
-horizontal_alignment = 1
 autowrap_mode = 2
 
-[node name="BatA" type="Label" parent="HBoxContainer" unique_id=1363676427]
+[node name="BattingBox" type="VBoxContainer" parent="VBoxContainer" unique_id=930769873]
+visible = false
+layout_mode = 2
+
+[node name="BatA" type="Label" parent="VBoxContainer/BattingBox" unique_id=1363676427]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 theme = ExtResource("2_54ch6")
-text = "Rolling two matching colors instantly advances the batter by the following amount"
+text = "Rolling two matching colors instantly advances 
+the batter by the following amount"
 horizontal_alignment = 1
-autowrap_mode = 2
+autowrap_mode = 3
 
-[node name="BatB" type="RichTextLabel" parent="HBoxContainer" unique_id=222552109]
+[node name="BatB" type="RichTextLabel" parent="VBoxContainer/BattingBox" unique_id=222552109]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 theme = ExtResource("2_54ch6")
@@ -55,95 +60,110 @@ scroll_active = false
 autowrap_mode = 2
 horizontal_alignment = 1
 
-[node name="BatC" type="RichTextLabel" parent="HBoxContainer" unique_id=436270959]
+[node name="BatC" type="RichTextLabel" parent="VBoxContainer/BattingBox" unique_id=436270959]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 theme = ExtResource("2_54ch6")
 bbcode_enabled = true
-text = "Otherwise, the roll total must be greater than or equal to [color=red]STRIKE[/color] to become a [color=purple]SINGLE[/color]. 
+text = "Otherwise, the roll total must be greater than 
+or equal to [color=red]STRIKE[/color] to become a [color=purple]SINGLE[/color]. 
 Otherwise it will result in a [color=red]STRIKEOUT[/color]"
 fit_content = true
 autowrap_mode = 2
 horizontal_alignment = 1
 
-[node name="Pitching" type="Label" parent="HBoxContainer" unique_id=443107727]
-custom_minimum_size = Vector2(500, 0)
+[node name="Pitching" type="Button" parent="VBoxContainer" unique_id=1082854135]
+custom_minimum_size = Vector2(500, 50)
 layout_mode = 2
 theme = ExtResource("2_54ch6")
 theme_override_font_sizes/font_size = 32
 text = "PITCHING"
-horizontal_alignment = 1
 autowrap_mode = 2
 
-[node name="PitchA" type="RichTextLabel" parent="HBoxContainer" unique_id=1908940303]
+[node name="PitchingBox" type="VBoxContainer" parent="VBoxContainer" unique_id=673830448]
+visible = false
+layout_mode = 2
+
+[node name="PitchA" type="RichTextLabel" parent="VBoxContainer/PitchingBox" unique_id=1908940303]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 theme = ExtResource("2_54ch6")
 bbcode_enabled = true
-text = "When pitching, any matching colors results in a [color=red]STRIKEOUT[/color]"
+text = "When pitching, any matching colors 
+results in a [color=red]STRIKEOUT[/color]"
 fit_content = true
 autowrap_mode = 2
 horizontal_alignment = 1
 
-[node name="PitchB" type="RichTextLabel" parent="HBoxContainer" unique_id=380210240]
+[node name="PitchB" type="RichTextLabel" parent="VBoxContainer/PitchingBox" unique_id=380210240]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 theme = ExtResource("2_54ch6")
 bbcode_enabled = true
-text = "Otherwise the total must be greater than or equal to [color=red]STRIKE[/color] in order to become a [color=purple]SINGLE[/color]. Otherwise it will result in a [color=green]DOUBLE[/color]"
+text = "Otherwise the total must be greater than 
+or equal to [color=red]STRIKE[/color] in order to become a [color=purple]SINGLE[/color]. 
+Otherwise it will result in a [color=green]DOUBLE[/color]"
 fit_content = true
 autowrap_mode = 2
 horizontal_alignment = 1
 
-[node name="Special" type="Label" parent="HBoxContainer" unique_id=2072757668]
-custom_minimum_size = Vector2(500, 0)
+[node name="Special" type="Button" parent="VBoxContainer" unique_id=1032773282]
+custom_minimum_size = Vector2(500, 50)
 layout_mode = 2
 theme = ExtResource("2_54ch6")
 theme_override_font_sizes/font_size = 32
 text = "SPECIAL"
-horizontal_alignment = 1
 autowrap_mode = 2
 
-[node name="SpecialA" type="RichTextLabel" parent="HBoxContainer" unique_id=792612961]
+[node name="SpecialBox" type="VBoxContainer" parent="VBoxContainer" unique_id=604377356]
+visible = false
+layout_mode = 2
+
+[node name="SpecialA" type="RichTextLabel" parent="VBoxContainer/SpecialBox" unique_id=792612961]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 theme = ExtResource("2_54ch6")
 bbcode_enabled = true
-text = "[color=blue]STEAL[/color] and [color=blue]TAG OUT[/color] are rolled with 2 Normal Die, and must be greater than or eqyal to [color=blue]SPECIAL[/color]"
+text = "[color=blue]STEAL[/color] and [color=blue]TAG OUT[/color] are rolled with 2 Normal Die,
+ and must be greater than or eqyal to [color=blue]SPECIAL[/color]"
 fit_content = true
 autowrap_mode = 2
 horizontal_alignment = 1
 
-[node name="SpecialB" type="RichTextLabel" parent="HBoxContainer" unique_id=1161684298]
+[node name="SpecialB" type="RichTextLabel" parent="VBoxContainer/SpecialBox" unique_id=1161684298]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 theme = ExtResource("2_54ch6")
 bbcode_enabled = true
-text = "A successful [color=blue]STEAL[/color] advances the batter by 1 base, otherwise they are [color=red]OUT[/color]"
+text = "A successful [color=blue]STEAL[/color] advances the batter by 1 [color=purple](SINGLE)[/color]. Otherwise they are [color=red]OUT[/color]"
 fit_content = true
 autowrap_mode = 2
 horizontal_alignment = 1
 
-[node name="SpecialC" type="RichTextLabel" parent="HBoxContainer" unique_id=1672951851]
+[node name="SpecialC" type="RichTextLabel" parent="VBoxContainer/SpecialBox" unique_id=1672951851]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 theme = ExtResource("2_54ch6")
 bbcode_enabled = true
-text = "A successful [color=blue]TAG OUT[/color] [color=red]OUTS[/color] the opposing player. Otherwise they advance 1 base"
+text = "A successful [color=blue]TAG OUT[/color] [color=red]OUTS[/color] the opposing player.
+ Otherwise they advance 1 base"
 fit_content = true
 autowrap_mode = 2
 horizontal_alignment = 1
 
-[node name="Dice" type="Label" parent="HBoxContainer" unique_id=1185098673]
-custom_minimum_size = Vector2(500, 0)
+[node name="Dice" type="Button" parent="VBoxContainer" unique_id=927899899]
+custom_minimum_size = Vector2(500, 50)
 layout_mode = 2
 theme = ExtResource("2_54ch6")
 theme_override_font_sizes/font_size = 32
 text = "DIE BREAKDOWN"
-horizontal_alignment = 1
 autowrap_mode = 2
 
-[node name="Die" type="RichTextLabel" parent="HBoxContainer" unique_id=2018967272]
+[node name="DiceBox" type="VBoxContainer" parent="VBoxContainer" unique_id=710724774]
+visible = false
+layout_mode = 2
+
+[node name="Die" type="RichTextLabel" parent="VBoxContainer/DiceBox" unique_id=2018967272]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 theme = ExtResource("2_54ch6")
@@ -155,9 +175,11 @@ fit_content = true
 autowrap_mode = 2
 horizontal_alignment = 1
 
-[node name="Close" type="Button" parent="HBoxContainer" unique_id=1746657956]
+[node name="Close" type="Button" parent="VBoxContainer" unique_id=1746657956]
+custom_minimum_size = Vector2(500, 50)
 layout_mode = 2
 theme = ExtResource("2_54ch6")
+theme_override_font_sizes/font_size = 32
 text = "Close"
 
-[connection signal="pressed" from="HBoxContainer/Close" to="." method="_on_close_pressed"]
+[connection signal="pressed" from="VBoxContainer/Close" to="." method="_on_close_pressed"]

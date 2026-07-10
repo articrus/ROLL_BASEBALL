@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://b4ljywddrkucl" path="res://ui/player_ui.tscn" id="2_onqr8"]
 [ext_resource type="Texture2D" uid="uid://cidvptu3gbprq" path="res://art/baseball_field/field.png" id="2_utbpp"]
 [ext_resource type="Script" uid="uid://b0nauup61hnbc" path="res://scripts/managers/players_manager.gd" id="2_y3j0m"]
-[ext_resource type="Texture2D" uid="uid://bpmuw1506raew" path="res://art/baseball_field/temp_diamond.png" id="3_kk2rg"]
 [ext_resource type="PackedScene" uid="uid://dnfd08q1sg4vo" path="res://scenes/ui_scenes/team_select.tscn" id="3_ycayy"]
 
 [node name="GameScene" type="Node2D" unique_id=1578163720]
@@ -26,31 +25,26 @@ texture = ExtResource("2_b5spy")
 position = Vector2(0, -10)
 script = ExtResource("1_bw6k5")
 
-[node name="Home" type="Sprite2D" parent="Bases" unique_id=1691883253]
+[node name="Home" type="Marker2D" parent="Bases" unique_id=1218090844]
 position = Vector2(0, 124)
-texture = ExtResource("3_kk2rg")
 
-[node name="First" type="Sprite2D" parent="Bases" unique_id=296011157]
+[node name="First" type="Marker2D" parent="Bases" unique_id=1243472602]
 position = Vector2(196, 20)
-texture = ExtResource("3_kk2rg")
 
-[node name="Second" type="Sprite2D" parent="Bases" unique_id=296594325]
+[node name="Second" type="Marker2D" parent="Bases" unique_id=1521722588]
 position = Vector2(0, -46)
-texture = ExtResource("3_kk2rg")
 
-[node name="Third" type="Sprite2D" parent="Bases" unique_id=623747385]
+[node name="Third" type="Marker2D" parent="Bases" unique_id=1841771927]
 position = Vector2(-202, 24)
-texture = ExtResource("3_kk2rg")
 
-[node name="Pitch" type="Sprite2D" parent="Bases" unique_id=1453338358]
+[node name="Pitch" type="Marker2D" parent="Bases" unique_id=1369357329]
 position = Vector2(0, 16)
-texture = ExtResource("3_kk2rg")
 
 [node name="Out" type="Marker2D" parent="Bases" unique_id=220167196]
 position = Vector2(-400, 100)
 
 [node name="Score" type="Marker2D" parent="Bases" unique_id=1436831474]
-position = Vector2(155, 200)
+position = Vector2(291, 325)
 
 [node name="Spawn" type="Marker2D" parent="Bases" unique_id=1093195683]
 position = Vector2(0, 180)

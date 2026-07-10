@@ -67,3 +67,10 @@ const CITY_SECOND_COLORS = {
 	CITY.DEN: Color(1.0, 0.624, 0.267, 1.0),
 	CITY.NY: Color(0.831, 0.263, 0.0, 1.0),
 }
+
+enum RULES {
+	BATTING,
+	PITCHING,
+	SPECIAL,
+	DICE
+}

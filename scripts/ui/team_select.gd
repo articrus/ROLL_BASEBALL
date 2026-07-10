@@ -19,22 +19,23 @@ extends Control
 # Team Logos
 @onready var teamLogos = {
 	Enums.CITY.MTL: load("res://art/logos/baristas-512x512.png"),
-	Enums.CITY.TOR: load("res://art/logos/baristas-512x512.png"),
+	Enums.CITY.TOR: load("res://art/logos/runners-512x512.png"),
 	Enums.CITY.MIA: load("res://art/logos/crocodiles-512x512.png"),
-	Enums.CITY.SAJOS: load("res://art/logos/baristas-512x512.png"),
+	Enums.CITY.SAJOS: load("res://art/logos/chippers-512x512.png"),
 	Enums.CITY.LA: load("res://art/logos/surfers-512x512.png"),
-	Enums.CITY.CHI: load("res://art/logos/baristas-512x512.png"),
-	Enums.CITY.BOS: load("res://art/logos/baristas-512x512.png"),
+	Enums.CITY.CHI: load("res://art/logos/niners-512x512.png"),
+	Enums.CITY.BOS: load("res://art/logos/climbers-512x512.png"),
 	Enums.CITY.SAFRA: load("res://art/logos/seals-512x512.png"),
-	Enums.CITY.SADIE: load("res://art/logos/baristas-512x512.png"),
+	Enums.CITY.SADIE: load("res://art/logos/innovatorss-512x512.png"),
 	Enums.CITY.KH: load("res://art/logos/aviators-512x512.png"),
 	Enums.CITY.DEN: load("res://art/logos/miners-512x512.png"),
-	Enums.CITY.NY: load("res://art/logos/baristas-512x512.png")
+	Enums.CITY.NY: load("res://art/logos/anvils-512x512.png")
 }
 
 func _ready() -> void:
 	_bind_buttons()
 	Signalbus.team_highlight.connect(_display_team_text)
+	teamButtons[Enums.CITY.MTL].grab_focus()
 
 func _bind_buttons() -> void:
 	for city in teamButtons:

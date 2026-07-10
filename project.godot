@@ -24,6 +24,7 @@ AuthenticationManager="*uid://bmi7fxrkpos2h"
 
 window/size/viewport_width=504
 window/size/viewport_height=896
+window/stretch/mode="viewport"
 
 [dotnet]
 
