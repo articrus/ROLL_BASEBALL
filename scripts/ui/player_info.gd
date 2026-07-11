@@ -10,6 +10,9 @@ func _ready() -> void:
 	_display_info()
 	_toggle_confirm_box(false)
 
+func _on_visible() -> void:
+	_display_info()
+
 func _display_info() -> void:
 	var profile = await AuthenticationManager._load_profile()
 	infoText.Wins.text = "Games Won: " + str(profile.get("games_won", 0))

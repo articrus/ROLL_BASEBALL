@@ -175,8 +175,8 @@ func _game_over() -> void:
 	var average = homePoints / 5.0 # Average points scored by player per inning
 	# Save the stats
 	var profile = await AuthenticationManager._load_profile()
-	var newWins = profile.get("games_won", 0) + 1
-	var newTotal = profile.get("points_scored", 0) + homePoints
+	var newWins = int(profile.get("games_won", 0) + 1)
+	var newTotal = int(profile.get("points_scored", 0) + homePoints)
 	AuthenticationManager._save_stats({"games_won": newWins, "points_scored": newTotal, "average_points_per": average})
 	Signalbus.game_over.emit(homePoints, visitPoints, average, homePoints > visitPoints)
 	Signalbus.display_batting_result.emit("GAME OVER!")

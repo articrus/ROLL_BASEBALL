@@ -32,6 +32,7 @@ func _on_successful_login() -> void:
 
 func _on_info_pressed() -> void:
 	playerInfo.visible = true
+	playerInfo._on_visible()
 
 func _start_game() -> void:
 	get_tree().change_scene_to_file("res://scenes/game_scene.tscn")
