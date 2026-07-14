@@ -25,6 +25,50 @@ grow_vertical = 0
 theme_override_constants/separation = 7
 alignment = 1
 
+[node name="General" type="Button" parent="VBoxContainer" unique_id=2109405734]
+custom_minimum_size = Vector2(500, 50)
+layout_mode = 2
+theme = ExtResource("2_54ch6")
+theme_override_font_sizes/font_size = 32
+text = "GENERAL"
+autowrap_mode = 2
+
+[node name="GeneralBox" type="VBoxContainer" parent="VBoxContainer" unique_id=338641126]
+visible = false
+layout_mode = 2
+
+[node name="BatA" type="Label" parent="VBoxContainer/GeneralBox" unique_id=2097597824]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+theme = ExtResource("2_54ch6")
+text = "A team scores a point when a batter advances 4 bases"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="BatB" type="RichTextLabel" parent="VBoxContainer/GeneralBox" unique_id=1521054421]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+theme = ExtResource("2_54ch6")
+bbcode_enabled = true
+text = "If a player gets a [color=red]STRIKEOUT[/color], then they are removed
+from the field"
+fit_content = true
+scroll_active = false
+autowrap_mode = 2
+horizontal_alignment = 1
+
+[node name="BatC" type="RichTextLabel" parent="VBoxContainer/GeneralBox" unique_id=1273449530]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+theme = ExtResource("2_54ch6")
+bbcode_enabled = true
+text = "After three [color=red]STRIKEOUTS[/color], the teams switch sides
+There are 9 innings total, whoever has the highest points,
+wins"
+fit_content = true
+autowrap_mode = 2
+horizontal_alignment = 1
+
 [node name="Batting" type="Button" parent="VBoxContainer" unique_id=327990500]
 custom_minimum_size = Vector2(500, 50)
 layout_mode = 2
@@ -124,8 +168,8 @@ custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 theme = ExtResource("2_54ch6")
 bbcode_enabled = true
-text = "[color=blue]STEAL[/color] and [color=blue]TAG OUT[/color] are rolled with 2 Normal Die,
- and must be greater than or eqyal to [color=blue]SPECIAL[/color]"
+text = "[color=cyan]STEAL[/color] and [color=cyan]TAG OUT[/color] are rolled with 2 Normal Die,
+ and must be greater than or eqyal to [color=cyan]SPECIAL[/color]"
 fit_content = true
 autowrap_mode = 2
 horizontal_alignment = 1
@@ -135,7 +179,7 @@ custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 theme = ExtResource("2_54ch6")
 bbcode_enabled = true
-text = "A successful [color=blue]STEAL[/color] advances the batter by 1 [color=purple](SINGLE)[/color]. Otherwise they are [color=red]OUT[/color]"
+text = "A successful [color=cyan]STEAL[/color] advances the batter by 1 [color=purple](SINGLE)[/color]. Otherwise they are [color=red]OUT[/color]"
 fit_content = true
 autowrap_mode = 2
 horizontal_alignment = 1
@@ -145,7 +189,7 @@ custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 theme = ExtResource("2_54ch6")
 bbcode_enabled = true
-text = "A successful [color=blue]TAG OUT[/color] [color=red]OUTS[/color] the opposing player.
+text = "A successful [color=cyan]TAG OUT[/color] [color=red]OUTS[/color] the opposing player.
  Otherwise they advance 1 base"
 fit_content = true
 autowrap_mode = 2

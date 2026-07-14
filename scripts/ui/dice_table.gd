@@ -1,11 +1,13 @@
 extends Control
 @onready var rulesButtons = {
+	Enums.RULES.GENERAL: $VBoxContainer/General,
 	Enums.RULES.BATTING: $VBoxContainer/Batting,
 	Enums.RULES.PITCHING: $VBoxContainer/Pitching,
 	Enums.RULES.SPECIAL: $VBoxContainer/Special,
 	Enums.RULES.DICE: $VBoxContainer/Dice
 }
 @onready var textBoxes = {
+	Enums.RULES.GENERAL: $VBoxContainer/GeneralBox,
 	Enums.RULES.BATTING: $VBoxContainer/BattingBox,
 	Enums.RULES.PITCHING: $VBoxContainer/PitchingBox,
 	Enums.RULES.SPECIAL: $VBoxContainer/SpecialBox,
