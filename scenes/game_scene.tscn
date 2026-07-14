@@ -46,8 +46,17 @@ position = Vector2(-400, 100)
 [node name="Score" type="Marker2D" parent="Bases" unique_id=1436831474]
 position = Vector2(291, 325)
 
+[node name="BallScore" type="Marker2D" parent="Bases" unique_id=1570568221]
+position = Vector2(252, -252)
+
 [node name="Spawn" type="Marker2D" parent="Bases" unique_id=1093195683]
 position = Vector2(0, 180)
+
+[node name="FieldA" type="Marker2D" parent="Bases" unique_id=1346008917]
+position = Vector2(155, -90)
+
+[node name="FieldB" type="Marker2D" parent="Bases" unique_id=1678031922]
+position = Vector2(-155, -90)
 
 [node name="Players" type="Node2D" parent="." unique_id=1756745962]
 script = ExtResource("2_y3j0m")

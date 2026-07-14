@@ -21,6 +21,11 @@ theme = ExtResource("1_cypsq")
 alignment = 1
 script = ExtResource("1_706v5")
 
+[node name="Label" type="Label" parent="." unique_id=1909782112]
+layout_mode = 2
+theme = ExtResource("1_cypsq")
+text = "Left Die"
+
 [node name="PowerBtn" type="Button" parent="." unique_id=1225632445]
 custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
@@ -38,3 +43,8 @@ custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
 theme = ExtResource("1_cypsq")
 text = "CONTACT"
+
+[node name="Label2" type="Label" parent="." unique_id=985460795]
+layout_mode = 2
+theme = ExtResource("1_cypsq")
+text = "Left Die"

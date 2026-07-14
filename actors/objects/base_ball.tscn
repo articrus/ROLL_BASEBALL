@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://coa6jxkjohluk"]
+
+[ext_resource type="Texture2D" uid="uid://d2naq7wru5x4x" path="res://art/objects/baseball.png" id="1_oq3o0"]
+[ext_resource type="Script" uid="uid://n62kehm1802c" path="res://scripts/actors/objects/base_ball.gd" id="2_f0fm3"]
+
+[node name="BaseBall" type="Sprite2D" unique_id=1072157743]
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("1_oq3o0")
+script = ExtResource("2_f0fm3")

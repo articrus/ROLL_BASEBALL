@@ -71,6 +71,16 @@ func _add_player_to_pitch(team: Enums.CITY) -> void:
 	newPlayer.global_position = bases._get_pitch_position()
 	newPlayer.z_index = 5 # Ensure pitchers are in front
 
+func _add_players_to_field(team: Enums.CITY) -> void:
+	var playerA = player.instantiate()
+	var playerB = player.instantiate()
+	add_child(playerA)
+	add_child(playerB)
+	playerA._setup_player(team, false)
+	playerA.global_position = bases._get_field_position(0)
+	playerB._setup_player(team, false)
+	playerB.global_position = bases._get_field_position(1)
+
 func _clear_the_field() -> void:
 	for actor in self.get_children():
 		actor._strikeout(bases._get_out_position())

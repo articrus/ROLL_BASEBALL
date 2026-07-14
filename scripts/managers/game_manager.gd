@@ -18,6 +18,8 @@ signal toggle_special(toggle: bool)
 # Special
 signal advance_one_base(baseNumber: int)
 signal strike_one_base(baseNumber: int)
+# Reference to bases
+var basePositions
 
 # Connect any necessary signals
 func _ready() -> void:
@@ -28,6 +30,8 @@ func _ready() -> void:
 func _process_rolling(left_die: Enums.DIE_TYPES, right_die: Enums.DIE_TYPES) -> void:
 	Signalbus.disable_roll.emit(true)
 	var result = Dice._process_roll(left_die, right_die, strikeDC[current_inning], current_inning % 2 != 0)
+	var didScore = result[1] != Enums.BATTING_RESULT.STRIKEOUT
+	Signalbus.pitch_ball.emit(basePositions._get_base_position(3), basePositions._get_ball_position(didScore))
 	var runs = 0
 	await Signalbus.resume_processing
 	Signalbus.display_die_total.emit(result[0])

@@ -69,6 +69,12 @@ offset_top = 12.0
 offset_right = 117.0
 offset_bottom = 52.0
 
+[node name="Label" parent="Bottom/RightStrategy" index="0" unique_id=1909782112]
+text = "Right Die"
+
+[node name="Label2" parent="Bottom/RightStrategy" index="4" unique_id=985460795]
+text = "Right Die"
+
 [node name="RollBox" parent="Bottom" unique_id=2025816388 instance=ExtResource("4_iwa1g")]
 layout_mode = 1
 offset_top = -160.0
@@ -148,3 +154,5 @@ layout_mode = 1
 
 [connection signal="pressed" from="Bottom/HBoxContainer/DieTableButon" to="." method="_on_die_table_buton_pressed"]
 [connection signal="pressed" from="Bottom/HBoxContainer/StealTagButton" to="." method="_on_steal_tag_button_pressed"]
+
+[editable path="Bottom/RightStrategy"]

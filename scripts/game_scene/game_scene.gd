@@ -3,12 +3,14 @@ extends Node2D
 @onready var playerManager = $Players
 @onready var gameManager = $GameManager
 @onready var gameUI = $CanvasLayer/PlayerUI
+@onready var baseBall = load("res://actors/objects/base_ball.tscn")
 # Export and other vars
 var playerTeam: Enums.CITY
 var enemyTeam: Enums.CITY
 
 func _ready() -> void:
 	playerManager.bases = bases
+	gameManager.basePositions = bases
 	_connect_signals()
 
 # Start a new inning
@@ -19,11 +21,18 @@ func _start_inning(inning: int) -> void:
 		playerManager._add_player_to_bat(enemyTeam)
 		playerManager._add_player_to_pitch(playerTeam)
 		playerManager.batTeam = enemyTeam
+		playerManager._add_players_to_field(playerTeam)
 	else: 
 		# Player Bats
 		playerManager._add_player_to_bat(playerTeam)
 		playerManager._add_player_to_pitch(enemyTeam)
 		playerManager.batTeam = playerTeam
+		playerManager._add_players_to_field(enemyTeam)
+
+func _pitch_the_ball(homePos: Vector2, endPos: Vector2) -> void:
+	var newBall = baseBall.instantiate()
+	add_child(newBall)
+	newBall._pitch_ball(homePos, endPos)
 
 func _clear_field() -> void:
 	playerManager._clear_the_field()
@@ -46,3 +55,4 @@ func _connect_signals() -> void:
 	gameManager.strike_one_base.connect(playerManager._out_one_player)
 	Signalbus.update_inning.connect(_start_inning)
 	Signalbus.team_selected.connect(_set_teams)
+	Signalbus.pitch_ball.connect(_pitch_the_ball)
