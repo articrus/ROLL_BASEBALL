@@ -9,16 +9,24 @@ extends Control
 	"Info": $Panel/VBoxContainer/Info,
 	"Rules": $Panel/VBoxContainer/Rules
 }
+@onready var displayText = $DisplayText
 
 func _ready() -> void:
 	loginMenu.visible = false
 	Signalbus.user_login.connect(_on_successful_login)
+	loginMenu.confirm_sent.connect(_display_message)
 	if AuthenticationManager.current_user_id == "":
 		menuButtons.Info.disabled = true
 
+# Display a warning message
+func _display_message(message: String) -> void:
+	displayText.visible = true
+	displayText._set_text(message)
+
 func _on_play_pressed() -> void:
 	if AuthenticationManager.current_user_id == "":
-		print("YOU NEED TO LOGIN FIRST")
+		_display_message("YOU NEED TO LOGIN FIRST")
+		#print("YOU NEED TO LOGIN FIRST")
 		loginMenu.visible = true
 	else:
 		_start_game()

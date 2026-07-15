@@ -7,9 +7,7 @@
 [ext_resource type="StyleBox" uid="uid://chhrxw06g5evp" path="res://ui/themes/black_panel.tres" id="3_oa1go"]
 [ext_resource type="PackedScene" uid="uid://crfhpru8fiebr" path="res://scenes/ui_scenes/player_info.tscn" id="4_wu84c"]
 [ext_resource type="PackedScene" uid="uid://ce5ug38xtyrlh" path="res://scenes/ui_scenes/dice_table.tscn" id="5_8ln24"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dg4h0"]
-bg_color = Color(0, 0, 0, 0.8627451)
+[ext_resource type="PackedScene" uid="uid://kbcnj7hk78eo" path="res://ui/hud_components/result_text.tscn" id="8_tbmy8"]
 
 [node name="MainMenu" type="TextureRect" unique_id=1314468095]
 anchors_preset = 15
@@ -79,7 +77,16 @@ layout_mode = 1
 [node name="DiceTable" parent="." unique_id=696012126 instance=ExtResource("5_8ln24")]
 visible = false
 layout_mode = 1
-theme_override_styles/panel = SubResource("StyleBoxFlat_dg4h0")
+
+[node name="DisplayText" parent="." unique_id=1215806943 instance=ExtResource("8_tbmy8")]
+visible = false
+layout_mode = 1
+offset_left = -173.0
+offset_top = -345.0
+offset_right = 167.0
+offset_bottom = -304.0
+theme_override_font_sizes/font_size = 40
+text = "YOU NEED TO LOGIN FIRST"
 
 [connection signal="pressed" from="Panel/VBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="Panel/VBoxContainer/Login" to="." method="_on_login_pressed"]

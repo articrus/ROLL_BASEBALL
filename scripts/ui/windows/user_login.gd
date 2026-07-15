@@ -1,13 +1,15 @@
 extends Control
 # Sign Up
-@onready var signUpEmail = $Panel/BoxContainer/SignUp/EmailText
-@onready var signUpPass = $Panel/BoxContainer/SignUp/PasswordText
+@onready var signUpEmail = $Image/Panel/BoxContainer/SignUp/EmailText
+@onready var signUpPass = $Image/Panel/BoxContainer/SignUp/PasswordText
 # Login
-@onready var loginEmail = $Panel/BoxContainer/SignIn/EmailText
-@onready var loginPass = $Panel/BoxContainer/SignIn/PasswordText
+@onready var loginEmail = $Image/Panel/BoxContainer/SignIn/EmailText
+@onready var loginPass = $Image/Panel/BoxContainer/SignIn/PasswordText
 # Error/Confirmation Labels
-@onready var loginWarning = $Panel/BoxContainer/LoginWarning
-@onready var signUpWarning = $Panel/BoxContainer/SignUpWarning
+@onready var loginWarning = $Image/Panel/BoxContainer/LoginWarning
+@onready var signUpWarning = $Image/Panel/BoxContainer/SignUpWarning
+# Signals
+signal confirm_sent(message: String)
 
 # Attempts to login the user
 func _login_user(email: String, password: String) -> void:
@@ -16,6 +18,7 @@ func _login_user(email: String, password: String) -> void:
 	var result = await AuthenticationManager._sign_in(email, password)
 	if result.ok:
 		var profile = await AuthenticationManager._load_profile()
+		confirm_sent.emit("Login Successful!")
 		Signalbus.user_login.emit()
 	else:
 		_process_error(result, true)
@@ -26,7 +29,7 @@ func _sign_up_user(email: String, password: String) -> void:
 		return # If signup info failed don't execute next steps
 	var result = await AuthenticationManager._sign_up(email, password)
 	if result.ok:
-		_set_warning_text("Email confirmation sent!", false)
+		confirm_sent.emit("Confirmation Email Sent!")
 		Signalbus.user_login.emit()
 	else:
 		_process_error(result, false)
