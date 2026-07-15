@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dx1ic4fwo8od7"]
 
 [ext_resource type="Theme" uid="uid://cjwjb6wa1fg38" path="res://ui/themes/baseball_text.tres" id="1_fk3mo"]
-[ext_resource type="Script" uid="uid://dvyojcwmdfdco" path="res://scripts/ui/team_button.gd" id="1_kblu6"]
+[ext_resource type="Script" uid="uid://dvyojcwmdfdco" path="res://scripts/ui/hud/team_button.gd" id="1_kblu6"]
 
 [node name="TeamButton" type="Button" unique_id=1161289066]
 theme = ExtResource("1_fk3mo")

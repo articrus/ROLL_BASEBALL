@@ -19,7 +19,7 @@ func _update_score(home: Array[int], visit: Array[int]) -> void:
 	var visitText = ""
 	var homePT = 0
 	var visitPT = 0
-	for i in range(1, 9):
+	for i in range(1, 10):
 		homePT += home[i]
 		visitPT += visit[i]
 		if i == inningRef:
@@ -51,7 +51,7 @@ func _update_strikeouts(strikes: int) -> void:
 func _update_inning_display(inning: int) -> void:
 	var inningText = ""
 	inningRef = inning
-	for i in range(1, 9):
+	for i in range(1, 10):
 		if i == inning:
 			inningText += "[color=blue][" + str(i) + "][/color] "
 		else:

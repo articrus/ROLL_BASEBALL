@@ -1,17 +1,17 @@
 extends Control
 @onready var rulesButtons = {
-	Enums.RULES.GENERAL: $VBoxContainer/General,
-	Enums.RULES.BATTING: $VBoxContainer/Batting,
-	Enums.RULES.PITCHING: $VBoxContainer/Pitching,
-	Enums.RULES.SPECIAL: $VBoxContainer/Special,
-	Enums.RULES.DICE: $VBoxContainer/Dice
+	Enums.RULES.GENERAL: $Panel/VBoxContainer/General,
+	Enums.RULES.BATTING: $Panel/VBoxContainer/Batting,
+	Enums.RULES.PITCHING: $Panel/VBoxContainer/Pitching,
+	Enums.RULES.SPECIAL: $Panel/VBoxContainer/Special,
+	Enums.RULES.DICE: $Panel/VBoxContainer/Dice
 }
 @onready var textBoxes = {
-	Enums.RULES.GENERAL: $VBoxContainer/GeneralBox,
-	Enums.RULES.BATTING: $VBoxContainer/BattingBox,
-	Enums.RULES.PITCHING: $VBoxContainer/PitchingBox,
-	Enums.RULES.SPECIAL: $VBoxContainer/SpecialBox,
-	Enums.RULES.DICE: $VBoxContainer/DiceBox
+	Enums.RULES.GENERAL: $Panel/VBoxContainer/GeneralBox,
+	Enums.RULES.BATTING: $Panel/VBoxContainer/BattingBox,
+	Enums.RULES.PITCHING: $Panel/VBoxContainer/PitchingBox,
+	Enums.RULES.SPECIAL: $Panel/VBoxContainer/SpecialBox,
+	Enums.RULES.DICE: $Panel/VBoxContainer/DiceBox
 }
 
 func _ready() -> void:

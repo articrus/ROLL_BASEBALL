@@ -1,0 +1,110 @@
+[gd_scene format=3 uid="uid://cnw7uvgrh10da"]
+
+[ext_resource type="Texture2D" uid="uid://dtdorm0562gsx" path="res://art/ui/board_background.png" id="1_678y5"]
+[ext_resource type="Script" uid="uid://laiyoq7j45a0" path="res://scripts/ui/windows/quick_start.gd" id="1_q15vi"]
+[ext_resource type="Theme" uid="uid://cjwjb6wa1fg38" path="res://ui/themes/baseball_text.tres" id="2_678y5"]
+[ext_resource type="StyleBox" uid="uid://chhrxw06g5evp" path="res://ui/themes/black_panel.tres" id="3_nlde0"]
+
+[node name="QuickStart" type="TextureRect" unique_id=1687158469]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_678y5")
+expand_mode = 1
+script = ExtResource("1_q15vi")
+
+[node name="Panel" type="Panel" parent="." unique_id=1369796916]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("3_nlde0")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel" unique_id=1851751483]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 7
+alignment = 1
+
+[node name="Quick" type="RichTextLabel" parent="Panel/VBoxContainer" unique_id=2018967272]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+theme = ExtResource("2_678y5")
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "Quick Start Guide"
+fit_content = true
+autowrap_mode = 2
+horizontal_alignment = 1
+
+[node name="Rules1" type="RichTextLabel" parent="Panel/VBoxContainer" unique_id=657691719]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+theme = ExtResource("2_678y5")
+bbcode_enabled = true
+text = "[font_size=30][color=blue]1. Play Baseball With Dice[/color][/font_size]
+Rolling two matching colors grants a special bonus
+When batting, roll to advance players on the bases
+Roll a total above [color=red]STRIKE[/color] to avoid getting out
+When pitching, roll to stop enemy players
+Roll a total above [color=red]STRIKE[/color] to avoid them advancing too far
+(See BATTING and PITCHING in RULES)"
+fit_content = true
+autowrap_mode = 2
+horizontal_alignment = 1
+
+[node name="Rules2" type="RichTextLabel" parent="Panel/VBoxContainer" unique_id=1696879027]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+theme = ExtResource("2_678y5")
+bbcode_enabled = true
+text = "[font_size=30][color=blue]2. Advance Batters to Score Points[/color][/font_size]
+Crossing 4 bases scores 1 point
+If there is a batter on a base, you can attempt
+ to [color=cyan]STEAL[/color] or [color=cyan]TAG OUT[/color] the player with a dice roll
+(See SPECIAL in RULES)
+"
+fit_content = true
+autowrap_mode = 2
+horizontal_alignment = 1
+
+[node name="Rules3" type="RichTextLabel" parent="Panel/VBoxContainer" unique_id=1965270564]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+theme = ExtResource("2_678y5")
+bbcode_enabled = true
+text = "[font_size=30][color=blue]3. Teams[/color][/font_size]
+You are the HOME team
+The computer is the VISITOR team"
+fit_content = true
+autowrap_mode = 2
+horizontal_alignment = 1
+
+[node name="Rules4" type="RichTextLabel" parent="Panel/VBoxContainer" unique_id=1849637922]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+theme = ExtResource("2_678y5")
+bbcode_enabled = true
+text = "[font_size=30][color=blue]4. Innings[/color][/font_size]
+There are 9 innings total
+Score higher than the VISITOR team to win!"
+fit_content = true
+autowrap_mode = 2
+horizontal_alignment = 1
+
+[node name="Close" type="Button" parent="Panel/VBoxContainer" unique_id=1746657956]
+custom_minimum_size = Vector2(500, 50)
+layout_mode = 2
+theme = ExtResource("2_678y5")
+theme_override_font_sizes/font_size = 32
+text = "Close"
+
+[connection signal="pressed" from="Panel/VBoxContainer/Close" to="." method="_on_close_pressed"]

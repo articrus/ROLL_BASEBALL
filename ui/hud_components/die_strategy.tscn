@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://vapum38moy5f"]
 
-[ext_resource type="Script" uid="uid://dti6qgg2idsdc" path="res://scripts/ui/die_strategy.gd" id="1_706v5"]
+[ext_resource type="Script" uid="uid://dti6qgg2idsdc" path="res://scripts/ui/hud/die_strategy.gd" id="1_706v5"]
 [ext_resource type="Theme" uid="uid://cjwjb6wa1fg38" path="res://ui/themes/baseball_text.tres" id="1_cypsq"]
 
 [node name="LeftDie" type="HBoxContainer" unique_id=1539795031]

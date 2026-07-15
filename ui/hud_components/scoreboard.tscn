@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://btxim5i06julr"]
 
-[ext_resource type="Script" uid="uid://b4pqicxa6lql0" path="res://scripts/ui/scoreboard.gd" id="1_qjve3"]
+[ext_resource type="Script" uid="uid://b4pqicxa6lql0" path="res://scripts/ui/game_ui/scoreboard.gd" id="1_qjve3"]
 [ext_resource type="Theme" uid="uid://cjwjb6wa1fg38" path="res://ui/themes/baseball_text.tres" id="2_d7rl5"]
 
 [sub_resource type="Theme" id="Theme_1enrn"]

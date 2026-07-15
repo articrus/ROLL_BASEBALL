@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b4ljywddrkucl"]
 
-[ext_resource type="Script" uid="uid://ep2xuiuc4xw0" path="res://scripts/ui/player_ui.gd" id="1_ehg4m"]
+[ext_resource type="Script" uid="uid://ep2xuiuc4xw0" path="res://scripts/ui/game_ui/player_ui.gd" id="1_ehg4m"]
 [ext_resource type="Texture2D" uid="uid://cu5u7yydxyji3" path="res://art/ui/test_black.png" id="2_f7sc3"]
 [ext_resource type="PackedScene" uid="uid://vapum38moy5f" path="res://ui/hud_components/die_strategy.tscn" id="2_vq5xy"]
 [ext_resource type="PackedScene" uid="uid://bpnosv5irtluk" path="res://ui/hud_components/roll_box.tscn" id="4_iwa1g"]
@@ -10,6 +10,9 @@
 [ext_resource type="PackedScene" uid="uid://47ioydhmhpft" path="res://scenes/ui_scenes/game_over.tscn" id="7_hff70"]
 [ext_resource type="PackedScene" uid="uid://bnqfl6qwvvrmt" path="res://ui/hud_components/dc_display.tscn" id="8_b6i2q"]
 [ext_resource type="PackedScene" uid="uid://btxim5i06julr" path="res://ui/hud_components/scoreboard.tscn" id="8_f7sc3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dg4h0"]
+bg_color = Color(0, 0, 0, 0.8627451)
 
 [node name="PlayerUI" type="Control" unique_id=258670629]
 layout_mode = 3
@@ -38,9 +41,9 @@ layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -222.0
+offset_left = -214.0
 offset_top = -26.0
-offset_right = 222.0
+offset_right = 230.0
 offset_bottom = 24.0
 grow_horizontal = 2
 theme_override_constants/separation = 300
@@ -48,7 +51,7 @@ theme_override_constants/separation = 300
 [node name="DieTableButon" type="Button" parent="Bottom/HBoxContainer" unique_id=1862182513]
 layout_mode = 2
 theme = ExtResource("5_lp0io")
-text = "DIE TABLE"
+text = "RULES"
 
 [node name="StealTagButton" type="Button" parent="Bottom/HBoxContainer" unique_id=1706445997]
 layout_mode = 2
@@ -147,6 +150,7 @@ grow_vertical = 1
 [node name="DiceTable" parent="." unique_id=1740025211 instance=ExtResource("6_ykvpg")]
 visible = false
 layout_mode = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_dg4h0")
 
 [node name="GameOver" parent="." unique_id=2139839966 instance=ExtResource("7_hff70")]
 visible = false

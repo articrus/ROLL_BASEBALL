@@ -9,8 +9,8 @@ class_name GameManager
 # Inning Variables
 @export var current_inning: int = 1
 # DC Variables
-const strikeDC: Array[int] = [0, 6, 6, 7, 7, 7, 8, 8, 8, 8, 9]
-const specialDC: Array[int] = [0, 8, 8, 8, 9, 9, 9, 10, 10, 10, 10]
+const strikeDC: Array[int] = [0, 6, 6, 7, 6, 7, 7, 8, 7, 8, 8]
+const specialDC: Array[int] = [0, 8, 7, 8, 8, 9, 8, 10, 9, 10, 9]
 # Signals
 signal advance_bases(amount: int)
 signal strikeout

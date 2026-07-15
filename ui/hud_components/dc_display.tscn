@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bnqfl6qwvvrmt"]
 
-[ext_resource type="Script" uid="uid://bhqya23fxbhbj" path="res://scripts/ui/dc_display.gd" id="1_vq7jl"]
+[ext_resource type="Script" uid="uid://bhqya23fxbhbj" path="res://scripts/ui/game_ui/dc_display.gd" id="1_vq7jl"]
 [ext_resource type="Texture2D" uid="uid://bpmuw1506raew" path="res://art/baseball_field/temp_diamond.png" id="1_wf0ja"]
 [ext_resource type="Theme" uid="uid://cjwjb6wa1fg38" path="res://ui/themes/baseball_text.tres" id="2_vq7jl"]
 

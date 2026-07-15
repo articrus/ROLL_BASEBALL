@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://kbcnj7hk78eo"]
 
 [ext_resource type="Theme" uid="uid://cjwjb6wa1fg38" path="res://ui/themes/baseball_text.tres" id="1_s61yg"]
-[ext_resource type="Script" uid="uid://c6fn0mushoum7" path="res://scripts/ui/result_text.gd" id="2_tj2n3"]
+[ext_resource type="Script" uid="uid://c6fn0mushoum7" path="res://scripts/ui/game_ui/result_text.gd" id="2_tj2n3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f7sc3"]
 bg_color = Color(0, 0, 0, 0.78431374)

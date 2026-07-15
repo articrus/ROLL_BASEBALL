@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://cidvptu3gbprq" path="res://art/baseball_field/field.png" id="2_utbpp"]
 [ext_resource type="Script" uid="uid://b0nauup61hnbc" path="res://scripts/managers/players_manager.gd" id="2_y3j0m"]
 [ext_resource type="PackedScene" uid="uid://dnfd08q1sg4vo" path="res://scenes/ui_scenes/team_select.tscn" id="3_ycayy"]
+[ext_resource type="PackedScene" uid="uid://cnw7uvgrh10da" path="res://scenes/ui_scenes/quick_start.tscn" id="10_mw25s"]
 
 [node name="GameScene" type="Node2D" unique_id=1578163720]
 script = ExtResource("1_rurhu")
@@ -20,6 +21,7 @@ scale = Vector2(10, 10)
 texture = ExtResource("2_mw25s")
 
 [node name="Field" type="Sprite2D" parent="." unique_id=1837956821]
+position = Vector2(0, 25)
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("2_utbpp")
 
@@ -29,7 +31,7 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_b5spy")
 
 [node name="Bases" type="Node2D" parent="." unique_id=547608302]
-position = Vector2(0, -10)
+position = Vector2(0, 15)
 script = ExtResource("1_bw6k5")
 
 [node name="Home" type="Marker2D" parent="Bases" unique_id=1218090844]
@@ -77,5 +79,7 @@ metadata/_custom_type_script = "uid://ccd1cpjlehr48"
 [node name="PlayerUI" parent="CanvasLayer" unique_id=258670629 instance=ExtResource("2_onqr8")]
 
 [node name="TeamSelect" parent="CanvasLayer" unique_id=162450544 instance=ExtResource("3_ycayy")]
+
+[node name="QuickStart" parent="CanvasLayer" unique_id=408282555 instance=ExtResource("10_mw25s")]
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1462996228]

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://crfhpru8fiebr"]
 
-[ext_resource type="Script" uid="uid://cypu3aigakkab" path="res://scripts/ui/player_info.gd" id="1_tbu2c"]
+[ext_resource type="Script" uid="uid://cypu3aigakkab" path="res://scripts/ui/windows/player_info.gd" id="1_tbu2c"]
 [ext_resource type="Theme" uid="uid://cjwjb6wa1fg38" path="res://ui/themes/baseball_text.tres" id="2_mi3ka"]
 
 [node name="PlayerInfo" type="Panel" unique_id=19411068]

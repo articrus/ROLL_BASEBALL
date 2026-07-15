@@ -1,21 +1,30 @@
 [gd_scene format=3 uid="uid://ce5ug38xtyrlh"]
 
-[ext_resource type="Script" uid="uid://dshb4sshjtafl" path="res://scripts/ui/dice_table.gd" id="1_dg4h0"]
+[ext_resource type="Texture2D" uid="uid://dtdorm0562gsx" path="res://art/ui/board_background.png" id="1_54ch6"]
+[ext_resource type="Script" uid="uid://dshb4sshjtafl" path="res://scripts/ui/windows/dice_table.gd" id="1_dg4h0"]
 [ext_resource type="Theme" uid="uid://cjwjb6wa1fg38" path="res://ui/themes/baseball_text.tres" id="2_54ch6"]
+[ext_resource type="StyleBox" uid="uid://chhrxw06g5evp" path="res://ui/themes/black_panel.tres" id="3_kxrdf"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dg4h0"]
-bg_color = Color(0, 0, 0, 0.8627451)
-
-[node name="DiceTable" type="Panel" unique_id=408282555]
+[node name="DiceTable" type="TextureRect" unique_id=1953930971]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_dg4h0")
+texture = ExtResource("1_54ch6")
+expand_mode = 1
 script = ExtResource("1_dg4h0")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1851751483]
+[node name="Panel" type="Panel" parent="." unique_id=1001316785]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("3_kxrdf")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel" unique_id=1851751483]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -25,7 +34,7 @@ grow_vertical = 0
 theme_override_constants/separation = 7
 alignment = 1
 
-[node name="General" type="Button" parent="VBoxContainer" unique_id=2109405734]
+[node name="General" type="Button" parent="Panel/VBoxContainer" unique_id=2109405734]
 custom_minimum_size = Vector2(500, 50)
 layout_mode = 2
 theme = ExtResource("2_54ch6")
@@ -33,11 +42,11 @@ theme_override_font_sizes/font_size = 32
 text = "GENERAL"
 autowrap_mode = 2
 
-[node name="GeneralBox" type="VBoxContainer" parent="VBoxContainer" unique_id=338641126]
+[node name="GeneralBox" type="VBoxContainer" parent="Panel/VBoxContainer" unique_id=338641126]
 visible = false
 layout_mode = 2
 
-[node name="BatA" type="Label" parent="VBoxContainer/GeneralBox" unique_id=2097597824]
+[node name="BatA" type="Label" parent="Panel/VBoxContainer/GeneralBox" unique_id=2097597824]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 theme = ExtResource("2_54ch6")
@@ -45,7 +54,7 @@ text = "A team scores a point when a batter advances 4 bases"
 horizontal_alignment = 1
 autowrap_mode = 3
 
-[node name="BatB" type="RichTextLabel" parent="VBoxContainer/GeneralBox" unique_id=1521054421]
+[node name="BatB" type="RichTextLabel" parent="Panel/VBoxContainer/GeneralBox" unique_id=1521054421]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 theme = ExtResource("2_54ch6")
@@ -57,7 +66,7 @@ scroll_active = false
 autowrap_mode = 2
 horizontal_alignment = 1
 
-[node name="BatC" type="RichTextLabel" parent="VBoxContainer/GeneralBox" unique_id=1273449530]
+[node name="BatC" type="RichTextLabel" parent="Panel/VBoxContainer/GeneralBox" unique_id=1273449530]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 theme = ExtResource("2_54ch6")
@@ -69,7 +78,7 @@ fit_content = true
 autowrap_mode = 2
 horizontal_alignment = 1
 
-[node name="Batting" type="Button" parent="VBoxContainer" unique_id=327990500]
+[node name="Batting" type="Button" parent="Panel/VBoxContainer" unique_id=327990500]
 custom_minimum_size = Vector2(500, 50)
 layout_mode = 2
 theme = ExtResource("2_54ch6")
@@ -77,11 +86,11 @@ theme_override_font_sizes/font_size = 32
 text = "BATTING"
 autowrap_mode = 2
 
-[node name="BattingBox" type="VBoxContainer" parent="VBoxContainer" unique_id=930769873]
+[node name="BattingBox" type="VBoxContainer" parent="Panel/VBoxContainer" unique_id=930769873]
 visible = false
 layout_mode = 2
 
-[node name="BatA" type="Label" parent="VBoxContainer/BattingBox" unique_id=1363676427]
+[node name="BatA" type="Label" parent="Panel/VBoxContainer/BattingBox" unique_id=1363676427]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 theme = ExtResource("2_54ch6")
@@ -90,7 +99,7 @@ the batter by the following amount"
 horizontal_alignment = 1
 autowrap_mode = 3
 
-[node name="BatB" type="RichTextLabel" parent="VBoxContainer/BattingBox" unique_id=222552109]
+[node name="BatB" type="RichTextLabel" parent="Panel/VBoxContainer/BattingBox" unique_id=222552109]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 theme = ExtResource("2_54ch6")
@@ -104,7 +113,7 @@ scroll_active = false
 autowrap_mode = 2
 horizontal_alignment = 1
 
-[node name="BatC" type="RichTextLabel" parent="VBoxContainer/BattingBox" unique_id=436270959]
+[node name="BatC" type="RichTextLabel" parent="Panel/VBoxContainer/BattingBox" unique_id=436270959]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 theme = ExtResource("2_54ch6")
@@ -116,7 +125,7 @@ fit_content = true
 autowrap_mode = 2
 horizontal_alignment = 1
 
-[node name="Pitching" type="Button" parent="VBoxContainer" unique_id=1082854135]
+[node name="Pitching" type="Button" parent="Panel/VBoxContainer" unique_id=1082854135]
 custom_minimum_size = Vector2(500, 50)
 layout_mode = 2
 theme = ExtResource("2_54ch6")
@@ -124,11 +133,11 @@ theme_override_font_sizes/font_size = 32
 text = "PITCHING"
 autowrap_mode = 2
 
-[node name="PitchingBox" type="VBoxContainer" parent="VBoxContainer" unique_id=673830448]
+[node name="PitchingBox" type="VBoxContainer" parent="Panel/VBoxContainer" unique_id=673830448]
 visible = false
 layout_mode = 2
 
-[node name="PitchA" type="RichTextLabel" parent="VBoxContainer/PitchingBox" unique_id=1908940303]
+[node name="PitchA" type="RichTextLabel" parent="Panel/VBoxContainer/PitchingBox" unique_id=1908940303]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 theme = ExtResource("2_54ch6")
@@ -139,7 +148,7 @@ fit_content = true
 autowrap_mode = 2
 horizontal_alignment = 1
 
-[node name="PitchB" type="RichTextLabel" parent="VBoxContainer/PitchingBox" unique_id=380210240]
+[node name="PitchB" type="RichTextLabel" parent="Panel/VBoxContainer/PitchingBox" unique_id=380210240]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 theme = ExtResource("2_54ch6")
@@ -151,7 +160,7 @@ fit_content = true
 autowrap_mode = 2
 horizontal_alignment = 1
 
-[node name="Special" type="Button" parent="VBoxContainer" unique_id=1032773282]
+[node name="Special" type="Button" parent="Panel/VBoxContainer" unique_id=1032773282]
 custom_minimum_size = Vector2(500, 50)
 layout_mode = 2
 theme = ExtResource("2_54ch6")
@@ -159,11 +168,11 @@ theme_override_font_sizes/font_size = 32
 text = "SPECIAL"
 autowrap_mode = 2
 
-[node name="SpecialBox" type="VBoxContainer" parent="VBoxContainer" unique_id=604377356]
+[node name="SpecialBox" type="VBoxContainer" parent="Panel/VBoxContainer" unique_id=604377356]
 visible = false
 layout_mode = 2
 
-[node name="SpecialA" type="RichTextLabel" parent="VBoxContainer/SpecialBox" unique_id=792612961]
+[node name="SpecialA" type="RichTextLabel" parent="Panel/VBoxContainer/SpecialBox" unique_id=792612961]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 theme = ExtResource("2_54ch6")
@@ -174,7 +183,7 @@ fit_content = true
 autowrap_mode = 2
 horizontal_alignment = 1
 
-[node name="SpecialB" type="RichTextLabel" parent="VBoxContainer/SpecialBox" unique_id=1161684298]
+[node name="SpecialB" type="RichTextLabel" parent="Panel/VBoxContainer/SpecialBox" unique_id=1161684298]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 theme = ExtResource("2_54ch6")
@@ -184,7 +193,7 @@ fit_content = true
 autowrap_mode = 2
 horizontal_alignment = 1
 
-[node name="SpecialC" type="RichTextLabel" parent="VBoxContainer/SpecialBox" unique_id=1672951851]
+[node name="SpecialC" type="RichTextLabel" parent="Panel/VBoxContainer/SpecialBox" unique_id=1672951851]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 theme = ExtResource("2_54ch6")
@@ -195,7 +204,7 @@ fit_content = true
 autowrap_mode = 2
 horizontal_alignment = 1
 
-[node name="Dice" type="Button" parent="VBoxContainer" unique_id=927899899]
+[node name="Dice" type="Button" parent="Panel/VBoxContainer" unique_id=927899899]
 custom_minimum_size = Vector2(500, 50)
 layout_mode = 2
 theme = ExtResource("2_54ch6")
@@ -203,11 +212,11 @@ theme_override_font_sizes/font_size = 32
 text = "DIE BREAKDOWN"
 autowrap_mode = 2
 
-[node name="DiceBox" type="VBoxContainer" parent="VBoxContainer" unique_id=710724774]
+[node name="DiceBox" type="VBoxContainer" parent="Panel/VBoxContainer" unique_id=710724774]
 visible = false
 layout_mode = 2
 
-[node name="Die" type="RichTextLabel" parent="VBoxContainer/DiceBox" unique_id=2018967272]
+[node name="Die" type="RichTextLabel" parent="Panel/VBoxContainer/DiceBox" unique_id=2018967272]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 theme = ExtResource("2_54ch6")
@@ -219,11 +228,11 @@ fit_content = true
 autowrap_mode = 2
 horizontal_alignment = 1
 
-[node name="Close" type="Button" parent="VBoxContainer" unique_id=1746657956]
+[node name="Close" type="Button" parent="Panel/VBoxContainer" unique_id=1746657956]
 custom_minimum_size = Vector2(500, 50)
 layout_mode = 2
 theme = ExtResource("2_54ch6")
 theme_override_font_sizes/font_size = 32
 text = "Close"
 
-[connection signal="pressed" from="VBoxContainer/Close" to="." method="_on_close_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/Close" to="." method="_on_close_pressed"]

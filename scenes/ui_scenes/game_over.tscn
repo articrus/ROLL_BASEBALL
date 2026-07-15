@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://47ioydhmhpft"]
 
-[ext_resource type="Script" uid="uid://igfjpn5huibj" path="res://scripts/ui/game_over.gd" id="1_cinye"]
+[ext_resource type="StyleBox" uid="uid://chhrxw06g5evp" path="res://ui/themes/black_panel.tres" id="1_8d24m"]
+[ext_resource type="Script" uid="uid://igfjpn5huibj" path="res://scripts/ui/windows/game_over.gd" id="1_cinye"]
 [ext_resource type="Theme" uid="uid://cjwjb6wa1fg38" path="res://ui/themes/baseball_text.tres" id="2_8d24m"]
 
 [node name="GameOver" type="Panel" unique_id=346299641]
@@ -9,6 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = ExtResource("1_8d24m")
 script = ExtResource("1_cinye")
 
 [node name="HBoxContainer" type="VBoxContainer" parent="." unique_id=2001006064]

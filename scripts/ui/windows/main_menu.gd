@@ -1,13 +1,13 @@
 extends Control
 @onready var loginMenu = $Login
 @onready var playerInfo = $PlayerInfo
-@onready var infoMenu = $VBoxContainer/Info
+@onready var infoMenu = $Panel/VBoxContainer/Info
 @onready var diceTable = $DiceTable
 @onready var menuButtons = {
-	"Play": $VBoxContainer/Play,
-	"Login": $VBoxContainer/Login,
-	"Info": $VBoxContainer/Info,
-	"Rules": $VBoxContainer/Rules
+	"Play": $Panel/VBoxContainer/Play,
+	"Login": $Panel/VBoxContainer/Login,
+	"Info": $Panel/VBoxContainer/Info,
+	"Rules": $Panel/VBoxContainer/Rules
 }
 
 func _ready() -> void:

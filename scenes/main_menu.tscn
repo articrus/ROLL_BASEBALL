@@ -1,57 +1,69 @@
 [gd_scene format=3 uid="uid://dm3w8fxkcxxvb"]
 
-[ext_resource type="Script" uid="uid://d23f80csd5a5t" path="res://scripts/ui/main_menu.gd" id="1_l6cm7"]
+[ext_resource type="Script" uid="uid://d23f80csd5a5t" path="res://scripts/ui/windows/main_menu.gd" id="1_l6cm7"]
+[ext_resource type="Texture2D" uid="uid://bdy3urn8qc2xh" path="res://art/ui/title_background.png" id="1_rtw2f"]
 [ext_resource type="Theme" uid="uid://cjwjb6wa1fg38" path="res://ui/themes/baseball_text.tres" id="2_bqqt6"]
 [ext_resource type="PackedScene" uid="uid://cgwf112eud4gw" path="res://scenes/ui_scenes/user_login.tscn" id="2_ekxnf"]
+[ext_resource type="StyleBox" uid="uid://chhrxw06g5evp" path="res://ui/themes/black_panel.tres" id="3_oa1go"]
 [ext_resource type="PackedScene" uid="uid://crfhpru8fiebr" path="res://scenes/ui_scenes/player_info.tscn" id="4_wu84c"]
 [ext_resource type="PackedScene" uid="uid://ce5ug38xtyrlh" path="res://scenes/ui_scenes/dice_table.tscn" id="5_8ln24"]
 
-[node name="MainMenu" type="Control" unique_id=477749278]
-layout_mode = 3
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dg4h0"]
+bg_color = Color(0, 0, 0, 0.8627451)
+
+[node name="MainMenu" type="TextureRect" unique_id=1314468095]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("1_rtw2f")
+expand_mode = 1
 script = ExtResource("1_l6cm7")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1362366143]
+[node name="Panel" type="Panel" parent="." unique_id=499001305]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+anchors_preset = -1
+anchor_left = 0.15
+anchor_top = 0.15
+anchor_right = 0.85
+anchor_bottom = 0.85
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("3_oa1go")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel" unique_id=1362366143]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="Label" type="Label" parent="VBoxContainer" unique_id=1286702748]
+[node name="Label" type="Label" parent="Panel/VBoxContainer" unique_id=1286702748]
 layout_mode = 2
 theme = ExtResource("2_bqqt6")
 theme_override_font_sizes/font_size = 64
 text = "ROLL BASEBALL"
+horizontal_alignment = 1
 
-[node name="Play" type="Button" parent="VBoxContainer" unique_id=1620079061]
+[node name="Play" type="Button" parent="Panel/VBoxContainer" unique_id=1620079061]
 layout_mode = 2
 theme = ExtResource("2_bqqt6")
 text = "PLAY"
 
-[node name="Login" type="Button" parent="VBoxContainer" unique_id=755747317]
+[node name="Login" type="Button" parent="Panel/VBoxContainer" unique_id=755747317]
 layout_mode = 2
 theme = ExtResource("2_bqqt6")
 text = "LOGIN"
 
-[node name="Info" type="Button" parent="VBoxContainer" unique_id=415835423]
+[node name="Info" type="Button" parent="Panel/VBoxContainer" unique_id=415835423]
 layout_mode = 2
 theme = ExtResource("2_bqqt6")
 text = "PLAYER INFO"
 
-[node name="Rules" type="Button" parent="VBoxContainer" unique_id=416507870]
+[node name="Rules" type="Button" parent="Panel/VBoxContainer" unique_id=416507870]
 layout_mode = 2
 theme = ExtResource("2_bqqt6")
 text = "RULES"
@@ -67,8 +79,9 @@ layout_mode = 1
 [node name="DiceTable" parent="." unique_id=696012126 instance=ExtResource("5_8ln24")]
 visible = false
 layout_mode = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_dg4h0")
 
-[connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="VBoxContainer/Login" to="." method="_on_login_pressed"]
-[connection signal="pressed" from="VBoxContainer/Info" to="." method="_on_info_pressed"]
-[connection signal="pressed" from="VBoxContainer/Rules" to="." method="_on_rules_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/Login" to="." method="_on_login_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/Info" to="." method="_on_info_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/Rules" to="." method="_on_rules_pressed"]
