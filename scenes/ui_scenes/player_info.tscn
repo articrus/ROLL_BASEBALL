@@ -1,17 +1,30 @@
 [gd_scene format=3 uid="uid://crfhpru8fiebr"]
 
+[ext_resource type="StyleBox" uid="uid://chhrxw06g5evp" path="res://ui/themes/black_panel.tres" id="1_ffimo"]
+[ext_resource type="Texture2D" uid="uid://ccxlbvq7p01i3" path="res://art/ui/sign_up_background.png" id="1_ocjau"]
 [ext_resource type="Script" uid="uid://cypu3aigakkab" path="res://scripts/ui/windows/player_info.gd" id="1_tbu2c"]
 [ext_resource type="Theme" uid="uid://cjwjb6wa1fg38" path="res://ui/themes/baseball_text.tres" id="2_mi3ka"]
 
-[node name="PlayerInfo" type="Panel" unique_id=19411068]
+[node name="PlayerInfo" type="TextureRect" unique_id=428473163]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("1_ocjau")
+expand_mode = 1
 script = ExtResource("1_tbu2c")
 
-[node name="HBoxContainer" type="VBoxContainer" parent="." unique_id=2001006064]
+[node name="Panel" type="Panel" parent="." unique_id=1546778844]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("1_ffimo")
+
+[node name="HBoxContainer" type="VBoxContainer" parent="Panel" unique_id=2001006064]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -26,27 +39,27 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 24
 
-[node name="WinsText" type="Label" parent="HBoxContainer" unique_id=1894949148]
+[node name="WinsText" type="Label" parent="Panel/HBoxContainer" unique_id=1894949148]
 layout_mode = 2
 theme = ExtResource("2_mi3ka")
 text = "Games Won: "
 
-[node name="ToalPoints" type="Label" parent="HBoxContainer" unique_id=240845473]
+[node name="ToalPoints" type="Label" parent="Panel/HBoxContainer" unique_id=240845473]
 layout_mode = 2
 theme = ExtResource("2_mi3ka")
 text = "Total Points:"
 
-[node name="AveragePoints" type="Label" parent="HBoxContainer" unique_id=455677487]
+[node name="AveragePoints" type="Label" parent="Panel/HBoxContainer" unique_id=455677487]
 layout_mode = 2
 theme = ExtResource("2_mi3ka")
 text = "Average Points per Inning:"
 
-[node name="Reset" type="Button" parent="HBoxContainer" unique_id=2042290972]
+[node name="Reset" type="Button" parent="Panel/HBoxContainer" unique_id=2042290972]
 layout_mode = 2
 theme = ExtResource("2_mi3ka")
 text = "Reset Stats"
 
-[node name="Close" type="Button" parent="HBoxContainer" unique_id=1746657956]
+[node name="Close" type="Button" parent="Panel/HBoxContainer" unique_id=1746657956]
 layout_mode = 2
 theme = ExtResource("2_mi3ka")
 text = "Close"
@@ -58,10 +71,6 @@ anchor_left = 0.1
 anchor_top = 0.1
 anchor_right = 0.9
 anchor_bottom = 0.9
-offset_left = 60.640007
-offset_top = 123.35999
-offset_right = 100.640015
-offset_bottom = 163.36005
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -74,6 +83,7 @@ anchor_right = 0.8
 anchor_bottom = 0.8
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = ExtResource("1_ffimo")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Confirm/Panel" unique_id=1435029315]
 custom_minimum_size = Vector2(100, 50)
@@ -119,7 +129,7 @@ grow_vertical = 2
 theme = ExtResource("2_mi3ka")
 text = "Are you sure?"
 
-[connection signal="pressed" from="HBoxContainer/Reset" to="." method="_on_reset_pressed"]
-[connection signal="pressed" from="HBoxContainer/Close" to="." method="_on_close_pressed"]
+[connection signal="pressed" from="Panel/HBoxContainer/Reset" to="." method="_on_reset_pressed"]
+[connection signal="pressed" from="Panel/HBoxContainer/Close" to="." method="_on_close_pressed"]
 [connection signal="pressed" from="Confirm/Panel/HBoxContainer/Yes" to="." method="_on_yes_pressed"]
 [connection signal="pressed" from="Confirm/Panel/HBoxContainer/No" to="." method="_on_no_pressed"]

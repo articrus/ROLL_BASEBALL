@@ -1,21 +1,21 @@
-extends Control
+extends TextureRect
 @onready var teamButtons = {
-	Enums.CITY.MTL: $VBoxContainer/TeamsBoxes/TeamsA/MTL,
-	Enums.CITY.TOR: $VBoxContainer/TeamsBoxes/TeamsB/TOR,
-	Enums.CITY.MIA: $VBoxContainer/TeamsBoxes/TeamsA/MIA,
-	Enums.CITY.SAJOS: $VBoxContainer/TeamsBoxes/TeamsB/SAJO,
-	Enums.CITY.LA: $VBoxContainer/TeamsBoxes/TeamsA/LA,
-	Enums.CITY.CHI: $VBoxContainer/TeamsBoxes/TeamsB/CHI,
-	Enums.CITY.BOS: $VBoxContainer/TeamsBoxes/TeamsA/BOS,
-	Enums.CITY.SAFRA: $VBoxContainer/TeamsBoxes/TeamsB/SAFR,
-	Enums.CITY.SADIE: $VBoxContainer/TeamsBoxes/TeamsA/SADI,
-	Enums.CITY.KH: $VBoxContainer/TeamsBoxes/TeamsB/KH,
-	Enums.CITY.DEN: $VBoxContainer/TeamsBoxes/TeamsA/DEN,
-	Enums.CITY.NY: $VBoxContainer/TeamsBoxes/TeamsB/NY
+	Enums.CITY.MTL: $Panel/VBoxContainer/TeamsBoxes/TeamsA/MTL,
+	Enums.CITY.TOR: $Panel/VBoxContainer/TeamsBoxes/TeamsB/TOR,
+	Enums.CITY.MIA: $Panel/VBoxContainer/TeamsBoxes/TeamsA/MIA,
+	Enums.CITY.SAJOS: $Panel/VBoxContainer/TeamsBoxes/TeamsB/SAJO,
+	Enums.CITY.LA: $Panel/VBoxContainer/TeamsBoxes/TeamsA/LA,
+	Enums.CITY.CHI: $Panel/VBoxContainer/TeamsBoxes/TeamsB/CHI,
+	Enums.CITY.BOS: $Panel/VBoxContainer/TeamsBoxes/TeamsA/BOS,
+	Enums.CITY.SAFRA: $Panel/VBoxContainer/TeamsBoxes/TeamsB/SAFR,
+	Enums.CITY.SADIE: $Panel/VBoxContainer/TeamsBoxes/TeamsA/SADI,
+	Enums.CITY.KH: $Panel/VBoxContainer/TeamsBoxes/TeamsB/KH,
+	Enums.CITY.DEN: $Panel/VBoxContainer/TeamsBoxes/TeamsA/DEN,
+	Enums.CITY.NY: $Panel/VBoxContainer/TeamsBoxes/TeamsB/NY
 }
-@onready var teamLogo = $VBoxContainer/TeamLogo
-@onready var teamNameTag = $VBoxContainer/TeamInfo/TeamName
-@onready var teamCityTag = $VBoxContainer/TeamInfo/City
+@onready var teamLogo = $Panel/VBoxContainer/TeamLogo
+@onready var teamNameTag = $Panel/VBoxContainer/TeamInfo/TeamName
+@onready var teamCityTag = $Panel/VBoxContainer/TeamInfo/City
 # Team Logos
 @onready var teamLogos = {
 	Enums.CITY.MTL: load("res://art/logos/baristas-512x512.png"),

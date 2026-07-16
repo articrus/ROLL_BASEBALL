@@ -1,8 +1,8 @@
-extends Control
+extends TextureRect
 @onready var infoText = {
-	"Wins": $HBoxContainer/WinsText,
-	"Total": $HBoxContainer/ToalPoints,
-	"Average": $HBoxContainer/AveragePoints
+	"Wins": $Panel/HBoxContainer/WinsText,
+	"Total": $Panel/HBoxContainer/ToalPoints,
+	"Average": $Panel/HBoxContainer/AveragePoints
 }
 @onready var confirmBox = $Confirm
 
