@@ -16,6 +16,9 @@ func _ready() -> void:
 # Start a new inning
 func _start_inning(inning: int) -> void:
 	_clear_field()
+	# Show an ad for the 3rd and 7th inning
+	if inning == 3 || inning == 7:
+		AdManager.show_interstitial_ad()
 	if inning % 2 == 0:
 		# Enemy Bats
 		playerManager._add_player_to_bat(enemyTeam)
@@ -38,6 +41,7 @@ func _clear_field() -> void:
 	playerManager._clear_the_field()
 
 func _set_teams(team: Enums.CITY) -> void:
+	AdManager.show_interstitial_ad()
 	playerTeam = team
 	var rand = randi_range(0, Enums.CITY.size()-1)
 	if rand as Enums.CITY == playerTeam:
