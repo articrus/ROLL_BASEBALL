@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Advertisement Test</title>
+  <style>
+    body { margin: 0; font-family: sans-serif; background: #222; color: #eee; }
+    #game-frame { width: 100%; height: 90vh; border: none; display: block; }
+    #info { padding: 10px; font-size: 14px; }
+  </style>
+</head>
+<body>
+
+  <div id="info">
+    This mimics how the game will be embedded on the real site (iframe + ad snippet on the parent page).
+  </div>
+
+  <!--
+    Point this at your exported game's index.html. (Or whatever name it will have)
+    Adjust the path if your folder structure differs.
+  -->
+  <iframe id="game-frame" src="web/index.html"></iframe>
+
+  <!-- ===== This is the paste of website-ad-snippet.html contents below ===== -->
+
+  <div id="godot-ad-overlay" style="display:none;position:fixed;inset:0;background:#000;z-index:9999;align-items:center;justify-content:center;flex-direction:column;">
+    <div id="godot-ad-content" style="color:#fff;font-family:sans-serif;">
+      AD PLACEHOLDER — replace this div's contents with the real ad tag.
+    </div>
+    <button id="godot-ad-close" disabled style="margin-top:20px;padding:10px 20px;font-size:16px;cursor:not-allowed;opacity:0.5;">
+      Close
+    </button>
+  </div>
+
+  <script>
+  (function() {
+    var overlay = document.getElementById('godot-ad-overlay');
+    var closeBtn = document.getElementById('godot-ad-close');
+
+    closeBtn.onclick = function() {
+      if (closeBtn.disabled) return;
+      overlay.style.display = 'none';
+      if (typeof window.godotOnAdClosed === 'function') {
+        window.godotOnAdClosed();
+      }
+    };
+
+    window.godotShowAd = function(skipDelaySeconds) {
+      overlay.style.display = 'flex';
+      closeBtn.disabled = true;
+      closeBtn.style.cursor = 'not-allowed';
+      closeBtn.style.opacity = '0.5';
+      closeBtn.innerText = 'Skip in ' + skipDelaySeconds + '...';
+
+      var remaining = skipDelaySeconds;
+      var interval = setInterval(function() {
+        remaining -= 1;
+        if (remaining <= 0) {
+          clearInterval(interval);
+          closeBtn.disabled = false;
+          closeBtn.style.cursor = 'pointer';
+          closeBtn.style.opacity = '1';
+          closeBtn.innerText = 'Close';
+        } else {
+          closeBtn.innerText = 'Skip in ' + remaining + '...';
+        }
+      }, 1000);
+    };
+  })();
+  </script>
+  <!-- ==== End of snippet contents ==== -->
+
+</body>
+</html>

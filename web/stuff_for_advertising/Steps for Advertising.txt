@@ -1,0 +1,20 @@
+Steps for Advertising:
+
+1. Set up an ad account, whether it be google AdSense for Games or something. Need a Publisher ID and an ad unit snippet. This instructions uses/recommends google adsense
+
+2. Add the loader script (Like google AdSense) in the site's HEAD (once).
+example: <script async scr = "link"></script>
+
+3. Imbed the game via iframe, same as the test harness html file
+Example: <iframe src="/path-to-game/web/index.html" style="whatever style needed"></iframe>
+
+4. Paste website-ad-snippet.html CONTENT near the iframe, on the same page (All the stuff that's inside the html file itself) 
+
+5. Replace the placeholder inside #godot-ad-content with the real AdSense ad unit tag from the AdSense dashboard:
+Example (Might be like): <ins class="adsbygoogle" 
+				style="display:block"
+				...(Everything else)</ins>
+			<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+
+And then that's it
+

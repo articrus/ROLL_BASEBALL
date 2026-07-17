@@ -1,0 +1,70 @@
+<!--
+  Paste this block into the site's page, somewhere near the game embed
+  (anywhere in <body> is fine). This is NOT part of the Godot export —
+  it lives on the website itself, so it can be edited anytime without
+  touching the game project or re-exporting anything.
+
+  What it does:
+  - Creates a fullscreen overlay with a "Skip in X" button.
+  - Exposes window.godotShowAd(seconds), the game calls this to show it.
+  - Calls window.godotOnAdClosed() when the button is clicked, the game
+    is listening for this to resume gameplay.
+
+  TO ADD A REAL AD:
+  Replace the contents of the #godot-ad-content div (marked below)
+  with the real ad network's tag/snippet. For Google AdSense that's
+  typically their <ins class="adsbygoogle"> unit, plus their loader
+  script added once in the page's <head> (not here).
+-->
+
+<div id="godot-ad-overlay" style="display:none;position:fixed;inset:0;background:#000;z-index:9999;align-items:center;justify-content:center;flex-direction:column;">
+
+  <!-- ============================================= -->
+  <!-- REPLACE THE CONTENTS OF THIS DIV WITH THE REAL AD -->
+  <div id="godot-ad-content" style="color:#fff;font-family:sans-serif;">
+    Ad placeholder — replace this div's contents with the real ad tag.
+  </div>
+  <!-- ============================================= -->
+
+  <button id="godot-ad-close" disabled style="margin-top:20px;padding:10px 20px;font-size:16px;cursor:not-allowed;opacity:0.5;">
+    Close
+  </button>
+</div>
+
+<script>
+(function() {
+  var overlay = document.getElementById('godot-ad-overlay');
+  var closeBtn = document.getElementById('godot-ad-close');
+
+  closeBtn.onclick = function() {
+    if (closeBtn.disabled) return;
+    overlay.style.display = 'none';
+    if (typeof window.godotOnAdClosed === 'function') {
+      window.godotOnAdClosed();
+    }
+  };
+
+  // Called by the game (via JavaScriptBridge) to show the ad.
+  window.godotShowAd = function(skipDelaySeconds) {
+    overlay.style.display = 'flex';
+    closeBtn.disabled = true;
+    closeBtn.style.cursor = 'not-allowed';
+    closeBtn.style.opacity = '0.5';
+    closeBtn.innerText = 'Skip in ' + skipDelaySeconds + '...';
+
+    var remaining = skipDelaySeconds;
+    var interval = setInterval(function() {
+      remaining -= 1;
+      if (remaining <= 0) {
+        clearInterval(interval);
+        closeBtn.disabled = false;
+        closeBtn.style.cursor = 'pointer';
+        closeBtn.style.opacity = '1';
+        closeBtn.innerText = 'Close';
+      } else {
+        closeBtn.innerText = 'Skip in ' + remaining + '...';
+      }
+    }, 1000);
+  };
+})();
+</script>
