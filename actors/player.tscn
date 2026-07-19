@@ -5,6 +5,197 @@
 [ext_resource type="Texture2D" uid="uid://bgdhww8njxgwm" path="res://art/actors/cap.png" id="3_1yqc4"]
 [ext_resource type="Texture2D" uid="uid://b2njmnbaetmbs" path="res://art/actors/helmet.png" id="3_esgq3"]
 [ext_resource type="Texture2D" uid="uid://dfpajmr5ljh5l" path="res://art/actors/cap_head.png" id="4_kjkj0"]
+[ext_resource type="Texture2D" uid="uid://vs52g1rb8w1e" path="res://art/objects/bat.png" id="6_tue77"]
+[ext_resource type="Texture2D" uid="uid://cpd7ffptq5ihr" path="res://art/objects/glove.png" id="7_33vod"]
+
+[sub_resource type="Animation" id="Animation_33vod"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Objects/Bat:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(47.058815, -16.470589)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Objects/Bat:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.097438216]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Objects/Glove:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(50.588238, 16.470589)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Objects/Glove:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_er1rk"]
+resource_name = "bat_idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Objects/Bat:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-32.94117, -10.588234), Vector2(-32.941174, -22.352938)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Objects/Bat:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.097438216, 0.097438216]
+}
+
+[sub_resource type="Animation" id="Animation_e7yfm"]
+resource_name = "bat_swing"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Objects/Bat:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-38.823532, -16.470589), Vector2(55.29412, -11.764706)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Objects/Bat:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.097438216, 1.6265062]
+}
+
+[sub_resource type="Animation" id="Animation_rkwqa"]
+resource_name = "glove_catch"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Objects/Glove:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(50.588238, 16.470589), Vector2(51.764698, -31.764706)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Objects/Glove:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -0.4035951]
+}
+
+[sub_resource type="Animation" id="Animation_ua707"]
+resource_name = "glove_idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Objects/Glove:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(50.588238, 16.470589), Vector2(50.588234, 5.882352), Vector2(50.588238, 16.470589)]
+}
+
+[sub_resource type="Animation" id="Animation_41w2c"]
+resource_name = "glove_pitch"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Objects/Glove:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(50.588238, 16.470589), Vector2(-9.411766, 18.823528), Vector2(50.588238, 16.470589)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Objects/Glove:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, -2.382673, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_e7yfm"]
+_data = {
+&"RESET": SubResource("Animation_33vod"),
+&"bat_idle": SubResource("Animation_er1rk"),
+&"bat_swing": SubResource("Animation_e7yfm"),
+&"glove_catch": SubResource("Animation_rkwqa"),
+&"glove_idle": SubResource("Animation_ua707"),
+&"glove_pitch": SubResource("Animation_41w2c")
+}
 
 [node name="Player" type="Node2D" unique_id=671285342]
 scale = Vector2(0.85, 0.85)
@@ -14,6 +205,7 @@ script = ExtResource("1_mvpqy")
 texture = ExtResource("2_1yqc4")
 
 [node name="Hats" type="Node2D" parent="." unique_id=584514962]
+scale = Vector2(1.0000001, 1.0000001)
 
 [node name="Cap" type="Node2D" parent="Hats" unique_id=1807677677]
 
@@ -32,3 +224,24 @@ visible = false
 position = Vector2(1, -11)
 scale = Vector2(0.09, 0.09)
 texture = ExtResource("3_esgq3")
+
+[node name="Objects" type="Node2D" parent="." unique_id=1713778853]
+scale = Vector2(1.0000001, 1.0000001)
+
+[node name="Bat" type="Sprite2D" parent="Objects" unique_id=844173218]
+visible = false
+position = Vector2(47.058815, -16.470589)
+rotation = 0.097438216
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("6_tue77")
+
+[node name="Glove" type="Sprite2D" parent="Objects" unique_id=1258381433]
+visible = false
+position = Vector2(50.588238, 16.470589)
+scale = Vector2(0.04, 0.04)
+texture = ExtResource("7_33vod")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=724527730]
+libraries/ = SubResource("AnimationLibrary_e7yfm")
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

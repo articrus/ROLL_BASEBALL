@@ -11,9 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://bnqfl6qwvvrmt" path="res://ui/hud_components/dc_display.tscn" id="8_b6i2q"]
 [ext_resource type="PackedScene" uid="uid://btxim5i06julr" path="res://ui/hud_components/scoreboard.tscn" id="8_f7sc3"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dg4h0"]
-bg_color = Color(0, 0, 0, 0.8627451)
-
 [node name="PlayerUI" type="Control" unique_id=258670629]
 layout_mode = 3
 anchors_preset = 15
@@ -107,6 +104,7 @@ offset_left = -147.0
 offset_top = -181.0
 offset_right = 148.0
 offset_bottom = -91.0
+theme_override_font_sizes/font_size = 75
 
 [node name="TotalText" parent="." unique_id=1327960552 instance=ExtResource("7_g1ro4")]
 visible = false
@@ -150,7 +148,6 @@ grow_vertical = 1
 [node name="DiceTable" parent="." unique_id=1740025211 instance=ExtResource("6_ykvpg")]
 visible = false
 layout_mode = 1
-theme_override_styles/panel = SubResource("StyleBoxFlat_dg4h0")
 
 [node name="GameOver" parent="." unique_id=2139839966 instance=ExtResource("7_hff70")]
 visible = false

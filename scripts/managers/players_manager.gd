@@ -8,6 +8,10 @@ extends Node2D
 }
 var bases # Reference to bases
 var batTeam: Enums.CITY
+# References to existing characters
+var pitcher
+var fieldA
+var fieldB
 
 func _advance_bases(amount: int) -> void:
 	for i in amount:
@@ -24,6 +28,7 @@ func _advance_bases(amount: int) -> void:
 			players[1] = players[0]
 			players[0] = null
 		if players[3] != null: # Batter advances to First
+			players[3]._disable_objects()
 			tweens.append(players[3]._set_player_position(bases._get_base_position(0)))
 			players[0] = players[3]
 			players[3] = null
@@ -51,6 +56,7 @@ func _out_one_player(baseNumber: int) -> void:
 		players[baseNumber] = null
 
 func _strikeout() -> void:
+	players[3]._disable_objects()
 	players[3]._strikeout(bases._get_out_position())
 	players[3] = null
 	_add_player_to_bat(batTeam)
@@ -65,21 +71,31 @@ func _add_player_to_bat(team: Enums.CITY) -> void:
 	Signalbus.disable_roll.emit(false)
 
 func _add_player_to_pitch(team: Enums.CITY) -> void:
-	var newPlayer = player.instantiate()
-	add_child(newPlayer)
-	newPlayer._setup_player(team, false)
-	newPlayer.global_position = bases._get_pitch_position()
-	newPlayer.z_index = 5 # Ensure pitchers are in front
+	pitcher = player.instantiate()
+	add_child(pitcher)
+	pitcher._setup_player(team, false)
+	pitcher.global_position = bases._get_pitch_position()
+	pitcher.z_index = 5 # Ensure pitchers are in front
 
 func _add_players_to_field(team: Enums.CITY) -> void:
-	var playerA = player.instantiate()
-	var playerB = player.instantiate()
-	add_child(playerA)
-	add_child(playerB)
-	playerA._setup_player(team, false)
-	playerA.global_position = bases._get_field_position(0)
-	playerB._setup_player(team, false)
-	playerB.global_position = bases._get_field_position(1)
+	fieldA = player.instantiate()
+	fieldB = player.instantiate()
+	add_child(fieldA)
+	add_child(fieldB)
+	fieldA._setup_player(team, false)
+	fieldA.global_position = bases._get_field_position(0)
+	fieldB._setup_player(team, false)
+	fieldB.global_position = bases._get_field_position(1)
+
+func _pitch_animation() -> void:
+	pitcher.animPlayer.play("glove_pitch")
+	players[3].animPlayer.play("bat_swing")
+
+func _catch_animation(isLeft: bool) -> void:
+	if isLeft:
+		fieldA.animPlayer.play("glove_catch")
+	else:
+		fieldB.animPlayer.play("glove_catch")
 
 func _clear_the_field() -> void:
 	for actor in self.get_children():

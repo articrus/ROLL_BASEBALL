@@ -52,6 +52,9 @@ func _set_teams(team: Enums.CITY) -> void:
 	_start_inning(gameManager.current_inning)
 
 func _connect_signals() -> void:
+	playerManager.bases = bases
+	gameManager.basePositions = bases
+	gameManager.playersManager = playerManager
 	gameManager.advance_bases.connect(playerManager._advance_bases)
 	gameManager.strikeout.connect(playerManager._strikeout)
 	gameManager.toggle_special.connect(gameUI._disable_special)

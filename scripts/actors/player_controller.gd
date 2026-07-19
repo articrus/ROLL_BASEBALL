@@ -2,11 +2,14 @@ extends Node2D
 class_name PlayerController
 @onready var bodySprite = $Body
 @onready var capSprite = $Hats/Cap
-# Cap Segments
+@onready var animPlayer = $AnimationPlayer
+# Hats
 @onready var capBot = $Hats/Cap/CapBottom
 @onready var capTop = $Hats/Cap/CapTop
-# Helmet
 @onready var helmetSprite = $Hats/Helmet
+# Objects
+@onready var batSprite = $Objects/Bat
+@onready var gloveSprite = $Objects/Glove
 # Movement Vars
 @export var tween_time: float = 0.3
 
@@ -19,6 +22,7 @@ func _set_team_color(team: Enums.CITY) -> void:
 
 # Changes the hats
 func _set_team_position(batting: bool, team: Enums.CITY) -> void:
+	_set_player_idle(batting)
 	if batting:
 		helmetSprite.visible = true
 		helmetSprite.modulate = Enums.CITY_SECOND_COLORS[team]
@@ -55,3 +59,24 @@ func _flip_chara(flip: bool) -> void:
 		self.scale.x *= -1
 	else:
 		self.scale.x = (abs(self.scale.x))
+
+# Sets the idle animations for players
+func _set_player_idle(isBatting: bool) -> void:
+	if isBatting:
+		batSprite.visible = true
+		animPlayer.play("bat_idle")
+	else:
+		gloveSprite.visible = true
+		animPlayer.play("glove_idle")
+
+func _disable_objects() -> void:
+	batSprite.visible = false
+	gloveSprite.visible = false
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "glove_pitch" || anim_name == "glove_catch":
+		animPlayer.play("glove_idle")
+	elif anim_name == "bat_swing":
+		animPlayer.play("bat_idle")
+	else:
+		pass

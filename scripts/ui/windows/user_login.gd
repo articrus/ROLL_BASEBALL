@@ -32,7 +32,11 @@ func _sign_up_user(email: String, password: String) -> void:
 		confirm_sent.emit("Confirmation Email Sent!")
 		Signalbus.user_login.emit()
 	else:
-		_process_error(result, false)
+		if "Email not confirmed" in result.get("error", ""):
+			confirm_sent.emit("Confirmation Email Sent!")
+			Signalbus.user_login.emit()
+		else:
+			_process_error(result, false)
 
 # Verfifies the entered information
 func _verify_info(email: String, password: String, isLogin: bool) -> bool:
