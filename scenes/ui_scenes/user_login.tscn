@@ -78,6 +78,8 @@ text = "Password:"
 layout_mode = 2
 theme = ExtResource("2_o15tw")
 placeholder_text = "***"
+secret = true
+secret_character = "*"
 
 [node name="LoginButton" type="Button" parent="Image/Panel/BoxContainer/SignIn" unique_id=1069464903]
 layout_mode = 2
@@ -123,6 +125,8 @@ text = "Password:"
 layout_mode = 2
 theme = ExtResource("2_o15tw")
 placeholder_text = "***"
+secret = true
+secret_character = "*"
 
 [node name="SignUpButton" type="Button" parent="Image/Panel/BoxContainer/SignUp" unique_id=1189281526]
 layout_mode = 2

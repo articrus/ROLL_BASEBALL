@@ -14,10 +14,12 @@ func _sign_up(email: String, password: String) -> Dictionary:
 		{ "email": email, "password": password},
 		_anon_headers()
 	)
-	if res.status == 200 and res.body.get("access_token", "") != "":
-		access_token = res.body["access_token"]
-		current_user_id = res.body["user"]["id"]
-		return {"ok": true }
+	if res.status == 200:
+		if res.body.get("access_token", "") != "":
+			access_token = res.body["access_token"]
+			current_user_id = res.body["user"]["id"]
+			return {"ok": true, "needs_confirmation": false}
+		return {"ok": true, "needs_confirmation": true}
 	return {"ok": false, "error": res.body.get("msg", "Unknown error")}
 
 func _sign_in(email: String, password: String) -> Dictionary:

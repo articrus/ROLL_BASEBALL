@@ -29,14 +29,12 @@ func _sign_up_user(email: String, password: String) -> void:
 		return # If signup info failed don't execute next steps
 	var result = await AuthenticationManager._sign_up(email, password)
 	if result.ok:
-		confirm_sent.emit("Confirmation Email Sent!")
-		Signalbus.user_login.emit()
-	else:
-		if "Email not confirmed" in result.get("error", ""):
+		if result.get("needs_confirmation", false):
 			confirm_sent.emit("Confirmation Email Sent!")
-			Signalbus.user_login.emit()
 		else:
-			_process_error(result, false)
+			Signalbus.user_login.emit()
+	else:
+		_process_error(result, false)
 
 # Verfifies the entered information
 func _verify_info(email: String, password: String, isLogin: bool) -> bool:
