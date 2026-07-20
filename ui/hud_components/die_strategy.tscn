@@ -2,49 +2,95 @@
 
 [ext_resource type="Script" uid="uid://dti6qgg2idsdc" path="res://scripts/ui/hud/die_strategy.gd" id="1_706v5"]
 [ext_resource type="Theme" uid="uid://cjwjb6wa1fg38" path="res://ui/themes/baseball_text.tres" id="1_cypsq"]
+[ext_resource type="Texture2D" uid="uid://dwst2rbm0rse" path="res://ui/dice_textures/d4/d4_1.tres" id="3_q8itj"]
+[ext_resource type="Texture2D" uid="uid://belwwoevhr0i4" path="res://ui/dice_textures/d6/d6_1.tres" id="4_w426m"]
+[ext_resource type="Texture2D" uid="uid://dqvqkqpitvhxf" path="res://ui/dice_textures/d8/d8_1.tres" id="5_h4skd"]
+[ext_resource type="StyleBox" uid="uid://chhrxw06g5evp" path="res://ui/themes/black_panel.tres" id="6_h4skd"]
+[ext_resource type="StyleBox" uid="uid://dc2of2y8q6ajf" path="res://ui/themes/black_hover.tres" id="7_tovjp"]
 
-[node name="LeftDie" type="HBoxContainer" unique_id=1539795031]
-custom_minimum_size = Vector2(75, 0)
+[node name="LeftDie" type="Control" unique_id=369328504]
+layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -58.0
-offset_top = -187.0
-offset_right = 176.0
-offset_bottom = -147.0
+offset_left = -226.0
+offset_top = -20.0
+offset_right = 226.0
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
-pivot_offset = Vector2(117, 20)
 theme = ExtResource("1_cypsq")
-alignment = 1
 script = ExtResource("1_706v5")
 
-[node name="Label" type="Label" parent="." unique_id=1909782112]
-layout_mode = 2
-theme = ExtResource("1_cypsq")
-text = "Left Die"
+[node name="DieShapes" type="HBoxContainer" parent="." unique_id=288648986]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 0
+offset_top = -17.0
+offset_right = 233.0
+offset_bottom = 58.0
+theme_override_constants/separation = 4
 
-[node name="PowerBtn" type="Button" parent="." unique_id=1225632445]
+[node name="TextureRect2" type="TextureRect" parent="DieShapes" unique_id=440270143]
+layout_mode = 2
+texture = ExtResource("3_q8itj")
+expand_mode = 3
+
+[node name="TextureRect3" type="TextureRect" parent="DieShapes" unique_id=1313459212]
+layout_mode = 2
+texture = ExtResource("4_w426m")
+expand_mode = 2
+
+[node name="TextureRect4" type="TextureRect" parent="DieShapes" unique_id=1093052439]
+layout_mode = 2
+texture = ExtResource("5_h4skd")
+expand_mode = 2
+
+[node name="Buttons" type="HBoxContainer" parent="." unique_id=532594130]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 0
+offset_right = 75.0
+offset_bottom = 40.0
+
+[node name="PowerBtn" type="Button" parent="Buttons" unique_id=1225632445]
 custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
 theme = ExtResource("1_cypsq")
+theme_override_styles/normal = ExtResource("6_h4skd")
+theme_override_styles/normal_mirrored = ExtResource("6_h4skd")
+theme_override_styles/pressed = ExtResource("6_h4skd")
+theme_override_styles/pressed_mirrored = ExtResource("6_h4skd")
+theme_override_styles/hover = ExtResource("7_tovjp")
+theme_override_styles/hover_mirrored = ExtResource("6_h4skd")
+theme_override_styles/hover_pressed = ExtResource("6_h4skd")
+theme_override_styles/hover_pressed_mirrored = ExtResource("7_tovjp")
 text = "POWER"
 
-[node name="NormalBtn" type="Button" parent="." unique_id=984531999]
+[node name="NormalBtn" type="Button" parent="Buttons" unique_id=984531999]
 custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
 theme = ExtResource("1_cypsq")
+theme_override_styles/normal = ExtResource("6_h4skd")
+theme_override_styles/normal_mirrored = ExtResource("6_h4skd")
+theme_override_styles/pressed = ExtResource("6_h4skd")
+theme_override_styles/pressed_mirrored = ExtResource("6_h4skd")
+theme_override_styles/hover = ExtResource("7_tovjp")
+theme_override_styles/hover_mirrored = ExtResource("6_h4skd")
+theme_override_styles/hover_pressed = ExtResource("6_h4skd")
+theme_override_styles/hover_pressed_mirrored = ExtResource("7_tovjp")
 text = "NORMAL"
 
-[node name="ContactBtn" type="Button" parent="." unique_id=583509337]
+[node name="ContactBtn" type="Button" parent="Buttons" unique_id=583509337]
 custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
 theme = ExtResource("1_cypsq")
+theme_override_styles/normal = ExtResource("6_h4skd")
+theme_override_styles/normal_mirrored = ExtResource("6_h4skd")
+theme_override_styles/pressed = ExtResource("6_h4skd")
+theme_override_styles/pressed_mirrored = ExtResource("6_h4skd")
+theme_override_styles/hover = ExtResource("7_tovjp")
+theme_override_styles/hover_mirrored = ExtResource("6_h4skd")
+theme_override_styles/hover_pressed = ExtResource("6_h4skd")
+theme_override_styles/hover_pressed_mirrored = ExtResource("7_tovjp")
 text = "CONTACT"
-
-[node name="Label2" type="Label" parent="." unique_id=985460795]
-layout_mode = 2
-theme = ExtResource("1_cypsq")
-text = "Left Die"

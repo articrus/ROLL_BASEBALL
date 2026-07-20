@@ -16,6 +16,7 @@ signal user_login
 # Team Select
 signal team_highlight(city: Enums.CITY)
 signal team_selected(city: Enums.CITY)
+signal update_scoreboard_names(home: Enums.CITY, visit: Enums.CITY)
 
 # Scoreboard Signals
 signal update_inning_info(strikeDC: int, specialDC: int, inning: int)

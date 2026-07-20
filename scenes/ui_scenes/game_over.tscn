@@ -3,6 +3,7 @@
 [ext_resource type="StyleBox" uid="uid://chhrxw06g5evp" path="res://ui/themes/black_panel.tres" id="1_8d24m"]
 [ext_resource type="Script" uid="uid://igfjpn5huibj" path="res://scripts/ui/windows/game_over.gd" id="1_cinye"]
 [ext_resource type="Theme" uid="uid://cjwjb6wa1fg38" path="res://ui/themes/baseball_text.tres" id="2_8d24m"]
+[ext_resource type="PackedScene" uid="uid://cgwf112eud4gw" path="res://scenes/ui_scenes/user_login.tscn" id="4_pygkr"]
 
 [node name="GameOver" type="Panel" unique_id=346299641]
 anchors_preset = 15
@@ -32,36 +33,39 @@ alignment = 1
 [node name="GameOver" type="Label" parent="HBoxContainer" unique_id=1894949148]
 layout_mode = 2
 theme = ExtResource("2_8d24m")
-text = "GAME OVER"
+theme_override_font_sizes/font_size = 48
 horizontal_alignment = 1
 
 [node name="HomePoints" type="Label" parent="HBoxContainer" unique_id=1456317010]
 layout_mode = 2
 theme = ExtResource("2_8d24m")
-text = "Home Points: 0"
 horizontal_alignment = 1
 
 [node name="VisitorPoints" type="Label" parent="HBoxContainer" unique_id=240845473]
 layout_mode = 2
 theme = ExtResource("2_8d24m")
-text = "Visitor Points: 0"
 horizontal_alignment = 1
 
 [node name="AveragePoints" type="Label" parent="HBoxContainer" unique_id=455677487]
 layout_mode = 2
 theme = ExtResource("2_8d24m")
-text = "Average Points per Inning: 0"
 horizontal_alignment = 1
 
 [node name="PlayAgain" type="Button" parent="HBoxContainer" unique_id=2042290972]
+visible = false
 layout_mode = 2
 theme = ExtResource("2_8d24m")
 text = "Play Again"
 
 [node name="Quit" type="Button" parent="HBoxContainer" unique_id=1746657956]
+visible = false
 layout_mode = 2
 theme = ExtResource("2_8d24m")
 text = "Main Menu"
+
+[node name="Login" parent="." unique_id=1281102242 instance=ExtResource("4_pygkr")]
+visible = false
+layout_mode = 1
 
 [connection signal="pressed" from="HBoxContainer/PlayAgain" to="." method="_on_play_again"]
 [connection signal="pressed" from="HBoxContainer/Quit" to="." method="_on_quit"]

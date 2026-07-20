@@ -84,15 +84,15 @@ anchor_left = 0.05
 anchor_top = 0.05
 anchor_right = 0.95
 anchor_bottom = 0.5
-offset_left = 13.951998
-offset_top = 11.429994
-offset_right = -14.952026
+offset_left = -8.780001
+offset_top = 11.429993
+offset_right = 8.219971
 offset_bottom = 31.699997
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-theme_override_constants/h_separation = 10
-theme_override_constants/v_separation = 10
+theme_override_constants/h_separation = 4
+theme_override_constants/v_separation = 5
 columns = 3
 
 [node name="EmptyA" type="Label" parent="Panel/InnerPanel/TeamScore" unique_id=795837024]
@@ -129,9 +129,9 @@ layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 6
 theme = ExtResource("2_d7rl5")
-theme_override_font_sizes/font_size = 25
+theme_override_font_sizes/font_size = 22
 text = "HOME"
-horizontal_alignment = 1
+horizontal_alignment = 2
 
 [node name="HomeScore" type="RichTextLabel" parent="Panel/InnerPanel/TeamScore" unique_id=715735968]
 custom_minimum_size = Vector2(300, 0)
@@ -159,9 +159,9 @@ layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 6
 theme = ExtResource("2_d7rl5")
-theme_override_font_sizes/font_size = 25
+theme_override_font_sizes/font_size = 22
 text = "VISITOR"
-horizontal_alignment = 1
+horizontal_alignment = 2
 
 [node name="VisitorScore" type="RichTextLabel" parent="Panel/InnerPanel/TeamScore" unique_id=69622048]
 custom_minimum_size = Vector2(300, 0)

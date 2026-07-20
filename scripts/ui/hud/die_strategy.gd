@@ -1,6 +1,6 @@
-extends HBoxContainer
+extends Control
 class_name StrategyContainer
 
-@onready var powerBtn = $PowerBtn
-@onready var normalBtn = $NormalBtn
-@onready var contactBtn = $ContactBtn
+@onready var powerBtn = $Buttons/PowerBtn
+@onready var normalBtn = $Buttons/NormalBtn
+@onready var contactBtn = $Buttons/ContactBtn

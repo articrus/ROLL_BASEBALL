@@ -20,17 +20,17 @@ position = Vector2(0, 282.99997)
 scale = Vector2(10, 10)
 texture = ExtResource("2_mw25s")
 
-[node name="Field" type="Sprite2D" parent="." unique_id=1837956821]
-position = Vector2(0, 63)
-scale = Vector2(0.4, 0.4)
-texture = ExtResource("2_utbpp")
-
 [node name="Spectators" type="Sprite2D" parent="." unique_id=1096673680]
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_b5spy")
 
+[node name="Field" type="Sprite2D" parent="." unique_id=1837956821]
+position = Vector2(0, 29)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_utbpp")
+
 [node name="Bases" type="Node2D" parent="." unique_id=547608302]
-position = Vector2(0, 63)
+position = Vector2(0, 29)
 script = ExtResource("1_bw6k5")
 
 [node name="Home" type="Marker2D" parent="Bases" unique_id=1218090844]

@@ -49,6 +49,7 @@ func _set_teams(team: Enums.CITY) -> void:
 		if rand > Enums.CITY.size():
 			rand = 0
 	enemyTeam = rand as Enums.CITY
+	Signalbus.update_scoreboard_names.emit(playerTeam, enemyTeam)
 	_start_inning(gameManager.current_inning)
 
 func _connect_signals() -> void:

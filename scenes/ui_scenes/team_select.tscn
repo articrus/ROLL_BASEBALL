@@ -38,8 +38,8 @@ theme_override_constants/separation = 24
 [node name="TeamSelect" type="Label" parent="Panel/VBoxContainer" unique_id=1057718066]
 layout_mode = 2
 theme = ExtResource("2_icgwg")
-theme_override_font_sizes/font_size = 48
-text = "Select Your Team"
+theme_override_font_sizes/font_size = 50
+text = "Select Your Team (Home)"
 horizontal_alignment = 1
 
 [node name="TeamLogo" type="TextureRect" parent="Panel/VBoxContainer" unique_id=1225458643]
@@ -55,12 +55,14 @@ layout_mode = 2
 [node name="TeamName" type="Label" parent="Panel/VBoxContainer/TeamInfo" unique_id=1123221155]
 layout_mode = 2
 theme = ExtResource("2_icgwg")
+theme_override_font_sizes/font_size = 30
 text = "TEAM NAME"
 horizontal_alignment = 1
 
 [node name="City" type="Label" parent="Panel/VBoxContainer/TeamInfo" unique_id=1189157773]
 layout_mode = 2
 theme = ExtResource("2_icgwg")
+theme_override_font_sizes/font_size = 30
 text = "TEAM TOWN"
 horizontal_alignment = 1
 
