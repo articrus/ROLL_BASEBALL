@@ -1,13 +1,14 @@
-extends Control
+extends TextureRect
 @onready var infoText = {
-	"GameOver": $HBoxContainer/GameOver,
-	"PlayerPoints": $HBoxContainer/HomePoints,
-	"ComPoints": $HBoxContainer/VisitorPoints,
-	"Average": $HBoxContainer/AveragePoints
+	"GameOver": $Panel/HBoxContainer/GameOver,
+	"PlayerPoints": $Panel/HBoxContainer/HomePoints,
+	"ComPoints": $Panel/HBoxContainer/VisitorPoints,
+	"Average": $Panel/HBoxContainer/AveragePoints
 }
+@onready var trophy = $Trophy
 # Buttons
-@onready var playAgainBtn = $HBoxContainer/PlayAgain
-@onready var quitBtn = $HBoxContainer/Quit
+@onready var playAgainBtn = $Panel/HBoxContainer/PlayAgain
+@onready var quitBtn = $Panel/HBoxContainer/Quit
 # Login screen just in case
 @onready var loginUI = $Login
 # Export Vars
@@ -18,6 +19,8 @@ var typing_time : float
 var time_elapsed: float
 
 func _display_info(home: int, visit: int, av: float, victory: bool) -> void:
+	if victory:
+		trophy.visible = true
 	await get_tree().create_timer(1).timeout
 	if victory:
 		await _type_text("WINNER!", infoText["GameOver"])

@@ -2,19 +2,42 @@
 
 [ext_resource type="StyleBox" uid="uid://chhrxw06g5evp" path="res://ui/themes/black_panel.tres" id="1_8d24m"]
 [ext_resource type="Script" uid="uid://igfjpn5huibj" path="res://scripts/ui/windows/game_over.gd" id="1_cinye"]
+[ext_resource type="Texture2D" uid="uid://cwwruf6qd2nwm" path="res://art/ui/victory_background.png" id="1_ey0bv"]
 [ext_resource type="Theme" uid="uid://cjwjb6wa1fg38" path="res://ui/themes/baseball_text.tres" id="2_8d24m"]
+[ext_resource type="Texture2D" uid="uid://bphiqv85ulmb7" path="res://art/ui/trophy.png" id="3_8n6hu"]
 [ext_resource type="PackedScene" uid="uid://cgwf112eud4gw" path="res://scenes/ui_scenes/user_login.tscn" id="4_pygkr"]
 
-[node name="GameOver" type="Panel" unique_id=346299641]
+[node name="GameOver" type="TextureRect" unique_id=1287563985]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_ey0bv")
+expand_mode = 1
+script = ExtResource("1_cinye")
+
+[node name="Trophy" type="TextureRect" parent="." unique_id=95780412]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_8n6hu")
+expand_mode = 1
+
+[node name="Panel" type="Panel" parent="." unique_id=1049718596]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = ExtResource("1_8d24m")
-script = ExtResource("1_cinye")
 
-[node name="HBoxContainer" type="VBoxContainer" parent="." unique_id=2001006064]
+[node name="HBoxContainer" type="VBoxContainer" parent="Panel" unique_id=2001006064]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -30,34 +53,34 @@ grow_vertical = 2
 theme_override_constants/separation = 24
 alignment = 1
 
-[node name="GameOver" type="Label" parent="HBoxContainer" unique_id=1894949148]
+[node name="GameOver" type="Label" parent="Panel/HBoxContainer" unique_id=1894949148]
 layout_mode = 2
 theme = ExtResource("2_8d24m")
 theme_override_font_sizes/font_size = 48
 horizontal_alignment = 1
 
-[node name="HomePoints" type="Label" parent="HBoxContainer" unique_id=1456317010]
+[node name="HomePoints" type="Label" parent="Panel/HBoxContainer" unique_id=1456317010]
 layout_mode = 2
 theme = ExtResource("2_8d24m")
 horizontal_alignment = 1
 
-[node name="VisitorPoints" type="Label" parent="HBoxContainer" unique_id=240845473]
+[node name="VisitorPoints" type="Label" parent="Panel/HBoxContainer" unique_id=240845473]
 layout_mode = 2
 theme = ExtResource("2_8d24m")
 horizontal_alignment = 1
 
-[node name="AveragePoints" type="Label" parent="HBoxContainer" unique_id=455677487]
+[node name="AveragePoints" type="Label" parent="Panel/HBoxContainer" unique_id=455677487]
 layout_mode = 2
 theme = ExtResource("2_8d24m")
 horizontal_alignment = 1
 
-[node name="PlayAgain" type="Button" parent="HBoxContainer" unique_id=2042290972]
+[node name="PlayAgain" type="Button" parent="Panel/HBoxContainer" unique_id=2042290972]
 visible = false
 layout_mode = 2
 theme = ExtResource("2_8d24m")
 text = "Play Again"
 
-[node name="Quit" type="Button" parent="HBoxContainer" unique_id=1746657956]
+[node name="Quit" type="Button" parent="Panel/HBoxContainer" unique_id=1746657956]
 visible = false
 layout_mode = 2
 theme = ExtResource("2_8d24m")
@@ -67,5 +90,5 @@ text = "Main Menu"
 visible = false
 layout_mode = 1
 
-[connection signal="pressed" from="HBoxContainer/PlayAgain" to="." method="_on_play_again"]
-[connection signal="pressed" from="HBoxContainer/Quit" to="." method="_on_quit"]
+[connection signal="pressed" from="Panel/HBoxContainer/PlayAgain" to="." method="_on_play_again"]
+[connection signal="pressed" from="Panel/HBoxContainer/Quit" to="." method="_on_quit"]
