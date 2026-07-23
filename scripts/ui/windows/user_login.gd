@@ -65,10 +65,13 @@ func _set_warning_text(warning: String, isLogin: bool) -> void:
 
 # Temporary, testing if everything works here
 func _on_signup_pressed() -> void:
+	SoundManager._play_button()
 	_sign_up_user(signUpEmail.text, signUpPass.text)
 
 func _on_login_pressed() -> void:
+	SoundManager._play_button()
 	_login_user(loginEmail.text, loginPass.text)
 
 func _on_close_pressed() -> void:
+	SoundManager._play_button()
 	self.visible = false

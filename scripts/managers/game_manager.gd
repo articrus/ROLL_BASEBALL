@@ -34,6 +34,7 @@ func _process_rolling(left_die: Enums.DIE_TYPES, right_die: Enums.DIE_TYPES) -> 
 	var didScore = result[1] != Enums.BATTING_RESULT.STRIKEOUT
 	Signalbus.pitch_ball.emit(basePositions._get_base_position(3), basePositions._get_ball_position(didScore))
 	playersManager._pitch_animation()
+	SoundManager._play_pitch_sound()
 	var runs = 0
 	await Signalbus.resume_processing
 	Signalbus.display_die_total.emit(result[0])
@@ -58,6 +59,7 @@ func _process_rolling(left_die: Enums.DIE_TYPES, right_die: Enums.DIE_TYPES) -> 
 			Signalbus.display_batting_result.emit("STRIKEOUT!")
 			strikeouts += 1
 			strikeout.emit()
+	SoundManager._play_score_fanfare(result[1])
 	# Add the points
 	if current_inning % 2 == 0: 
 		visitPointsArray[current_inning] += runs
@@ -96,12 +98,15 @@ func _steal_base() -> int:
 		advance_one_base.emit(base)
 		if base < 2:
 			bases[base + 1] = true # Advance to next base
+			SoundManager._play_score_fanfare(Enums.BATTING_RESULT.DOUBLE)
 			Signalbus.display_batting_result.emit("STEAL!")
 			return 0
 		else:
+			SoundManager._play_score_fanfare(Enums.BATTING_RESULT.TRIPLE)
 			Signalbus.display_batting_result.emit("POINT STOLEN!")
 			return 1 # Stole home base, stole a point
 	else:
+		SoundManager._play_score_fanfare(Enums.BATTING_RESULT.STRIKEOUT)
 		strike_one_base.emit(base)
 		strikeouts += 1
 		Signalbus.display_batting_result.emit("OUT!")
@@ -113,8 +118,10 @@ func _tag_out() -> int:
 	if base == -1: return 0 # Prevent tagging out with no players on bases
 	var result = Dice._process_special()
 	await Signalbus.resume_processing
+	Signalbus.display_die_total.emit(result)
 	bases[base] = false
 	if result >= specialDC[current_inning]:
+		SoundManager._play_score_fanfare(Enums.BATTING_RESULT.STRIKEOUT)
 		strike_one_base.emit(base)
 		Signalbus.display_batting_result.emit("TAG OUT!")
 		strikeouts += 1
@@ -123,10 +130,12 @@ func _tag_out() -> int:
 		if base < 2:
 			bases[base + 1] = true
 			advance_one_base.emit(base)
+			SoundManager._play_score_fanfare(Enums.BATTING_RESULT.TRIPLE)
 			Signalbus.display_batting_result.emit("POINT STOLEN!")
 			return 0
 		else:
 			advance_one_base.emit(base)
+			SoundManager._play_score_fanfare(Enums.BATTING_RESULT.DOUBLE)
 			Signalbus.display_batting_result.emit("STEAL!")
 			return 1
 

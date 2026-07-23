@@ -27,14 +27,18 @@ func _toggle_confirm_box(toggle: bool) -> void:
 	confirmBox.visible = toggle
 
 func _on_reset_pressed() -> void:
+	SoundManager._play_button()
 	_toggle_confirm_box(true)
 
 func _on_yes_pressed() -> void:
+	SoundManager._play_button()
 	_reset_info()
 	_toggle_confirm_box(false)
 
 func _on_no_pressed() -> void:
+	SoundManager._play_button()
 	_toggle_confirm_box(false)
 
 func _on_close_pressed() -> void:
+	SoundManager._play_button()
 	self.visible = false

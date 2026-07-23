@@ -24,6 +24,7 @@ func _display_message(message: String) -> void:
 	displayText._set_text(message)
 
 func _on_play_pressed() -> void:
+	SoundManager._play_button()
 	if AuthenticationManager.current_user_id == "":
 		_display_message("YOU NEED TO LOGIN FIRST")
 		#print("YOU NEED TO LOGIN FIRST")
@@ -32,6 +33,7 @@ func _on_play_pressed() -> void:
 		_start_game()
 
 func _on_login_pressed() -> void:
+	SoundManager._play_button()
 	loginMenu.visible = true
 
 func _on_successful_login() -> void:
@@ -39,6 +41,7 @@ func _on_successful_login() -> void:
 	loginMenu.visible = false
 
 func _on_info_pressed() -> void:
+	SoundManager._play_button()
 	playerInfo.visible = true
 	playerInfo._on_visible()
 
@@ -46,4 +49,5 @@ func _start_game() -> void:
 	get_tree().change_scene_to_file("res://scenes/game_scene.tscn")
 
 func _on_rules_pressed() -> void:
+	SoundManager._play_button()
 	diceTable.visible = true

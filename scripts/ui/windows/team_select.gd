@@ -42,6 +42,7 @@ func _bind_buttons() -> void:
 		teamButtons[city].pressed.connect(_on_team_pressed.bind(city))
 
 func _on_team_pressed(city: Enums.CITY) -> void:
+	SoundManager._play_button()
 	Signalbus.team_selected.emit(city)
 	Signalbus.start_game.emit()
 	_close_team_select()

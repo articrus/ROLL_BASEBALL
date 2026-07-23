@@ -15,6 +15,7 @@ func _ready() -> void:
 
 # Start a new inning
 func _start_inning(inning: int) -> void:
+	SoundManager._play_inning_change()
 	_clear_field()
 	# Show an ad for the 3rd and 7th inning
 	if inning == 3 || inning == 7:

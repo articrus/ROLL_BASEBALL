@@ -45,10 +45,12 @@ func _type_text(data: String, label: Label) -> void:
 		await get_tree().process_frame
 
 func _on_play_again() -> void:
+	SoundManager._play_button()
 	if AuthenticationManager.current_user_id == "":
 		loginUI.visible = true
 	else:
 		get_tree().change_scene_to_file("res://scenes/game_scene.tscn")
 
 func _on_quit() -> void:
+	SoundManager._play_button()
 	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")

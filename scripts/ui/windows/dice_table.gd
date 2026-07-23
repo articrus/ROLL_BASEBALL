@@ -19,10 +19,12 @@ func _ready() -> void:
 
 # Closes the dice table screen
 func _on_close_pressed() -> void:
+	SoundManager._play_button()
 	self.visible = false
 
 # Toggle the visibility of the rules box
 func _on_ruleset_button_pressed(rule: Enums.RULES) -> void:
+	SoundManager._play_button()
 	for textBox in textBoxes:
 		textBoxes[textBox].visible = textBox == rule
 

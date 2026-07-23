@@ -31,10 +31,12 @@ func _display_die_total(total: int) -> void:
 	totalLabel.set_text(str(total))
 
 func _change_left_die(die: Enums.DIE_TYPES) -> void:
+	SoundManager._play_button()
 	left_die_type = die
 	roll_box._change_rolling_dice(left_die_type, right_die_type)
 
 func _change_right_die(die: Enums.DIE_TYPES) -> void:
+	SoundManager._play_button()
 	right_die_type = die
 	roll_box._change_rolling_dice(left_die_type, right_die_type)
 
@@ -85,6 +87,7 @@ func _disable_special(toggle: bool) -> void:
 	specialButton.disabled = toggle
 
 func _on_steal_tag_button_pressed() -> void:
+	SoundManager._play_button()
 	Signalbus.special_pressed.emit()
 
 func _connect_signals() -> void:
@@ -96,4 +99,5 @@ func _connect_signals() -> void:
 	Signalbus.update_inning.connect(_update_inning)
 
 func _on_die_table_buton_pressed() -> void:
+	SoundManager._play_button()
 	die_table.visible = true
