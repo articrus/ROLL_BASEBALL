@@ -9,8 +9,8 @@ class_name GameManager
 # Inning Variables
 @export var current_inning: int = 1
 # DC Variables
-const strikeDC: Array[int] = [0, 6, 6, 7, 6, 7, 7, 8, 7, 8, 8]
-const specialDC: Array[int] = [0, 8, 7, 8, 8, 9, 8, 10, 9, 10, 9]
+const strikeDC: Array[int] = [0, 6, 5, 7, 6, 7, 6, 8, 6, 8, 7]
+const specialDC: Array[int] = [0, 8, 7, 8, 7, 9, 8, 10, 8, 10, 9]
 # Signals
 signal advance_bases(amount: int)
 signal strikeout
@@ -26,6 +26,7 @@ var playersManager
 func _ready() -> void:
 	_connect_signals()
 	Signalbus.update_inning_info.emit(strikeDC[current_inning], specialDC[current_inning])
+	SoundManager.backgroundMusic.play()
 
 # Process the roll and update the gamestate
 func _process_rolling(left_die: Enums.DIE_TYPES, right_die: Enums.DIE_TYPES) -> void:

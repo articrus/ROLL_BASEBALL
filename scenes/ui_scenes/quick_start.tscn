@@ -45,13 +45,21 @@ fit_content = true
 autowrap_mode = 2
 horizontal_alignment = 1
 
+[node name="RulesBtn1" type="Button" parent="Panel/VBoxContainer" unique_id=559588398]
+custom_minimum_size = Vector2(500, 50)
+layout_mode = 2
+theme = ExtResource("2_678y5")
+theme_override_font_sizes/font_size = 36
+text = "1. Play Baseball With Dice"
+autowrap_mode = 2
+
 [node name="Rules1" type="RichTextLabel" parent="Panel/VBoxContainer" unique_id=657691719]
+visible = false
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 theme = ExtResource("2_678y5")
 bbcode_enabled = true
-text = "[font_size=36][color=lightblue]1. Play Baseball With Dice[/color][/font_size]
-Rolling two matching colors grants a special bonus
+text = "Rolling two matching colors grants a special bonus
 When batting, roll to advance players on the bases
 Roll a total above [color=red]STRIKE[/color] to avoid getting out
 When pitching, roll to stop enemy players
@@ -61,13 +69,21 @@ fit_content = true
 autowrap_mode = 2
 horizontal_alignment = 1
 
+[node name="RulesBtn2" type="Button" parent="Panel/VBoxContainer" unique_id=1924529023]
+custom_minimum_size = Vector2(500, 50)
+layout_mode = 2
+theme = ExtResource("2_678y5")
+theme_override_font_sizes/font_size = 36
+text = "2. Advance Batters to Score Points"
+autowrap_mode = 2
+
 [node name="Rules2" type="RichTextLabel" parent="Panel/VBoxContainer" unique_id=1696879027]
+visible = false
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 theme = ExtResource("2_678y5")
 bbcode_enabled = true
-text = "[font_size=36][color=lightblue]2. Advance Batters to Score Points[/color][/font_size]
-Crossing 4 bases scores 1 point
+text = "Crossing 4 bases scores 1 point
 If there is a batter on a base, you can attempt
  to [color=cyan]STEAL[/color] or [color=cyan]TAG OUT[/color] the player with a dice roll
 (See SPECIAL in RULES)
@@ -76,26 +92,45 @@ fit_content = true
 autowrap_mode = 2
 horizontal_alignment = 1
 
+[node name="RulesBtn3" type="Button" parent="Panel/VBoxContainer" unique_id=2126198237]
+custom_minimum_size = Vector2(500, 50)
+layout_mode = 2
+theme = ExtResource("2_678y5")
+theme_override_font_sizes/font_size = 36
+text = "3. Team Selection"
+autowrap_mode = 2
+
 [node name="Rules3" type="RichTextLabel" parent="Panel/VBoxContainer" unique_id=1965270564]
+visible = false
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 theme = ExtResource("2_678y5")
 bbcode_enabled = true
-text = "[font_size=36][color=lightblue]3. Teams[/color][/font_size]
-You are the HOME team
-The computer is the VISITOR team"
+text = "You are the HOME team
+The computer is the VISITOR team
+You can see you and your opponent's team score
+(by city/team color) in the Scoreboard"
 fit_content = true
 autowrap_mode = 2
 horizontal_alignment = 1
 
+[node name="RulesBtn4" type="Button" parent="Panel/VBoxContainer" unique_id=388349336]
+custom_minimum_size = Vector2(500, 50)
+layout_mode = 2
+theme = ExtResource("2_678y5")
+theme_override_font_sizes/font_size = 36
+text = "4. Innings"
+autowrap_mode = 2
+
 [node name="Rules4" type="RichTextLabel" parent="Panel/VBoxContainer" unique_id=1849637922]
+visible = false
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 theme = ExtResource("2_678y5")
 bbcode_enabled = true
-text = "[font_size=36][color=lightblue]4. Innings[/color][/font_size]
-There are 9 innings total
-Score higher than the VISITOR team to win!"
+text = "There are 9 innings total
+Score higher than the VISITOR team to win!
+Draws will extend the game into overtime"
 fit_content = true
 autowrap_mode = 2
 horizontal_alignment = 1

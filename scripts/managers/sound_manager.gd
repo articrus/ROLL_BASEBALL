@@ -12,27 +12,35 @@ extends Node
 @onready var pitchSoundFile = load("res://sounds/pitch_bat.wav")
 @onready var inningChangeFile = load("res://sounds/change_sides.wav")
 @onready var diceRollFile = load("res://sounds/dice_roll.wav")
+# Music
+@onready var musicFile = load("res://sounds/JDSherbert - Ambiences Music Pack - Junction Jazz.wav")
+# SFX
 var scoreFanfare: AudioStreamPlayer
 var pitchSound: AudioStreamPlayer
 var inningChange: AudioStreamPlayer
 var dieRoll: AudioStreamPlayer
 var buttonBoop: AudioStreamPlayer
+# Background Music
+var backgroundMusic: AudioStreamPlayer
 # Pitch Variances
 var pitchVariance:= 0.15
 var singleVariance:= 0.07
 
 func _ready() -> void:
+	backgroundMusic = AudioStreamPlayer.new()
 	buttonBoop = AudioStreamPlayer.new()
 	scoreFanfare = AudioStreamPlayer.new()
 	pitchSound = AudioStreamPlayer.new()
 	inningChange = AudioStreamPlayer.new()
 	dieRoll = AudioStreamPlayer.new()
 	# Assigning Streams
+	backgroundMusic.stream = musicFile
 	buttonBoop.stream = buttonBoopFile
 	pitchSound.stream = pitchSoundFile
 	inningChange.stream = inningChangeFile
 	dieRoll.stream = diceRollFile
 	# Adding the children
+	add_child(backgroundMusic)
 	add_child(buttonBoop)
 	add_child(scoreFanfare)
 	add_child(pitchSound)

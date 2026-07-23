@@ -74,6 +74,24 @@ layout_mode = 1
 offset_top = -160.0
 offset_bottom = -49.0
 
+[node name="LeftLabel" type="Label" parent="Bottom" unique_id=199690711]
+layout_mode = 0
+offset_left = 47.0
+offset_top = 77.0
+offset_right = 119.0
+offset_bottom = 101.0
+theme = ExtResource("5_lp0io")
+text = "LEFT DIE"
+
+[node name="RightLabel" type="Label" parent="Bottom" unique_id=695654616]
+layout_mode = 0
+offset_left = 385.0
+offset_top = 150.0
+offset_right = 467.0
+offset_bottom = 174.0
+theme = ExtResource("5_lp0io")
+text = "RIGHT DIE"
+
 [node name="ScoreContainer" type="Control" parent="." unique_id=764551278]
 layout_mode = 1
 anchors_preset = 15
