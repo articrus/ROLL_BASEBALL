@@ -1,9 +1,15 @@
 [gd_scene format=3 uid="uid://cnw7uvgrh10da"]
 
-[ext_resource type="Texture2D" uid="uid://dtdorm0562gsx" path="res://art/ui/board_background.png" id="1_678y5"]
+[ext_resource type="Texture2D" uid="uid://dtdorm0562gsx" path="res://art/backgrounds/board_background.png" id="1_678y5"]
 [ext_resource type="Script" uid="uid://laiyoq7j45a0" path="res://scripts/ui/windows/quick_start.gd" id="1_q15vi"]
-[ext_resource type="Theme" uid="uid://cjwjb6wa1fg38" path="res://ui/themes/baseball_text.tres" id="2_678y5"]
 [ext_resource type="StyleBox" uid="uid://chhrxw06g5evp" path="res://ui/themes/black_panel.tres" id="3_nlde0"]
+[ext_resource type="FontFile" uid="uid://d0i251vrssbkh" path="res://ui/themes/m6x11plus.ttf" id="4_sii0f"]
+[ext_resource type="PackedScene" uid="uid://cnkt0j5ce2xic" path="res://ui/hud_components/blu_button.tscn" id="5_frmy0"]
+[ext_resource type="PackedScene" uid="uid://c7ptjwbcahpje" path="res://ui/hud_components/red_button.tscn" id="10_reom5"]
+
+[sub_resource type="Theme" id="Theme_hhuwb"]
+default_font = ExtResource("4_sii0f")
+default_font_size = 24
 
 [node name="QuickStart" type="TextureRect" unique_id=1687158469]
 anchors_preset = 15
@@ -27,61 +33,55 @@ theme_override_styles/panel = ExtResource("3_nlde0")
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel" unique_id=1851751483]
 layout_mode = 1
 anchors_preset = -1
-anchor_right = 1.0
+anchor_left = 0.05
+anchor_right = 0.95
 anchor_bottom = 1.0
 grow_horizontal = 2
-grow_vertical = 0
+grow_vertical = 2
 theme_override_constants/separation = 7
 alignment = 1
 
 [node name="Quick" type="RichTextLabel" parent="Panel/VBoxContainer" unique_id=2018967272]
-custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
-theme = ExtResource("2_678y5")
-theme_override_font_sizes/normal_font_size = 48
+theme = SubResource("Theme_hhuwb")
+theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
-text = "Quick Start Guide"
+text = "[font_size=48]Quick Start Guide[/font_size]
+(Click buttons to expand)"
 fit_content = true
 autowrap_mode = 2
 horizontal_alignment = 1
 
-[node name="RulesBtn1" type="Button" parent="Panel/VBoxContainer" unique_id=559588398]
-custom_minimum_size = Vector2(500, 50)
+[node name="RulesBtn1" parent="Panel/VBoxContainer" unique_id=487829307 instance=ExtResource("5_frmy0")]
 layout_mode = 2
-theme = ExtResource("2_678y5")
 theme_override_font_sizes/font_size = 36
 text = "1. Play Baseball With Dice"
-autowrap_mode = 2
 
 [node name="Rules1" type="RichTextLabel" parent="Panel/VBoxContainer" unique_id=657691719]
 visible = false
-custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
-theme = ExtResource("2_678y5")
+theme = SubResource("Theme_hhuwb")
 bbcode_enabled = true
 text = "Rolling two matching colors grants a special bonus
 When batting, roll to advance players on the bases
 Roll a total above [color=red]STRIKE[/color] to avoid getting out
 When pitching, roll to stop enemy players
-Roll a total above [color=red]STRIKE[/color] to avoid them advancing too far
+Roll a total above [color=red]STRIKE[/color] to 
+avoid them advancing too far
 (See BATTING and PITCHING in RULES)"
 fit_content = true
 autowrap_mode = 2
 horizontal_alignment = 1
 
-[node name="RulesBtn2" type="Button" parent="Panel/VBoxContainer" unique_id=1924529023]
-custom_minimum_size = Vector2(500, 50)
+[node name="RulesBtn2" parent="Panel/VBoxContainer" unique_id=1215982804 instance=ExtResource("5_frmy0")]
 layout_mode = 2
-theme = ExtResource("2_678y5")
 theme_override_font_sizes/font_size = 36
-text = "2. Advance Batters to Score Points"
-autowrap_mode = 2
+text = "2. Advance Batters to Score"
 
 [node name="Rules2" type="RichTextLabel" parent="Panel/VBoxContainer" unique_id=1696879027]
 visible = false
-custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
-theme = ExtResource("2_678y5")
+theme = SubResource("Theme_hhuwb")
 bbcode_enabled = true
 text = "Crossing 4 bases scores 1 point
 If there is a batter on a base, you can attempt
@@ -92,19 +92,38 @@ fit_content = true
 autowrap_mode = 2
 horizontal_alignment = 1
 
-[node name="RulesBtn3" type="Button" parent="Panel/VBoxContainer" unique_id=2126198237]
-custom_minimum_size = Vector2(500, 50)
+[node name="RulesBtn3" parent="Panel/VBoxContainer" unique_id=108115907 instance=ExtResource("5_frmy0")]
 layout_mode = 2
-theme = ExtResource("2_678y5")
 theme_override_font_sizes/font_size = 36
-text = "3. Team Selection"
-autowrap_mode = 2
+text = "3. Switch Between Dice Types"
 
-[node name="Rules3" type="RichTextLabel" parent="Panel/VBoxContainer" unique_id=1965270564]
+[node name="Rules3" type="RichTextLabel" parent="Panel/VBoxContainer" unique_id=551631668]
 visible = false
-custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
-theme = ExtResource("2_678y5")
+theme = SubResource("Theme_hhuwb")
+bbcode_enabled = true
+text = "There are 3 dice types
+POWER (Traingle) 4 sides
+NORMAL (Square) 6 sides
+CONTACT (Diamond) 8 sides
+Mix up the dice you use to roll by pressing the
+dice buttons (below the roll button)
+Each die has their own advantages and disadvantages
+(See DIE BREAKDOWN for more)
+"
+fit_content = true
+autowrap_mode = 2
+horizontal_alignment = 1
+
+[node name="RulesBtn4" parent="Panel/VBoxContainer" unique_id=1108031393 instance=ExtResource("5_frmy0")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "4. Team Selection"
+
+[node name="Rules4" type="RichTextLabel" parent="Panel/VBoxContainer" unique_id=1965270564]
+visible = false
+layout_mode = 2
+theme = SubResource("Theme_hhuwb")
 bbcode_enabled = true
 text = "You are the HOME team
 The computer is the VISITOR team
@@ -114,19 +133,15 @@ fit_content = true
 autowrap_mode = 2
 horizontal_alignment = 1
 
-[node name="RulesBtn4" type="Button" parent="Panel/VBoxContainer" unique_id=388349336]
-custom_minimum_size = Vector2(500, 50)
+[node name="RulesBtn5" parent="Panel/VBoxContainer" unique_id=1166982943 instance=ExtResource("5_frmy0")]
 layout_mode = 2
-theme = ExtResource("2_678y5")
 theme_override_font_sizes/font_size = 36
-text = "4. Innings"
-autowrap_mode = 2
+text = "5. Innings"
 
-[node name="Rules4" type="RichTextLabel" parent="Panel/VBoxContainer" unique_id=1849637922]
+[node name="Rules5" type="RichTextLabel" parent="Panel/VBoxContainer" unique_id=1273240265]
 visible = false
-custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
-theme = ExtResource("2_678y5")
+theme = SubResource("Theme_hhuwb")
 bbcode_enabled = true
 text = "There are 9 innings total
 Score higher than the VISITOR team to win!
@@ -135,11 +150,9 @@ fit_content = true
 autowrap_mode = 2
 horizontal_alignment = 1
 
-[node name="Close" type="Button" parent="Panel/VBoxContainer" unique_id=1746657956]
-custom_minimum_size = Vector2(500, 50)
+[node name="Close" parent="Panel/VBoxContainer" unique_id=2137455217 instance=ExtResource("10_reom5")]
 layout_mode = 2
-theme = ExtResource("2_678y5")
 theme_override_font_sizes/font_size = 32
-text = "Close"
+text = "CLOSE"
 
 [connection signal="pressed" from="Panel/VBoxContainer/Close" to="." method="_on_close_pressed"]

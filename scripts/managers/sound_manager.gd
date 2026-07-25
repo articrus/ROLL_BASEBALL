@@ -46,6 +46,7 @@ func _ready() -> void:
 	add_child(pitchSound)
 	add_child(inningChange)
 	add_child(dieRoll)
+	backgroundMusic.play()
 
 func _play_button() -> void:
 	buttonBoop.play()

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://chemvppnh314e"
-path="res://.godot/imported/temp_ui.png-7d080a24159924e14e1fa6c101044ee9.ctex"
+uid="uid://cwwruf6qd2nwm"
+path="res://.godot/imported/victory_background.png-e728d9c011c8dcef9f03b595314eab0f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/ui/temp_ui.png"
-dest_files=["res://.godot/imported/temp_ui.png-7d080a24159924e14e1fa6c101044ee9.ctex"]
+source_file="res://art/backgrounds/victory_background.png"
+dest_files=["res://.godot/imported/victory_background.png-e728d9c011c8dcef9f03b595314eab0f.ctex"]
 
 [params]
 

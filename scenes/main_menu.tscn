@@ -1,13 +1,13 @@
 [gd_scene format=3 uid="uid://dm3w8fxkcxxvb"]
 
 [ext_resource type="Script" uid="uid://d23f80csd5a5t" path="res://scripts/ui/windows/main_menu.gd" id="1_l6cm7"]
-[ext_resource type="Texture2D" uid="uid://bdy3urn8qc2xh" path="res://art/ui/title_background.png" id="1_rtw2f"]
-[ext_resource type="Theme" uid="uid://cjwjb6wa1fg38" path="res://ui/themes/baseball_text.tres" id="2_bqqt6"]
+[ext_resource type="Texture2D" uid="uid://bdy3urn8qc2xh" path="res://art/backgrounds/title_background.png" id="1_rtw2f"]
 [ext_resource type="PackedScene" uid="uid://cgwf112eud4gw" path="res://scenes/ui_scenes/user_login.tscn" id="2_ekxnf"]
-[ext_resource type="StyleBox" uid="uid://chhrxw06g5evp" path="res://ui/themes/black_panel.tres" id="3_oa1go"]
+[ext_resource type="StyleBox" uid="uid://bhmboa0btftm6" path="res://ui/themes/black_panel_corners.tres" id="3_jk1qb"]
 [ext_resource type="PackedScene" uid="uid://crfhpru8fiebr" path="res://scenes/ui_scenes/player_info.tscn" id="4_wu84c"]
 [ext_resource type="PackedScene" uid="uid://ce5ug38xtyrlh" path="res://scenes/ui_scenes/dice_table.tscn" id="5_8ln24"]
 [ext_resource type="Texture2D" uid="uid://cmxjduiwnj5uo" path="res://art/ui/logo.png" id="5_jk1qb"]
+[ext_resource type="PackedScene" uid="uid://cnkt0j5ce2xic" path="res://ui/hud_components/blu_button.tscn" id="5_lgwnu"]
 [ext_resource type="PackedScene" uid="uid://kbcnj7hk78eo" path="res://ui/hud_components/result_text.tscn" id="8_tbmy8"]
 
 [node name="MainMenu" type="TextureRect" unique_id=1314468095]
@@ -29,7 +29,7 @@ anchor_right = 0.85
 anchor_bottom = 0.85
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = ExtResource("3_oa1go")
+theme_override_styles/panel = ExtResource("3_jk1qb")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel" unique_id=1362366143]
 custom_minimum_size = Vector2(50, 50)
@@ -47,24 +47,20 @@ layout_mode = 2
 texture = ExtResource("5_jk1qb")
 expand_mode = 2
 
-[node name="Play" type="Button" parent="Panel/VBoxContainer" unique_id=1620079061]
+[node name="Play" parent="Panel/VBoxContainer" unique_id=487829307 instance=ExtResource("5_lgwnu")]
 layout_mode = 2
-theme = ExtResource("2_bqqt6")
 text = "PLAY"
 
-[node name="Login" type="Button" parent="Panel/VBoxContainer" unique_id=755747317]
+[node name="Login" parent="Panel/VBoxContainer" unique_id=382330504 instance=ExtResource("5_lgwnu")]
 layout_mode = 2
-theme = ExtResource("2_bqqt6")
 text = "LOGIN"
 
-[node name="Info" type="Button" parent="Panel/VBoxContainer" unique_id=415835423]
+[node name="Info" parent="Panel/VBoxContainer" unique_id=1698720628 instance=ExtResource("5_lgwnu")]
 layout_mode = 2
-theme = ExtResource("2_bqqt6")
 text = "PLAYER INFO"
 
-[node name="Rules" type="Button" parent="Panel/VBoxContainer" unique_id=416507870]
+[node name="Rules" parent="Panel/VBoxContainer" unique_id=2051009593 instance=ExtResource("5_lgwnu")]
 layout_mode = 2
-theme = ExtResource("2_bqqt6")
 text = "RULES"
 
 [node name="Login" parent="." unique_id=1740025211 instance=ExtResource("2_ekxnf")]

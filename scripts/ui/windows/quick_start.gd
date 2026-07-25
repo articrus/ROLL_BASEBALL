@@ -3,13 +3,15 @@ extends TextureRect
 	"Rules1": $Panel/VBoxContainer/Rules1,
 	"Rules2": $Panel/VBoxContainer/Rules2,
 	"Rules3": $Panel/VBoxContainer/Rules3,
-	"Rules4": $Panel/VBoxContainer/Rules4
+	"Rules4": $Panel/VBoxContainer/Rules4,
+	"Rules5": $Panel/VBoxContainer/Rules5
 }
 @onready var rulesButtons = {
 	"Rules1": $Panel/VBoxContainer/RulesBtn1,
 	"Rules2": $Panel/VBoxContainer/RulesBtn2,
 	"Rules3": $Panel/VBoxContainer/RulesBtn3,
-	"Rules4": $Panel/VBoxContainer/RulesBtn4
+	"Rules4": $Panel/VBoxContainer/RulesBtn4,
+	"Rules5": $Panel/VBoxContainer/RulesBtn5
 }
 
 func _ready() -> void:

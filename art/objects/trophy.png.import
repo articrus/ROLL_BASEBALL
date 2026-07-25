@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dtdorm0562gsx"
-path="res://.godot/imported/board_background.png-c8f50db78a64f59b6c9dcbb6ffdb7990.ctex"
+uid="uid://bphiqv85ulmb7"
+path="res://.godot/imported/trophy.png-812199af3f134b7d967603b9c4671b99.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/ui/board_background.png"
-dest_files=["res://.godot/imported/board_background.png-c8f50db78a64f59b6c9dcbb6ffdb7990.ctex"]
+source_file="res://art/objects/trophy.png"
+dest_files=["res://.godot/imported/trophy.png-812199af3f134b7d967603b9c4671b99.ctex"]
 
 [params]
 

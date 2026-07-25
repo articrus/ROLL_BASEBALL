@@ -2,7 +2,7 @@
 
 [ext_resource type="StyleBox" uid="uid://chhrxw06g5evp" path="res://ui/themes/black_panel.tres" id="1_85u45"]
 [ext_resource type="Script" uid="uid://cxfbdbwh28mjh" path="res://scripts/ui/windows/team_select.gd" id="1_cf774"]
-[ext_resource type="Texture2D" uid="uid://dtdorm0562gsx" path="res://art/ui/board_background.png" id="1_mtxmj"]
+[ext_resource type="Texture2D" uid="uid://dtdorm0562gsx" path="res://art/backgrounds/board_background.png" id="1_mtxmj"]
 [ext_resource type="Theme" uid="uid://cjwjb6wa1fg38" path="res://ui/themes/baseball_text.tres" id="2_icgwg"]
 [ext_resource type="PackedScene" uid="uid://dx1ic4fwo8od7" path="res://ui/hud_components/team_button.tscn" id="2_oqbh2"]
 

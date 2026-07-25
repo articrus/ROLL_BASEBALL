@@ -5,7 +5,6 @@
 [ext_resource type="Texture2D" uid="uid://bltjgndjnf6o2" path="res://ui/dice_textures/d4/d4_4.tres" id="2_vbxjb"]
 [ext_resource type="Texture2D" uid="uid://cu6p2kqwgc31e" path="res://ui/dice_textures/d8/d8_8.tres" id="4_gg1wy"]
 [ext_resource type="Texture2D" uid="uid://dwst2rbm0rse" path="res://ui/dice_textures/d4/d4_1.tres" id="5_o1llc"]
-[ext_resource type="Theme" uid="uid://cjwjb6wa1fg38" path="res://ui/themes/baseball_text.tres" id="5_we2qg"]
 [ext_resource type="Texture2D" uid="uid://81k30aydi86r" path="res://ui/dice_textures/d4/d4_2.tres" id="6_podjb"]
 [ext_resource type="Texture2D" uid="uid://c7cx3k8ftkgnl" path="res://ui/dice_textures/d4/d4_3.tres" id="7_bcm0u"]
 [ext_resource type="Texture2D" uid="uid://belwwoevhr0i4" path="res://ui/dice_textures/d6/d6_1.tres" id="8_bd86i"]
@@ -20,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://bq272jw3fl8qn" path="res://ui/dice_textures/d8/d8_5.tres" id="17_5r8rb"]
 [ext_resource type="Texture2D" uid="uid://dmctjja0yk7ck" path="res://ui/dice_textures/d8/d8_6.tres" id="18_ai0e8"]
 [ext_resource type="Texture2D" uid="uid://ddgs40o4cvxp0" path="res://ui/dice_textures/d8/d8_7.tres" id="19_psak6"]
+[ext_resource type="PackedScene" uid="uid://cnkt0j5ce2xic" path="res://ui/hud_components/blu_button.tscn" id="20_nxhc4"]
 
 [node name="RollBox" type="VBoxContainer" unique_id=927553995]
 anchors_preset = 8
@@ -61,10 +61,8 @@ mouse_filter = 2
 texture = ExtResource("1_wyr4b")
 expand_mode = 2
 
-[node name="RollButton" type="Button" parent="." unique_id=725347007]
+[node name="RollButton" parent="." unique_id=487829307 instance=ExtResource("20_nxhc4")]
 layout_mode = 2
-theme = ExtResource("5_we2qg")
 text = "BAT"
-icon_alignment = 1
 
 [connection signal="pressed" from="RollButton" to="." method="_roll_dice"]

@@ -1,9 +1,11 @@
 [gd_scene format=3 uid="uid://cgwf112eud4gw"]
 
 [ext_resource type="Script" uid="uid://bc1351t2bd2rc" path="res://scripts/ui/windows/user_login.gd" id="1_i0tjq"]
-[ext_resource type="Texture2D" uid="uid://ccxlbvq7p01i3" path="res://art/ui/sign_up_background.png" id="1_nmcg5"]
+[ext_resource type="Texture2D" uid="uid://ccxlbvq7p01i3" path="res://art/backgrounds/sign_up_background.png" id="1_nmcg5"]
 [ext_resource type="StyleBox" uid="uid://chhrxw06g5evp" path="res://ui/themes/black_panel.tres" id="2_0tuy0"]
 [ext_resource type="Theme" uid="uid://cjwjb6wa1fg38" path="res://ui/themes/baseball_text.tres" id="2_o15tw"]
+[ext_resource type="PackedScene" uid="uid://cnkt0j5ce2xic" path="res://ui/hud_components/blu_button.tscn" id="5_op5il"]
+[ext_resource type="PackedScene" uid="uid://c7ptjwbcahpje" path="res://ui/hud_components/red_button.tscn" id="6_moaw3"]
 
 [node name="Login" type="Control" unique_id=1281102242]
 clip_children = 1
@@ -81,10 +83,9 @@ placeholder_text = "***"
 secret = true
 secret_character = "*"
 
-[node name="LoginButton" type="Button" parent="Image/Panel/BoxContainer/SignIn" unique_id=1069464903]
+[node name="LoginButton" parent="Image/Panel/BoxContainer/SignIn" unique_id=487829307 instance=ExtResource("5_op5il")]
 layout_mode = 2
-theme = ExtResource("2_o15tw")
-text = "Login"
+text = "LOGIN"
 
 [node name="LoginWarning" type="Label" parent="Image/Panel/BoxContainer" unique_id=1643509879]
 layout_mode = 2
@@ -128,10 +129,9 @@ placeholder_text = "***"
 secret = true
 secret_character = "*"
 
-[node name="SignUpButton" type="Button" parent="Image/Panel/BoxContainer/SignUp" unique_id=1189281526]
+[node name="SignUpButton2" parent="Image/Panel/BoxContainer/SignUp" unique_id=220082566 instance=ExtResource("5_op5il")]
 layout_mode = 2
-theme = ExtResource("2_o15tw")
-text = "Sign Up"
+text = "SIGN UP"
 
 [node name="SignUpWarning" type="Label" parent="Image/Panel/BoxContainer" unique_id=975232513]
 layout_mode = 2
@@ -140,11 +140,10 @@ theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_font_sizes/font_size = 24
 horizontal_alignment = 1
 
-[node name="Close" type="Button" parent="Image/Panel/BoxContainer" unique_id=1908915771]
+[node name="Close" parent="Image/Panel/BoxContainer" unique_id=340228762 instance=ExtResource("6_moaw3")]
 layout_mode = 2
-theme = ExtResource("2_o15tw")
-text = "Close"
+text = "CLOSE"
 
 [connection signal="pressed" from="Image/Panel/BoxContainer/SignIn/LoginButton" to="." method="_on_login_pressed"]
-[connection signal="pressed" from="Image/Panel/BoxContainer/SignUp/SignUpButton" to="." method="_on_signup_pressed"]
+[connection signal="pressed" from="Image/Panel/BoxContainer/SignUp/SignUpButton2" to="." method="_on_signup_pressed"]
 [connection signal="pressed" from="Image/Panel/BoxContainer/Close" to="." method="_on_close_pressed"]

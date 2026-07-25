@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://cnkt0j5ce2xic"]
+
+[ext_resource type="FontFile" uid="uid://d0i251vrssbkh" path="res://ui/themes/m6x11plus.ttf" id="1_cw5ha"]
+[ext_resource type="StyleBox" uid="uid://2gqro703koe8" path="res://ui/themes/blubutton/blu_button_normal.tres" id="2_cw5ha"]
+[ext_resource type="StyleBox" uid="uid://dn3lv25217ebt" path="res://ui/themes/blubutton/blu_button_pressed.tres" id="3_twcgx"]
+[ext_resource type="StyleBox" uid="uid://nkppms7xqfbv" path="res://ui/themes/blubutton/blu_button_hover.tres" id="4_kcf70"]
+[ext_resource type="StyleBox" uid="uid://qde50mwtm0qn" path="res://ui/themes/blubutton/blu_button_disabled.tres" id="5_2l5qc"]
+
+[sub_resource type="Theme" id="Theme_hhuwb"]
+default_font = ExtResource("1_cw5ha")
+default_font_size = 24
+
+[node name="Button" type="Button" unique_id=487829307]
+custom_minimum_size = Vector2(0, 50)
+theme = SubResource("Theme_hhuwb")
+theme_override_styles/normal = ExtResource("2_cw5ha")
+theme_override_styles/pressed = ExtResource("3_twcgx")
+theme_override_styles/hover = ExtResource("4_kcf70")
+theme_override_styles/disabled = ExtResource("5_2l5qc")
+theme_override_styles/focus = ExtResource("4_kcf70")
+text = "TEXT"

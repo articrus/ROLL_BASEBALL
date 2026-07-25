@@ -1,15 +1,22 @@
 [gd_scene format=3 uid="uid://b4ljywddrkucl"]
 
 [ext_resource type="Script" uid="uid://ep2xuiuc4xw0" path="res://scripts/ui/game_ui/player_ui.gd" id="1_ehg4m"]
-[ext_resource type="Texture2D" uid="uid://cu5u7yydxyji3" path="res://art/ui/test_black.png" id="2_f7sc3"]
+[ext_resource type="Texture2D" uid="uid://clvki865mnu0p" path="res://art/ui/stone_wall.png" id="2_fynll"]
 [ext_resource type="PackedScene" uid="uid://vapum38moy5f" path="res://ui/hud_components/die_strategy.tscn" id="2_vq5xy"]
+[ext_resource type="PackedScene" uid="uid://cnkt0j5ce2xic" path="res://ui/hud_components/blu_button.tscn" id="3_fynll"]
+[ext_resource type="FontFile" uid="uid://d0i251vrssbkh" path="res://ui/themes/m6x11plus.ttf" id="3_j0e15"]
+[ext_resource type="StyleBox" uid="uid://chhrxw06g5evp" path="res://ui/themes/black_panel.tres" id="3_obao7"]
 [ext_resource type="PackedScene" uid="uid://bpnosv5irtluk" path="res://ui/hud_components/roll_box.tscn" id="4_iwa1g"]
-[ext_resource type="Theme" uid="uid://cjwjb6wa1fg38" path="res://ui/themes/baseball_text.tres" id="5_lp0io"]
 [ext_resource type="PackedScene" uid="uid://ce5ug38xtyrlh" path="res://scenes/ui_scenes/dice_table.tscn" id="6_ykvpg"]
 [ext_resource type="PackedScene" uid="uid://kbcnj7hk78eo" path="res://ui/hud_components/result_text.tscn" id="7_g1ro4"]
 [ext_resource type="PackedScene" uid="uid://47ioydhmhpft" path="res://scenes/ui_scenes/game_over.tscn" id="7_hff70"]
+[ext_resource type="PackedScene" uid="uid://c7ptjwbcahpje" path="res://ui/hud_components/red_button.tscn" id="8_5p2iw"]
 [ext_resource type="PackedScene" uid="uid://bnqfl6qwvvrmt" path="res://ui/hud_components/dc_display.tscn" id="8_b6i2q"]
 [ext_resource type="PackedScene" uid="uid://btxim5i06julr" path="res://ui/hud_components/scoreboard.tscn" id="8_f7sc3"]
+
+[sub_resource type="Theme" id="Theme_hhuwb"]
+default_font = ExtResource("3_j0e15")
+default_font_size = 24
 
 [node name="PlayerUI" type="Control" unique_id=258670629]
 layout_mode = 3
@@ -29,8 +36,17 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
 mouse_filter = 2
-texture = ExtResource("2_f7sc3")
+texture = ExtResource("2_fynll")
 expand_mode = 1
+
+[node name="Panel" type="Panel" parent="Bottom" unique_id=257915458]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("3_obao7")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Bottom" unique_id=241574588]
 custom_minimum_size = Vector2(50, 50)
@@ -45,51 +61,51 @@ offset_bottom = 24.0
 grow_horizontal = 2
 theme_override_constants/separation = 300
 
-[node name="DieTableButon" type="Button" parent="Bottom/HBoxContainer" unique_id=1862182513]
+[node name="DieTableButon" parent="Bottom/HBoxContainer" unique_id=487829307 instance=ExtResource("3_fynll")]
 layout_mode = 2
-theme = ExtResource("5_lp0io")
 text = "RULES"
 
-[node name="StealTagButton" type="Button" parent="Bottom/HBoxContainer" unique_id=1706445997]
+[node name="StealTagButton" parent="Bottom/HBoxContainer" unique_id=62240438 instance=ExtResource("8_5p2iw")]
 layout_mode = 2
-theme = ExtResource("5_lp0io")
 text = "STEAL"
+
+[node name="RollBox" parent="Bottom" unique_id=2025816388 instance=ExtResource("4_iwa1g")]
+layout_mode = 1
+offset_top = -169.0
+offset_bottom = -40.0
 
 [node name="LeftStrategy" parent="Bottom" unique_id=1539795031 instance=ExtResource("2_vq5xy")]
 layout_mode = 1
 offset_left = -117.0
-offset_top = -35.0
+offset_top = -21.0
 offset_right = 117.0
-offset_bottom = 5.0
+offset_bottom = 19.0
+theme = SubResource("Theme_hhuwb")
 
 [node name="RightStrategy" parent="Bottom" unique_id=1842811276 instance=ExtResource("2_vq5xy")]
 layout_mode = 1
 offset_left = -117.0
-offset_top = 38.0
+offset_top = 52.0
 offset_right = 117.0
-offset_bottom = 78.0
-
-[node name="RollBox" parent="Bottom" unique_id=2025816388 instance=ExtResource("4_iwa1g")]
-layout_mode = 1
-offset_top = -160.0
-offset_bottom = -49.0
+offset_bottom = 92.0
+theme = SubResource("Theme_hhuwb")
 
 [node name="LeftLabel" type="Label" parent="Bottom" unique_id=199690711]
 layout_mode = 0
 offset_left = 47.0
-offset_top = 77.0
+offset_top = 91.0
 offset_right = 119.0
-offset_bottom = 101.0
-theme = ExtResource("5_lp0io")
+offset_bottom = 115.0
+theme = SubResource("Theme_hhuwb")
 text = "LEFT DIE"
 
 [node name="RightLabel" type="Label" parent="Bottom" unique_id=695654616]
 layout_mode = 0
 offset_left = 385.0
-offset_top = 150.0
+offset_top = 164.0
 offset_right = 467.0
-offset_bottom = 174.0
-theme = ExtResource("5_lp0io")
+offset_bottom = 188.0
+theme = SubResource("Theme_hhuwb")
 text = "RIGHT DIE"
 
 [node name="ScoreContainer" type="Control" parent="." unique_id=764551278]
@@ -122,9 +138,9 @@ theme_override_font_sizes/font_size = 75
 visible = false
 layout_mode = 1
 offset_left = -37.0
-offset_top = 120.0
+offset_top = 79.0
 offset_right = 38.0
-offset_bottom = 195.0
+offset_bottom = 154.0
 theme_override_font_sizes/font_size = 50
 text = "16"
 vertical_alignment = 1

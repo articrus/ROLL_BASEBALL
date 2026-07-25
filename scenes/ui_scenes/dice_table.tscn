@@ -1,9 +1,29 @@
 [gd_scene format=3 uid="uid://ce5ug38xtyrlh"]
 
-[ext_resource type="Texture2D" uid="uid://dtdorm0562gsx" path="res://art/ui/board_background.png" id="1_54ch6"]
+[ext_resource type="Texture2D" uid="uid://dtdorm0562gsx" path="res://art/backgrounds/board_background.png" id="1_54ch6"]
 [ext_resource type="Script" uid="uid://dshb4sshjtafl" path="res://scripts/ui/windows/dice_table.gd" id="1_dg4h0"]
 [ext_resource type="Theme" uid="uid://cjwjb6wa1fg38" path="res://ui/themes/baseball_text.tres" id="2_54ch6"]
 [ext_resource type="StyleBox" uid="uid://chhrxw06g5evp" path="res://ui/themes/black_panel.tres" id="3_kxrdf"]
+[ext_resource type="PackedScene" uid="uid://cnkt0j5ce2xic" path="res://ui/hud_components/blu_button.tscn" id="4_rlrby"]
+[ext_resource type="Texture2D" uid="uid://dwst2rbm0rse" path="res://ui/dice_textures/d4/d4_1.tres" id="5_4afv1"]
+[ext_resource type="Texture2D" uid="uid://81k30aydi86r" path="res://ui/dice_textures/d4/d4_2.tres" id="6_kifqe"]
+[ext_resource type="Texture2D" uid="uid://c7cx3k8ftkgnl" path="res://ui/dice_textures/d4/d4_3.tres" id="7_jjghs"]
+[ext_resource type="Texture2D" uid="uid://bltjgndjnf6o2" path="res://ui/dice_textures/d4/d4_4.tres" id="8_dd8u3"]
+[ext_resource type="Texture2D" uid="uid://belwwoevhr0i4" path="res://ui/dice_textures/d6/d6_1.tres" id="9_1476t"]
+[ext_resource type="Texture2D" uid="uid://dlj1e80c06w0n" path="res://ui/dice_textures/d6/d6_2.tres" id="10_v02yi"]
+[ext_resource type="Texture2D" uid="uid://bskt3bp7smgfq" path="res://ui/dice_textures/d6/d6_3.tres" id="11_vnly1"]
+[ext_resource type="Texture2D" uid="uid://btrgg5uvj6ae6" path="res://ui/dice_textures/d6/d6_4.tres" id="12_rpqj6"]
+[ext_resource type="Texture2D" uid="uid://c04ab4r1n6378" path="res://ui/dice_textures/d6/d6_5.tres" id="13_767xx"]
+[ext_resource type="Texture2D" uid="uid://dt1yg03gwi4ts" path="res://ui/dice_textures/d6/d6_6.tres" id="14_2dkc4"]
+[ext_resource type="Texture2D" uid="uid://dqvqkqpitvhxf" path="res://ui/dice_textures/d8/d8_1.tres" id="15_rlbcu"]
+[ext_resource type="Texture2D" uid="uid://14xtvvyvrgv3" path="res://ui/dice_textures/d8/d8_2.tres" id="16_s4a5k"]
+[ext_resource type="Texture2D" uid="uid://cuk3spp0rci7a" path="res://ui/dice_textures/d8/d8_3.tres" id="17_21pvj"]
+[ext_resource type="Texture2D" uid="uid://l3478x0hvbqk" path="res://ui/dice_textures/d8/d8_4.tres" id="18_gewvq"]
+[ext_resource type="Texture2D" uid="uid://bq272jw3fl8qn" path="res://ui/dice_textures/d8/d8_5.tres" id="19_smiqn"]
+[ext_resource type="Texture2D" uid="uid://dmctjja0yk7ck" path="res://ui/dice_textures/d8/d8_6.tres" id="20_oadoy"]
+[ext_resource type="Texture2D" uid="uid://ddgs40o4cvxp0" path="res://ui/dice_textures/d8/d8_7.tres" id="21_i87tr"]
+[ext_resource type="Texture2D" uid="uid://cu6p2kqwgc31e" path="res://ui/dice_textures/d8/d8_8.tres" id="22_8jque"]
+[ext_resource type="PackedScene" uid="uid://c7ptjwbcahpje" path="res://ui/hud_components/red_button.tscn" id="28_i87tr"]
 
 [node name="DiceTable" type="TextureRect" unique_id=1953930971]
 anchors_preset = 15
@@ -27,35 +47,47 @@ theme_override_styles/panel = ExtResource("3_kxrdf")
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel" unique_id=1851751483]
 layout_mode = 1
 anchors_preset = -1
-anchor_right = 1.0
+anchor_left = 0.05
+anchor_right = 0.95
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/separation = 7
 alignment = 1
 
-[node name="General" type="Button" parent="Panel/VBoxContainer" unique_id=2109405734]
-custom_minimum_size = Vector2(500, 50)
+[node name="Rules" type="RichTextLabel" parent="Panel/VBoxContainer" unique_id=1402217813]
 layout_mode = 2
 theme = ExtResource("2_54ch6")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[font_size=48]RULES[/font_size]
+(Click buttons to expand)"
+fit_content = true
+scroll_active = false
+autowrap_mode = 2
+horizontal_alignment = 1
+
+[node name="General" parent="Panel/VBoxContainer" unique_id=487829307 instance=ExtResource("4_rlrby")]
+layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "GENERAL"
-autowrap_mode = 2
 
 [node name="GeneralBox" type="VBoxContainer" parent="Panel/VBoxContainer" unique_id=338641126]
 visible = false
 layout_mode = 2
 
-[node name="BatA" type="Label" parent="Panel/VBoxContainer/GeneralBox" unique_id=2097597824]
-custom_minimum_size = Vector2(500, 0)
+[node name="BatA" type="RichTextLabel" parent="Panel/VBoxContainer/GeneralBox" unique_id=1204556938]
 layout_mode = 2
 theme = ExtResource("2_54ch6")
-text = "A team scores a point when a batter advances 4 bases"
+bbcode_enabled = true
+text = "A team scores a point when a 
+batter advances 4 bases"
+fit_content = true
+scroll_active = false
+autowrap_mode = 2
 horizontal_alignment = 1
-autowrap_mode = 3
 
 [node name="BatB" type="RichTextLabel" parent="Panel/VBoxContainer/GeneralBox" unique_id=1521054421]
-custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 theme = ExtResource("2_54ch6")
 bbcode_enabled = true
@@ -67,40 +99,33 @@ autowrap_mode = 2
 horizontal_alignment = 1
 
 [node name="BatC" type="RichTextLabel" parent="Panel/VBoxContainer/GeneralBox" unique_id=1273449530]
-custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 theme = ExtResource("2_54ch6")
 bbcode_enabled = true
 text = "After three [color=red]STRIKEOUTS[/color], the teams switch sides
-There are 9 innings total, whoever has the highest points,
-wins"
+There are 9 innings total, whoever 
+has the highest points,wins"
 fit_content = true
 autowrap_mode = 2
 horizontal_alignment = 1
 
-[node name="Batting" type="Button" parent="Panel/VBoxContainer" unique_id=327990500]
-custom_minimum_size = Vector2(500, 50)
+[node name="Batting" parent="Panel/VBoxContainer" unique_id=1022695492 instance=ExtResource("4_rlrby")]
 layout_mode = 2
-theme = ExtResource("2_54ch6")
 theme_override_font_sizes/font_size = 32
 text = "BATTING"
-autowrap_mode = 2
 
 [node name="BattingBox" type="VBoxContainer" parent="Panel/VBoxContainer" unique_id=930769873]
 visible = false
 layout_mode = 2
 
-[node name="BatA" type="Label" parent="Panel/VBoxContainer/BattingBox" unique_id=1363676427]
-custom_minimum_size = Vector2(500, 0)
+[node name="BatA" type="RichTextLabel" parent="Panel/VBoxContainer/BattingBox" unique_id=1726808309]
 layout_mode = 2
 theme = ExtResource("2_54ch6")
 text = "Rolling two matching colors instantly advances 
 the batter by the following amount"
 horizontal_alignment = 1
-autowrap_mode = 3
 
 [node name="BatB" type="RichTextLabel" parent="Panel/VBoxContainer/BattingBox" unique_id=222552109]
-custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 theme = ExtResource("2_54ch6")
 bbcode_enabled = true
@@ -114,7 +139,6 @@ autowrap_mode = 2
 horizontal_alignment = 1
 
 [node name="BatC" type="RichTextLabel" parent="Panel/VBoxContainer/BattingBox" unique_id=436270959]
-custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 theme = ExtResource("2_54ch6")
 bbcode_enabled = true
@@ -125,20 +149,16 @@ fit_content = true
 autowrap_mode = 2
 horizontal_alignment = 1
 
-[node name="Pitching" type="Button" parent="Panel/VBoxContainer" unique_id=1082854135]
-custom_minimum_size = Vector2(500, 50)
+[node name="Pitching" parent="Panel/VBoxContainer" unique_id=1137745372 instance=ExtResource("4_rlrby")]
 layout_mode = 2
-theme = ExtResource("2_54ch6")
 theme_override_font_sizes/font_size = 32
 text = "PITCHING"
-autowrap_mode = 2
 
 [node name="PitchingBox" type="VBoxContainer" parent="Panel/VBoxContainer" unique_id=673830448]
 visible = false
 layout_mode = 2
 
 [node name="PitchA" type="RichTextLabel" parent="Panel/VBoxContainer/PitchingBox" unique_id=1908940303]
-custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 theme = ExtResource("2_54ch6")
 bbcode_enabled = true
@@ -149,7 +169,6 @@ autowrap_mode = 2
 horizontal_alignment = 1
 
 [node name="PitchB" type="RichTextLabel" parent="Panel/VBoxContainer/PitchingBox" unique_id=380210240]
-custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 theme = ExtResource("2_54ch6")
 bbcode_enabled = true
@@ -160,20 +179,17 @@ fit_content = true
 autowrap_mode = 2
 horizontal_alignment = 1
 
-[node name="Special" type="Button" parent="Panel/VBoxContainer" unique_id=1032773282]
-custom_minimum_size = Vector2(500, 50)
+[node name="Special" parent="Panel/VBoxContainer" unique_id=199607715 instance=ExtResource("4_rlrby")]
 layout_mode = 2
-theme = ExtResource("2_54ch6")
 theme_override_font_sizes/font_size = 32
-text = "SPECIAL"
-autowrap_mode = 2
+text = "SPECIAL
+"
 
 [node name="SpecialBox" type="VBoxContainer" parent="Panel/VBoxContainer" unique_id=604377356]
 visible = false
 layout_mode = 2
 
 [node name="SpecialA" type="RichTextLabel" parent="Panel/VBoxContainer/SpecialBox" unique_id=792612961]
-custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 theme = ExtResource("2_54ch6")
 bbcode_enabled = true
@@ -184,17 +200,17 @@ autowrap_mode = 2
 horizontal_alignment = 1
 
 [node name="SpecialB" type="RichTextLabel" parent="Panel/VBoxContainer/SpecialBox" unique_id=1161684298]
-custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 theme = ExtResource("2_54ch6")
 bbcode_enabled = true
-text = "A successful [color=cyan]STEAL[/color] advances the batter by 1 [color=purple](SINGLE)[/color]. Otherwise they are [color=red]OUT[/color]"
+text = "A successful [color=cyan]STEAL[/color] advances the 
+batter by 1 [color=purple](SINGLE)[/color]. 
+Otherwise they are [color=red]OUT[/color]"
 fit_content = true
 autowrap_mode = 2
 horizontal_alignment = 1
 
 [node name="SpecialC" type="RichTextLabel" parent="Panel/VBoxContainer/SpecialBox" unique_id=1672951851]
-custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 theme = ExtResource("2_54ch6")
 bbcode_enabled = true
@@ -204,35 +220,156 @@ fit_content = true
 autowrap_mode = 2
 horizontal_alignment = 1
 
-[node name="Dice" type="Button" parent="Panel/VBoxContainer" unique_id=927899899]
-custom_minimum_size = Vector2(500, 50)
+[node name="Dice" parent="Panel/VBoxContainer" unique_id=4603478 instance=ExtResource("4_rlrby")]
 layout_mode = 2
-theme = ExtResource("2_54ch6")
 theme_override_font_sizes/font_size = 32
 text = "DIE BREAKDOWN"
-autowrap_mode = 2
 
 [node name="DiceBox" type="VBoxContainer" parent="Panel/VBoxContainer" unique_id=710724774]
 visible = false
 layout_mode = 2
 
-[node name="Die" type="RichTextLabel" parent="Panel/VBoxContainer/DiceBox" unique_id=2018967272]
-custom_minimum_size = Vector2(500, 0)
+[node name="PowerText" type="RichTextLabel" parent="Panel/VBoxContainer/DiceBox" unique_id=2018967272]
 layout_mode = 2
 theme = ExtResource("2_54ch6")
 bbcode_enabled = true
-text = "Power (Triangle): [color=purple]1[/color]-[color=green]2[/color]-[color=blue]3[/color]-[color=orange]4[/color]
-Normal (Square): [color=purple]1[/color]-[color=purple]2[/color]-[color=green]3[/color]-[color=green]4[/color]-[color=blue]5[/color]-[color=orange]6[/color]
-Contact (Diamond): [color=purple]1[/color]-[color=purple]2[/color]-[color=purple]3[/color]-[color=green]4[/color]-[color=green]5[/color]-[color=blue]6[/color]-[color=blue]7[/color]-[color=orange]8[/color]"
+text = "POWER
+Highest chances for [color=orange]HOME RUN[/color], [color=blue]TRIPLE[/color], 
+[color=green]DOUBLE[/color], lowest numbers"
 fit_content = true
 autowrap_mode = 2
 horizontal_alignment = 1
 
-[node name="Close" type="Button" parent="Panel/VBoxContainer" unique_id=1746657956]
-custom_minimum_size = Vector2(500, 50)
+[node name="Power" type="HBoxContainer" parent="Panel/VBoxContainer/DiceBox" unique_id=1430312200]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Panel/VBoxContainer/DiceBox/Power" unique_id=131287982]
+layout_mode = 2
+texture = ExtResource("5_4afv1")
+expand_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="Panel/VBoxContainer/DiceBox/Power" unique_id=761383955]
+layout_mode = 2
+texture = ExtResource("6_kifqe")
+expand_mode = 2
+
+[node name="TextureRect3" type="TextureRect" parent="Panel/VBoxContainer/DiceBox/Power" unique_id=1477431073]
+layout_mode = 2
+texture = ExtResource("7_jjghs")
+expand_mode = 2
+
+[node name="TextureRect4" type="TextureRect" parent="Panel/VBoxContainer/DiceBox/Power" unique_id=1805988803]
+layout_mode = 2
+texture = ExtResource("8_dd8u3")
+expand_mode = 2
+
+[node name="NormalText" type="RichTextLabel" parent="Panel/VBoxContainer/DiceBox" unique_id=1975711274]
 layout_mode = 2
 theme = ExtResource("2_54ch6")
+bbcode_enabled = true
+text = "NORMAL
+Normal chances for [color=orange]HOME RUN[/color], [color=blue]TRIPLE[/color], 
+[color=green]DOUBLE[/color], average numbers"
+fit_content = true
+autowrap_mode = 2
+horizontal_alignment = 1
+
+[node name="Normal" type="HBoxContainer" parent="Panel/VBoxContainer/DiceBox" unique_id=567031981]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Panel/VBoxContainer/DiceBox/Normal" unique_id=935542583]
+layout_mode = 2
+texture = ExtResource("9_1476t")
+expand_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="Panel/VBoxContainer/DiceBox/Normal" unique_id=25913411]
+layout_mode = 2
+texture = ExtResource("10_v02yi")
+expand_mode = 2
+
+[node name="TextureRect3" type="TextureRect" parent="Panel/VBoxContainer/DiceBox/Normal" unique_id=1884644879]
+layout_mode = 2
+texture = ExtResource("11_vnly1")
+expand_mode = 2
+
+[node name="TextureRect4" type="TextureRect" parent="Panel/VBoxContainer/DiceBox/Normal" unique_id=1787643737]
+layout_mode = 2
+texture = ExtResource("12_rpqj6")
+expand_mode = 2
+
+[node name="TextureRect5" type="TextureRect" parent="Panel/VBoxContainer/DiceBox/Normal" unique_id=652625009]
+layout_mode = 2
+texture = ExtResource("13_767xx")
+expand_mode = 2
+
+[node name="TextureRect6" type="TextureRect" parent="Panel/VBoxContainer/DiceBox/Normal" unique_id=1729586143]
+layout_mode = 2
+texture = ExtResource("14_2dkc4")
+expand_mode = 2
+
+[node name="ContactText" type="RichTextLabel" parent="Panel/VBoxContainer/DiceBox" unique_id=1466617545]
+layout_mode = 2
+theme = ExtResource("2_54ch6")
+bbcode_enabled = true
+text = "CONTACT
+Lowest chances for [color=orange]HOME RUN[/color], [color=blue]TRIPLE[/color], 
+[color=green]DOUBLE[/color], highest numbers"
+fit_content = true
+autowrap_mode = 2
+horizontal_alignment = 1
+
+[node name="Contact" type="HBoxContainer" parent="Panel/VBoxContainer/DiceBox" unique_id=1703740822]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Panel/VBoxContainer/DiceBox/Contact" unique_id=1065239673]
+layout_mode = 2
+texture = ExtResource("15_rlbcu")
+expand_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="Panel/VBoxContainer/DiceBox/Contact" unique_id=247454247]
+layout_mode = 2
+texture = ExtResource("16_s4a5k")
+expand_mode = 2
+
+[node name="TextureRect3" type="TextureRect" parent="Panel/VBoxContainer/DiceBox/Contact" unique_id=944134232]
+layout_mode = 2
+texture = ExtResource("17_21pvj")
+expand_mode = 2
+
+[node name="TextureRect4" type="TextureRect" parent="Panel/VBoxContainer/DiceBox/Contact" unique_id=1233233369]
+layout_mode = 2
+texture = ExtResource("18_gewvq")
+expand_mode = 2
+
+[node name="TextureRect5" type="TextureRect" parent="Panel/VBoxContainer/DiceBox/Contact" unique_id=1710565155]
+layout_mode = 2
+texture = ExtResource("19_smiqn")
+expand_mode = 2
+
+[node name="TextureRect6" type="TextureRect" parent="Panel/VBoxContainer/DiceBox/Contact" unique_id=972155410]
+layout_mode = 2
+texture = ExtResource("20_oadoy")
+expand_mode = 2
+
+[node name="TextureRect7" type="TextureRect" parent="Panel/VBoxContainer/DiceBox/Contact" unique_id=1050869509]
+layout_mode = 2
+texture = ExtResource("21_i87tr")
+expand_mode = 2
+
+[node name="TextureRect8" type="TextureRect" parent="Panel/VBoxContainer/DiceBox/Contact" unique_id=142169753]
+layout_mode = 2
+texture = ExtResource("22_8jque")
+expand_mode = 2
+
+[node name="Close" parent="Panel/VBoxContainer" unique_id=353343778 instance=ExtResource("28_i87tr")]
+layout_mode = 2
 theme_override_font_sizes/font_size = 32
-text = "Close"
+text = "CLOSE"
 
 [connection signal="pressed" from="Panel/VBoxContainer/Close" to="." method="_on_close_pressed"]

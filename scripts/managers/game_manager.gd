@@ -26,7 +26,6 @@ var playersManager
 func _ready() -> void:
 	_connect_signals()
 	Signalbus.update_inning_info.emit(strikeDC[current_inning], specialDC[current_inning])
-	SoundManager.backgroundMusic.play()
 
 # Process the roll and update the gamestate
 func _process_rolling(left_die: Enums.DIE_TYPES, right_die: Enums.DIE_TYPES) -> void:
@@ -195,7 +194,6 @@ func _game_over() -> void:
 	var newTotal = int(profile.get("points_scored", 0) + homePoints)
 	AuthenticationManager._save_stats({"games_won": newWins, "points_scored": newTotal, "average_points_per": average})
 	Signalbus.game_over.emit(homePoints, visitPoints, average, homePoints > visitPoints)
-	Signalbus.display_batting_result.emit("GAME OVER!")
 
 func _game_start() -> void:
 	_reset_bases()
