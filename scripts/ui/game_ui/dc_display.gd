@@ -1,6 +1,6 @@
 extends Control
-@onready var DCName = $TextureRect/VBoxContainer/DCName
-@onready var DCValue = $TextureRect/VBoxContainer/DCValue
+@onready var DCName = $VBoxContainer/DCName
+@onready var DCValue = $VBoxContainer/DCValue
 
 func _set_dc_name(isBatting: bool) -> void:
 	if isBatting:

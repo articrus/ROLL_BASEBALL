@@ -5,3 +5,6 @@
 [resource]
 default_font = ExtResource("1_wytuf")
 default_font_size = 24
+Button/constants/outline_size = 4
+Label/constants/outline_size = 4
+RichTextLabel/constants/outline_size = 4

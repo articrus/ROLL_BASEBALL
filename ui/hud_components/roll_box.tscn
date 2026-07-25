@@ -19,7 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://bq272jw3fl8qn" path="res://ui/dice_textures/d8/d8_5.tres" id="17_5r8rb"]
 [ext_resource type="Texture2D" uid="uid://dmctjja0yk7ck" path="res://ui/dice_textures/d8/d8_6.tres" id="18_ai0e8"]
 [ext_resource type="Texture2D" uid="uid://ddgs40o4cvxp0" path="res://ui/dice_textures/d8/d8_7.tres" id="19_psak6"]
-[ext_resource type="PackedScene" uid="uid://cnkt0j5ce2xic" path="res://ui/hud_components/blu_button.tscn" id="20_nxhc4"]
+[ext_resource type="PackedScene" uid="uid://cnkt0j5ce2xic" path="res://ui/hud_components/buttons/blu_button.tscn" id="20_nxhc4"]
 
 [node name="RollBox" type="VBoxContainer" unique_id=927553995]
 anchors_preset = 8

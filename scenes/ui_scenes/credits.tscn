@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://cbbbi4r7oa4ni"]
+
+[ext_resource type="Texture2D" uid="uid://ccxlbvq7p01i3" path="res://art/backgrounds/sign_up_background.png" id="1_1ei8s"]
+[ext_resource type="Script" uid="uid://bjulwp6m1ch14" path="res://scripts/ui/windows/credits.gd" id="2_emsjd"]
+[ext_resource type="StyleBox" uid="uid://chhrxw06g5evp" path="res://ui/themes/black_panel.tres" id="2_mbud6"]
+[ext_resource type="Theme" uid="uid://cjwjb6wa1fg38" path="res://ui/themes/baseball_text.tres" id="3_mbud6"]
+[ext_resource type="PackedScene" uid="uid://c7ptjwbcahpje" path="res://ui/hud_components/buttons/red_button.tscn" id="4_a3r3c"]
+
+[node name="Credits" type="TextureRect" unique_id=1146668574]
+anchors_preset = -1
+anchor_left = 0.25
+anchor_top = 0.25
+anchor_right = 0.75
+anchor_bottom = 0.75
+texture = ExtResource("1_1ei8s")
+expand_mode = 1
+script = ExtResource("2_emsjd")
+
+[node name="Panel" type="Panel" parent="." unique_id=559502921]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("2_mbud6")
+
+[node name="Container" type="VBoxContainer" parent="Panel" unique_id=1607420971]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="Credits" type="RichTextLabel" parent="Panel/Container" unique_id=601212440]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme = ExtResource("3_mbud6")
+theme_override_constants/line_separation = 3
+bbcode_enabled = true
+text = "Programming:
+Gianni Coladonato
+[url=https://sdf.bz/gianni/index.html]Portfolio Link[/url]
+
+Graphics:
+Maria Kontakos
+[url=https://sdf.bz/]Designer Link[/url]
+
+Music:
+JDSherbert 
+[url=https://jdsherbert.itch.io]itch.io Link[/url]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 2
+horizontal_alignment = 1
+
+[node name="Close" parent="Panel/Container" unique_id=487829307 instance=ExtResource("4_a3r3c")]
+layout_mode = 2
+text = "CLOSE"
+
+[connection signal="meta_clicked" from="Panel/Container/Credits" to="." method="_on_credits_meta_clicked"]
+[connection signal="pressed" from="Panel/Container/Close" to="." method="_on_close"]

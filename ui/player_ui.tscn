@@ -3,16 +3,17 @@
 [ext_resource type="Script" uid="uid://ep2xuiuc4xw0" path="res://scripts/ui/game_ui/player_ui.gd" id="1_ehg4m"]
 [ext_resource type="Texture2D" uid="uid://clvki865mnu0p" path="res://art/ui/stone_wall.png" id="2_fynll"]
 [ext_resource type="PackedScene" uid="uid://vapum38moy5f" path="res://ui/hud_components/die_strategy.tscn" id="2_vq5xy"]
-[ext_resource type="PackedScene" uid="uid://cnkt0j5ce2xic" path="res://ui/hud_components/blu_button.tscn" id="3_fynll"]
+[ext_resource type="PackedScene" uid="uid://cnkt0j5ce2xic" path="res://ui/hud_components/buttons/blu_button.tscn" id="3_fynll"]
 [ext_resource type="FontFile" uid="uid://d0i251vrssbkh" path="res://ui/themes/m6x11plus.ttf" id="3_j0e15"]
 [ext_resource type="StyleBox" uid="uid://chhrxw06g5evp" path="res://ui/themes/black_panel.tres" id="3_obao7"]
 [ext_resource type="PackedScene" uid="uid://bpnosv5irtluk" path="res://ui/hud_components/roll_box.tscn" id="4_iwa1g"]
 [ext_resource type="PackedScene" uid="uid://ce5ug38xtyrlh" path="res://scenes/ui_scenes/dice_table.tscn" id="6_ykvpg"]
 [ext_resource type="PackedScene" uid="uid://kbcnj7hk78eo" path="res://ui/hud_components/result_text.tscn" id="7_g1ro4"]
 [ext_resource type="PackedScene" uid="uid://47ioydhmhpft" path="res://scenes/ui_scenes/game_over.tscn" id="7_hff70"]
-[ext_resource type="PackedScene" uid="uid://c7ptjwbcahpje" path="res://ui/hud_components/red_button.tscn" id="8_5p2iw"]
+[ext_resource type="PackedScene" uid="uid://c7ptjwbcahpje" path="res://ui/hud_components/buttons/red_button.tscn" id="8_5p2iw"]
 [ext_resource type="PackedScene" uid="uid://bnqfl6qwvvrmt" path="res://ui/hud_components/dc_display.tscn" id="8_b6i2q"]
 [ext_resource type="PackedScene" uid="uid://btxim5i06julr" path="res://ui/hud_components/scoreboard.tscn" id="8_f7sc3"]
+[ext_resource type="Theme" uid="uid://cjwjb6wa1fg38" path="res://ui/themes/baseball_text.tres" id="9_2pr6j"]
 
 [sub_resource type="Theme" id="Theme_hhuwb"]
 default_font = ExtResource("3_j0e15")
@@ -96,7 +97,7 @@ offset_left = 47.0
 offset_top = 91.0
 offset_right = 119.0
 offset_bottom = 115.0
-theme = SubResource("Theme_hhuwb")
+theme = ExtResource("9_2pr6j")
 text = "LEFT DIE"
 
 [node name="RightLabel" type="Label" parent="Bottom" unique_id=695654616]
@@ -105,7 +106,7 @@ offset_left = 385.0
 offset_top = 164.0
 offset_right = 467.0
 offset_bottom = 188.0
-theme = SubResource("Theme_hhuwb")
+theme = ExtResource("9_2pr6j")
 text = "RIGHT DIE"
 
 [node name="ScoreContainer" type="Control" parent="." unique_id=764551278]

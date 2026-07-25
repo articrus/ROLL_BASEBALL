@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://dshb4sshjtafl" path="res://scripts/ui/windows/dice_table.gd" id="1_dg4h0"]
 [ext_resource type="Theme" uid="uid://cjwjb6wa1fg38" path="res://ui/themes/baseball_text.tres" id="2_54ch6"]
 [ext_resource type="StyleBox" uid="uid://chhrxw06g5evp" path="res://ui/themes/black_panel.tres" id="3_kxrdf"]
-[ext_resource type="PackedScene" uid="uid://cnkt0j5ce2xic" path="res://ui/hud_components/blu_button.tscn" id="4_rlrby"]
+[ext_resource type="PackedScene" uid="uid://cnkt0j5ce2xic" path="res://ui/hud_components/buttons/blu_button.tscn" id="4_rlrby"]
 [ext_resource type="Texture2D" uid="uid://dwst2rbm0rse" path="res://ui/dice_textures/d4/d4_1.tres" id="5_4afv1"]
 [ext_resource type="Texture2D" uid="uid://81k30aydi86r" path="res://ui/dice_textures/d4/d4_2.tres" id="6_kifqe"]
 [ext_resource type="Texture2D" uid="uid://c7cx3k8ftkgnl" path="res://ui/dice_textures/d4/d4_3.tres" id="7_jjghs"]
@@ -23,7 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://dmctjja0yk7ck" path="res://ui/dice_textures/d8/d8_6.tres" id="20_oadoy"]
 [ext_resource type="Texture2D" uid="uid://ddgs40o4cvxp0" path="res://ui/dice_textures/d8/d8_7.tres" id="21_i87tr"]
 [ext_resource type="Texture2D" uid="uid://cu6p2kqwgc31e" path="res://ui/dice_textures/d8/d8_8.tres" id="22_8jque"]
-[ext_resource type="PackedScene" uid="uid://c7ptjwbcahpje" path="res://ui/hud_components/red_button.tscn" id="28_i87tr"]
+[ext_resource type="PackedScene" uid="uid://c7ptjwbcahpje" path="res://ui/hud_components/buttons/red_button.tscn" id="28_i87tr"]
 
 [node name="DiceTable" type="TextureRect" unique_id=1953930971]
 anchors_preset = 15

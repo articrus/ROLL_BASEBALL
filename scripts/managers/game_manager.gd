@@ -130,13 +130,13 @@ func _tag_out() -> int:
 		if base < 2:
 			bases[base + 1] = true
 			advance_one_base.emit(base)
-			SoundManager._play_score_fanfare(Enums.BATTING_RESULT.TRIPLE)
-			Signalbus.display_batting_result.emit("POINT STOLEN!")
+			SoundManager._play_score_fanfare(Enums.BATTING_RESULT.DOUBLE)
+			Signalbus.display_batting_result.emit("STEAL!")
 			return 0
 		else:
 			advance_one_base.emit(base)
-			SoundManager._play_score_fanfare(Enums.BATTING_RESULT.DOUBLE)
-			Signalbus.display_batting_result.emit("STEAL!")
+			SoundManager._play_score_fanfare(Enums.BATTING_RESULT.TRIPLE)
+			Signalbus.display_batting_result.emit("POINT STOLEN!")
 			return 1
 
 func _special_pressed() -> void:

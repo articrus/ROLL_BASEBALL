@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://dlmug3nax52mr" path="res://scripts/game_scene/game_scene.gd" id="1_rurhu"]
 [ext_resource type="Script" uid="uid://ccd1cpjlehr48" path="res://scripts/managers/game_manager.gd" id="1_w5aja"]
 [ext_resource type="Texture2D" uid="uid://dg7i8866pqbln" path="res://art/baseball_field/stands.png" id="2_b5spy"]
-[ext_resource type="Texture2D" uid="uid://clnic4lhnmclh" path="res://art/actors/TEMP_player.png" id="2_mw25s"]
+[ext_resource type="Texture2D" uid="uid://cbc38brtdrd84" path="res://art/actors/player.png" id="2_mw25s"]
 [ext_resource type="PackedScene" uid="uid://b4ljywddrkucl" path="res://ui/player_ui.tscn" id="2_onqr8"]
 [ext_resource type="Texture2D" uid="uid://cidvptu3gbprq" path="res://art/baseball_field/field.png" id="2_utbpp"]
 [ext_resource type="Script" uid="uid://b0nauup61hnbc" path="res://scripts/managers/players_manager.gd" id="2_y3j0m"]

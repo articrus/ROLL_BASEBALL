@@ -1,18 +1,14 @@
 [gd_scene format=3 uid="uid://c7ptjwbcahpje"]
 
-[ext_resource type="FontFile" uid="uid://d0i251vrssbkh" path="res://ui/themes/m6x11plus.ttf" id="1_0lfwt"]
+[ext_resource type="Theme" uid="uid://cjwjb6wa1fg38" path="res://ui/themes/baseball_text.tres" id="1_ptvt5"]
 [ext_resource type="StyleBox" uid="uid://coql20xhi1311" path="res://ui/themes/redbutton/red_button_normal.tres" id="2_7f5lb"]
 [ext_resource type="StyleBox" uid="uid://bxmgn30g5c6xd" path="res://ui/themes/redbutton/red_button_pressed.tres" id="3_fb3uy"]
 [ext_resource type="StyleBox" uid="uid://2pgcnh2t24kd" path="res://ui/themes/redbutton/red_button_hover.tres" id="4_ydu3s"]
 [ext_resource type="StyleBox" uid="uid://sf50s5p3hk2f" path="res://ui/themes/redbutton/red_button_disabled.tres" id="5_8pimb"]
 
-[sub_resource type="Theme" id="Theme_hhuwb"]
-default_font = ExtResource("1_0lfwt")
-default_font_size = 24
-
 [node name="Button" type="Button" unique_id=487829307]
 custom_minimum_size = Vector2(0, 50)
-theme = SubResource("Theme_hhuwb")
+theme = ExtResource("1_ptvt5")
 theme_override_styles/normal = ExtResource("2_7f5lb")
 theme_override_styles/pressed = ExtResource("3_fb3uy")
 theme_override_styles/hover = ExtResource("4_ydu3s")

@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b4pqicxa6lql0" path="res://scripts/ui/game_ui/scoreboard.gd" id="1_qjve3"]
 [ext_resource type="Theme" uid="uid://cjwjb6wa1fg38" path="res://ui/themes/baseball_text.tres" id="2_d7rl5"]
+[ext_resource type="LabelSettings" uid="uid://ccbglcclni8s6" path="res://ui/themes/team_label_settings.tres" id="3_7qmt3"]
 
 [sub_resource type="Theme" id="Theme_1enrn"]
 
@@ -73,6 +74,7 @@ alignment = 1
 [node name="Strikes" type="Label" parent="Panel/InnerPanel/InfoContainer" unique_id=1726317109]
 layout_mode = 2
 theme = ExtResource("2_d7rl5")
+theme_override_constants/outline_size = 4
 theme_override_font_sizes/font_size = 32
 text = "Out [  ] [  ] [  ]"
 horizontal_alignment = 1
@@ -102,7 +104,7 @@ size_flags_vertical = 6
 theme = ExtResource("2_d7rl5")
 theme_override_colors/font_color = Color(1, 1, 1, 0)
 theme_override_font_sizes/font_size = 25
-text = "HOME"
+text = " "
 horizontal_alignment = 1
 
 [node name="InningCount" type="RichTextLabel" parent="Panel/InnerPanel/TeamScore" unique_id=453061220]
@@ -111,6 +113,7 @@ layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 6
 theme = ExtResource("2_d7rl5")
+theme_override_constants/outline_size = 4
 bbcode_enabled = true
 text = "[1] [2] [3] [4] [5] [6] [7] [8] [9] "
 fit_content = true
@@ -122,6 +125,7 @@ layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 6
 theme = ExtResource("2_d7rl5")
+theme_override_constants/outline_size = 4
 theme_override_font_sizes/font_size = 25
 
 [node name="HomeTeam" type="Label" parent="Panel/InnerPanel/TeamScore" unique_id=719292334]
@@ -129,8 +133,10 @@ layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 6
 theme = ExtResource("2_d7rl5")
+theme_override_constants/outline_size = 4
 theme_override_font_sizes/font_size = 22
 text = "HOME"
+label_settings = ExtResource("3_7qmt3")
 horizontal_alignment = 2
 
 [node name="HomeScore" type="RichTextLabel" parent="Panel/InnerPanel/TeamScore" unique_id=715735968]
@@ -139,6 +145,7 @@ layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 6
 theme = ExtResource("2_d7rl5")
+theme_override_constants/outline_size = 4
 bbcode_enabled = true
 text = "[1] [2] [3] [4] [5] [6] [7] [8] [9] "
 fit_content = true
@@ -150,6 +157,7 @@ layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 6
 theme = ExtResource("2_d7rl5")
+theme_override_constants/outline_size = 4
 theme_override_font_sizes/font_size = 25
 text = "[T]"
 horizontal_alignment = 1
@@ -159,8 +167,10 @@ layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 6
 theme = ExtResource("2_d7rl5")
+theme_override_constants/outline_size = 4
 theme_override_font_sizes/font_size = 22
 text = "VISITOR"
+label_settings = ExtResource("3_7qmt3")
 horizontal_alignment = 2
 
 [node name="VisitorScore" type="RichTextLabel" parent="Panel/InnerPanel/TeamScore" unique_id=69622048]
@@ -169,6 +179,7 @@ layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 6
 theme = ExtResource("2_d7rl5")
+theme_override_constants/outline_size = 4
 bbcode_enabled = true
 text = "[1] [2] [3] [4] [5] [6] [7] [8] [9] "
 fit_content = true
@@ -180,6 +191,7 @@ layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 6
 theme = ExtResource("2_d7rl5")
+theme_override_constants/outline_size = 4
 theme_override_font_sizes/font_size = 25
 text = "[T]"
 horizontal_alignment = 1
@@ -198,6 +210,7 @@ offset_bottom = 22.328999
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_d7rl5")
+theme_override_constants/outline_size = 6
 theme_override_font_sizes/font_size = 66
 text = "RED GAMMA PARK"
 horizontal_alignment = 1

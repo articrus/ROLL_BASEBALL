@@ -8,6 +8,7 @@
 [ext_resource type="StyleBox" uid="uid://qde50mwtm0qn" path="res://ui/themes/blubutton/blu_button_disabled.tres" id="5_m23fs"]
 
 [node name="TeamButton" type="Button" unique_id=1161289066]
+custom_minimum_size = Vector2(0, 30)
 theme = ExtResource("1_fk3mo")
 theme_override_styles/normal = ExtResource("2_bq1h2")
 theme_override_styles/pressed = ExtResource("3_qmqwu")

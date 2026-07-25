@@ -1,5 +1,6 @@
 extends Control
 @onready var loginMenu = $Login
+@onready var credits = $Credits
 @onready var playerInfo = $PlayerInfo
 @onready var infoMenu = $Panel/VBoxContainer/Info
 @onready var diceTable = $DiceTable
@@ -7,12 +8,14 @@ extends Control
 	"Play": $Panel/VBoxContainer/Play,
 	"Login": $Panel/VBoxContainer/Login,
 	"Info": $Panel/VBoxContainer/Info,
-	"Rules": $Panel/VBoxContainer/Rules
+	"Rules": $Panel/VBoxContainer/Rules,
+	"Credits": $Credits/Panel/Container/Credits
 }
 @onready var displayText = $DisplayText
 
 func _ready() -> void:
 	loginMenu.visible = false
+	credits.visible = false
 	Signalbus.user_login.connect(_on_successful_login)
 	loginMenu.confirm_sent.connect(_display_message)
 	if AuthenticationManager.current_user_id == "":
@@ -27,14 +30,15 @@ func _on_play_pressed() -> void:
 	SoundManager._play_button()
 	if AuthenticationManager.current_user_id == "":
 		_display_message("YOU NEED TO LOGIN FIRST")
-		#print("YOU NEED TO LOGIN FIRST")
 		loginMenu.visible = true
+		credits.visible = false
 	else:
 		_start_game()
 
 func _on_login_pressed() -> void:
 	SoundManager._play_button()
 	loginMenu.visible = true
+	credits.visible = false
 
 func _on_successful_login() -> void:
 	menuButtons.Info.disabled = false
@@ -43,6 +47,7 @@ func _on_successful_login() -> void:
 func _on_info_pressed() -> void:
 	SoundManager._play_button()
 	playerInfo.visible = true
+	credits.visible = false
 	playerInfo._on_visible()
 
 func _start_game() -> void:
@@ -51,3 +56,8 @@ func _start_game() -> void:
 func _on_rules_pressed() -> void:
 	SoundManager._play_button()
 	diceTable.visible = true
+	credits.visible = false
+
+func _on_credits_pressed() -> void:
+	SoundManager._play_button()
+	credits.visible = true

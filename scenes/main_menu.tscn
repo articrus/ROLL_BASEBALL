@@ -7,7 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://crfhpru8fiebr" path="res://scenes/ui_scenes/player_info.tscn" id="4_wu84c"]
 [ext_resource type="PackedScene" uid="uid://ce5ug38xtyrlh" path="res://scenes/ui_scenes/dice_table.tscn" id="5_8ln24"]
 [ext_resource type="Texture2D" uid="uid://cmxjduiwnj5uo" path="res://art/ui/logo.png" id="5_jk1qb"]
-[ext_resource type="PackedScene" uid="uid://cnkt0j5ce2xic" path="res://ui/hud_components/blu_button.tscn" id="5_lgwnu"]
+[ext_resource type="PackedScene" uid="uid://cnkt0j5ce2xic" path="res://ui/hud_components/buttons/blu_button.tscn" id="5_lgwnu"]
+[ext_resource type="PackedScene" uid="uid://cbbbi4r7oa4ni" path="res://scenes/ui_scenes/credits.tscn" id="7_5dd4i"]
 [ext_resource type="PackedScene" uid="uid://kbcnj7hk78eo" path="res://ui/hud_components/result_text.tscn" id="8_tbmy8"]
 
 [node name="MainMenu" type="TextureRect" unique_id=1314468095]
@@ -63,9 +64,21 @@ text = "PLAYER INFO"
 layout_mode = 2
 text = "RULES"
 
+[node name="Credits" parent="Panel/VBoxContainer" unique_id=58318081 instance=ExtResource("5_lgwnu")]
+layout_mode = 2
+text = "CREDITS"
+
 [node name="Login" parent="." unique_id=1740025211 instance=ExtResource("2_ekxnf")]
 visible = false
 layout_mode = 1
+
+[node name="Credits" parent="." unique_id=1146668574 instance=ExtResource("7_5dd4i")]
+visible = false
+layout_mode = 1
+offset_left = 4.0
+offset_top = 64.0
+offset_right = 4.0
+offset_bottom = 64.0
 
 [node name="PlayerInfo" parent="." unique_id=564634829 instance=ExtResource("4_wu84c")]
 visible = false
@@ -89,3 +102,4 @@ text = "YOU NEED TO LOGIN FIRST"
 [connection signal="pressed" from="Panel/VBoxContainer/Login" to="." method="_on_login_pressed"]
 [connection signal="pressed" from="Panel/VBoxContainer/Info" to="." method="_on_info_pressed"]
 [connection signal="pressed" from="Panel/VBoxContainer/Rules" to="." method="_on_rules_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/Credits" to="." method="_on_credits_pressed"]

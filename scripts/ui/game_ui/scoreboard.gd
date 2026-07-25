@@ -79,7 +79,11 @@ func _get_team_name(city: Enums.CITY) -> String:
 # Sets the team names on the scoreboard
 func _set_team_names(home: Enums.CITY, visit: Enums.CITY) -> void:
 	homeTeam.text = _get_team_name(home)
+	homeTeam.label_settings = homeTeam.label_settings.duplicate()
+	homeTeam.label_settings.font_color = Enums.CITY_COLORS[home]
 	visitTeam.text = _get_team_name(visit)
+	visitTeam.label_settings = visitTeam.label_settings.duplicate()
+	visitTeam.label_settings.font_color = Enums.CITY_COLORS[visit]
 
 func _connect_signals() -> void:
 	Signalbus.update_scoreboard_names.connect(_set_team_names)

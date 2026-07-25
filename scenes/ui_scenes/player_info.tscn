@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://ccxlbvq7p01i3" path="res://art/backgrounds/sign_up_background.png" id="1_ocjau"]
 [ext_resource type="Script" uid="uid://cypu3aigakkab" path="res://scripts/ui/windows/player_info.gd" id="1_tbu2c"]
 [ext_resource type="FontFile" uid="uid://d0i251vrssbkh" path="res://ui/themes/m6x11plus.ttf" id="4_ocjau"]
-[ext_resource type="PackedScene" uid="uid://c7ptjwbcahpje" path="res://ui/hud_components/red_button.tscn" id="5_a0p4c"]
+[ext_resource type="PackedScene" uid="uid://c7ptjwbcahpje" path="res://ui/hud_components/buttons/red_button.tscn" id="5_a0p4c"]
 
 [sub_resource type="Theme" id="Theme_hhuwb"]
 default_font = ExtResource("4_ocjau")
