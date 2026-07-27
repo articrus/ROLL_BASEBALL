@@ -4,6 +4,23 @@ extends Node2D
 @onready var gameManager = $GameManager
 @onready var gameUI = $CanvasLayer/PlayerUI
 @onready var baseBall = load("res://actors/objects/base_ball.tscn")
+# Team Logos
+@onready var homeLogo = $Spectators/TeamLogos/Home
+@onready var visitLogo = $Spectators/TeamLogos/Visit
+@onready var teamLogos = {
+	Enums.CITY.MTL: load("res://art/logos/baristas-512x512.png"),
+	Enums.CITY.TOR: load("res://art/logos/runners-512x512.png"),
+	Enums.CITY.MIA: load("res://art/logos/crocodiles-512x512.png"),
+	Enums.CITY.SAJOS: load("res://art/logos/chippers-512x512.png"),
+	Enums.CITY.LA: load("res://art/logos/surfers-512x512.png"),
+	Enums.CITY.CHI: load("res://art/logos/niners-512x512.png"),
+	Enums.CITY.BOS: load("res://art/logos/climbers-512x512.png"),
+	Enums.CITY.SAFRA: load("res://art/logos/seals-512x512.png"),
+	Enums.CITY.SADIE: load("res://art/logos/innovatorss-512x512.png"),
+	Enums.CITY.KH: load("res://art/logos/aviators-512x512.png"),
+	Enums.CITY.DEN: load("res://art/logos/miners-512x512.png"),
+	Enums.CITY.NY: load("res://art/logos/anvils-512x512.png")
+}
 # Export and other vars
 var playerTeam: Enums.CITY
 var enemyTeam: Enums.CITY
@@ -50,8 +67,13 @@ func _set_teams(team: Enums.CITY) -> void:
 		if rand > Enums.CITY.size():
 			rand = 0
 	enemyTeam = rand as Enums.CITY
+	_set_logos(playerTeam, enemyTeam)
 	Signalbus.update_scoreboard_names.emit(playerTeam, enemyTeam)
 	_start_inning(gameManager.current_inning)
+
+func _set_logos(home: Enums.CITY, visit: Enums.CITY) -> void:
+	homeLogo.texture = teamLogos[home]
+	visitLogo.texture = teamLogos[visit]
 
 func _connect_signals() -> void:
 	playerManager.bases = bases

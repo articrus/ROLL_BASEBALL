@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://cidvptu3gbprq" path="res://art/baseball_field/field.png" id="2_utbpp"]
 [ext_resource type="Script" uid="uid://b0nauup61hnbc" path="res://scripts/managers/players_manager.gd" id="2_y3j0m"]
 [ext_resource type="PackedScene" uid="uid://dnfd08q1sg4vo" path="res://scenes/ui_scenes/team_select.tscn" id="3_ycayy"]
+[ext_resource type="Texture2D" uid="uid://b1pq46hynoj7c" path="res://art/logos/baristas-512x512.png" id="5_tcjrq"]
 [ext_resource type="PackedScene" uid="uid://cnw7uvgrh10da" path="res://scenes/ui_scenes/quick_start.tscn" id="10_mw25s"]
 
 [node name="GameScene" type="Node2D" unique_id=1578163720]
@@ -27,8 +28,20 @@ texture = ExtResource("2_utbpp")
 
 [node name="Spectators" type="Sprite2D" parent="." unique_id=1096673680]
 position = Vector2(0, -29)
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.4, 0.4)
 texture = ExtResource("2_b5spy")
+
+[node name="TeamLogos" type="Node2D" parent="Spectators" unique_id=16437239]
+
+[node name="Home" type="Sprite2D" parent="Spectators/TeamLogos" unique_id=533533695]
+position = Vector2(-180, -304.99997)
+scale = Vector2(0.45, 0.45)
+texture = ExtResource("5_tcjrq")
+
+[node name="Visit" type="Sprite2D" parent="Spectators/TeamLogos" unique_id=2047232596]
+position = Vector2(220, -304.99997)
+scale = Vector2(0.45, 0.45)
+texture = ExtResource("5_tcjrq")
 
 [node name="Bases" type="Node2D" parent="." unique_id=547608302]
 position = Vector2(0, 29)

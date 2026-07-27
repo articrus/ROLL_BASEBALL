@@ -21,7 +21,10 @@ func _update_score(home: Array[int], visit: Array[int]) -> void:
 	var visitText = ""
 	var homePT = 0
 	var visitPT = 0
-	for i in range(1, 10):
+	var maxInning = 10
+	if inningRef > 9:
+		maxInning = 11
+	for i in range(1, maxInning):
 		homePT += home[i]
 		visitPT += visit[i]
 		if i == inningRef:
@@ -53,11 +56,19 @@ func _update_strikeouts(strikes: int) -> void:
 func _update_inning_display(inning: int) -> void:
 	var inningText = ""
 	inningRef = inning
-	for i in range(1, 10):
-		if i == inning:
-			inningText += "[color=blue][" + str(i) + "][/color] "
-		else:
-			inningText += "[" + str(i) + "] "
+	# Normal
+	if inningRef > 9:
+		for i in range(1, 11):
+			if i == 10:
+				inningText += "[color=blue][OT][/color]"
+			else:
+				inningText += "[" + str(i) + "] "
+	else:
+		for i in range(1, 10):
+			if i == inning:
+				inningText += "[color=blue][" + str(i) + "][/color] "
+			else:
+				inningText += "[" + str(i) + "] "
 	inningCount.text = inningText
 
 func _get_team_name(city: Enums.CITY) -> String:

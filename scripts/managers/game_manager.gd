@@ -8,9 +8,10 @@ class_name GameManager
 @export var strikeouts: int = 0
 # Inning Variables
 @export var current_inning: int = 1
+@export var overtime: bool = false
 # DC Variables
-const strikeDC: Array[int] = [0, 6, 5, 7, 6, 7, 6, 8, 6, 8, 7]
-const specialDC: Array[int] = [0, 8, 7, 8, 7, 9, 8, 10, 8, 10, 9]
+const strikeDC: Array[int] = [0, 6, 5, 7, 6, 7, 6, 8, 6, 8, 7, 8]
+const specialDC: Array[int] = [0, 8, 7, 8, 7, 9, 8, 10, 8, 10, 9, 10]
 # Signals
 signal advance_bases(amount: int)
 signal strikeout
@@ -30,7 +31,7 @@ func _ready() -> void:
 # Process the roll and update the gamestate
 func _process_rolling(left_die: Enums.DIE_TYPES, right_die: Enums.DIE_TYPES) -> void:
 	Signalbus.disable_roll.emit(true)
-	var result = Dice._process_roll(left_die, right_die, strikeDC[current_inning], current_inning % 2 != 0)
+	var result = Dice._process_roll(left_die, right_die, _get_DC(strikeDC), current_inning % 2 != 0)
 	var didScore = result[1] != Enums.BATTING_RESULT.STRIKEOUT
 	Signalbus.pitch_ball.emit(basePositions._get_base_position(3), basePositions._get_ball_position(didScore))
 	playersManager._pitch_animation()
@@ -62,9 +63,9 @@ func _process_rolling(left_die: Enums.DIE_TYPES, right_die: Enums.DIE_TYPES) -> 
 	SoundManager._play_score_fanfare(result[1])
 	# Add the points
 	if current_inning % 2 == 0: 
-		visitPointsArray[current_inning] += runs
+		_add_points(runs, visitPointsArray, current_inning)
 	else: 
-		homePointsArray[current_inning] += runs
+		_add_points(runs, homePointsArray, current_inning)
 	Signalbus.update_points.emit(homePointsArray, visitPointsArray)
 	_toggle_special_buttons()
 	_check_strikes()
@@ -94,7 +95,7 @@ func _steal_base() -> int:
 	await Signalbus.resume_processing
 	Signalbus.display_die_total.emit(result)
 	bases[base] = false
-	if result >= specialDC[current_inning]:
+	if result >= _get_DC(strikeDC):
 		advance_one_base.emit(base)
 		if base < 2:
 			bases[base + 1] = true # Advance to next base
@@ -112,7 +113,7 @@ func _steal_base() -> int:
 		Signalbus.display_batting_result.emit("OUT!")
 		return 0
 
-# Attempt to tag out the furthest player (returns strikeouts)
+# Attempt to tag out the furthest player (returns points)
 func _tag_out() -> int:
 	var base = _furthest_occupied_base()
 	if base == -1: return 0 # Prevent tagging out with no players on bases
@@ -120,7 +121,7 @@ func _tag_out() -> int:
 	await Signalbus.resume_processing
 	Signalbus.display_die_total.emit(result)
 	bases[base] = false
-	if result >= specialDC[current_inning]:
+	if result >= _get_DC(specialDC):
 		SoundManager._play_score_fanfare(Enums.BATTING_RESULT.STRIKEOUT)
 		strike_one_base.emit(base)
 		Signalbus.display_batting_result.emit("TAG OUT!")
@@ -140,14 +141,23 @@ func _tag_out() -> int:
 			return 1
 
 func _special_pressed() -> void:
+	var runs
 	if current_inning % 2 == 0:
-		visitPointsArray[current_inning] += await _tag_out()
+		runs = await _tag_out()
+		_add_points(runs, visitPointsArray, current_inning)
 		_check_strikes()
 	else:
-		homePointsArray[current_inning] += await _steal_base()
+		runs = await _steal_base()
+		_add_points(runs, homePointsArray, current_inning)
 		_check_strikes()
 	_toggle_special_buttons()
 	Signalbus.update_points.emit(homePointsArray, visitPointsArray)
+
+func _add_points(points: int, pointsArray: Array[int], inning: int) -> void:
+	if inning > 9:
+		pointsArray[10] += points
+	else:
+		pointsArray[inning] += points
 
 func _toggle_special_buttons() -> void:
 	toggle_special.emit(_furthest_occupied_base() == -1)
@@ -157,8 +167,11 @@ func _check_strikes() -> void:
 	Signalbus.update_strikes.emit(strikeouts)
 	if strikeouts >= 3:
 		if current_inning >= 9:
-			_game_over()
-			# Call gameover splash screen
+			if !_game_over_check(): # Check if not the same amount of points
+				_game_over() # Call gameover splash screen
+			else:
+				overtime = true
+				_next_inning()
 		else:
 			Signalbus.display_batting_result.emit("CHANGE SIDES!")
 			_next_inning()
@@ -175,16 +188,31 @@ func _next_inning() -> void:
 	Signalbus.update_strikes.emit(strikeouts)
 	current_inning += 1
 	if current_inning > 9:
-		current_inning = 1
+		if !overtime:
+			current_inning = 1
 	Signalbus.update_inning.emit(current_inning)
-	Signalbus.update_inning_info.emit(strikeDC[current_inning], specialDC[current_inning], current_inning)
+	Signalbus.update_inning_info.emit(_get_DC(strikeDC), _get_DC(specialDC), current_inning)
 	Signalbus.disable_roll.emit(false)
+
+func _get_DC(DCArray: Array[int]) -> int:
+	if current_inning > 9:
+		return DCArray[10]
+	else:
+		return DCArray[current_inning]
+
+func _game_over_check() -> bool:
+	var homePoints = 0
+	var visitPoints = 0
+	for i in range(1, 11):
+		homePoints += homePointsArray[i]
+		visitPoints += visitPointsArray[i]
+	return homePoints == visitPoints
 
 func _game_over() -> void:
 	Signalbus.disable_roll.emit(true)
 	var homePoints = 0
 	var visitPoints = 0
-	for i in range(1, 9):
+	for i in range(1, 11):
 		homePoints += homePointsArray[i]
 		visitPoints += visitPointsArray[i]
 	var average = homePoints / 5.0 # Average points scored by player per inning
