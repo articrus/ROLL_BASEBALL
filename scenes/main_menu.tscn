@@ -43,7 +43,7 @@ grow_vertical = 2
 alignment = 1
 
 [node name="Logo" type="TextureRect" parent="Panel/VBoxContainer" unique_id=2022969208]
-custom_minimum_size = Vector2(352, 352)
+custom_minimum_size = Vector2(352, 275.5)
 layout_mode = 2
 texture = ExtResource("5_jk1qb")
 expand_mode = 2

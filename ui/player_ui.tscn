@@ -132,8 +132,9 @@ layout_mode = 1
 offset_left = -147.0
 offset_top = -181.0
 offset_right = 148.0
-offset_bottom = -91.0
+offset_bottom = -105.0
 theme_override_font_sizes/font_size = 75
+max_time = 1.5
 
 [node name="TotalText" parent="." unique_id=1327960552 instance=ExtResource("7_g1ro4")]
 visible = false
