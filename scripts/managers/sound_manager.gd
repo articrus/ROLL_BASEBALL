@@ -71,3 +71,24 @@ func _play_score_fanfare(score: Enums.BATTING_RESULT) -> void:
 		_:
 			scoreFanfare.pitch_scale = 1.0
 	scoreFanfare.play()
+
+## Not the official way to do it, but a quick hotfix
+func _mute_music(toggle: bool) -> void:
+	if !toggle:
+		backgroundMusic.volume_db = 0
+	else:
+		backgroundMusic.volume_db = -80
+
+func _mute_sounds(toggle: bool) -> void:
+	if !toggle:
+		buttonBoop.volume_db = 0
+		scoreFanfare.volume_db = 0
+		pitchSound.volume_db = 0
+		inningChange.volume_db = 0
+		dieRoll.volume_db = 0
+	else:
+		buttonBoop.volume_db = -80
+		scoreFanfare.volume_db = -80
+		pitchSound.volume_db = -80
+		inningChange.volume_db = -80
+		dieRoll.volume_db = -80

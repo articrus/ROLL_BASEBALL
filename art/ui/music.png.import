@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bnx4q64autjpk"
-path="res://.godot/imported/rollbaseball.apple-touch-icon.png-f66b4c4568466b7bca21aea77d6a2bec.ctex"
+uid="uid://b7vf5f3u8ur2h"
+path="res://.godot/imported/music.png-f9fc1cf00f13e4aace7ce453f3efbd55.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://web/stuff_for_advertising/example_setup/web/rollbaseball.apple-touch-icon.png"
-dest_files=["res://.godot/imported/rollbaseball.apple-touch-icon.png-f66b4c4568466b7bca21aea77d6a2bec.ctex"]
+source_file="res://art/ui/music.png"
+dest_files=["res://.godot/imported/music.png-f9fc1cf00f13e4aace7ce453f3efbd55.ctex"]
 
 [params]
 

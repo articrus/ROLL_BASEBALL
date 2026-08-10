@@ -123,6 +123,8 @@ layout_mode = 2
 theme = ExtResource("2_54ch6")
 text = "Rolling two matching colors instantly advances 
 the batter by the following amount"
+fit_content = true
+scroll_active = false
 horizontal_alignment = 1
 
 [node name="BatB" type="RichTextLabel" parent="Panel/VBoxContainer/BattingBox" unique_id=222552109]
@@ -142,8 +144,8 @@ horizontal_alignment = 1
 layout_mode = 2
 theme = ExtResource("2_54ch6")
 bbcode_enabled = true
-text = "Otherwise, the roll total must be greater than 
-or equal to [color=red]STRIKE[/color] to become a [color=purple]SINGLE[/color]. 
+text = "Otherwise, the roll total must 
+be >= to [color=red]STRIKE[/color] to become a [color=purple]SINGLE[/color]. 
 Otherwise it will result in a [color=red]STRIKEOUT[/color]"
 fit_content = true
 autowrap_mode = 2
@@ -172,8 +174,8 @@ horizontal_alignment = 1
 layout_mode = 2
 theme = ExtResource("2_54ch6")
 bbcode_enabled = true
-text = "Otherwise the total must be greater than 
-or equal to [color=red]STRIKE[/color] in order to become a [color=purple]SINGLE[/color]. 
+text = "Otherwise the total must be >= to [color=red]STRIKE[/color]
+ in order to become a [color=purple]SINGLE[/color]. 
 Otherwise it will result in a [color=green]DOUBLE[/color]"
 fit_content = true
 autowrap_mode = 2
@@ -194,7 +196,7 @@ layout_mode = 2
 theme = ExtResource("2_54ch6")
 bbcode_enabled = true
 text = "[color=cyan]STEAL[/color] and [color=cyan]TAG OUT[/color] are rolled with 2 Normal Die,
- and must be greater than or eqyal to [color=cyan]SPECIAL[/color]"
+ and must be >= to [color=cyan]SPECIAL[/color]"
 fit_content = true
 autowrap_mode = 2
 horizontal_alignment = 1

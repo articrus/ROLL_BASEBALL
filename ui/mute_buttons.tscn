@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://c2oaiesq2kq6h"]
+
+[ext_resource type="Texture2D" uid="uid://b7vf5f3u8ur2h" path="res://art/ui/music.png" id="1_hij5o"]
+[ext_resource type="Script" uid="uid://bx5w8ikdpkk4y" path="res://scripts/ui/mute_buttons.gd" id="1_i7n6b"]
+[ext_resource type="PackedScene" uid="uid://cnkt0j5ce2xic" path="res://ui/hud_components/buttons/blu_button.tscn" id="4_kfrci"]
+[ext_resource type="Texture2D" uid="uid://do3j5tjfr3es0" path="res://art/ui/volume.png" id="5_n1idw"]
+
+[node name="MuteButtons" type="CanvasLayer" unique_id=803014586]
+layer = 2
+script = ExtResource("1_i7n6b")
+
+[node name="Control" type="Control" parent="." unique_id=224997151]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control" unique_id=1563444423]
+z_index = 10
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.95
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+alignment = 2
+
+[node name="Music" parent="Control/HBoxContainer" unique_id=487829307 instance=ExtResource("4_kfrci")]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+toggle_mode = true
+text = ""
+icon = ExtResource("1_hij5o")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Sounds" parent="Control/HBoxContainer" unique_id=628546856 instance=ExtResource("4_kfrci")]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+toggle_mode = true
+text = ""
+icon = ExtResource("5_n1idw")
+icon_alignment = 1
+expand_icon = true
+
+[connection signal="pressed" from="Control/HBoxContainer/Music" to="." method="_on_music_pressed"]
+[connection signal="pressed" from="Control/HBoxContainer/Sounds" to="." method="_on_sounds_pressed"]

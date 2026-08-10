@@ -21,6 +21,7 @@ Signalbus="*uid://c6yer56cusqo2"
 AuthenticationManager="*uid://bmi7fxrkpos2h"
 AdManager="*uid://c1bctwasyx122"
 SoundManager="*uid://bnv0ipwmujyrk"
+MuteButtons="*uid://c2oaiesq2kq6h"
 
 [display]
 

@@ -61,11 +61,9 @@ func _clear_field() -> void:
 func _set_teams(team: Enums.CITY) -> void:
 	AdManager.show_interstitial_ad()
 	playerTeam = team
-	var rand = randi_range(0, Enums.CITY.size()-1)
+	var rand = randi_range(0, Enums.CITY.size() - 1)
 	if rand as Enums.CITY == playerTeam:
-		rand += 1
-		if rand > Enums.CITY.size():
-			rand = 0
+		rand = (rand + 1) %  Enums.CITY.size()
 	enemyTeam = rand as Enums.CITY
 	_set_logos(playerTeam, enemyTeam)
 	Signalbus.update_scoreboard_names.emit(playerTeam, enemyTeam)
